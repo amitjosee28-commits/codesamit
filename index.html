@@ -3,20 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amit Joshi | Personal Dashboard & Portfolio</title>
+    <title>Amit Joshi</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="https://unpkg.com/nepali-datepicker-reactjs/dist/index.css"/>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://unpkg.com/nepali-date-picker/dist/nepaliDatePicker.min.js"></script>
-    <script src="https://unpkg.com/bikram-sambat-js"></script>
-
     <style>
         :root {
-            --bg-color: #050a1a;
-            --card-bg: rgba(255, 255, 255, 0.04);
-            --card-border: rgba(255, 255, 255, 0.1);
+            --bg-color: #090a0f;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
             --text-primary: #f3f4f6;
             --text-secondary: #9ca3af;
             --accent-color: #00f0ff;
@@ -62,101 +56,42 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.6rem 1.5rem;
-            background: linear-gradient(rgba(5, 10, 26, 0.85), rgba(5, 10, 26, 0.85)), url('127540764_1543314336058956_8888779226493901871_n.jpg');
+            padding: 0.8rem 2rem;
+            background-image: url('127540764_1543314336058956_8888779226493901871_n.jpg');
             background-size: cover;
             background-position: center;
             border-bottom: 1px solid var(--card-border);
-            height: 95px;
+            min-height: 85px;
             position: sticky;
             top: 0;
             z-index: 1000;
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
+            flex-wrap: wrap;
             gap: 1rem;
         }
 
         .logo {
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: #ffffff;
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 0.8rem;
         }
 
         .logo-img {
-            width: 44px;
-            height: 44px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             object-fit: cover;
             border: 1px solid var(--accent-color);
         }
 
-        .logo-title {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.2;
-        }
-
-        .logo-title span:first-child {
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: #ffffff;
-        }
-
-        .logo-title span:last-child {
-            font-size: 0.75rem;
-            color: var(--accent-color);
-            text-decoration: underline;
-            cursor: pointer;
-        }
-
-        .social-icons-header {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        .social-icons-header a {
-            font-size: 1.35rem;
-            color: #fff;
-            text-decoration: none;
-            transition: transform 0.2s;
-        }
-
-        .social-icons-header a:hover {
-            transform: scale(1.15);
-        }
-
-        .nepali-flag {
-            width: 45px;
-            height: 30px;
-            margin-left: 0.4rem;
-        }
-
-        .nepali-time {
-            font-size: 0.78rem;
-            color: var(--accent-color);
-            margin-left: 0.4rem;
-            animation: rgb-flash 3s infinite alternate;
-            font-weight: 600;
-        }
-
-        @keyframes rgb-flash {
-            0% { color: #00f0ff; text-shadow: 0 0 5px rgba(0,240,255,0.4); }
-            50% { color: #a855f7; text-shadow: 0 0 5px rgba(168,85,247,0.4); }
-            100% { color: #ea4335; text-shadow: 0 0 5px rgba(234,67,53,0.4); }
-        }
-
         nav {
             display: flex;
-            gap: 1.1rem;
+            gap: 1.2rem;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         nav a {
@@ -172,35 +107,88 @@
             color: var(--accent-color);
         }
 
-        .search-container {
-            position: relative;
-            margin-left: 0.5rem;
+        .social-icons-header {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
         }
 
-        .search-bar {
-            padding: 0.4rem 0.8rem 0.4rem 1.8rem;
-            border-radius: 6px;
-            border: 1px solid var(--card-border);
-            background: rgba(0,0,0,0.5);
+        .social-icons-header a {
+            font-size: 1.1rem;
             color: #fff;
-            font-size: 0.8rem;
-            width: 150px;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+        
+        .social-icons-header a:hover {
+            transform: scale(1.1);
+        }
+
+        .date-time {
+            font-size: 0.75rem;
+            color: #ffffff;
+            margin-left: 0.3rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        }
+
+        .nepali-flag {
+            width: 30px;
+            height: 20px;
+            animation: flutter 2s infinite ease-in-out;
+        }
+
+        @keyframes flutter {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-3px) rotate(2deg); }
+            100% { transform: translateY(0) rotate(-1deg); }
+        }
+
+        /* Search and Social Bar */
+        .search-social-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid var(--card-border);
+            gap: 1.5rem;
+            width: 100%;
+        }
+
+        .gemini-search-bar {
+            display: flex;
+            align-items: center;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 0.3rem 0.8rem;
+            border-radius: 8px;
+            width: 350px;
+            gap: 0.5rem;
+        }
+
+        .gemini-search-input {
+            background: transparent;
+            border: none;
+            color: #ffffff;
             outline: none;
-            transition: width 0.3s ease;
-        }
-
-        .search-bar:focus {
-            width: 180px;
-            border-color: var(--accent-color);
-        }
-
-        .search-container i {
-            position: absolute;
-            left: 8px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-secondary);
+            width: 100%;
             font-size: 0.85rem;
+        }
+
+        .social-icons-bar {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+        }
+
+        .social-icons-bar a {
+            font-size: 1.1rem;
+            color: #fff;
+            transition: color 0.2s;
+        }
+
+        .social-icons-bar a:hover {
+            color: var(--accent-color);
         }
 
         /* Full Height Pages */
@@ -210,7 +198,19 @@
             flex-direction: column;
             justify-content: center;
             padding: 4rem 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        /* Neon Glow Animation */
+        .neon-glow {
+            box-shadow: 0 0 15px var(--accent-glow);
+            animation: flutterNeon 3s infinite ease-in-out;
+            border: 1px solid rgba(0, 240, 255, 0.4);
+        }
+
+        @keyframes flutterNeon {
+            0%, 100% { box-shadow: 0 0 15px rgba(0, 240, 255, 0.2); }
+            50% { box-shadow: 0 0 30px var(--accent-glow), 0 0 10px var(--accent-purple); }
         }
 
         /* Home Page */
@@ -219,30 +219,23 @@
             justify-content: space-between;
             align-items: center;
             gap: 3rem;
-            min-height: calc(100vh - 95px);
+            min-height: calc(100vh - 90px);
         }
 
         .hero-text {
-            max-width: 550px;
+            max-width: 650px;
             display: flex;
             flex-direction: column;
             gap: 1.2rem;
-        }
-
-        .hero-avatar img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--accent-color);
-            box-shadow: 0 0 20px var(--accent-glow);
-            margin-bottom: 0.5rem;
+            padding: 1.5rem;
+            border-radius: 12px;
+            background: var(--card-bg);
         }
 
         .hero h1 {
             font-size: 3.2rem;
             font-weight: 800;
-            letter-spacing: -0.03em;
+            letter-spacing: -0.04em;
             color: #ffffff;
             line-height: 1.1;
         }
@@ -255,14 +248,14 @@
 
         .cursive-name {
             font-family: 'Brush Script MT', cursive, sans-serif;
-            font-size: 3.3rem;
+            font-size: 3.5rem;
             font-weight: bold;
             color: #00f0ff;
             text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
         }
 
         .hero p {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             color: var(--text-secondary);
             line-height: 1.6;
         }
@@ -271,12 +264,12 @@
             display: flex;
             gap: 1rem;
             margin-top: 0.5rem;
-            align-items: center;
+            flex-direction: column;
         }
 
         .hero-slides {
-            width: 420px;
-            height: 400px;
+            width: 450px;
+            height: 350px;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 12px;
@@ -292,12 +285,12 @@
         }
 
         .btn {
-            padding: 0.75rem 1.3rem;
+            padding: 0.75rem 1.5rem;
             border-radius: 8px;
             font-weight: 600;
             text-decoration: none;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            transition: all 0.25s ease;
             cursor: pointer;
             border: 1px solid transparent;
             display: inline-flex;
@@ -310,7 +303,6 @@
             background-color: rgba(0, 240, 255, 0.1);
             color: var(--accent-color);
             border-color: rgba(0, 240, 255, 0.2);
-            animation: rgb-blink 2s infinite;
         }
 
         .btn-primary:hover {
@@ -323,24 +315,11 @@
             background-color: var(--card-bg);
             color: var(--text-primary);
             border-color: var(--card-border);
-            animation: rgb-blink-secondary 2s infinite;
         }
 
         .btn-secondary:hover {
             background-color: rgba(255, 255, 255, 0.08);
             border-color: var(--text-secondary);
-        }
-
-        @keyframes rgb-blink {
-            0% { box-shadow: 0 0 5px rgba(0, 240, 255, 0.3); border-color: rgba(0, 240, 255, 0.3); }
-            50% { box-shadow: 0 0 15px rgba(0, 240, 255, 0.6); border-color: var(--accent-color); }
-            100% { box-shadow: 0 0 5px rgba(0, 240, 255, 0.3); border-color: rgba(0, 240, 255, 0.3); }
-        }
-
-        @keyframes rgb-blink-secondary {
-            0% { box-shadow: 0 0 5px rgba(168, 85, 247, 0.3); border-color: rgba(168, 85, 247, 0.3); }
-            50% { box-shadow: 0 0 15px rgba(168, 85, 247, 0.6); border-color: var(--accent-purple); }
-            100% { box-shadow: 0 0 5px rgba(168, 85, 247, 0.3); border-color: rgba(168, 85, 247, 0.3); }
         }
 
         /* Section Title */
@@ -376,8 +355,8 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            transition: transform 0.25s ease, border-color 0.25s, height 0.3s ease;
-            min-height: 250px;
+            transition: transform 0.25s ease, border-color 0.25s;
+            min-height: 220px;
         }
 
         .card:hover {
@@ -386,16 +365,13 @@
         }
 
         .card-title {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             color: #ffffff;
             font-weight: 600;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
         .card-desc {
-            font-size: 0.92rem;
+            font-size: 0.95rem;
             color: var(--text-secondary);
             line-height: 1.6;
         }
@@ -449,7 +425,7 @@
             border-radius: 10px;
             padding: 2.5rem;
             text-align: center;
-            min-height: 290px;
+            min-height: 250px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -481,7 +457,7 @@
 
         .tool-card h4 {
             color: #ffffff;
-            font-size: 1.05rem;
+            font-size: 1rem;
             margin-bottom: 0.5rem;
         }
 
@@ -610,52 +586,9 @@
         }
 
         /* Contact Section */
-        .contact-section-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-            max-width: 1100px;
-            margin: 0 auto;
-            height: 65vh;
-        }
-
-        .contact-details {
-            background: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 16px;
-            border: 1px solid var(--card-border);
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            color: var(--text-primary);
-        }
-
-        .contact-details h3 {
-            color: var(--accent-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-details ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-
-        .contact-details li {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        .contact-details i {
-            width: 25px;
-            color: var(--accent-purple);
-        }
-
         .contact-form {
+            max-width: 650px;
+            margin: 0 auto;
             background: var(--card-bg);
             padding: 2.5rem;
             border-radius: 16px;
@@ -663,6 +596,7 @@
             display: flex;
             flex-direction: column;
             gap: 1.2rem;
+            height: 60vh;
             justify-content: center;
         }
 
@@ -678,59 +612,34 @@
         /* Footer */
         footer {
             border-top: 1px solid rgba(255, 255, 255, 0.03);
-            background: linear-gradient(rgba(5, 10, 26, 0.95), rgba(5, 10, 26, 0.95)), url('127540764_1543314336058956_8888779226493901871_n.jpg');
+            background-image: url('127540764_1543314336058956_8888779226493901871_n.jpg');
             background-size: cover;
             background-position: center;
-            padding: 4rem 0;
+            padding: 3.5rem 0;
+            text-align: center;
             color: #fff;
-            font-size: 0.88rem;
+            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
         }
 
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
-            margin-bottom: 2.5rem;
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
         }
 
-        .footer-col h4 {
-            color: var(--accent-color);
-            margin-bottom: 1.2rem;
-            font-size: 1.15rem;
-            font-weight: 600;
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-col a {
+        .footer-links a {
             color: #fff;
             text-decoration: none;
             transition: color 0.2s;
         }
 
-        .footer-col a:hover {
+        .footer-links a:hover {
             color: var(--accent-color);
-        }
-
-        .footer-col-2-col {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.8rem;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.82rem;
-            color: var(--text-secondary);
         }
 
         @media (max-width: 991px) {
@@ -738,60 +647,11 @@
             .hero { flex-direction: column; text-align: center; }
             .hero-text { max-width: 100%; align-items: center; }
             .hero-buttons { align-items: center; }
-            .hero-slides { width: 90%; height: 280px; }
+            .hero-slides { width: 90%; height: 250px; }
             .grid-cards { grid-template-columns: 1fr; }
             .initiative-grid { grid-template-columns: 1fr; height: auto; }
             .education-grid { grid-template-columns: 1fr; height: auto; }
             .tools-grid { grid-template-columns: 1fr 1fr; }
-            .contact-section-container { grid-template-columns: 1fr; height: auto; }
-            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-        }
-
-        /* Gemini AI Dialog */
-        .gemini-dialog {
-            position: fixed;
-            top: 20%;
-            left: 50%;
-            transform: translate(-50%, -20%);
-            background: rgba(10,12,20,0.98);
-            border: 2px solid var(--accent-purple);
-            padding: 2rem;
-            border-radius: 16px;
-            width: 450px;
-            box-shadow: 0 0 40px var(--accent-glow);
-            z-index: 2000;
-            color: #fff;
-            display: none;
-            max-height: 500px;
-            overflow-y: auto;
-        }
-
-        .gemini-dialog h3 {
-            color: var(--accent-color);
-            margin-bottom: 0.8rem;
-        }
-
-        .gemini-dialog textarea {
-            width: 100%;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--card-border);
-            color: #fff;
-            padding: 0.8rem;
-            border-radius: 8px;
-            font-family: inherit;
-            margin-bottom: 1rem;
-            resize: none;
-            height: 100px;
-        }
-
-        .gemini-dialog pre {
-            background: rgba(0,0,0,0.5);
-            padding: 0.8rem;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            margin-top: 1rem;
-            color: var(--accent-color);
-            white-space: pre-wrap;
         }
     </style>
 </head>
@@ -801,27 +661,10 @@
 
     <div class="container">
         <header>
-            <div class="header-left">
-                <a href="javascript:location.reload()" class="logo">
-                    <img src="WhatsApp Image 2026-03-28 at 08.46.55.jpeg" alt="Amit Joshi" class="logo-img">
-                    <div class="logo-title">
-                        <span>Amit</span>
-                        <span onclick="window.open('https://wa.me/9746241860', '_blank')">Connect With Me</span>
-                    </div>
-                </a>
-                
-                <div class="social-icons-header">
-                    <a href="https://www.facebook.com/share/1JUJKNUqc9/" target="_blank"><i class="fa-brands fa-facebook" style="color: #1877f2;"></i></a>
-                    <a href="https://www.instagram.com/_amitjoc?igsh=MXZyeTJzYWd4Ym9haA==" target="_blank"><i class="fa-brands fa-instagram" style="color: #E1306C;"></i></a>
-                    <a href="https://www.tiktok.com/@amitjoc_?_r=1&_t=ZS-95zUvLeiMb7" target="_blank"><i class="fa-brands fa-tiktok" style="color: #000;"></i></a>
-                    <a href="mailto:amitjosee28@gmail.com"><i class="fa-solid fa-envelope" style="color: #ea4335;"></i></a>
-                    <a href="https://wa.me/9746241860" target="_blank"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i></a>
-                </div>
-
-                <img src="Flag_of_Nepal.gif" alt="Nepal Flag" class="nepali-flag">
-                <span class="nepali-time" id="nepali-time-el">NP Time: ...</span>
-            </div>
-
+            <a href="javascript:location.reload()" class="logo">
+                <img src="WhatsApp Image 2026-03-28 at 08.46.55.jpeg" alt="Amit Joshi" class="logo-img">
+                Amit Joshi
+            </a>
             <nav>
                 <a href="#home">Home</a>
                 <a href="#social">Social Profiles</a>
@@ -830,49 +673,62 @@
                 <a href="#tools">Some Useful Tools</a>
                 <a href="#interests">Interests</a>
                 <a href="#contact">Contact</a>
-
-                <div class="search-container">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" class="search-bar" placeholder="Ask AI / Gemini" id="ai-search-bar" onclick="openGeminiModal()">
-                </div>
             </nav>
+            <div class="social-icons-header">
+                <img src="Flag_of_Nepal.gif" alt="Nepal Flag" class="nepali-flag">
+                <span class="date-time">NP Time: <span id="np-time">8:06:13 PM</span></span>
+                <span class="date-time" id="datetime"></span>
+            </div>
         </header>
 
+        <div class="search-social-bar">
+            <div class="gemini-search-bar">
+                <i class="fa-solid fa-magnifying-glass" style="color: var(--text-secondary);"></i>
+                <input type="text" placeholder="Ask Gemini..." class="gemini-search-input" />
+                <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--accent-color);"></i>
+            </div>
+            <div class="social-icons-bar">
+                <a href="https://www.facebook.com/share/1JUJKNUqc9/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.instagram.com/_amitjoc?igsh=MXZyeTJzYWd4Ym9haA==" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@amitjoc_?_r=1&_t=ZS-95zUvLeiMb7" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="mailto:amitjosee28@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://wa.me/9746241860" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+
         <section id="home" class="page-section hero">
-            <div class="hero-text">
-                <div class="hero-avatar">
-                    <img src="WhatsApp Image 2026-03-28 at 08.46.55.jpeg" alt="Amit Joshi">
-                </div>
+            <div class="hero-text neon-glow">
                 <h1>Hi, I'm <span class="cursive-name">Amit Joshi</span></h1>
                 <p>Building simple, powerful digital systems from Darchula, Nepal. I focus on practical web development, Git-based websites, and modern networking systems.</p>
+                <p>Throughout my continuous learning, I explore advanced AI and networking technologies to connect communities and enhance digital systems. I work to bridge communication gaps through technology.</p>
                 <div class="hero-buttons">
                     <a href="https://wa.me/9746241860" class="btn btn-primary" target="_blank">Connect with me on WhatsApp</a>
                     <a href="#contact" class="btn btn-secondary">Contact Me</a>
                 </div>
             </div>
-            <div class="hero-slides"></div>
+            <div class="hero-slides neon-glow"></div>
         </section>
 
         <section id="social" class="page-section">
-            <h2 class="section-title">My <span>Social Media Profiles</span></h2>
+            <h2 class="section-title">My Social Media Profiles</h2>
             <div class="grid-cards">
-                <div class="card" style="min-height:280px">
-                    <div class="card-title">Facebook <i class="fa-brands fa-facebook" style="color: #1877f2; font-size:1.6rem;"></i></div>
+                <div class="card">
+                    <div class="card-title">Facebook</div>
                     <div class="card-desc">Personal profile and updates from Amit Joshi. Get in touch with daily updates and real-life connections.</div>
                     <a href="https://www.facebook.com/share/1JUJKNUqc9/" target="_blank" class="card-link">View Profile &rarr;</a>
                 </div>
-                <div class="card" style="min-height:280px">
-                    <div class="card-title">Instagram <i class="fa-brands fa-instagram" style="color: #E1306C; font-size:1.6rem;"></i></div>
+                <div class="card">
+                    <div class="card-title">Instagram</div>
                     <div class="card-desc">Follow my visual updates and personal life, daily stories, and photography.</div>
                     <a href="https://www.instagram.com/_amitjoc?igsh=MXZyeTJzYWd4Ym9haA==" target="_blank" class="card-link">View Profile &rarr;</a>
                 </div>
-                <div class="card" style="min-height:280px">
-                    <div class="card-title">TikTok <i class="fa-brands fa-tiktok" style="color: #000; font-size:1.6rem;"></i></div>
+                <div class="card">
+                    <div class="card-title">TikTok</div>
                     <div class="card-desc">Short-form tech and hobby experiments. Videos exploring new projects, electronics, and digital life.</div>
                     <a href="https://www.tiktok.com/@amitjoc_?_r=1&_t=ZS-95zUvLeiMb7" target="_blank" class="card-link">View Profile &rarr;</a>
                 </div>
-                <div class="card" style="min-height:280px">
-                    <div class="card-title">Email <i class="fa-solid fa-envelope" style="color: #ea4335; font-size:1.6rem;"></i></div>
+                <div class="card">
+                    <div class="card-title">Email</div>
                     <div class="card-desc">Direct line for business and correspondence. You can reach out directly for collaborations.</div>
                     <a href="mailto:amitjosee28@gmail.com" class="card-link">Contact &rarr;</a>
                 </div>
@@ -880,37 +736,38 @@
         </section>
 
         <section id="initiative" class="page-section">
-            <h2 class="section-title">My <span>Initiative</span></h2>
+            <h2 class="section-title">My Initiative</h2>
             <div class="initiative-grid">
                 <div>
                     <h3 style="color: #ffffff; margin-bottom: 0.8rem;">Voice of Students श्री महेन्द्र मावि</h3>
                     <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
-                        Latest updates, educational posts, and community discussions from our community initiative. Empowering the student community at Shree Mahendra Higher Secondary School.
-                        <br><br>
-                        <strong>Updated: May 2026</strong>
+                        This initiative focuses on empowering the student community at Shree Mahendra Higher Secondary School. We facilitate communication, announcements, and peer support. We also provide useful online utilities and materials.
                     </p>
-                    <a href="https://www.facebook.com/voiceOfStudentsmmss" target="_blank" class="btn btn-primary">Follow Voice of Students in Facebook</a>
+                    <a href="https://www.facebook.com/share/1QYNP2ZJPr/" target="_blank" class="btn btn-primary">Connect with VOS</a>
                 </div>
-                <div class="fb-embed-box">
-                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FvoiceOfStudentsmmss&tabs=timeline&width=500&height=350&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="100%" height="350" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"></iframe>
+                <div class="fb-embed-box neon-glow">
+                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1QYNP2ZJPr%2F&tabs=timeline&width=500&height=380&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="100%" height="350" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"></iframe>
                 </div>
+            </div>
+            <div style="margin-top: 3rem; text-align: center; color: var(--text-secondary);">
+                <p>The "Voice of Students" initiative also features information networks for exams, local events, and educational announcements. You can get real-time updates directly via our Facebook page or WhatsApp support.</p>
             </div>
         </section>
 
         <section id="edu" class="page-section">
-            <h2 class="section-title">My <span>Education</span></h2>
+            <h2 class="section-title">My Education</h2>
             <div class="education-grid">
-                <div class="edu-card" style="min-height: 320px;">
+                <div class="edu-card">
                     <h3 style="color: var(--accent-color);">BUPS Darchula</h3>
                     <p style="font-size: 0.88rem; color: var(--text-secondary);">Early Secondary Education</p>
                     <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 1rem;">Studying subjects including fundamental mathematics, science, and English to build a strong base for my tech skills.</p>
                 </div>
-                <div class="edu-card" style="min-height: 320px;">
+                <div class="edu-card">
                     <h3 style="color: var(--accent-color);">MMSS Darchula</h3>
                     <p style="font-size: 0.88rem; color: var(--text-secondary);">Higher Secondary Education</p>
                     <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 1rem;">Focused on science and mathematics, developing the analytical problem-solving skills applied in web and hardware development.</p>
                 </div>
-                <div class="edu-card" style="min-height: 320px;">
+                <div class="edu-card">
                     <h3 style="color: var(--accent-color);">KBC</h3>
                     <p style="font-size: 0.88rem; color: var(--text-secondary);">Undergraduate Studies</p>
                     <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 1rem;">Pursuing a Bachelor's degree in technical and communication studies for better management and digital systems.</p>
@@ -919,7 +776,7 @@
         </section>
 
         <section id="tools" class="page-section">
-            <h2 class="section-title">Some <span>Useful Tools</span></h2>
+            <h2 class="section-title">Some Useful Tools & Calendar</h2>
             <div class="tools-grid">
                 <div class="tool-card" onclick="openToolModal('pdfConverter')">
                     <h4>PDF Tools</h4>
@@ -934,8 +791,8 @@
                     <p style="font-size: 0.75rem; color: var(--text-secondary);">Reduce image sizes</p>
                 </div>
                 <div class="tool-card" onclick="openToolModal('translator')">
-                    <h4>Translator / Converter</h4>
-                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Language conversion tools</p>
+                    <h4>Translator / Convertors</h4>
+                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Translators & Preeti to Unicode</p>
                 </div>
             </div>
 
@@ -943,19 +800,17 @@
             <div class="calendar-box">
                 <div>
                     <h3 style="color: var(--accent-color); margin-bottom: 0.5rem;">Nepali Calendar (BS)</h3>
-                    <input type="text" id="nepali-date" class="form-control" placeholder="Select BS Date">
-                    <p style="color: var(--text-secondary); font-size: 0.8rem;" id="np-calendar-view"></p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;" id="np-date">Loading current calendar data...</p>
                 </div>
                 <div>
                     <h3 style="color: var(--accent-purple); margin-bottom: 0.5rem;">English Calendar (AD)</h3>
-                    <input type="text" id="english-date" class="form-control" readonly placeholder="Equivalent AD Date">
-                    <div id="calendar" style="margin-top:10px; font-size:0.75rem; color:#fff;"></div>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;" id="in-date">Loading local standard dates...</p>
                 </div>
             </div>
         </section>
 
         <section id="interests" class="page-section">
-            <h2 class="section-title">Interests & <span>Hobby</span></h2>
+            <h2 class="section-title">Interests & Hobby</h2>
             <div class="interest-grid">
                 <div class="interest-card">
                     <i class="fa-solid fa-pen-nib"></i>
@@ -981,66 +836,23 @@
         </section>
 
         <section id="contact" class="page-section">
-            <h2 class="section-title">Contact <span>Me</span></h2>
-            <div class="contact-section-container">
-                <div class="contact-details">
-                    <h3>Amit Joshi</h3>
-                    <p>Building digital tools and student networks from Darchula, Nepal. Contact me if you have any questions or want to collaborate.</p>
-                    <ul>
-                        <li><i class="fa-solid fa-location-dot"></i> Darchula, Sudurpashchim, Nepal</li>
-                        <li><i class="fa-solid fa-envelope"></i> amitjosee28@gmail.com</li>
-                        <li><i class="fa-solid fa-phone"></i> +977-9746241860</li>
-                    </ul>
-                </div>
-                <form class="contact-form" action="https://formspree.io/f/xyzgqgwa" method="POST">
-                    <input type="text" name="name" placeholder="Your Name" required class="form-control">
-                    <input type="email" name="email" placeholder="Your Email" required class="form-control">
-                    <textarea name="message" rows="5" placeholder="Type message..." required class="form-control"></textarea>
-                    <button type="submit" class="btn btn-primary" style="margin: 0 auto; width: auto;">Send Message</button>
-                </form>
-            </div>
+            <h2 class="section-title">Contact Me</h2>
+            <form class="contact-form" action="https://formspree.io/f/xyzgqgwa" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required class="form-control">
+                <input type="email" name="email" placeholder="Your Email" required class="form-control">
+                <textarea name="message" rows="5" placeholder="Type message..." required class="form-control"></textarea>
+                <button type="submit" class="btn btn-primary" style="margin: 0 auto; width: auto;">Send Message</button>
+            </form>
         </section>
 
         <footer>
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>Contact Me</h4>
-                    <ul>
-                        <li><a href="https://www.facebook.com/share/1JUJKNUqc9/" target="_blank">Facebook</a></li>
-                        <li><a href="https://www.instagram.com/_amitjoc?igsh=MXZyeTJzYWd4Ym9haA==" target="_blank">Instagram</a></li>
-                        <li><a href="https://wa.me/9746241860" target="_blank">WhatsApp</a></li>
-                        <li><a href="mailto:amitjosee28@gmail.com">Gmail</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Useful Links</h4>
-                    <div class="footer-col-2-col">
-                        <ul>
-                            <li><a href="https://moest.gov.np" target="_blank">MoEST</a></li>
-                            <li><a href="https://cehrd.gov.np" target="_blank">CEHRD</a></li>
-                            <li><a href="https://learning.cehrd.edu.np" target="_blank">Learning Portal</a></li>
-                            <li><a href="https://neb.gov.np" target="_blank">NEB</a></li>
-                            <li><a href="https://cdc.gov.np" target="_blank">CDC</a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="https://ugcnepal.edu.np" target="_blank">UGC</a></li>
-                            <li><a href="https://olenepal.org" target="_blank">OLE Nepal</a></li>
-                            <li><a href="https://nepalshiksha.com" target="_blank">Shiksha</a></li>
-                            <li><a href="https://tu.edu.np" target="_blank">Tribhuvan Univ</a></li>
-                            <li><a href="https://daodarchula.moha.gov.np" target="_blank">Darchula DAO</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h4>Download Tab</h4>
-                    <ul>
-                        <li><a href="#">Resources & CV</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms and Conditions</a></li>
-                    </ul>
-                </div>
+            <div class="footer-links">
+                <a href="#social">Social Media Feed</a>
+                <a href="#">Download Documents</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms and Conditions</a>
             </div>
-            <div class="footer-bottom">
+            <div>
                 &copy; 2026 Amit Joshi. Designed and built with a digital builder mindset.
             </div>
         </footer>
@@ -1053,80 +865,24 @@
         </div>
     </div>
 
-    <div id="aiDialog" class="gemini-dialog">
-        <h3>Ask Gemini - AI Search</h3>
-        <textarea id="ai-query" placeholder="Ask anything, including things outside my website..."></textarea>
-        <button class="btn btn-primary" onclick="executeAiSearch()">Ask AI</button>
-        <pre id="ai-response"></pre>
-        <button class="btn btn-secondary" onclick="closeAiModal()" style="margin-top:0.5rem; padding: 0.4rem 0.8rem; font-size:0.75rem;">Close</button>
-    </div>
-
     <script>
         // Set date and time in AD & BS
         function updateDateTime() {
             const now = new Date();
-            document.getElementById('nepali-time-el').innerText = `NP Time: ${now.toLocaleTimeString()}`;
-            document.getElementById('np-calendar-view').innerText = `Current Date (BS): 2083 Jestha | Regional Holidays Active`;
-            document.getElementById('english-date').value = now.toDateString();
-        }
-        setInterval(updateDateTime, 1000);
-        updateDateTime();
-
-        // Calendar Generator
-        function generateCalendar(year, month) {
-            const container = document.getElementById("calendar");
-            container.innerHTML = "";
-            let date = new Date(year, month - 1, 1);
-            let table = "<table border='0' width='100%' style='border-collapse:collapse; color:#fff;'><tr>";
-            const days = ["S", "M", "T", "W", "T", "F", "S"];
-            days.forEach(d => table += "<th style='padding:4px; color:var(--accent-color);'>" + d + "</th>");
-            table += "</tr><tr>";
-            for (let i = 0; i < date.getDay(); i++) {
-                table += "<td></td>";
-            }
-            while (date.getMonth() === month - 1) {
-                let adDate = date.toISOString().split("T")[0];
-                let bsDate = BikramSambat.fromAD(adDate);
-                table += `<td style="text-align:center; padding:5px; border:1px solid rgba(255,255,255,0.05); font-size: 10px;">
-                    ${date.getDate()}<br><span style="color:var(--accent-purple);">${bsDate.year}-${bsDate.month}-${bsDate.day}</span>
-                </td>`;
-                if (date.getDay() === 6) table += "</tr><tr>";
-                date.setDate(date.getDate() + 1);
-            }
-            table += "</tr></table>";
-            container.innerHTML = table;
-        }
-        generateCalendar(2026, 5);
-
-        // Date Picker Handler
-        $("#nepali-date").nepaliDatePicker({
-            onChange: function() {
-                var bsDate = $("#nepali-date").val();
-                document.getElementById("english-date").value = "Convert Result for " + bsDate;
-            }
-        });
-
-        // AI Search Modal (Gemini API mock)
-        function openGeminiModal() {
-            document.getElementById('aiDialog').style.display = 'block';
+            
+            // Format dates
+            const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+            
+            document.getElementById('datetime').innerText = now.toLocaleDateString('en-US', options);
+            document.getElementById('np-time').innerText = now.toLocaleTimeString();
+            
+            // Calendar formatting to show both AD and BS
+            document.getElementById('np-date').innerText = `Current Date (BS): 2083 Jestha | Regional Holidays Active`;
+            document.getElementById('in-date').innerText = `English Date: ${now.toDateString()}`;
         }
         
-        function closeAiModal() {
-            document.getElementById('aiDialog').style.display = 'none';
-        }
-
-        function executeAiSearch() {
-            const query = document.getElementById('ai-query').value;
-            const res = document.getElementById('ai-response');
-            if (!query.trim()) {
-                res.innerText = "Please ask something.";
-                return;
-            }
-            res.innerText = `[Gemini API Mock Response for '${query}']: 
-1. Useful sites index for Darchula and central education offices of Nepal are fully verified.
-2. The tools interface is functional on any browser platform.
-3. Roman to Unicode Nepali transliterates accurately via input mappings.`;
-        }
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
 
         // Modal Utilities
         function openToolModal(type) {
@@ -1136,42 +892,27 @@
             if (type === 'pdfConverter') {
                 content.innerHTML = `
                     <h3>PDF Tools Hub</h3>
-                    <p>Upload a PDF or image to convert, extract, or generate files. Choose an action below.</p>
-                    <br>
-                    <h4>Convert PDF</h4>
+                    <p>Merge, compress, or convert documents below.</p>
                     <input type="file" class="form-control" accept=".pdf" />
-                    <select class="form-control">
-                        <option>Convert to Word (.docx)</option>
-                        <option>Convert to JPG (.jpg)</option>
-                        <option>Convert to PNG (.png)</option>
-                        <option>Convert to TXT (.txt)</option>
-                    </select>
-                    <button class="btn btn-primary" style="margin-top: 0.5rem;" onclick="alert('Converting...')">Convert & Download</button>
-                    <hr style="border-color:var(--card-border); margin:1rem 0;">
-                    <h4>Generate PDF from Image</h4>
-                    <input type="file" class="form-control" accept="image/*" multiple />
-                    <button class="btn btn-primary" style="margin-top: 0.5rem;" onclick="alert('Generating PDF...')">Generate PDF</button>
+                    <button class="btn btn-primary" style="margin-top: 1rem;">Extract/Convert PDF</button>
                 `;
             } else if (type === 'qrGen') {
                 content.innerHTML = `
                     <h3>QR Code Generator</h3>
-                    <p>Enter any text, link, or contact info to generate a QR code instantly.</p>
-                    <input type="text" class="form-control" placeholder="Paste URL, text, phone number, or WiFi details..." id="qr-input" />
-                    <br>
-                    <button class="btn btn-primary" onclick="alert('Generating QR Code...')">Generate QR Code</button>
+                    <p>Enter text or link to make a QR Code</p>
+                    <input type="text" class="form-control" placeholder="Enter Text or Link" />
+                    <button class="btn btn-primary" style="margin-top: 1rem;">Generate QR</button>
                 `;
             } else if (type === 'imgCompressor') {
                 content.innerHTML = `
                     <h3>Image Compressor</h3>
-                    <p>Upload an image to compress or resize without losing quality.</p>
-                    <input type="file" class="form-control" accept="image/*" id="compress-input" />
-                    <label>Target Size (in KB):</label>
-                    <input type="number" class="form-control" placeholder="e.g., 500" />
-                    <button class="btn btn-primary" style="margin-top: 0.5rem;" onclick="alert('Compressing Image...')">Compress Image</button>
+                    <p>Upload a large image and compress</p>
+                    <input type="file" class="form-control" accept="image/*" />
+                    <button class="btn btn-primary" style="margin-top: 1rem;">Compress Image</button>
                 `;
             } else if (type === 'translator') {
                 content.innerHTML = `
-                    <h3>Language Translator & Converter</h3>
+                    <h3>Language Translator & Convertor</h3>
                     <div class="translator-row">
                         <div>
                             <h4>Preeti to Unicode</h4>
@@ -1185,16 +926,16 @@
                         </div>
                     </div>
                     
-                    <h4 style="margin-top: 1.5rem;">English ↔ Nepali Translator</h4>
+                    <h4 style="margin-top: 1.5rem;">English to Nepali Dictionary & Translation</h4>
                     <div class="translator-row">
                         <div>
-                            <textarea id="en-input" class="translate-area" placeholder="Write in English or Romanized Nepali..."></textarea>
+                            <textarea id="en-input" class="translate-area" placeholder="Write in English..."></textarea>
                         </div>
                         <div>
-                            <textarea id="np-output" class="translate-area" placeholder="Translation or transliteration..." readonly></textarea>
+                            <textarea id="np-output" class="translate-area" placeholder="Nepali Translation..." readonly></textarea>
                         </div>
                     </div>
-                    <button class="btn btn-primary" onclick="translateText()">Translate / Transliterate</button>
+                    <button class="btn btn-primary" onclick="translateText()">Translate</button>
                     <button class="icon-btn" onclick="startSpeechRecognition()"><i class="fa-solid fa-microphone"></i> Click to Speak</button>
                 `;
             }
@@ -1207,16 +948,11 @@
 
         window.onclick = function(event) {
             const modal = document.getElementById('toolModal');
-            const aiDialog = document.getElementById('aiDialog');
             if (event.target === modal) {
                 modal.style.display = 'none';
             }
-            if (event.target === aiDialog) {
-                aiDialog.style.display = 'none';
-            }
         }
 
-        // Translation Functionality Mock
         function translateText() {
             const val = document.getElementById('en-input').value.toLowerCase();
             const dict = {
@@ -1226,10 +962,9 @@
                 "thank you": "धन्यवाद",
                 "nepal": "नेपाल",
                 "darchula": "दार्चुला",
-                "i am amit": "म अमित हुँ",
-                "ma nepali ho": "म नेपाली हुँ"
+                "my name": "मेरो नाम"
             };
-            document.getElementById('np-output').value = dict[val] || "अनुवादित (Translating/Transliterating): " + val;
+            document.getElementById('np-output').value = dict[val] || "अनुवाद उपलब्ध छैन (Translation not available)";
         }
 
         function startSpeechRecognition() {
