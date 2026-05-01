@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amit Joshi </title>
+    <title>Amit Joshi | Personal Dashboard & Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -56,15 +56,20 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.8rem 2rem;
-            background-image: url('127540764_1543314336058956_8888779226493901871_n.jpg');
-            background-size: cover;
-            background-position: center;
+            padding: 0.8rem 1.5rem;
+            background-color: #0f1015;
             border-bottom: 1px solid var(--card-border);
-            height: 90px;
+            min-height: 90px;
             position: sticky;
             top: 0;
             z-index: 1000;
+            gap: 1.5rem;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
         }
 
         .logo {
@@ -87,7 +92,7 @@
 
         nav {
             display: flex;
-            gap: 1.5rem;
+            gap: 1.2rem;
             align-items: center;
         }
 
@@ -95,9 +100,8 @@
             color: #ffffff;
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             transition: color 0.2s ease;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
             cursor: pointer;
         }
 
@@ -109,10 +113,10 @@
             display: flex;
             gap: 0.8rem;
             align-items: center;
-            font-size: 1.35rem;
         }
 
         .social-icons-header a {
+            font-size: 1.4rem;
             color: #fff;
             text-decoration: none;
             transition: transform 0.2s;
@@ -123,9 +127,8 @@
         }
 
         .date-time {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: #ffffff;
-            margin-left: 0.5rem;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
         }
 
@@ -142,22 +145,16 @@
         }
 
         @keyframes rgb-flash {
-            0% { color: #00f0ff; text-shadow: 0 0 5px rgba(0,240,255,0.5); }
-            33% { color: #a855f7; text-shadow: 0 0 5px rgba(168,85,247,0.5); }
-            66% { color: #ffffff; text-shadow: 0 0 5px rgba(255,255,255,0.5); }
-            100% { color: #00f0ff; text-shadow: 0 0 5px rgba(0,240,255,0.5); }
-        }
-
-        .nepali-time-flashing {
-            font-size: 0.85rem;
-            font-weight: bold;
-            animation: rgb-flash 2s infinite;
+            0% { color: #00f0ff; }
+            33% { color: #a855f7; }
+            66% { color: #3b82f6; }
+            100% { color: #00f0ff; }
         }
 
         /* Full Height Pages */
         .page-section {
             min-height: 100vh;
-            display: flex;
+            display: none; /* Controlled via JS */
             flex-direction: column;
             justify-content: center;
             padding: 4rem 0;
@@ -570,9 +567,7 @@
         /* Footer */
         footer {
             border-top: 1px solid rgba(255, 255, 255, 0.03);
-            background-image: url('127540764_1543314336058956_8888779226493901871_n.jpg');
-            background-size: cover;
-            background-position: center;
+            background-color: #0f1015;
             padding: 3.5rem 0;
             text-align: center;
             color: #fff;
@@ -581,6 +576,16 @@
             flex-direction: column;
             gap: 1.5rem;
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+        }
+
+        .footer-links-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 0 1rem;
         }
 
         .footer-links {
@@ -600,40 +605,10 @@
             color: var(--accent-color);
         }
 
-        .footer-grid-links {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
-            text-align: left;
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-        }
-
-        .footer-grid-links h4 {
-            color: var(--accent-color);
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-grid-links ul {
-            list-style: none;
-            line-height: 1.7;
-        }
-
-        .footer-grid-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.2s;
-        }
-
-        .footer-grid-links a:hover {
-            color: var(--accent-color);
-            text-decoration: underline;
-        }
-
-        @media (max-width: 991px) {
-            header { flex-direction: column; height: auto; gap: 1rem; padding: 1rem; }
+        @media (max-width: 1200px) {
+            header { flex-direction: column; height: auto; gap: 1rem; padding: 1rem; align-items: stretch; }
+            .header-left { flex-direction: column; gap: 0.8rem; }
+            nav { flex-wrap: wrap; justify-content: center; }
             .hero { flex-direction: column; text-align: center; }
             .hero-text { max-width: 100%; align-items: center; }
             .hero-buttons { align-items: center; }
@@ -642,7 +617,7 @@
             .initiative-grid { grid-template-columns: 1fr; height: auto; }
             .education-grid { grid-template-columns: 1fr; height: auto; }
             .tools-grid { grid-template-columns: 1fr 1fr; }
-            .footer-grid-links { grid-template-columns: 1fr; gap: 1.5rem; }
+            .footer-links-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -652,11 +627,12 @@
 
     <div class="container">
         <header>
-            <div style="display: flex; align-items: center; gap: 1.2rem;">
+            <div class="header-left">
                 <a href="javascript:location.reload()" class="logo">
                     <img src="WhatsApp Image 2026-03-28 at 08.46.55.jpeg" alt="Amit Joshi" class="logo-img">
                     Amit Joshi
                 </a>
+                
                 <div class="social-icons-header">
                     <a href="https://www.facebook.com/share/1JUJKNUqc9/" target="_blank"><i class="fa-brands fa-facebook" style="color: #1877f2;"></i></a>
                     <a href="https://www.instagram.com/_amitjoc?igsh=MXZyeTJzYWd4Ym9haA==" target="_blank"><i class="fa-brands fa-instagram" style="color: #E1306C;"></i></a>
@@ -664,6 +640,16 @@
                     <a href="mailto:amitjosee28@gmail.com"><i class="fa-solid fa-envelope" style="color: #ea4335;"></i></a>
                     <a href="https://wa.me/9746241860" target="_blank"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i></a>
                 </div>
+                
+                <img src="Flag_of_Nepal.gif" alt="Nepal Flag" class="nepali-flag">
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+                <span class="date-time" id="datetime"></span>
+                <span id="nepali-time" style="font-weight: 600; animation: rgb-flash 3s infinite;"></span>
+                <button class="btn btn-primary" onclick="openSearchModal()" style="padding: 0.4rem 0.6rem; font-size: 0.85rem;">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> AI Search
+                </button>
             </div>
 
             <nav>
@@ -675,15 +661,6 @@
                 <a onclick="showSection('interests')">Interests</a>
                 <a onclick="showSection('contact')">Contact Me</a>
             </nav>
-
-            <div style="display: flex; align-items: center; gap: 0.8rem;">
-                <span class="nepali-time-flashing" id="nepali-time"></span>
-                <img src="Flag_of_Nepal.gif" alt="Nepal Flag" class="nepali-flag">
-                <span class="date-time" id="datetime"></span>
-                <button onclick="openGeminiSearchModal()" class="btn btn-primary" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i> Ask AI
-                </button>
-            </div>
         </header>
 
         <section id="home" class="page-section hero">
@@ -735,9 +712,7 @@
                     <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
                         Latest updates, educational posts, and community discussions from our community initiative.
                     </p>
-                    <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
-                        Updated: May 2026
-                    </p>
+                    <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1.5rem;">Updated: May 2026</p>
                     <a href="https://www.facebook.com/voiceOfStudentsmmss" target="_blank" class="btn btn-primary">Connect with VOS</a>
                 </div>
                 <div class="fb-embed-box">
@@ -838,26 +813,26 @@
         </section>
 
         <footer>
-            <div class="footer-grid-links">
+            <div class="footer-links-grid">
                 <div>
-                    <h4>Educational Links</h4>
-                    <ul>
-                        <li><a href="https://moest.gov.np" target="_blank">Ministry of Education</a></li>
-                        <li><a href="https://cehrd.gov.np" target="_blank">CEHRD Nepal</a></li>
+                    <h4 style="color: var(--accent-color); margin-bottom: 0.6rem; font-size: 1.05rem;">Educational Resources</h4>
+                    <ul style="list-style: none; padding-left: 0; line-height: 1.7;">
+                        <li><a href="https://moest.gov.np" target="_blank">Ministry of Education, Science and Tech.</a></li>
+                        <li><a href="https://cehrd.gov.np" target="_blank">Centre for Education & HR Dev.</a></li>
                         <li><a href="https://learning.cehrd.edu.np" target="_blank">CEHRD Learning Portal</a></li>
-                        <li><a href="https://neb.gov.np" target="_blank">National Examination Board (NEB)</a></li>
+                        <li><a href="https://neb.gov.np" target="_blank">National Examination Board</a></li>
                         <li><a href="https://cdc.gov.np" target="_blank">Curriculum Development Centre</a></li>
                         <li><a href="https://ugcnepal.edu.np" target="_blank">University Grants Commission</a></li>
-                        <li><a href="https://olenepal.org" target="_blank">OLE Nepal</a></li>
+                        <li><a href="https://olenepal.org" target="_blank">Open Learning Exchange Nepal</a></li>
                         <li><a href="https://scholarpaths.org" target="_blank">ScholarPath Nepal</a></li>
                         <li><a href="https://nepalshiksha.com" target="_blank">Nepal Shiksha</a></li>
                         <li><a href="https://tu.edu.np" target="_blank">Tribhuvan University</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4>Darchula – Useful Links</h4>
-                    <ul>
-                        <li><a href="https://daodarchula.moha.gov.np" target="_blank">DAO Darchula</a></li>
+                    <h4 style="color: var(--accent-purple); margin-bottom: 0.6rem; font-size: 1.05rem;">📍 Darchula – Useful Links</h4>
+                    <ul style="list-style: none; padding-left: 0; line-height: 1.7;">
+                        <li><a href="https://daodarchula.moha.gov.np" target="_blank">District Administration Office</a></li>
                         <li><a href="https://edcudarchula.gov.np" target="_blank">EDCU Darchula</a></li>
                         <li><a href="https://mahakalimun.gov.np" target="_blank">Mahakali Municipality</a></li>
                         <li><a href="https://shailyashikarmun.gov.np" target="_blank">Shailyashikar Municipality</a></li>
@@ -868,12 +843,12 @@
                     </ul>
                 </div>
             </div>
-            
-            <div class="footer-links">
+
+            <div class="footer-links" style="margin-top: 1.5rem;">
                 <a onclick="showSection('social')">Social Media Feed</a>
-                <a href="#">Download Documents</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms and Conditions</a>
+                <a>Download Documents</a>
+                <a>Privacy Policy</a>
+                <a>Terms and Conditions</a>
             </div>
             <div>
                 &copy; 2026 Amit Joshi. Designed and built with a digital builder mindset.
@@ -888,84 +863,47 @@
         </div>
     </div>
 
-    <div id="geminiSearchModal" class="modal">
+    <div id="searchModal" class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeGeminiSearchModal()">&times;</span>
-            <h3>Gemini AI Search Assistant</h3>
-            <p style="color: var(--text-secondary); margin-bottom: 1rem;">Ask anything, even outside the website!</p>
-            <input type="text" id="gemini-search-query" class="form-control" placeholder="What would you like to know?" />
-            <button class="btn btn-primary" onclick="searchGemini()" style="margin-top: 0.8rem;">Ask AI</button>
-            <div id="gemini-search-results" style="margin-top: 1.5rem; color: var(--text-primary); max-height: 280px; overflow-y: auto;"></div>
+            <span class="close-btn" onclick="closeSearchModal()">&times;</span>
+            <h3>Gemini AI Search</h3>
+            <p style="color: var(--text-secondary); margin: 0.8rem 0 1.2rem 0;">Ask me anything, including outside the website!</p>
+            <input type="text" id="search-input" class="form-control" placeholder="Type anything you want to search or ask..." />
+            <button class="btn btn-primary" onclick="searchGemini()" style="margin-top: 0.6rem;">Ask Gemini</button>
+            <div id="search-results" style="margin-top: 1.2rem; line-height: 1.6;"></div>
         </div>
     </div>
 
     <script>
-        // Single Page App View
-        function showSection(sectionId) {
-            const sections = document.querySelectorAll('.page-section');
-            sections.forEach(sec => {
-                sec.style.display = 'none';
-            });
-            document.getElementById(sectionId).style.display = 'flex';
-            window.scrollTo(0, 0);
-        }
-
-        document.addEventListener("DOMContentLoaded", function() {
-            // Display home page initially and hide others
-            showSection('home');
-        });
-
         // Set date and time in AD & BS
         function updateDateTime() {
             const now = new Date();
             document.getElementById('datetime').innerText = now.toLocaleString();
-            
-            // Nepali Time Update
-            document.getElementById('nepali-time').innerText = `Nepali Time: ${now.toLocaleTimeString('en-US', { timeZone: 'Asia/Kathmandu' })}`;
-            
             document.getElementById('np-date').innerText = `Current Date (BS): 2083 Jestha | Local Time Events Calendar Active`;
             document.getElementById('in-date').innerText = `Current Date (AD): ${now.toDateString()} | Standard Holidays Active`;
+            
+            const npOptions = { timeZone: 'Asia/Kathmandu', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            document.getElementById('nepali-time').innerText = `NP Time: ${now.toLocaleTimeString('en-US', npOptions)}`;
         }
         setInterval(updateDateTime, 1000);
         updateDateTime();
 
-        // Gemini Search Modal Handlers
-        function openGeminiSearchModal() {
-            document.getElementById('geminiSearchModal').style.display = 'block';
-        }
-
-        function closeGeminiSearchModal() {
-            document.getElementById('geminiSearchModal').style.display = 'none';
-        }
-
-        function searchGemini() {
-            const query = document.getElementById('gemini-search-query').value;
-            const resultsContainer = document.getElementById('gemini-search-results');
-
-            if (query.trim() === '') {
-                resultsContainer.innerHTML = '<p style="color: red;">Please enter a question or topic.</p>';
-                return;
+        // View Control
+        function showSection(id) {
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(sec => {
+                sec.style.display = 'none';
+            });
+            const target = document.getElementById(id);
+            if (target) {
+                target.style.display = 'flex';
+                window.scrollTo(0, 0);
             }
-
-            resultsContainer.innerHTML = `<p style="color: var(--accent-color);">Analyzing query using Gemini AI...</p>`;
-            
-            setTimeout(() => {
-                const queryText = query.toLowerCase();
-                let geminiAnswer = '';
-
-                if (queryText.includes('amit') || queryText.includes('darchula')) {
-                    geminiAnswer = 'Amit Joshi is a creator based in Darchula, Nepal. He specializes in practical web development, Git systems, and community building through initiatives like Voice of Students.';
-                } else if (queryText.includes('education') || queryText.includes('studies')) {
-                    geminiAnswer = 'Amit studied at BUPS and MMSS in Darchula. He is currently pursuing a Bachelor’s degree focusing on communication and technical studies.';
-                } else {
-                    geminiAnswer = `Here is a search result for "${query}": This is a mock Gemini API output. Your website assistant is online to help you navigate through the useful educational tools, university websites, and municipality resources you need!`;
-                }
-                
-                resultsContainer.innerHTML = `<p style="line-height:1.7;"><strong>Answer:</strong> ${geminiAnswer}</p>`;
-            }, 1500);
         }
+        // Initialize showing the home page by default
+        showSection('home');
 
-        // Modal Utilities for Tools
+        // Modal Utilities
         function openToolModal(type) {
             const modal = document.getElementById('toolModal');
             const content = document.getElementById('modal-body-content');
@@ -1027,14 +965,45 @@
             document.getElementById('toolModal').style.display = 'none';
         }
 
+        // Search Modals and Functionality
+        function openSearchModal() {
+            document.getElementById('searchModal').style.display = 'block';
+        }
+
+        function closeSearchModal() {
+            document.getElementById('searchModal').style.display = 'none';
+            document.getElementById('search-results').innerHTML = '';
+        }
+
+        function searchGemini() {
+            const query = document.getElementById('search-input').value;
+            const resBox = document.getElementById('search-results');
+
+            if (!query.trim()) return;
+
+            resBox.innerHTML = `<p style="color: var(--accent-color);"><i class="fa-solid fa-spinner fa-spin"></i> Querying Gemini...</p>`;
+
+            setTimeout(() => {
+                resBox.innerHTML = `
+                    <div style="background: rgba(0, 240, 255, 0.05); padding: 1rem; border-radius: 8px; border: 1px solid var(--accent-color);">
+                        <h4>Query: "${query}"</h4>
+                        <p style="color: var(--text-secondary); margin-top: 0.4rem;">
+                            Hello! Your query is being parsed by Gemini Assistant. As a mock response engine for your portfolio, 
+                            it looks like you are looking into "${query}". Feel free to explore our pages like Tools, Educational links, or other sections in the navigation!
+                        </p>
+                    </div>
+                `;
+            }, 1200);
+        }
+
         window.onclick = function(event) {
-            const modal = document.getElementById('toolModal');
-            const geminiModal = document.getElementById('geminiSearchModal');
-            if (event.target === modal) {
-                modal.style.display = 'none';
+            const toolModal = document.getElementById('toolModal');
+            const searchModal = document.getElementById('searchModal');
+            if (event.target === toolModal) {
+                toolModal.style.display = 'none';
             }
-            if (event.target === geminiModal) {
-                geminiModal.style.display = 'none';
+            if (event.target === searchModal) {
+                searchModal.style.display = 'none';
             }
         }
 
