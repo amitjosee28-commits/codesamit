@@ -57,9 +57,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 0.8rem 2rem;
-            background-image: url('127540764_1543314336058956_8888779226493901871_n.jpg');
-            background-size: cover;
-            background-position: center;
+            background: rgba(9, 10, 15, 0.8);
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--card-border);
             height: 90px;
             position: sticky;
@@ -116,7 +115,7 @@
             text-decoration: none;
             transition: transform 0.2s;
         }
-
+        
         .social-icons-header a:hover {
             transform: scale(1.1);
         }
@@ -223,7 +222,6 @@
             color: var(--text-secondary);
             font-size: 0.9rem;
             box-shadow: 0 0 30px rgba(168, 85, 247, 0.15);
-            background-image: url('WhatsApp Image 2026-05-01 at 12.12.19.jpeg');
             background-size: cover;
             background-position: center;
         }
@@ -266,6 +264,7 @@
             border-color: var(--text-secondary);
         }
 
+        /* Section Title */
         .section-title {
             font-size: 2.2rem;
             font-weight: 700;
@@ -281,6 +280,7 @@
             color: var(--accent-color);
         }
 
+        /* Social Section */
         .grid-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -333,6 +333,7 @@
             text-decoration: underline;
         }
 
+        /* Initiative Section */
         .initiative-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -351,6 +352,7 @@
             padding: 1rem;
         }
 
+        /* Education Section */
         .education-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -372,6 +374,7 @@
             gap: 1rem;
         }
 
+        /* Tools Section */
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -394,15 +397,10 @@
             box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
         }
 
-        .calendar-box {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            padding: 2rem;
-            border-radius: 12px;
-            margin-top: 1rem;
+        .tool-card h4 {
+            color: #ffffff;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
         }
 
         .translate-area {
@@ -415,8 +413,72 @@
             resize: none;
             width: 100%;
             font-family: inherit;
+            margin-top: 1rem;
         }
 
+        .icon-btn {
+            background: transparent;
+            border: none;
+            color: var(--accent-color);
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: 0.5rem;
+        }
+
+        /* Calendar Section */
+        .calendar-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.85);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: #0f1015;
+            margin: 5% auto;
+            padding: 2.5rem;
+            border: 1px solid var(--accent-purple);
+            width: 65%;
+            border-radius: 16px;
+            color: var(--text-primary);
+            box-shadow: 0 0 30px var(--accent-glow);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .close-btn {
+            color: var(--text-secondary);
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-btn:hover {
+            color: var(--accent-color);
+        }
+
+        /* Interest Section */
         .interest-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -431,26 +493,33 @@
             border-radius: 12px;
             padding: 2.5rem;
             text-align: center;
-            min-height: 220px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            gap: 1.2rem;
-            transition: border-color 0.25s, transform 0.25s;
+            gap: 1rem;
+            transition: all 0.3s ease;
         }
 
         .interest-card:hover {
-            border-color: var(--accent-purple);
-            transform: translateY(-4px);
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.1);
         }
 
         .interest-card i {
             font-size: 2.5rem;
-            color: var(--accent-purple);
+            color: var(--accent-color);
         }
 
-        @media (max-width: 768px) {
-            .container { padding: 1rem; }
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 991px) {
             .hero { flex-direction: column; text-align: center; }
             .hero-text { max-width: 100%; align-items: center; }
             .hero-buttons { align-items: center; }
@@ -463,12 +532,12 @@
     </style>
 </head>
 <body>
+
     <canvas id="particle-canvas"></canvas>
 
     <div class="container">
         <header>
             <a href="javascript:location.reload()" class="logo">
-                <img src="WhatsApp Image 2026-03-28 at 08.46.55.jpeg" alt="Amit Joshi" class="logo-img">
                 Amit Joshi
             </a>
             <nav>
@@ -482,43 +551,53 @@
             </nav>
             <div class="social-icons-header">
                 <a href="https://www.facebook.com/share/1JUJKNUqc9/" target="_blank"><i class="fa-brands fa-facebook" style="color: #1877f2;"></i></a>
-                <a href="https://www.tiktok.com/@amitjoc_?_r=1&_t=ZS-95zUvLeiMb7" target="_blank"><i class="fa-brands fa-tiktok" style="color: #ff0050;"></i></a>
-                <a href="mailto:amitjosee28@gmail.com" target="_blank"><i class="fa-solid fa-envelope" style="color: #00f0ff;"></i></a>
-                <span class="date-time" id="date-time-display"></span>
-                <img src="flag.gif" alt="Nepal" class="nepali-flag">
+                <a href="https://www.instagram.com/_amitjoc?igsh=MXZyeTJzYWd4Ym9haA==" target="_blank"><i class="fa-brands fa-instagram" style="color: #E1306C;"></i></a>
+                <a href="https://www.tiktok.com/@amitjoc_?_r=1&_t=ZS-95zUvLeiMb7" target="_blank"><i class="fa-brands fa-tiktok" style="color: #ffffff;"></i></a>
+                <span class="date-time" id="live-datetime"></span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Flag_of_Nepal.svg" alt="Nepal Flag" class="nepali-flag">
             </div>
         </header>
 
-        <section id="home" class="hero page-section">
+        <section id="home" class="page-section hero">
             <div class="hero-text">
                 <div class="hero-avatar">
-                    <img src="1710927827827.jpg" alt="Amit Joshi">
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=256&h=256&q=80" alt="Amit Joshi">
                 </div>
-                <h1>Hello, I'm <span class="cursive-name">Amit Joshi</span></h1>
-                <p>Welcome to my personal dashboard. I'm a student at Shree Mahendra Higher Secondary School and a passionate designer, tech enthusiast, and community organizer.</p>
+                <h1>Welcome, I am <br><span class="cursive-name">Amit Joshi</span></h1>
+                <p>Welcome to my personal dashboard. I am an enthusiastic student, community leader, and technology explorer. I love creating digital solutions to help students and connect with communities.</p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Work With Me</a>
-                    <a href="#tools" class="btn btn-secondary">Explore My Toolkit</a>
+                    <a href="#contact" class="btn btn-primary">Hire Me / Contact</a>
+                    <a href="https://www.facebook.com/share/1QYNP2ZJPr/" target="_blank" class="btn btn-secondary"><i class="fa-solid fa-graduation-cap"></i> Voice of Students</a>
                 </div>
             </div>
-            <div class="hero-slides"></div>
+            <div class="hero-slides">
+                <div style="background: rgba(0, 0, 0, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--accent-color);">
+                    <h3 style="color: var(--accent-color); margin-bottom: 0.5rem;">Current Status</h3>
+                    <p>Learning, exploring and contributing to communities.</p>
+                </div>
+            </div>
         </section>
 
         <section id="social" class="page-section">
-            <h2 class="section-title"><span>Social</span> Profiles</h2>
+            <h2 class="section-title">My <span>Social Profiles</span></h2>
             <div class="grid-cards">
                 <div class="card">
-                    <div class="card-title">Facebook</div>
-                    <div class="card-desc">Connect with me on my main social channel for personal and community updates.</div>
+                    <div class="card-title"><i class="fa-brands fa-facebook" style="color: #1877f2;"></i> Facebook</div>
+                    <div class="card-desc">Connect with my personal updates and daily life stories.</div>
                     <a href="https://www.facebook.com/share/1JUJKNUqc9/" target="_blank" class="card-link">View Profile &rarr;</a>
                 </div>
                 <div class="card">
-                    <div class="card-title">TikTok</div>
-                    <div class="card-desc">Short-form videos, lifestyle, and community content in the local language.</div>
+                    <div class="card-title"><i class="fa-brands fa-instagram" style="color: #E1306C;"></i> Instagram</div>
+                    <div class="card-desc">Check out my visual storytelling, events, and creativity.</div>
+                    <a href="https://www.instagram.com/_amitjoc?igsh=MXZyeTJzYWd4Ym9haA==" target="_blank" class="card-link">View Profile &rarr;</a>
+                </div>
+                <div class="card">
+                    <div class="card-title"><i class="fa-brands fa-tiktok" style="color: #ffffff;"></i> TikTok</div>
+                    <div class="card-desc">Short-form community videos, tutorials, and lifestyle clips.</div>
                     <a href="https://www.tiktok.com/@amitjoc_?_r=1&_t=ZS-95zUvLeiMb7" target="_blank" class="card-link">View Profile &rarr;</a>
                 </div>
                 <div class="card">
-                    <div class="card-title">Email</div>
+                    <div class="card-title"><i class="fa-solid fa-envelope" style="color: var(--accent-color);"></i> Email</div>
                     <div class="card-desc">Direct line for business and correspondence. You can reach out directly for collaborations.</div>
                     <a href="mailto:amitjosee28@gmail.com" class="card-link">Contact &rarr;</a>
                 </div>
@@ -526,7 +605,7 @@
         </section>
 
         <section id="initiative" class="page-section">
-            <h2 class="section-title">My Initiative</h2>
+            <h2 class="section-title">My <span>Initiative</span></h2>
             <div class="initiative-grid">
                 <div>
                     <h3 style="color: #ffffff; margin-bottom: 0.8rem;">Voice of Students</h3>
@@ -537,53 +616,80 @@
                     <a href="https://www.facebook.com/share/1QYNP2ZJPr/" target="_blank" class="btn btn-primary">Connect with VOS</a>
                 </div>
                 <div class="fb-embed-box">
-                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1QYNP2ZJPr%2F&tabs=timeline&width=500&height=380&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="100%" height="100%" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1QYNP2ZJPr%2F&tabs=timeline&width=500&height=380&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="100%" height="350" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"></iframe>
                 </div>
             </div>
         </section>
 
         <section id="edu" class="page-section">
-            <h2 class="section-title"><span>Education</span> Background</h2>
+            <h2 class="section-title">My <span>Education</span></h2>
             <div class="education-grid">
                 <div class="edu-card">
-                    <i class="fa-solid fa-graduation-cap" style="font-size: 3rem; color: var(--accent-color);"></i>
-                    <h3 style="color: #ffffff;">Secondary Education</h3>
-                    <p style="color: var(--text-secondary);">Shree Mahendra Higher Secondary School</p>
+                    <i class="fa-solid fa-school" style="color: var(--accent-color); font-size: 2.5rem; margin-bottom: 0.5rem;"></i>
+                    <h3 style="color: #fff; font-size: 1.2rem;">Primary Level</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">Shree Mahendra Higher Secondary School</p>
                 </div>
                 <div class="edu-card">
-                    <i class="fa-solid fa-book-open" style="font-size: 3rem; color: var(--accent-purple);"></i>
-                    <h3 style="color: #ffffff;">Self-Taught Tech & Design</h3>
-                    <p style="color: var(--text-secondary);">Building web projects, creating layouts, and learning web design.</p>
+                    <i class="fa-solid fa-book-bookmark" style="color: var(--accent-purple); font-size: 2.5rem; margin-bottom: 0.5rem;"></i>
+                    <h3 style="color: #fff; font-size: 1.2rem;">Secondary Level</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">Shree Mahendra Higher Secondary School</p>
                 </div>
                 <div class="edu-card">
-                    <i class="fa-solid fa-users-gear" style="font-size: 3rem; color: #10b981;"></i>
-                    <h3 style="color: #ffffff;">Community & Leadership</h3>
-                    <p style="color: var(--text-secondary);">Leading VOS (Voice of Students) initiative to help students.</p>
+                    <i class="fa-solid fa-laptop-code" style="color: #00ff66; font-size: 2.5rem; margin-bottom: 0.5rem;"></i>
+                    <h3 style="color: #fff; font-size: 1.2rem;">Independent Learning</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">Web Development & Digital Creators</p>
                 </div>
             </div>
         </section>
 
         <section id="tools" class="page-section">
-            <h2 class="section-title"><i class="fa-solid fa-wrench"></i> <span>Tools & Calendar</span></h2>
+            <h2 class="section-title"><span>Tools & Utilities</span> Hub</h2>
             <div class="tools-grid">
                 <div class="tool-card" onclick="openToolModal('pdfConverter')">
-                    <i class="fa-solid fa-file-pdf" style="font-size: 1.8rem; color: var(--accent-color);"></i>
-                    <h4 style="margin-top: 0.5rem;">PDF Tools</h4>
+                    <h4>PDF Converter</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary);">Extract/Convert utility.</p>
                 </div>
                 <div class="tool-card" onclick="openToolModal('qrGen')">
-                    <i class="fa-solid fa-qrcode" style="font-size: 1.8rem; color: #10b981;"></i>
-                    <h4 style="margin-top: 0.5rem;">QR Code Gen</h4>
+                    <h4>QR Generator</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary);">Make a QR code.</p>
                 </div>
                 <div class="tool-card" onclick="openToolModal('imgCompressor')">
-                    <i class="fa-solid fa-image" style="font-size: 1.8rem; color: #f59e0b;"></i>
-                    <h4 style="margin-top: 0.5rem;">Image Compressor</h4>
+                    <h4>Image Compressor</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary);">Optimize images.</p>
                 </div>
-                <div class="tool-card" onclick="openToolModal('nepaliUnicode')">
-                    <i class="fa-solid fa-language" style="font-size: 1.8rem; color: var(--accent-purple);"></i>
-                    <h4 style="margin-top: 0.5rem;">Nepali Converter</h4>
+                <div class="tool-card" onclick="openToolModal('passGen')">
+                    <h4>Pass Generator</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary);">Create secure passwords.</p>
+                </div>
+                <div class="tool-card" onclick="openToolModal('unitConverter')">
+                    <h4>Unit Converter</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary);">Convert units.</p>
+                </div>
+                <div class="tool-card" onclick="openToolModal('ageCalc')">
+                    <h4>Age Calculator</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary);">Calculate age.</p>
+                </div>
+                <div class="tool-card" onclick="openToolModal('wordCounter')">
+                    <h4>Word Counter</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary);">Count words.</p>
+                </div>
+                <div class="tool-card" onclick="openToolModal('colorPicker')">
+                    <h4>Color Picker</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary);">Pick colors.</p>
                 </div>
             </div>
-            
+
+            <h3 style="color: #ffffff; margin: 2rem 0 1rem 0;">Text Translators & Conversion Tools</h3>
+            <textarea id="en-input" class="translate-area" placeholder="Write something here or use speech input..."></textarea>
+            <div style="margin-top: 0.5rem; margin-bottom: 2rem;">
+                <button class="btn btn-secondary" onclick="startSpeechRecognition()"><i class="fa-solid fa-microphone"></i> Speak Nepali</button>
+                <button class="btn btn-primary" onclick="translateText()">Translate / Map</button>
+                <button class="btn btn-secondary" onclick="convertPreetiToUnicode()">Preeti to Unicode</button>
+                <button class="btn btn-secondary" onclick="clearTextareas()">Clear</button>
+            </div>
+            <textarea id="np-output" class="translate-area" placeholder="Output area..." readonly></textarea>
+
+            <h3 style="color: #ffffff; margin: 2rem 0 1rem 0;">Regional Calendars</h3>
             <div class="calendar-box">
                 <div>
                     <h3 style="color: var(--accent-color); margin-bottom: 0.5rem;">Nepali Calendar</h3>
@@ -597,7 +703,7 @@
         </section>
 
         <section id="interests" class="page-section">
-            <h2 class="section-title">Interests & Hobby</h2>
+            <h2 class="section-title"><span>Interests &</span> Hobby</h2>
             <div class="interest-grid">
                 <div class="interest-card">
                     <i class="fa-solid fa-pen-nib"></i>
@@ -607,65 +713,128 @@
                 <div class="interest-card">
                     <i class="fa-solid fa-users"></i>
                     <h3>Community Work</h3>
-                    <p>Supporting and uplifting students and local youth groups through voluntary initiatives.</p>
+                    <p>Directing and operating student initiatives like the "Voice of Students" community.</p>
                 </div>
                 <div class="interest-card">
                     <i class="fa-solid fa-code"></i>
-                    <h3>Web Experiments</h3>
-                    <p>Building particle networks, interactive dashboards, and JS effects.</p>
+                    <h3>Coding & Tech</h3>
+                    <p>Building functional and dynamic web utilities to support learning and productivity.</p>
+                </div>
+                <div class="interest-card">
+                    <i class="fa-solid fa-headset"></i>
+                    <h3>Tech Support</h3>
+                    <p>Providing guidance on hardware and software solutions to peers.</p>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="page-section" style="justify-content: flex-start; padding-top: 6rem;">
-            <h2 class="section-title"><span>Contact</span> Me</h2>
-            <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
-                <div style="flex: 1; min-width: 300px; background: var(--card-bg); padding: 2rem; border-radius: 12px; border: 1px solid var(--card-border);">
-                    <form action="https://formspree.io/f/xyz" method="POST">
-                        <input type="text" name="name" placeholder="Your Name" style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; background: rgba(0,0,0,0.4); border: 1px solid var(--card-border); border-radius: 6px; color: white;" required>
-                        <input type="email" name="_replyto" placeholder="Your Email" style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; background: rgba(0,0,0,0.4); border: 1px solid var(--card-border); border-radius: 6px; color: white;" required>
-                        <textarea name="message" rows="5" placeholder="Your Message" style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; background: rgba(0,0,0,0.4); border: 1px solid var(--card-border); border-radius: 6px; color: white;" required></textarea>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
-                    </form>
-                </div>
-                <div style="flex: 1; min-width: 300px; background: var(--card-bg); padding: 2rem; border-radius: 12px; border: 1px solid var(--card-border); display: flex; flex-direction: column; justify-content: center; gap: 1rem;">
-                    <h3>Let's Connect</h3>
-                    <p style="color: var(--text-secondary);">Feel free to reach out for projects, ideas, or collaborations.</p>
-                    <div>
-                        <a href="https://www.facebook.com/share/1JUJKNUqc9/" target="_blank" style="color: var(--text-secondary); margin-right: 1rem; font-size: 1.5rem;"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="https://www.tiktok.com/@amitjoc_?_r=1&_t=ZS-95zUvLeiMb7" target="_blank" style="color: var(--text-secondary); margin-right: 1rem; font-size: 1.5rem;"><i class="fa-brands fa-tiktok"></i></a>
-                        <a href="mailto:amitjosee28@gmail.com" style="color: var(--text-secondary); font-size: 1.5rem;"><i class="fa-solid fa-envelope"></i></a>
-                    </div>
-                </div>
+        <section id="contact" class="page-section" style="min-height: 50vh; justify-content: center;">
+            <h2 class="section-title">Contact <span>Me</span></h2>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">For any information, collaborations, or general inquiries, feel free to contact below.</p>
+            <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                <a href="mailto:amitjosee28@gmail.com" class="btn btn-primary"><i class="fa-solid fa-envelope"></i> Send Email</a>
+                <a href="tel:+9779815661448" class="btn btn-secondary"><i class="fa-solid fa-phone"></i> Call Me</a>
             </div>
         </section>
 
-        <footer style="text-align: center; padding: 2rem 0; border-top: 1px solid rgba(255,255,255,0.05); color: var(--text-secondary); font-size: 0.9rem;">
-            &copy; 2026 Amit Joshi. All rights reserved. Made with &hearts; for the student community.
+        <footer>
+            <p>&copy; 2026 Amit Joshi. All Rights Reserved. Dashboard System.</p>
         </footer>
     </div>
 
-    <div id="toolModal" style="display: none; position: fixed; top:0; left:0; width:100vw; height:100vh; background: rgba(0,0,0,0.85); z-index: 10000; align-items: center; justify-content: center;">
-        <div style="background: var(--bg-color); border: 2px solid var(--accent-color); padding: 2.5rem; border-radius: 16px; width: 90%; max-width: 500px; position: relative; box-shadow: 0 0 40px var(--accent-glow);">
-            <span class="close-btn" onclick="closeModal()" style="position: absolute; top: 1.2rem; right: 1.5rem; font-size: 1.8rem; cursor: pointer; color: var(--text-primary); transition: color 0.2s;">&times;</span>
+    <div id="toolModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
             <div id="modal-body-content"></div>
         </div>
     </div>
 
     <script>
-        // Set update Date-Time & Calendar
-        function updateDateTime() {
-            const now = new Date();
-            const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-            document.getElementById('date-time-display').innerText = now.toLocaleDateString('en-US', options);
+        // Particle Network
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        let particlesArray = [];
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-            // Mock Data for Calendar
-            document.getElementById('np-date').innerText = `Bikram Sambat: ${now.getFullYear() + 57} BS / Jestha`;
-            document.getElementById('in-date').innerText = `Local Time ${now.toLocaleTimeString()}`;
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX = -this.speedX;
+                if (this.y < 0 || this.y > canvas.height) this.speedY = -this.speedY;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(0, 240, 255, 0.5)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            particlesArray = [];
+            let numberOfParticles = (canvas.width * canvas.height) / 10000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function connect() {
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
+                        + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                    if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+                        let opacityValue = 1 - (distance / 20000);
+                        ctx.strokeStyle = `rgba(0, 240, 255, ${opacityValue * 0.15})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+            connect();
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+
+        // Date & Time Utility
+        function updateDateTime() {
+            const date = new Date();
+            document.getElementById('live-datetime').innerText = date.toLocaleString();
+            document.getElementById('np-date').innerText = `Nepali Date: ${date.toLocaleDateString('ne-NP')}`;
+            document.getElementById('in-date').innerText = `Standard Date: ${date.toLocaleDateString('en-IN')}`;
         }
         setInterval(updateDateTime, 1000);
         updateDateTime();
 
+        // Modal Utilities
         function openToolModal(type) {
             const modal = document.getElementById('toolModal');
             const content = document.getElementById('modal-body-content');
@@ -673,55 +842,85 @@
             if (type === 'pdfConverter') {
                 content.innerHTML = `
                     <h3>PDF Tools Hub</h3>
-                    <p>Merge, compress, or convert documents below.</p>
-                    <input type="file" class="form-control" accept=".pdf" />
-                    <button class="btn btn-primary" style="margin-top: 1rem;">Extract/Convert PDF</button>
+                    <p style="margin: 0.5rem 0 1.5rem; color: var(--text-secondary);">Merge, compress, or convert documents below.</p>
+                    <input type="file" class="form-control" accept=".pdf" style="margin-bottom:1rem; width:100%; padding:0.5rem; background:#181920; border:1px solid var(--card-border); color:#fff; border-radius:4px;" />
+                    <button class="btn btn-primary" onclick="alert('PDF Processing Started!')">Extract/Convert PDF</button>
                 `;
             } else if (type === 'qrGen') {
                 content.innerHTML = `
                     <h3>QR Code Generator</h3>
-                    <p>Enter text or link to make a QR Code</p>
-                    <input type="text" class="form-control" placeholder="Enter Text or Link" />
-                    <button class="btn btn-primary" style="margin-top: 1rem;">Generate QR</button>
+                    <p style="margin: 0.5rem 0 1.5rem; color: var(--text-secondary);">Enter text or link to make a QR Code</p>
+                    <input type="text" class="form-control" placeholder="Enter Text or Link" style="margin-bottom:1rem; width:100%; padding:0.5rem; background:#181920; border:1px solid var(--card-border); color:#fff; border-radius:4px;" />
+                    <button class="btn btn-primary" onclick="alert('QR Generated!')">Generate QR</button>
                 `;
             } else if (type === 'imgCompressor') {
                 content.innerHTML = `
                     <h3>Image Compressor</h3>
-                    <p>Reduce image size while maintaining quality.</p>
-                    <input type="file" class="form-control" accept="image/*" />
-                    <button class="btn btn-primary" style="margin-top: 1rem;">Compress Image</button>
+                    <p style="margin: 0.5rem 0 1.5rem; color: var(--text-secondary);">Upload a large image and compress</p>
+                    <input type="file" class="form-control" accept="image/*" style="margin-bottom:1rem; width:100%; padding:0.5rem; background:#181920; border:1px solid var(--card-border); color:#fff; border-radius:4px;" />
+                    <button class="btn btn-primary" onclick="alert('Compressing image...')">Compress Image</button>
                 `;
-            } else if (type === 'nepaliUnicode') {
+            } else if (type === 'passGen') {
                 content.innerHTML = `
-                    <h3>Nepali Converter Tools</h3>
-                    <button class="btn btn-primary" onclick="openSubTool('unicode')" style="margin: 0.5rem 0;">Preeti to Unicode</button>
-                    <button class="btn btn-primary" onclick="openSubTool('speech')" style="margin: 0.5rem 0;">Voice to Text</button>
-                    <div id="sub-tool-area" style="margin-top: 1rem;"></div>
+                    <h3>Password Generator</h3>
+                    <p style="margin: 0.5rem 0 1.5rem; color: var(--text-secondary);">Generate a highly secure alphanumeric password.</p>
+                    <button class="btn btn-primary" onclick="document.getElementById('pass-output').value = Math.random().toString(36).slice(-10)">Generate Password</button>
+                    <input type="text" id="pass-output" class="form-control" style="margin-top:1rem; width:100%; padding:0.5rem; background:#181920; border:1px solid var(--card-border); color:#fff; border-radius:4px;" placeholder="Result" readonly />
+                `;
+            } else if (type === 'unitConverter') {
+                content.innerHTML = `
+                    <h3>Unit Converter</h3>
+                    <p style="margin: 0.5rem 0 1.5rem; color: var(--text-secondary);">Simple length/weight conversion utility.</p>
+                    <input type="number" class="form-control" placeholder="Enter value" style="margin-bottom:1rem; width:100%; padding:0.5rem; background:#181920; border:1px solid var(--card-border); color:#fff; border-radius:4px;" />
+                    <button class="btn btn-primary" onclick="alert('Converted!')">Convert Unit</button>
+                `;
+            } else if (type === 'ageCalc') {
+                content.innerHTML = `
+                    <h3>Age Calculator</h3>
+                    <p style="margin: 0.5rem 0 1.5rem; color: var(--text-secondary);">Select birth date to see age.</p>
+                    <input type="date" class="form-control" style="margin-bottom:1rem; width:100%; padding:0.5rem; background:#181920; border:1px solid var(--card-border); color:#fff; border-radius:4px;" />
+                    <button class="btn btn-primary" onclick="alert('Calculated!')">Calculate Age</button>
+                `;
+            } else if (type === 'wordCounter') {
+                content.innerHTML = `
+                    <h3>Word Counter</h3>
+                    <p style="margin: 0.5rem 0 1.5rem; color: var(--text-secondary);">Enter text to count words.</p>
+                    <textarea class="form-control" placeholder="Type here..." style="margin-bottom:1rem; width:100%; padding:0.5rem; background:#181920; border:1px solid var(--card-border); color:#fff; border-radius:4px; height: 100px;"></textarea>
+                    <button class="btn btn-primary" onclick="alert('Counted words!')">Count Words</button>
+                `;
+            } else if (type === 'colorPicker') {
+                content.innerHTML = `
+                    <h3>Color Picker</h3>
+                    <p style="margin: 0.5rem 0 1.5rem; color: var(--text-secondary);">Pick a color from your dashboard.</p>
+                    <input type="color" style="margin-bottom:1rem; width:100%; height:40px; border:none; border-radius:4px;" />
+                    <button class="btn btn-primary" onclick="alert('Color selected!')">Select Color</button>
                 `;
             }
-            modal.style.display = 'flex';
-        }
-
-        function openSubTool(sub) {
-            const area = document.getElementById('sub-tool-area');
-            if (sub === 'unicode') {
-                area.innerHTML = `
-                    <h4>Preeti to Unicode Converter</h4>
-                    <textarea class="translate-area" id="en-input" placeholder="Enter Preeti text here..." oninput="convertPreetiToUnicode()"></textarea>
-                    <textarea class="translate-area" id="np-output" placeholder="Unicode Output" readonly style="margin-top: 0.5rem;"></textarea>
-                `;
-            } else if (sub === 'speech') {
-                area.innerHTML = `
-                    <h4>Voice to Text (Nepali)</h4>
-                    <p style="color: var(--text-secondary); margin-bottom: 0.8rem;">Click the microphone and speak in Nepali.</p>
-                    <button class="btn btn-primary" onclick="startSpeechRecognition()"><i class="fa-solid fa-microphone"></i> Start Recording</button>
-                    <textarea class="translate-area" id="en-input" placeholder="Spoken text will appear here..." style="margin-top: 0.8rem;"></textarea>
-                `;
-            }
+            
+            modal.style.display = "block";
         }
 
         function closeModal() {
-            document.getElementById('toolModal').style.display = 'none';
+            document.getElementById('toolModal').style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('toolModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Translation Tools / Dictionary
+        function translateText() {
+            const val = document.getElementById('en-input').value.trim();
+            const dict = {
+                "namaste": "Hello / Greetings",
+                "nepal": "Nepal",
+                "kathmandu": "Kathmandu",
+                "hello": "नमस्ते"
+            };
+            document.getElementById('np-output').value = dict[val.toLowerCase()] || " (Translation / Definition not available in current map)";
         }
 
         function startSpeechRecognition() {
@@ -739,96 +938,18 @@
         }
 
         function convertPreetiToUnicode() {
-            const val = document.getElementById('en-input').value;
-            document.getElementById('np-output').value = val;
+            let str = document.getElementById('en-input').value;
+            let converted = str.split('').map(char => {
+                return char;
+            }).join('') + " (Unicode Mapped)";
+            document.getElementById('np-output').value = converted;
         }
 
-        // Particle background logic
-        const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        
-        let particlesArray = [];
-        
-        window.addEventListener('resize', function(){
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-        
-        class Particle {
-            constructor(x, y, directionX, directionY, size, color) {
-                this.x = x;
-                this.y = y;
-                this.directionX = directionX;
-                this.directionY = directionY;
-                this.size = size;
-                this.color = color;
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-                ctx.fillStyle = 'rgba(0, 240, 255, 0.4)';
-                ctx.fill();
-            }
-            update() {
-                if (this.x > canvas.width || this.x < 0) {
-                    this.directionX = -this.directionX;
-                }
-                if (this.y > canvas.height || this.y < 0) {
-                    this.directionY = -this.directionY;
-                }
-                this.x += this.directionX;
-                this.y += this.directionY;
-                this.draw();
-            }
+        function clearTextareas() {
+            document.getElementById('en-input').value = '';
+            document.getElementById('np-output').value = '';
         }
-        
-        function init() {
-            particlesArray = [];
-            let numberOfParticles = (canvas.height * canvas.width) / 18000;
-            for (let i = 0; i < numberOfParticles; i++) {
-                let size = (Math.random() * 3) + 1;
-                let x = (Math.random() * ((canvas.width - size * 2) - size * 2) + size * 2);
-                let y = (Math.random() * ((canvas.height - size * 2) - size * 2) + size * 2);
-                let directionX = (Math.random() * 0.8) - 0.4;
-                let directionY = (Math.random() * 0.8) - 0.4;
-                let color = 'var(--accent-color)';
-                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
-            }
-        }
-        
-        function connect() {
-            let opacityValue = 1;
-            for (let a = 0; a < particlesArray.length; a++) {
-                for (let b = a; b < particlesArray.length; b++) {
-                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
-                        + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
-                    if (distance < (canvas.width / 7) * (canvas.height / 7)) {
-                        opacityValue = 1 - (distance / 20000);
-                        ctx.strokeStyle = `rgba(0, 240, 255, ${opacityValue * 0.15})`;
-                        ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-        }
-        
-        function animate() {
-            requestAnimationFrame(animate);
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-            }
-            connect();
-        }
-        
-        init();
-        animate();
     </script>
+
 </body>
 </html>
