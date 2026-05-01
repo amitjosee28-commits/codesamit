@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amit Joshi | Personal Dashboard & Portfolio</title>
+    <title>Amit Joshi </title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -107,49 +107,45 @@
             font-size: 1.2rem;
             font-weight: 800;
             color: #ffffff;
-        header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.6rem 1.5rem;
-    background: rgba(5, 10, 26, 0.95);
-    border-bottom: 1px solid var(--card-border);
-    height: 95px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
+        }
 
-.header-left {
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-}
+        .logo-title span:last-child {
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            text-decoration: underline;
+            cursor: pointer;
+        }
 
-.social-icons-header {
-    display: flex;
-    gap: 0.8rem;
-    align-items: center;
-    margin-left: 10px;
-}
+        .social-icons-header {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
 
-.social-icons-header a {
-    font-size: 1.6rem;
-    color: #fff;
-}
+        .social-icons-header a {
+            font-size: 1.35rem;
+            color: #fff;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
 
-.nepali-flag {
-    width: 60px;
-    height: auto;
-    background: transparent;
-}
+        .social-icons-header a:hover {
+            transform: scale(1.15);
+        }
 
-.nepali-time {
-    font-size: 0.9rem;
-    margin-left: 0.6rem;
-    font-weight: 700;
-    animation: rgb-flash 2s infinite alternate;
-}
+        .nepali-flag {
+            width: 45px;
+            height: 30px;
+            margin-left: 0.4rem;
+        }
+
+        .nepali-time {
+            font-size: 0.78rem;
+            color: var(--accent-color);
+            margin-left: 0.4rem;
+            animation: rgb-flash 3s infinite alternate;
+            font-weight: 600;
+        }
 
         @keyframes rgb-flash {
             0% { color: #00f0ff; text-shadow: 0 0 5px rgba(0,240,255,0.4); }
@@ -810,7 +806,7 @@
                     <img src="WhatsApp Image 2026-03-28 at 08.46.55.jpeg" alt="Amit Joshi" class="logo-img">
                     <div class="logo-title">
                         <span>Amit</span>
-                        <span onclick="window.open('https://wa.me/9746241860', '_blank')">Connect With Me</span>
+                        <span onclick="window.open('https://wa.me/9746241860', '_blank')">Link With Me</span>
                     </div>
                 </a>
                 
@@ -828,12 +824,12 @@
 
             <nav>
                 <a href="#home">Home</a>
-                <a href="#social">Social Profiles</a>
+                <a href="#social">Social Media</a>
                 <a href="#initiative">Initiative</a>
                 <a href="#edu">Education</a>
-                <a href="#tools">Some Useful Tools</a>
+                <a href="#tools">Tools</a>
                 <a href="#interests">Interests</a>
-                <a href="#contact">Contact</a>
+                <a href="#contact">Contact Me</a>
 
                 <div class="search-container">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -847,8 +843,8 @@
                 <div class="hero-avatar">
                     <img src="WhatsApp Image 2026-03-28 at 08.46.55.jpeg" alt="Amit Joshi">
                 </div>
-                <h1>Hi, I'm <span class="cursive-name">Amit Joshi</span></h1>
-                <p>Building simple, powerful digital systems from Darchula, Nepal. I focus on practical web development, Git-based websites, and modern networking systems.</p>
+                <h1>Namaste From <span class="cursive-name">Amit Joshi</span></h1>
+                <p>I am a student from Nepal studying at Shree Mahendra Secondary School, Mahakali-08, Khalanga, Darchula. I am interested in technology and web development. I enjoy learning HTML, building websites, and improving my digital skills. I also like creative design work such as making posters. Currently,  I am a curious and motivated learner who enjoys exploring new skills and improving every day..</p>
                 <div class="hero-buttons">
                     <a href="https://wa.me/9746241860" class="btn btn-primary" target="_blank">Connect with me on WhatsApp</a>
                     <a href="#contact" class="btn btn-secondary">Contact Me</a>
@@ -860,22 +856,22 @@
         <section id="social" class="page-section">
             <h2 class="section-title">My <span>Social Media Profiles</span></h2>
             <div class="grid-cards">
-                <div class="card" style="min-height:280px">
+                <div class="card" style="min-height:400px">
                     <div class="card-title">Facebook <i class="fa-brands fa-facebook" style="color: #1877f2; font-size:1.6rem;"></i></div>
                     <div class="card-desc">Personal profile and updates from Amit Joshi. Get in touch with daily updates and real-life connections.</div>
                     <a href="https://www.facebook.com/share/1JUJKNUqc9/" target="_blank" class="card-link">View Profile &rarr;</a>
                 </div>
-                <div class="card" style="min-height:280px">
+                <div class="card" style="min-height:400px">
                     <div class="card-title">Instagram <i class="fa-brands fa-instagram" style="color: #E1306C; font-size:1.6rem;"></i></div>
                     <div class="card-desc">Follow my visual updates and personal life, daily stories, and photography.</div>
                     <a href="https://www.instagram.com/_amitjoc?igsh=MXZyeTJzYWd4Ym9haA==" target="_blank" class="card-link">View Profile &rarr;</a>
                 </div>
-                <div class="card" style="min-height:280px">
+                <div class="card" style="min-height:400px">
                     <div class="card-title">TikTok <i class="fa-brands fa-tiktok" style="color: #000; font-size:1.6rem;"></i></div>
                     <div class="card-desc">Short-form tech and hobby experiments. Videos exploring new projects, electronics, and digital life.</div>
                     <a href="https://www.tiktok.com/@amitjoc_?_r=1&_t=ZS-95zUvLeiMb7" target="_blank" class="card-link">View Profile &rarr;</a>
                 </div>
-                <div class="card" style="min-height:280px">
+                <div class="card" style="min-height:400px">
                     <div class="card-title">Email <i class="fa-solid fa-envelope" style="color: #ea4335; font-size:1.6rem;"></i></div>
                     <div class="card-desc">Direct line for business and correspondence. You can reach out directly for collaborations.</div>
                     <a href="mailto:amitjosee28@gmail.com" class="card-link">Contact &rarr;</a>
@@ -905,19 +901,19 @@
             <h2 class="section-title">My <span>Education</span></h2>
             <div class="education-grid">
                 <div class="edu-card" style="min-height: 320px;">
-                    <h3 style="color: var(--accent-color);">BUPS Darchula</h3>
-                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Early Secondary Education</p>
-                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 1rem;">Studying subjects including fundamental mathematics, science, and English to build a strong base for my tech skills.</p>
+                    <h3 style="color: var(--accent-color);">BVPS Darchula</h3>
+                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Studied Primary Education From Nursary To Class 5</p>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 1rem;">My Basement Of Education</p>
                 </div>
                 <div class="edu-card" style="min-height: 320px;">
-                    <h3 style="color: var(--accent-color);">MMSS Darchula</h3>
+                    <h3 style="color: var(--accent-color);">MSS Darchula</h3>
                     <p style="font-size: 0.88rem; color: var(--text-secondary);">Higher Secondary Education</p>
                     <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 1rem;">Focused on science and mathematics, developing the analytical problem-solving skills applied in web and hardware development.</p>
                 </div>
                 <div class="edu-card" style="min-height: 320px;">
                     <h3 style="color: var(--accent-color);">KBC</h3>
-                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Undergraduate Studies</p>
-                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 1rem;">Pursuing a Bachelor's degree in technical and communication studies for better management and digital systems.</p>
+                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Kathmandu Bernhardt Secondary School and College Balkhus</p>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 1rem;">Got A best Oppourtunity to study Class XI there and felt blessed By studying There</p>
                 </div>
             </div>
         </section>
@@ -1030,7 +1026,7 @@
                             <li><a href="https://ugcnepal.edu.np" target="_blank">UGC</a></li>
                             <li><a href="https://olenepal.org" target="_blank">OLE Nepal</a></li>
                             <li><a href="https://nepalshiksha.com" target="_blank">Shiksha</a></li>
-                            <li><a href="https://tu.edu.np" target="_blank">Tribhuvan Univ</a></li>
+                            <li><a href="https://tu.edu.np" target="_blank">Tribhuvan University</a></li>
                             <li><a href="https://daodarchula.moha.gov.np" target="_blank">Darchula DAO</a></li>
                         </ul>
                     </div>
@@ -1045,7 +1041,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                &copy; 2026 Amit Joshi. Designed and built with a digital builder mindset.
+                &copy; 2026 Amit Joshi.
             </div>
         </footer>
     </div>
@@ -1340,4 +1336,5 @@
         animate();
     </script>
 </body>
-</html>
+</html> 
+
