@@ -32,39 +32,15 @@
             position: relative;
         }
 
-        /* Animated Background */
-        .bg-glow {
+        /* Particle Network Background */
+        #particle-canvas {
             position: fixed;
-            top: -20%;
-            left: -10%;
-            width: 60vw;
-            height: 60vw;
-            background: radial-gradient(circle, rgba(0, 240, 255, 0.06), transparent 70%);
-            border-radius: 50%;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             z-index: -1;
-            animation: float 20s ease infinite alternate;
-        }
-
-        .bg-glow-purple {
-            position: fixed;
-            bottom: -20%;
-            right: -10%;
-            width: 60vw;
-            height: 60vw;
-            background: radial-gradient(circle, rgba(168, 85, 247, 0.05), transparent 70%);
-            border-radius: 50%;
-            z-index: -1;
-            animation: float-reverse 20s ease infinite alternate;
-        }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(10vw, 10vh) scale(1.2); }
-        }
-
-        @keyframes float-reverse {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(-10vw, -10vh) scale(1.2); }
+            pointer-events: none;
         }
 
         .container {
@@ -73,12 +49,13 @@
             padding: 0 2rem;
         }
 
-        /* Header */
+        /* Header (Single Line) */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 2.5rem 0;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--card-border);
         }
 
         .logo {
@@ -88,7 +65,7 @@
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 0.8rem;
         }
 
         .logo-img {
@@ -99,19 +76,10 @@
             border: 1px solid var(--accent-color);
         }
 
-        .logo::before {
-            content: '';
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background-color: var(--accent-color);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent-color);
-        }
-
         nav {
             display: flex;
-            gap: 1.8rem;
+            gap: 1.5rem;
+            align-items: center;
         }
 
         nav a {
@@ -126,17 +94,26 @@
             color: var(--accent-color);
         }
 
+        .date-time {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-left: 1rem;
+        }
+
         /* Hero Section */
         .hero {
             padding: 4rem 0;
             display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            max-width: 750px;
+            justify-content: space-between;
+            align-items: center;
+            gap: 3rem;
         }
 
-        .hero-avatar {
-            margin-bottom: 0.5rem;
+        .hero-text {
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
         }
 
         .hero-avatar img {
@@ -146,10 +123,11 @@
             object-fit: cover;
             border: 2px solid var(--accent-color);
             box-shadow: 0 0 20px var(--accent-glow);
+            margin-bottom: 0.5rem;
         }
 
         .hero h1 {
-            font-size: 3.8rem;
+            font-size: 3.5rem;
             font-weight: 800;
             letter-spacing: -0.04em;
             color: #ffffff;
@@ -165,23 +143,35 @@
         .hero p {
             font-size: 1.15rem;
             color: var(--text-secondary);
-            max-width: 650px;
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
         .hero-buttons {
             display: flex;
             gap: 1rem;
-            margin-top: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .hero-slides {
+            width: 350px;
+            height: 250px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
         }
 
         .btn {
-            padding: 0.85rem 1.75rem;
+            padding: 0.75rem 1.5rem;
             border-radius: 8px;
             font-weight: 600;
             text-decoration: none;
             font-size: 0.9rem;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.25s ease;
             cursor: pointer;
             border: 1px solid transparent;
             display: inline-flex;
@@ -193,13 +183,12 @@
             background-color: rgba(0, 240, 255, 0.1);
             color: var(--accent-color);
             border-color: rgba(0, 240, 255, 0.2);
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.05);
         }
 
         .btn-primary:hover {
             background-color: var(--accent-color);
             color: #090a0f;
-            box-shadow: 0 0 25px var(--accent-glow);
+            box-shadow: 0 0 20px var(--accent-glow);
         }
 
         .btn-secondary {
@@ -215,7 +204,7 @@
 
         /* Sections */
         section {
-            padding: 5.5rem 0;
+            padding: 4rem 0;
             border-top: 1px solid rgba(255, 255, 255, 0.03);
         }
 
@@ -223,7 +212,7 @@
             font-size: 2rem;
             font-weight: 700;
             color: #ffffff;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             display: flex;
             align-items: center;
             gap: 0.6rem;
@@ -234,144 +223,43 @@
             color: var(--accent-color);
         }
 
-        /* About Grid */
-        .about-grid {
+        /* Profile Cards */
+        .grid-cards {
             display: grid;
-            grid-template-columns: 1.3fr 0.9fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text {
-            display: flex;
-            flex-direction: column;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 1.5rem;
         }
 
-        .about-text p {
-            font-size: 1.05rem;
-            color: var(--text-secondary);
-        }
-
-        .info-cards {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.2rem;
-        }
-
-        .info-card {
+        .card {
             background-color: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 10px;
-            padding: 1.4rem;
-        }
-
-        .info-card h4 {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--accent-color);
-            margin-bottom: 0.4rem;
-        }
-
-        .info-card p {
-            font-size: 0.95rem;
-            color: var(--text-primary);
-            font-weight: 500;
-        }
-
-        /* Skills/Tech Stack */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.2rem;
-        }
-
-        .skill-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
             transition: transform 0.25s ease, border-color 0.25s;
         }
 
-        .skill-card:hover {
+        .card:hover {
             transform: translateY(-4px);
             border-color: var(--accent-color);
         }
 
-        .skill-card h3 {
-            font-size: 1.15rem;
+        .card-title {
+            font-size: 1.1rem;
             color: #ffffff;
-            margin-bottom: 0.8rem;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-        }
-
-        .tag {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 0.3rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.78rem;
-            color: var(--text-secondary);
-        }
-
-        /* Projects */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .project-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-            transition: transform 0.25s ease, border-color 0.25s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent-purple);
-        }
-
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .project-title {
-            font-size: 1.2rem;
             font-weight: 600;
-            color: #ffffff;
         }
 
-        .project-desc {
-            font-size: 0.9rem;
+        .card-desc {
+            font-size: 0.88rem;
             color: var(--text-secondary);
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-            font-size: 0.75rem;
+        .card-link {
             color: var(--accent-color);
-        }
-
-        .project-link {
-            color: #ffffff;
             text-decoration: none;
             font-size: 0.85rem;
             font-weight: 500;
@@ -379,201 +267,71 @@
             align-items: center;
             gap: 0.4rem;
             margin-top: auto;
-            padding-top: 0.5rem;
         }
 
-        .project-link:hover {
-            color: var(--accent-color);
+        .card-link:hover {
+            text-decoration: underline;
         }
 
-        /* Digital Tools Hub */
-        .tools-hub-container {
-            display: grid;
-            grid-template-columns: 0.35fr 0.65fr;
-            gap: 2.5rem;
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 2.5rem;
-        }
-
-        .tool-selector {
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-        }
-
-        .tool-tab {
-            background: transparent;
-            border: none;
-            color: var(--text-secondary);
-            text-align: left;
-            padding: 0.9rem 1.2rem;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .tool-tab:hover, .tool-tab.active {
-            color: var(--accent-color);
-            background: rgba(0, 240, 255, 0.06);
-            border-left: 3px solid var(--accent-color);
-        }
-
-        .tool-panel {
-            display: none;
-        }
-
-        .tool-panel.active {
-            display: flex;
-            flex-direction: column;
-            gap: 1.4rem;
-        }
-
-        .tool-panel h3 {
-            color: #ffffff;
-            font-size: 1.3rem;
-        }
-
-        .tool-control {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .tool-control label {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        .tool-input {
-            background-color: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--card-border);
-            border-radius: 6px;
-            padding: 0.8rem;
-            color: var(--text-primary);
-            font-family: inherit;
-            resize: vertical;
-        }
-
-        .tool-input:focus {
-            outline: none;
-            border-color: var(--accent-color);
-        }
-
-        .tool-output-area {
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 6px;
-            padding: 1rem;
-            min-height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(255, 255, 255, 0.02);
-        }
-
-        /* Interests */
-        .interests-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.2rem;
-        }
-
-        .interest-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 10px;
-            padding: 1.8rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-
-        .interest-icon {
-            font-size: 1.8rem;
-            color: var(--accent-color);
-        }
-
-        .interest-title {
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: #ffffff;
-        }
-
-        .interest-desc {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        /* Contact */
-        .contact-grid {
+        /* Initiative Section */
+        .initiative-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 2.5rem;
+            align-items: center;
         }
 
-        .contact-info {
-            display: flex;
-            flex-direction: column;
+        /* Education Grid */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
         }
 
-        .contact-info p {
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-        }
-
-        .contact-links {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .contact-item {
-            color: var(--text-primary);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        .contact-item:hover {
-            color: var(--accent-color);
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.1rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-        }
-
-        .form-label {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        .form-input, .form-textarea {
+        .edu-card {
             background-color: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 6px;
-            padding: 0.8rem;
-            color: var(--text-primary);
-            font-family: inherit;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0.5rem;
         }
 
-        .form-input:focus, .form-textarea:focus {
-            outline: none;
-            border-color: var(--accent-purple);
+        /* Tool Session Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.2rem;
+        }
+
+        .tool-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .tool-card h4 {
+            color: #ffffff;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Calendar Session */
+        .calendar-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            text-align: center;
         }
 
         footer {
@@ -588,28 +346,31 @@
             .container {
                 padding: 0 1.2rem;
             }
-            .hero h1 {
-                font-size: 2.7rem;
+            header {
+                flex-direction: column;
+                gap: 1rem;
             }
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
+            .hero {
+                flex-direction: column;
             }
-            .tools-hub-container {
+            .initiative-grid {
                 grid-template-columns: 1fr;
-                padding: 1.5rem;
             }
-            .contact-grid {
+            .education-grid {
                 grid-template-columns: 1fr;
-                gap: 2.5rem;
+            }
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            .calendar-box {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-glow"></div>
-    <div class="bg-glow-purple"></div>
+    <canvas id="particle-canvas"></canvas>
 
     <div class="container">
         <header>
@@ -618,225 +379,124 @@
                 Amit Joshi
             </a>
             <nav>
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
+                <a href="#initiative">My Initiative</a>
+                <a href="#edu">My Education</a>
                 <a href="#tools">Tools Hub</a>
-                <a href="#interests">Interests</a>
+                <a href="#interests">Interest</a>
                 <a href="#contact">Contact</a>
+                <span class="date-time" id="datetime"></span>
             </nav>
         </header>
 
         <section class="hero">
-            <div class="hero-avatar">
-                <img src="WhatsApp Image 2026-03-28 at 08.46.55.jpeg" alt="Amit Joshi">
-            </div>
-            <h1>Hi, I'm <span>Amit Joshi</span>.</h1>
-            <p>Building simple, powerful digital systems from Darchula, Nepal. I focus on practical web development, Git-based websites, and modern networking systems.</p>
-            <div class="hero-buttons">
-                <a href="#about" class="btn btn-primary">Explore About</a>
-                <a href="#projects" class="btn btn-secondary">View Projects</a>
-                <a href="#tools" class="btn btn-secondary">Open Tools Hub</a>
-            </div>
-        </section>
-
-        <section id="about">
-            <h2 class="section-title">01. <span>About Me</span></h2>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p>Hello! I am a hands-on developer, system administrator, and tinkerer. I take joy in building practical digital systems, connecting hardware, and hosting web applications.</p>
-                    <p>Unlike traditional writing or content creation, I focus on the underlying architecture: servers, networks, admin panels, and lightweight static systems.</p>
-                    <div class="info-cards">
-                        <div class="info-card">
-                            <h4>Location</h4>
-                            <p>Darchula, Nepal</p>
-                        </div>
-                        <div class="info-card">
-                            <h4>Mindset</h4>
-                            <p>Curious Tech Builder</p>
-                        </div>
-                    </div>
+            <div class="hero-text">
+                <div class="hero-avatar">
+                    <img src="WhatsApp Image 2026-03-28 at 08.46.55.jpeg" alt="Amit Joshi">
                 </div>
-                <div class="about-text">
-                    <h3 style="color: #ffffff;">Interests & Workflow</h3>
-                    <ul style="color: var(--text-secondary); list-style-type: none; display:flex; flex-direction:column; gap:0.5rem; padding-left: 0;">
-                        <li>• Git-based Websites & Hosting</li>
-                        <li>• Backend Admin Systems</li>
-                        <li>• CCTV & IP Camera Integration</li>
-                        <li>• Local Networking & Hardware Setup</li>
-                    </ul>
+                <h1>Hi, I'm <span>Amit Joshi</span></h1>
+                <p>Building simple, powerful digital systems from Darchula, Nepal. I focus on practical web development, Git-based websites, and modern networking systems.</p>
+                <div class="hero-buttons">
+                    <a href="https://wa.me/9746241860" class="btn btn-primary" target="_blank">Connect on WhatsApp</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
                 </div>
+            </div>
+            <div class="hero-slides">
+                <span>Sliding Images Placeholder</span>
             </div>
         </section>
 
-        <section id="skills">
-            <h2 class="section-title">02. <span>Skills & Tech Stack</span></h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <h3>Frontend & Markup</h3>
-                    <div class="skill-tags">
-                        <span class="tag">HTML</span>
-                        <span class="tag">CSS</span>
-                        <span class="tag">JS</span>
-                        <span class="tag">Tailwind</span>
-                        <span class="tag">Markdown</span>
-                    </div>
+        <section id="social">
+            <h2 class="section-title">01. <span>My Social Media Profiles</span></h2>
+            <div class="grid-cards">
+                <div class="card">
+                    <div class="card-title">Facebook</div>
+                    <div class="card-desc">Personal profile and updates from Amit Joshi.</div>
+                    <a href="https://www.facebook.com/share/1JUJKNUqc9/" target="_blank" class="card-link">View Profile &rarr;</a>
                 </div>
-                <div class="skill-card">
-                    <h3>Git & Admin Systems</h3>
-                    <div class="skill-tags">
-                        <span class="tag">Git & GitHub</span>
-                        <span class="tag">Decap CMS</span>
-                        <span class="tag">Keystatic</span>
-                        <span class="tag">Hosting</span>
-                    </div>
+                <div class="card">
+                    <div class="card-title">Instagram</div>
+                    <div class="card-desc">Follow my visual updates and personal life.</div>
+                    <a href="https://www.instagram.com/_amitjoc?igsh=MXZyeTJzYWd4Ym9haA==" target="_blank" class="card-link">View Profile &rarr;</a>
                 </div>
-                <div class="skill-card">
-                    <h3>Hardware & Networking</h3>
-                    <div class="skill-tags">
-                        <span class="tag">CCTV Setup</span>
-                        <span class="tag">IP Config</span>
-                        <span class="tag">Scanning</span>
-                        <span class="tag">Routing</span>
-                    </div>
+                <div class="card">
+                    <div class="card-title">TikTok</div>
+                    <div class="card-desc">Short-form tech and hobby experiments.</div>
+                    <a href="https://www.tiktok.com/@amitjoc_?_r=1&_t=ZS-95zUvLeiMb7" target="_blank" class="card-link">View Profile &rarr;</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">Email</div>
+                    <div class="card-desc">Direct line for business and correspondence.</div>
+                    <a href="mailto:amitjosee28@gmail.com" class="card-link">Contact &rarr;</a>
                 </div>
             </div>
         </section>
 
-        <section id="projects">
-            <h2 class="section-title">03. <span>Projects</span></h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-header">
-                        <span class="project-title">Git-Powered Notebook</span>
-                    </div>
-                    <p class="project-desc">A minimal, markdown-ready static documentation and note-taking platform hosted directly via Git with headless CMS capabilities.</p>
-                    <div class="project-tech"><span>Markdown</span> • <span>Static Generation</span></div>
-                    <a href="#" class="project-link">View Experiment &rarr;</a>
+        <section id="initiative">
+            <h2 class="section-title">02. <span>My Initiative</span></h2>
+            <div class="initiative-grid">
+                <div>
+                    <h3 style="color: #ffffff; margin-bottom: 0.8rem;">Voice of Students श्री महेन्द्र मावि</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">
+                        This initiative focuses on empowering the student community at Shree Mahendra Higher Secondary School, facilitating communication and support among peers.
+                    </p>
+                    <a href="https://www.facebook.com/share/1QYNP2ZJPr/" target="_blank" class="btn btn-primary">Connect with VOS</a>
                 </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <span class="project-title">Simple Network Admin Panel</span>
-                    </div>
-                    <p class="project-desc">A lightweight interface for testing and organizing API connections, managing local CCTV configurations, and monitoring connections.</p>
-                    <div class="project-tech"><span>Node/JS</span> • <span>Network Scripts</span></div>
-                    <a href="#" class="project-link">View Experiment &rarr;</a>
+                <div class="card" style="min-height: 250px;">
+                    <div class="card-title">Facebook Feed Box</div>
+                    <p class="card-desc" style="text-align: center; margin: auto; color: var(--text-secondary);">Embedded feed interface area for VOS.</p>
                 </div>
+            </div>
+        </section>
 
-                <div class="project-card">
-                    <div class="project-header">
-                        <span class="project-title">Hosting & Tools Hub</span>
-                    </div>
-                    <p class="project-desc">An all-in-one local sandbox for generating data, testing basic scripts, compressing images, and editing text without dependencies.</p>
-                    <div class="project-tech"><span>Web APIs</span> • <span>Client-Side JS</span></div>
-                    <a href="#" class="project-link">View Experiment &rarr;</a>
+        <section id="edu">
+            <h2 class="section-title">03. <span>My Education</span></h2>
+            <div class="education-grid">
+                <div class="edu-card">
+                    <h3 style="color: var(--accent-color);">BUPS Darchula</h3>
+                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Early Secondary Education</p>
+                </div>
+                <div class="edu-card">
+                    <h3 style="color: var(--accent-color);">MMSS Darchula</h3>
+                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Higher Secondary Education</p>
+                </div>
+                <div class="edu-card">
+                    <h3 style="color: var(--accent-color);">KBC</h3>
+                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Undergraduate Studies</p>
                 </div>
             </div>
         </section>
 
         <section id="tools">
-            <h2 class="section-title">04. <span>Digital Tools Hub</span></h2>
-            <div class="tools-hub-container">
-                <div class="tool-selector">
-                    <button class="tool-tab active" onclick="switchTool('qr')">QR Code Generator</button>
-                    <button class="tool-tab" onclick="switchTool('editor')">Simple Editor</button>
-                    <button class="tool-tab" onclick="switchTool('compressor')">Image Compressor</button>
+            <h2 class="section-title">04. <span>Tools Session</span></h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h4>PDF to Word</h4>
+                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Convert utilities</p>
                 </div>
-
-                <div id="tool-qr" class="tool-panel active">
-                    <h3>QR Code Generator</h3>
-                    <div class="tool-control">
-                        <label for="qr-input">Enter Text or URL:</label>
-                        <input type="text" id="qr-input" class="tool-input" placeholder="Type anything to generate..." oninput="generateQR()">
-                    </div>
-                    <div class="tool-output-area" style="min-height: 150px;">
-                        <div id="qr-display" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;">
-                            <img id="qr-img" src="" alt="Type text to create QR" style="display: none; width: 120px; height: 120px;">
-                            <span id="qr-placeholder" style="color: var(--text-secondary); font-size: 0.85rem;">Your QR code will appear here</span>
-                        </div>
-                    </div>
+                <div class="tool-card">
+                    <h4>PDF to Jpg</h4>
+                    <p style="font-size: 0.75rem; color: var(--text-secondary);">File extract tool</p>
                 </div>
-
-                <div id="tool-editor" class="tool-panel">
-                    <h3>Simple Text & Markdown Editor</h3>
-                    <div class="tool-control">
-                        <label for="editor-input">Type or paste your text here:</label>
-                        <textarea id="editor-input" class="tool-input" rows="6" placeholder="Start typing..."></textarea>
-                    </div>
-                    <div style="display: flex; gap: 0.6rem;">
-                        <button class="btn btn-secondary" onclick="saveText()" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Download Text</button>
-                        <button class="btn btn-secondary" onclick="clearText()" style="padding: 0.5rem 1rem; font-size: 0.8rem; background: rgba(255,0,0,0.05); border-color: rgba(255,0,0,0.2);">Clear</button>
-                    </div>
+                <div class="tool-card">
+                    <h4>QR Generator</h4>
+                    <p style="font-size: 0.75rem; color: var(--text-secondary);">QR & codes</p>
                 </div>
-
-                <div id="tool-compressor" class="tool-panel">
-                    <h3>Image Metadata / Estimator</h3>
-                    <div class="tool-control">
-                        <label for="img-input">Upload an image file:</label>
-                        <input type="file" id="img-input" class="tool-input" accept="image/*" onchange="readImage()">
-                    </div>
-                    <div class="tool-output-area">
-                        <div id="img-output" style="text-align: center; color: var(--text-secondary); font-size: 0.85rem;">
-                            Upload an image to get name & size details.
-                        </div>
-                    </div>
+                <div class="tool-card">
+                    <h4>Image Compressor</h4>
+                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Compress utilities</p>
                 </div>
             </div>
-        </section>
 
-        <section id="interests">
-            <h2 class="section-title">05. <span>Interests & Hobbies</span></h2>
-            <div class="interests-grid">
-                <div class="interest-card">
-                    <div class="interest-icon">⚡</div>
-                    <div class="interest-title">Tech Systems</div>
-                    <div class="interest-desc">Exploring server routing, static websites, and hosting tools.</div>
+            <h3 style="color: #ffffff; margin: 2.5rem 0 1rem 0;">Calendar Session</h3>
+            <div class="calendar-box">
+                <div>
+                    <h3 style="color: var(--accent-color); margin-bottom: 0.5rem;">Nepali Calendar</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">View localized dates and events.</p>
                 </div>
-                <div class="interest-card">
-                    <div class="interest-icon">📡</div>
-                    <div class="interest-title">CCTV Monitoring</div>
-                    <div class="interest-desc">Configuring hardware feeds and IP scanners.</div>
+                <div>
+                    <h3 style="color: var(--accent-purple); margin-bottom: 0.5rem;">Indian Calendar</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">View the standard regional calendar.</p>
                 </div>
-                <div class="interest-card">
-                    <div class="interest-icon">🏏</div>
-                    <div class="interest-title">RCB Fan Page</div>
-                    <div class="interest-desc">Passionate supporter of the cricket team.</div>
-                </div>
-                <div class="interest-card">
-                    <div class="interest-icon">🧘</div>
-                    <div class="interest-title">Spiritual Mindset</div>
-                    <div class="interest-desc">Maintaining calm focus and simple, balanced living.</div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact">
-            <h2 class="section-title">06. <span>Contact</span></h2>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <p>Have a question about static hosting, local CCTV configuration, or simple setups? Let's connect.</p>
-                    <div class="contact-links">
-                        <a href="mailto:amitjoshi.contact@example.com" class="contact-item">📧 amitjoshi.contact@example.com</a>
-                        <a href="https://github.com" class="contact-item">💻 github.com/amitjoshi</a>
-                        <span class="contact-item">📍 Darchula, Nepal</span>
-                    </div>
-                </div>
-                <form class="contact-form" onsubmit="event.preventDefault(); alert('Message received!'); this.reset();">
-                    <div class="form-group">
-                        <label class="form-label">Name</label>
-                        <input type="text" class="form-input" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Email</label>
-                        <input type="email" class="form-input" placeholder="you@example.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Message</label>
-                        <textarea class="form-textarea" rows="4" placeholder="Say hello..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width: fit-content;">Send Message</button>
-                </form>
             </div>
         </section>
 
@@ -846,67 +506,92 @@
     </div>
 
     <script>
-        function switchTool(toolName) {
-            const tabs = document.querySelectorAll('.tool-tab');
-            const panels = document.querySelectorAll('.tool-panel');
-
-            // Deactivate all
-            tabs.forEach(tab => tab.classList.remove('active'));
-            panels.forEach(panel => panel.classList.remove('active'));
-
-            // Activate chosen
-            const tabEl = Array.from(tabs).find(t => t.getAttribute('onclick').includes(toolName));
-            const panelEl = document.getElementById(`tool-${toolName}`);
-            
-            if (tabEl) tabEl.classList.add('active');
-            if (panelEl) panelEl.classList.add('active');
+        // Set date and time
+        function updateDateTime() {
+            const now = new Date();
+            document.getElementById('datetime').innerText = now.toLocaleString();
         }
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
 
-        // QR Code Tool logic
-        function generateQR() {
-            const text = document.getElementById('qr-input').value.trim();
-            const img = document.getElementById('qr-img');
-            const placeholder = document.getElementById('qr-placeholder');
+        // Floating Particle Network Animation
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
 
-            if (text === "") {
-                img.style.display = "none";
-                placeholder.style.display = "block";
-                placeholder.innerText = "Your QR code will appear here";
-            } else {
-                img.src = `https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(text)}`;
-                img.style.display = "block";
-                placeholder.style.display = "none";
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particlesArray = [];
+        const numberOfParticles = 80;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() * 0.8) - 0.4;
+                this.speedY = (Math.random() * 0.8) - 0.4;
+                this.color = (Math.random() > 0.5) ? 'rgba(0, 240, 255, 0.4)' : 'rgba(168, 85, 247, 0.3)';
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x < 0 || this.x > canvas.width) this.speedX = -this.speedX;
+                if (this.y < 0 || this.y > canvas.height) this.speedY = -this.speedY;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
             }
         }
 
-        // Editor Tool logic
-        function clearText() {
-            document.getElementById('editor-input').value = "";
-        }
-
-        function saveText() {
-            const content = document.getElementById('editor-input').value;
-            const blob = new Blob([content], { type: 'text/plain' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = 'notes.txt';
-            link.click();
-            URL.revokeObjectURL(link.href);
-        }
-
-        // Compressor Tool logic
-        function readImage() {
-            const input = document.getElementById('img-input');
-            const output = document.getElementById('img-output');
-
-            if (input.files && input.files[0]) {
-                const file = input.files[0];
-                const sizeInMB = (file.size / (1024 * 1024)).toFixed(2);
-                output.innerHTML = `<strong>File name:</strong> ${file.name}<br><strong>Size:</strong> ${sizeInMB} MB<br><strong>Type:</strong> ${file.type}`;
-            } else {
-                output.innerHTML = "Upload an image to get name & size details.";
+        function init() {
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
             }
         }
+
+        function connect() {
+            let opacityValue = 1;
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
+                        + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                    if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+                        opacityValue = 1 - (distance / 20000);
+                        ctx.strokeStyle = `rgba(0, 240, 255, ${opacityValue * 0.15})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+            connect();
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', function() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particlesArray = [];
+            init();
+        });
+
+        init();
+        animate();
     </script>
 </body>
 </html>
