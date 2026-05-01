@@ -1,575 +1,1005 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amit Joshi - Portfolio & Utility Platform</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/nepali-datepicker-reactjs/dist/index.css"/>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://unpkg.com/nepali-date-picker/dist/nepaliDatePicker.min.js"></script>
-    <script src="https://unpkg.com/bikram-sambat-js"></script>
-    <style>
-        @keyframes rgb-blink {
-            0% { box-shadow: 0 0 12px rgba(255, 0, 0, 0.5); }
-            33% { box-shadow: 0 0 12px rgba(0, 255, 0, 0.5); }
-            66% { box-shadow: 0 0 12px rgba(0, 0, 255, 0.5); }
-            100% { box-shadow: 0 0 12px rgba(255, 0, 0, 0.5); }
-        }
-        .rgb-btn {
-            animation: rgb-blink 3s infinite;
-            transition: all 0.3s ease-in-out;
-        }
-        .rgb-btn:hover {
-            transform: translateY(-3px);
-            filter: brightness(1.15);
-        }
-        .social-box {
-            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s;
-            height: 190px;
-        }
-        .social-box:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-        }
-        .edu-box {
-            min-height: 280px;
-            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s;
-        }
-        .edu-box:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-        #loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #0d1117;
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.6s ease;
-        }
-        .tool-panel {
-            transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-        .slide-img {
-            transition: opacity 0.8s ease-in-out;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amit Joshi | Personal Dashboard & Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #090a0f;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent-color: #00f0ff;
+            --accent-purple: #a855f7;
+            --accent-glow: rgba(0, 240, 255, 0.25);
+        }
+ 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+ 
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+ 
+        /* Particle Network Background */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+ 
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+ 
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 2rem;
+            background-image: url('127540764_1543314336058956_8888779226493901871_n.jpg');
+            background-size: cover;
+            background-position: center;
+            border-bottom: 1px solid var(--card-border);
+            height: 90px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+ 
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+ 
+        .logo-img {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--accent-color);
+        }
+ 
+        nav {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+ 
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+        }
+ 
+        nav a:hover {
+            color: var(--accent-color);
+        }
+ 
+        .social-icons-header {
+            display: flex;
+            gap: 0.6rem;
+            align-items: center;
+        }
+ 
+        .social-icons-header a {
+            font-size: 1.2rem;
+            color: #fff;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+        
+        .social-icons-header a:hover {
+            transform: scale(1.1);
+        }
+ 
+        .date-time {
+            font-size: 0.8rem;
+            color: #ffffff;
+            margin-left: 0.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        }
+ 
+        .nepali-flag {
+            width: 35px;
+            height: 25px;
+            animation: flutter 2s infinite ease-in-out;
+        }
+ 
+        @keyframes flutter {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-3px) rotate(2deg); }
+            100% { transform: translateY(0) rotate(-1deg); }
+        }
+ 
+        /* Full Height Pages */
+        .page-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+ 
+        /* Home Page */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 3rem;
+            min-height: calc(100vh - 90px);
+        }
+ 
+        .hero-text {
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+ 
+        .hero-avatar img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 0 20px var(--accent-glow);
+            margin-bottom: 0.5rem;
+        }
+ 
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            color: #ffffff;
+            line-height: 1.1;
+        }
+ 
+        .hero h1 span {
+            background: linear-gradient(90deg, #00f0ff, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+ 
+        .cursive-name {
+            font-family: 'Brush Script MT', cursive, sans-serif;
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #00f0ff;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+        }
+ 
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+ 
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+            flex-direction: column;
+        }
+ 
+        .hero-slides {
+            width: 450px;
+            height: 350px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.15);
+            background-image: url('WhatsApp Image 2026-05-01 at 12.12.19.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+ 
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: fit-content;
+        }
+ 
+        .btn-primary {
+            background-color: rgba(0, 240, 255, 0.1);
+            color: var(--accent-color);
+            border-color: rgba(0, 240, 255, 0.2);
+        }
+ 
+        .btn-primary:hover {
+            background-color: var(--accent-color);
+            color: #090a0f;
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+ 
+        .btn-secondary {
+            background-color: var(--card-bg);
+            color: var(--text-primary);
+            border-color: var(--card-border);
+        }
+ 
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            border-color: var(--text-secondary);
+        }
+ 
+        /* Section Title */
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            letter-spacing: -0.02em;
+        }
+ 
+        .section-title span {
+            color: var(--accent-color);
+        }
+ 
+        /* Social Section */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            height: 75vh;
+            align-content: center;
+        }
+ 
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: transform 0.25s ease, border-color 0.25s;
+            min-height: 220px;
+        }
+ 
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-color);
+        }
+ 
+        .card-title {
+            font-size: 1.2rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+ 
+        .card-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+ 
+        .card-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: auto;
+        }
+ 
+        .card-link:hover {
+            text-decoration: underline;
+        }
+ 
+        /* Initiative Section */
+        .initiative-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+            height: 75vh;
+        }
+ 
+        .fb-embed-box {
+            width: 100%;
+            height: 100%;
+            min-height: 350px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1rem;
+        }
+ 
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            height: 70vh;
+            align-content: center;
+        }
+ 
+        .edu-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 2.5rem;
+            text-align: center;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1rem;
+        }
+ 
+        /* Tools Session */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+ 
+        .tool-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 1.8rem;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+ 
+        .tool-card:hover {
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
+        }
+ 
+        .tool-card h4 {
+            color: #ffffff;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+ 
+        /* Calendar Session */
+        .calendar-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+ 
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.85);
+            backdrop-filter: blur(5px);
+        }
+ 
+        .modal-content {
+            background-color: #0f1015;
+            margin: 5% auto;
+            padding: 2.5rem;
+            border: 1px solid var(--accent-purple);
+            width: 65%;
+            border-radius: 16px;
+            color: var(--text-primary);
+            box-shadow: 0 0 30px var(--accent-glow);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+ 
+        .close-btn {
+            color: var(--text-secondary);
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+ 
+        .close-btn:hover {
+            color: var(--accent-color);
+        }
+ 
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.8rem 0;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            color: #fff;
+            border-radius: 8px;
+            font-family: inherit;
+        }
+ 
+        .translator-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+ 
+        .translate-area {
+            background: rgba(0,0,0,0.4);
+            border: 1px solid var(--card-border);
+            padding: 1.2rem;
+            border-radius: 8px;
+            min-height: 150px;
+            color: #fff;
+            resize: none;
+            width: 100%;
+            font-family: inherit;
+        }
+ 
+        .icon-btn {
+            background: transparent;
+            border: none;
+            color: var(--accent-color);
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: 0.5rem;
+        }
+ 
+        /* Interest Section */
+        .interest-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            height: 75vh;
+            align-content: center;
+        }
+ 
+        .interest-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+ 
+        .interest-card:hover {
+            border-color: var(--accent-purple);
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.15);
+        }
+ 
+        .interest-card i {
+            font-size: 2.5rem;
+            color: var(--accent-purple);
+        }
+ 
+        /* Contact Section */
+        .contact-form {
+            max-width: 650px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--card-border);
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            height: 60vh;
+            justify-content: center;
+        }
+ 
+        .contact-form input, .contact-form textarea {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--card-border);
+            padding: 0.85rem;
+            border-radius: 8px;
+            color: #fff;
+            outline: none;
+        }
+ 
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            background-image: url('127540764_1543314336058956_8888779226493901871_n.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 3.5rem 0;
+            text-align: center;
+            color: #fff;
+            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+        }
+ 
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+ 
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+ 
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+ 
+        @media (max-width: 991px) {
+            header { flex-direction: column; height: auto; gap: 1rem; padding: 1rem; }
+            .hero { flex-direction: column; text-align: center; }
+            .hero-text { max-width: 100%; align-items: center; }
+            .hero-buttons { align-items: center; }
+            .hero-slides { width: 90%; height: 250px; }
+            .grid-cards { grid-template-columns: 1fr; }
+            .initiative-grid { grid-template-columns: 1fr; height: auto; }
+            .education-grid { grid-template-columns: 1fr; height: auto; }
+            .tools-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
 </head>
-<body class="bg-gray-50 dark:bg-[#0d1117] text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
-
-    <div id="loader">
-        <div class="flex flex-col items-center">
-            <div class="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-            <p class="mt-4 text-blue-400 font-semibold text-sm tracking-widest animate-pulse">LOADING INTERFACE...</p>
-        </div>
-    </div>
-
-    <header class="bg-blue-900/95 border-b border-blue-800 text-white shadow-md sticky top-0 z-50 backdrop-blur-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center flex-wrap">
-            <div class="flex items-center space-x-4">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Emblem_of_Nepal.svg" alt="Nepal Emblem" class="h-12 w-12 filter drop-shadow">
-                <div>
-                    <h1 class="text-xl font-bold tracking-tight">Amit Joshi</h1>
-                    <p class="text-xs text-blue-200">Personal Utility Platform & Portfolio</p>
-                </div>
-            </div>
-            <nav class="hidden md:flex space-x-6 text-sm font-medium">
-                <a href="#home" class="hover:text-blue-300 transition-all">Home</a>
-                <a href="#education" class="hover:text-blue-300 transition-all">Education</a>
-                <a href="#initiative" class="hover:text-blue-300 transition-all">Initiative</a>
-                <a href="#tools" class="hover:text-blue-300 transition-all">Some Useful Tools</a>
-                <a href="#contact" class="hover:text-blue-300 transition-all">Contact</a>
-            </nav>
-            <div class="flex items-center space-x-4">
-                <button id="theme-toggle" class="p-2.5 rounded-full bg-blue-800 hover:bg-blue-700 focus:outline-none transition-all shadow-sm">
-                    <i class="fas fa-moon dark:hidden text-yellow-300"></i>
-                    <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
-                </button>
-                <span class="text-xs bg-blue-800 px-2.5 py-1 rounded-md font-mono border border-blue-600">V 1.1.2</span>
-            </div>
-        </div>
-    </header>
-
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-20">
-
-        <section id="home" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-white dark:bg-gray-900/40 p-8 rounded-3xl border border-gray-100 dark:border-gray-800/60 shadow-lg">
-            <div class="space-y-6">
-                <span class="text-xs font-semibold uppercase tracking-wider text-blue-500 bg-blue-50 dark:bg-blue-900/20 px-3 py-1 rounded-full">
-                    Welcome to my space
-                </span>
-                <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
-                    Hi, It's me Amit
-                </h2>
-                <p class="text-gray-600 dark:text-gray-400 max-w-lg leading-relaxed">
-                    Software Developer, Researcher, and Tech Enthusiast. Building utilities to make your life and workflows easier, bridging the gap between value and technology.
-                </p>
-                <div class="flex flex-wrap gap-4 items-center pt-4">
-                    <a href="https://github.com" class="rgb-btn bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-xl text-sm shadow-md flex items-center gap-2">
-                        <i class="fab fa-github"></i> Connect with me
-                    </a>
-                    <a href="#tools" class="rgb-btn bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 font-semibold py-3 px-6 rounded-xl text-sm hover:bg-gray-300 dark:hover:bg-gray-700 flex items-center gap-2">
-                        More &raquo;
-                    </a>
-                </div>
-            </div>
-
-            <div class="relative w-full h-[420px] rounded-2xl overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-700/50">
-                <div id="slider" class="w-full h-full relative">
-                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80" alt="Slider 1" class="slide-img w-full h-full object-cover">
-                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80" alt="Slider 2" class="slide-img w-full h-full object-cover hidden">
-                    <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1200&q=80" alt="Slider 3" class="slide-img w-full h-full object-cover hidden">
-                </div>
-                <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/60 text-white p-3 rounded-full hover:bg-black/80 backdrop-blur-sm"><i class="fas fa-chevron-left"></i></button>
-                <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/60 text-white p-3 rounded-full hover:bg-black/80 backdrop-blur-sm"><i class="fas fa-chevron-right"></i></button>
-            </div>
-        </section>
-
-        <section>
-            <h3 class="text-2xl font-bold mb-8 text-center md:text-left">My Social Media Profiles</h3>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="social-box bg-white dark:bg-gray-900/50 p-6 rounded-2xl shadow-md border border-gray-100 dark:border-gray-800/60 flex flex-col items-center justify-center text-center">
-                    <i class="fab fa-facebook text-4xl mb-4" style="color: #1877F2;"></i>
-                    <h4 class="font-bold mb-2 text-sm">Facebook</h4>
-                    <a href="https://facebook.com" class="text-xs text-blue-500 hover:underline">View Feed &raquo;</a>
-                </div>
-                <div class="social-box bg-white dark:bg-gray-900/50 p-6 rounded-2xl shadow-md border border-gray-100 dark:border-gray-800/60 flex flex-col items-center justify-center text-center">
-                    <i class="fab fa-instagram text-4xl mb-4" style="color: #E4405F;"></i>
-                    <h4 class="font-bold mb-2 text-sm">Instagram</h4>
-                    <a href="https://instagram.com" class="text-xs text-pink-500 hover:underline">View Feed &raquo;</a>
-                </div>
-                <div class="social-box bg-white dark:bg-gray-900/50 p-6 rounded-2xl shadow-md border border-gray-100 dark:border-gray-800/60 flex flex-col items-center justify-center text-center">
-                    <i class="fab fa-tiktok text-4xl mb-4" style="color: #000000;"></i>
-                    <h4 class="font-bold mb-2 text-sm">TikTok</h4>
-                    <a href="https://tiktok.com" class="text-xs text-gray-400 dark:text-gray-500 hover:underline">View Feed &raquo;</a>
-                </div>
-                <div class="social-box bg-white dark:bg-gray-900/50 p-6 rounded-2xl shadow-md border border-gray-100 dark:border-gray-800/60 flex flex-col items-center justify-center text-center">
-                    <i class="fab fa-twitter text-4xl mb-4" style="color: #1DA1F2;"></i>
-                    <h4 class="font-bold mb-2 text-sm">X Profile</h4>
-                    <a href="https://twitter.com" class="text-xs text-blue-400 hover:underline">View Profile &raquo;</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="initiative" class="bg-gradient-to-br from-blue-500/10 to-indigo-500/10 p-10 rounded-3xl border border-blue-500/20 shadow-sm">
-            <h3 class="text-2xl font-bold mb-6">My Initiative: Voice of Students (Voice of Students Shree Mahendra Ma Vi)</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div>
-                    <p class="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-                        Voice of Students aims to create a collaborative forum for student growth and community enhancement. We work on fostering a collaborative environment for our school.
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="https://www.facebook.com/vosmmss" target="_blank" class="rgb-btn bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-xl text-sm flex items-center gap-2">
-                            <i class="fab fa-facebook"></i> Follow Voice of Students in Facebook
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <div class="bg-white dark:bg-gray-900/50 p-6 rounded-2xl shadow-md border border-gray-200 dark:border-gray-800/60 h-72 flex flex-col justify-between">
-                        <div>
-                            <span class="text-xs bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 px-3 py-1 rounded-md">Facebook Page</span>
-                            <h4 class="font-bold mt-5 mb-2">Voice of Students Shree Mahendra Ma Vi</h4>
-                            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Latest updates, educational posts, and community discussions from our community initiative.</p>
-                        </div>
-                        <div class="border-t pt-4 border-gray-100 dark:border-gray-800 flex justify-between items-center">
-                            <span class="text-xs text-gray-400">Updated: May 2026</span>
-                            <a href="https://www.facebook.com/vosmmss" target="_blank" class="text-sm text-blue-500 hover:underline font-medium">Visit Page &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="education">
-            <h3 class="text-2xl font-bold mb-8 text-center md:text-left">My Education</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="edu-box bg-white dark:bg-gray-900/50 p-6 rounded-2xl shadow-md border border-gray-100 dark:border-gray-800/60 flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 bg-blue-50 dark:bg-blue-900/40 rounded-xl flex items-center justify-center text-blue-500 mb-6"><i class="fas fa-graduation-cap text-xl"></i></div>
-                        <h4 class="text-xl font-bold mb-3">BUPS Darchula</h4>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">Completed primary and secondary education foundation at BUPS, Darchula.</p>
-                    </div>
-                    <span class="text-xs text-gray-400 font-medium">Darchula, Nepal</span>
-                </div>
-                <div class="edu-box bg-white dark:bg-gray-900/50 p-6 rounded-2xl shadow-md border border-gray-100 dark:border-gray-800/60 flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 bg-indigo-50 dark:bg-indigo-900/40 rounded-xl flex items-center justify-center text-indigo-500 mb-6"><i class="fas fa-university text-xl"></i></div>
-                        <h4 class="text-xl font-bold mb-3">MMSS Darchula</h4>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">Higher secondary education with focused studies in the basic sciences & humanities.</p>
-                    </div>
-                    <span class="text-xs text-gray-400 font-medium">Darchula, Nepal</span>
-                </div>
-                <div class="edu-box bg-white dark:bg-gray-900/50 p-6 rounded-2xl shadow-md border border-gray-100 dark:border-gray-800/60 flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 bg-purple-50 dark:bg-purple-900/40 rounded-xl flex items-center justify-center text-purple-500 mb-6"><i class="fas fa-book-open text-xl"></i></div>
-                        <h4 class="text-xl font-bold mb-3">KBC</h4>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">Advanced degree course studies and professional training program at KBC.</p>
-                    </div>
-                    <span class="text-xs text-gray-400 font-medium">Nepal</span>
-                </div>
-            </div>
-        </section>
-
-        <section id="tools" class="bg-white dark:bg-gray-900/30 p-10 rounded-3xl border border-gray-200 dark:border-gray-800/60 shadow-md">
-            <h3 class="text-3xl font-bold mb-6">Some Useful Tools</h3>
-            
-            <div class="flex flex-wrap gap-4 mb-8 border-b border-gray-200 dark:border-gray-800 pb-4">
-                <button onclick="switchTab('pdf')" id="tab-pdf" class="tab-btn active px-4 py-2 font-semibold text-sm border-b-2 border-blue-500 text-blue-500 focus:outline-none">PDF Tools</button>
-                <button onclick="switchTab('qr')" id="tab-qr" class="tab-btn px-4 py-2 font-semibold text-sm border-b-2 border-transparent text-gray-500 hover:text-gray-300 focus:outline-none">QR Generator</button>
-                <button onclick="switchTab('compressor')" id="tab-compressor" class="tab-btn px-4 py-2 font-semibold text-sm border-b-2 border-transparent text-gray-500 hover:text-gray-300 focus:outline-none">Image Compressor</button>
-                <button onclick="switchTab('translator')" id="tab-translator" class="tab-btn px-4 py-2 font-semibold text-sm border-b-2 border-transparent text-gray-500 hover:text-gray-300 focus:outline-none">Translator & Converter</button>
-                <button onclick="switchTab('calendar')" id="tab-calendar" class="tab-btn px-4 py-2 font-semibold text-sm border-b-2 border-transparent text-gray-500 hover:text-gray-300 focus:outline-none">Calendar & Converter</button>
-            </div>
-
-            <div id="panel-pdf" class="tool-panel space-y-4">
-                <h4 class="font-bold text-lg text-blue-400">PDF Tools Hub</h4>
-                <p class="text-sm text-gray-500">Upload a PDF or image to convert, extract, or generate files.</p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="p-6 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 rounded-xl">
-                        <label class="block text-sm font-semibold mb-3">Convert PDF</label>
-                        <input type="file" class="block w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 mb-3">
-                        <select class="w-full p-2 border rounded-md text-sm bg-transparent border-gray-700">
-                            <option>Convert to Word</option>
-                            <option>Convert to JPG</option>
-                            <option>Convert to PNG</option>
-                            <option>Convert to TXT</option>
-                        </select>
-                        <button class="mt-4 w-full bg-blue-600 text-white text-sm py-2 rounded-md font-semibold">Convert</button>
-                    </div>
-                    <div class="p-6 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 rounded-xl">
-                        <label class="block text-sm font-semibold mb-3">Extract from PDF</label>
-                        <input type="file" class="block w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 mb-3">
-                        <select class="w-full p-2 border rounded-md text-sm bg-transparent border-gray-700">
-                            <option>Extract Text</option>
-                            <option>Extract Images</option>
-                            <option>Extract Pages</option>
-                        </select>
-                        <button class="mt-4 w-full bg-indigo-600 text-white text-sm py-2 rounded-md font-semibold">Extract</button>
-                    </div>
-                    <div class="p-6 bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 rounded-xl">
-                        <label class="block text-sm font-semibold mb-3">Generate PDF from Image</label>
-                        <input type="file" multiple class="block w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-purple-50 file:text-purple-700 hover:file:bg-purple-100 mb-4">
-                        <button class="w-full bg-purple-600 text-white text-sm py-2 rounded-md font-semibold">Generate PDF</button>
-                    </div>
-                </div>
-            </div>
-
-            <div id="panel-qr" class="tool-panel space-y-4 hidden">
-                <h4 class="font-bold text-lg text-green-400">QR Code Generator</h4>
-                <p class="text-sm text-gray-500">Enter any text or link to create a QR code instantly with custom elements.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                    <div>
-                        <textarea id="qr-input" class="w-full p-4 border rounded-xl bg-transparent border-gray-700 text-sm h-32 focus:border-green-500 focus:outline-none" placeholder="Paste URL, text, phone number, or WiFi details..."></textarea>
-                        <button onclick="generateQRCode()" class="mt-4 w-full bg-green-600 text-white font-semibold py-3 px-6 rounded-xl hover:bg-green-700">Generate QR Code</button>
-                    </div>
-                    <div class="flex flex-col items-center justify-center p-6 bg-gray-50 dark:bg-gray-900/30 rounded-xl border border-gray-200 dark:border-gray-800 h-64">
-                        <div id="qr-preview" class="p-2 bg-white flex items-center justify-center border border-gray-200 rounded-lg shadow-sm w-44 h-44 text-gray-500 text-center text-xs">
-                            <i class="fas fa-qrcode text-3xl mb-3 text-gray-300"></i><br>Generated QR Code will appear here
-                        </div>
-                        <div class="mt-5 flex gap-3">
-                            <button class="text-xs bg-gray-800 text-white px-3 py-1.5 rounded-md">Download PNG</button>
-                            <button class="text-xs bg-gray-800 text-white px-3 py-1.5 rounded-md">Download SVG</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="panel-compressor" class="tool-panel space-y-4 hidden">
-                <h4 class="font-bold text-lg text-purple-400">Image Compressor</h4>
-                <p class="text-sm text-gray-500">Compress or resize images without losing quality.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-gray-50 dark:bg-gray-900/40 p-6 rounded-xl border border-gray-700/60">
-                        <label class="block text-sm font-semibold mb-3">Upload Image</label>
-                        <input type="file" id="img-input" class="block w-full text-sm mb-4">
-                        <label class="block text-sm font-semibold mb-2">Target Size (KB)</label>
-                        <input type="number" id="target-size" class="w-full p-2.5 rounded-md bg-transparent border border-gray-700 text-sm mb-6" placeholder="e.g. 500">
-                        <button onclick="compressImage()" class="w-full bg-purple-600 text-white text-sm py-2 rounded-md font-semibold">Compress Image</button>
-                    </div>
-                    <div class="bg-gray-50 dark:bg-gray-900/40 p-6 rounded-xl border border-gray-700/60 flex flex-col items-center justify-center text-center">
-                        <div id="compress-preview" class="w-44 h-44 bg-gray-100 dark:bg-gray-800 border border-gray-700 rounded-xl flex items-center justify-center text-xs text-gray-400 mb-4">
-                            Image Preview
-                        </div>
-                        <p class="text-sm font-semibold mt-2" id="compressed-stats">Stats: No image processed yet</p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="panel-translator" class="tool-panel space-y-6 hidden">
-                <h4 class="font-bold text-lg text-yellow-400">Language Translator & Converter</h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-gray-50 dark:bg-gray-900/50 p-6 rounded-xl border border-gray-700/60 space-y-4">
-                        <label class="block text-sm font-semibold">Roman English &rarr; Unicode Nepali</label>
-                        <textarea id="rom-nep" class="w-full p-3 rounded-lg bg-transparent border border-gray-700 text-sm h-28 focus:outline-none focus:border-yellow-500" placeholder="Type in Roman, e.g. ma nepali ho" oninput="transliterate()"></textarea>
-                        <textarea id="unicode-nep" class="w-full p-3 rounded-lg bg-transparent border border-gray-700 text-sm h-28" placeholder="Unicode Output" readonly></textarea>
-                    </div>
-                    <div class="bg-gray-50 dark:bg-gray-900/50 p-6 rounded-xl border border-gray-700/60 space-y-4">
-                        <label class="block text-sm font-semibold">English &harr; Nepali Translator (NMT)</label>
-                        <textarea id="nmt-input" class="w-full p-3 rounded-lg bg-transparent border border-gray-700 text-sm h-28 focus:outline-none focus:border-yellow-500" placeholder="Enter English text..."></textarea>
-                        <button onclick="translateText()" class="w-full bg-yellow-600 text-black font-semibold text-sm py-2 rounded-lg">Translate</button>
-                        <textarea id="nmt-output" class="w-full p-3 rounded-lg bg-transparent border border-gray-700 text-sm h-28" placeholder="Translation Output" readonly></textarea>
-                    </div>
-                </div>
-            </div>
-
-            <div id="panel-calendar" class="tool-panel space-y-6 hidden">
-                <h4 class="font-bold text-lg text-orange-400">Nepali (BS) & English (AD) Calendars</h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-gray-50 dark:bg-gray-900/40 p-6 rounded-xl border border-gray-700/60 flex flex-col justify-between">
-                        <div>
-                            <h5 class="font-bold mb-4">Nepali Date Picker & Conversion</h5>
-                            <label class="block text-sm text-gray-400 mb-2">Select Nepali Date (BS)</label>
-                            <input type="text" id="nepali-date" class="w-full p-2.5 border border-gray-700 bg-transparent rounded-lg mb-6" placeholder="Select BS date">
-                            <label class="block text-sm text-gray-400 mb-2">Converted English Date (AD)</label>
-                            <input type="text" id="english-date" class="w-full p-2.5 border border-gray-700 bg-transparent rounded-lg" readonly>
-                        </div>
-                        <div class="mt-4 text-xs text-gray-500">
-                            <i class="fas fa-info-circle text-orange-500"></i> Integrates Bikram Sambat library.
-                        </div>
-                    </div>
-                    <div class="bg-gray-50 dark:bg-gray-900/40 p-6 rounded-xl border border-gray-700/60">
-                        <h5 class="font-bold mb-4">Calendar Grid & Data</h5>
-                        <div id="calendar" class="text-sm overflow-x-auto"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="grid grid-cols-1 md:grid-cols-2 gap-12 bg-white dark:bg-gray-900/40 p-10 rounded-3xl border border-gray-200 dark:border-gray-800/60 shadow-md">
-            <div>
-                <h3 class="text-2xl font-bold mb-4">Contact Me</h3>
-                <p class="text-sm text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-                    Get in touch with me for research, tools, or development inquiries. I will get back to you shortly.
-                </p>
-                <form class="space-y-4" onsubmit="event.preventDefault(); alert('Message Sent!');">
-                    <div>
-                        <label class="block text-xs font-semibold mb-1 text-gray-500">Name</label>
-                        <input type="text" class="w-full p-3 rounded-xl bg-transparent border border-gray-700 text-sm focus:outline-none focus:border-blue-500" placeholder="Your Name" required>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold mb-1 text-gray-500">Email</label>
-                        <input type="email" class="w-full p-3 rounded-xl bg-transparent border border-gray-700 text-sm focus:outline-none focus:border-blue-500" placeholder="name@example.com" required>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold mb-1 text-gray-500">Message</label>
-                        <textarea class="w-full p-3 rounded-xl bg-transparent border border-gray-700 text-sm h-32 focus:outline-none focus:border-blue-500" placeholder="Write your message..." required></textarea>
-                    </div>
-                    <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-semibold text-sm shadow-md">Send Message</button>
-                </form>
-            </div>
-
-            <div class="flex flex-col justify-center">
-                <h4 class="font-bold text-xl mb-6">About the Portfolio Creator</h4>
-                <div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-800">
-                    <table class="w-full text-sm text-left">
-                        <tbody>
-                            <tr class="border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/40">
-                                <th class="p-4 font-semibold text-gray-500">Name</th>
-                                <td class="p-4">Amit Joshi</td>
-                            </tr>
-                            <tr>
-                                <th class="p-4 font-semibold text-gray-500 border-r border-gray-200 dark:border-gray-800">Profession</th>
-                                <td class="p-4">Tech Creator, Student Initiative</td>
-                            </tr>
-                            <tr class="border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/40">
-                                <th class="p-4 font-semibold text-gray-500 border-r border-gray-200 dark:border-gray-800">Office Location</th>
-                                <td class="p-4">Darchula / Kathmandu, Nepal</td>
-                            </tr>
-                            <tr class="border-t border-gray-200 dark:border-gray-800">
-                                <th class="p-4 font-semibold text-gray-500 border-r border-gray-200 dark:border-gray-800">Email</th>
-                                <td class="p-4">contact@amitjoshi.com</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="bg-blue-900/95 border-t border-blue-800 text-white mt-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-                <h4 class="text-sm font-semibold uppercase tracking-wider text-blue-300 mb-4">Office Hours</h4>
-                <ul class="space-y-2 text-xs text-blue-100 leading-relaxed">
-                    <li class="flex justify-between"><span>Winter (Kartik 16 to Magh 15)</span> <span>09:00 - 16:00</span></li>
-                    <li class="flex justify-between"><span>Summer (Magh 16 to Kartik 15)</span> <span>09:00 - 17:00</span></li>
-                    <li class="text-blue-300 mt-4 block">Days: Sunday - Friday</li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-sm font-semibold uppercase tracking-wider text-blue-300 mb-4">Useful Links</h4>
-                <ul class="space-y-2 text-xs text-blue-200">
-                    <li><a href="#home" class="hover:underline">Home</a></li>
-                    <li><a href="#initiative" class="hover:underline">Voice of Students</a></li>
-                    <li><a href="#education" class="hover:underline">My Education</a></li>
-                    <li><a href="#tools" class="hover:underline">Some Useful Tools</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-sm font-semibold uppercase tracking-wider text-blue-300 mb-4">Contact & Support</h4>
-                <div class="flex space-x-4 mb-4 text-sm">
-                    <a href="https://facebook.com" class="hover:text-blue-400"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://tiktok.com" class="hover:text-blue-400"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://instagram.com" class="hover:text-blue-400"><i class="fab fa-instagram"></i></a>
-                    <a href="https://linkedin.com" class="hover:text-blue-400"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                <p class="text-xs text-blue-200 leading-relaxed">connectwithpm@opmcm.gov.np</p>
-                <p class="text-xs text-blue-200 leading-relaxed mt-1">Singha Durbar, Kathmandu, Nepal</p>
-                <p class="text-xs text-blue-200 leading-relaxed mt-1">+977-9851445971</p>
-            </div>
-        </div>
-        <div class="border-t border-blue-950 py-6 text-center text-xs text-blue-300">
-            &copy; 2026 Amit Joshi, All rights reserved.
-        </div>
-    </footer>
-
-    <script>
-        // Page Loading Animation
-        window.addEventListener('load', () => {
-            const loader = document.getElementById('loader');
-            loader.style.opacity = '0';
-            setTimeout(() => {
-                loader.style.display = 'none';
-            }, 600);
-        });
-
-        // Theme Toggle (Light/Dark)
-        const themeToggle = document.getElementById('theme-toggle');
-        const html = document.documentElement;
-
-        themeToggle.addEventListener('click', () => {
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-            } else {
-                html.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-            }
-        });
-
-        // Slider Functionality
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('#slider img');
-
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                if (i === index) {
-                    slide.classList.remove('hidden');
-                } else {
-                    slide.classList.add('hidden');
-                }
-            });
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        }
-
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            showSlide(currentSlide);
-        }
-        setInterval(nextSlide, 4000); // Change image every 4 seconds
-
-        // Tab Switching in Tools
-        function switchTab(name) {
-            document.querySelectorAll('.tool-panel').forEach(panel => panel.classList.add('hidden'));
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('border-blue-500', 'text-blue-500');
-                btn.classList.add('border-transparent', 'text-gray-500');
-            });
-            document.getElementById(`panel-${name}`).classList.remove('hidden');
-            const btn = document.getElementById(`tab-${name}`);
-            btn.classList.add('border-blue-500', 'text-blue-500');
-            btn.classList.remove('border-transparent', 'text-gray-500');
-        }
-
-        // Tools Handlers
-        function generateQRCode() {
-            const input = document.getElementById('qr-input').value || 'https://amitjoshi.com';
-            const preview = document.getElementById('qr-preview');
-            preview.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(input)}" alt="QR Code" class="w-36 h-36 rounded-md">`;
-        }
-
-        function compressImage() {
-            const target = document.getElementById('target-size').value || 500;
-            const stats = document.getElementById('compressed-stats');
-            const preview = document.getElementById('compress-preview');
-            
-            preview.innerHTML = `<div class="w-20 h-20 bg-green-500/10 text-green-500 rounded-full flex flex-col items-center justify-center font-bold text-xs"><i class="fas fa-check text-xl mb-1"></i> Compressed</div>`;
-            stats.innerHTML = `Original: ~2.4 MB<br>Compressed Target: ~${target} KB (Approx 78% reduced)`;
-        }
-
-        function transliterate() {
-            const romNep = document.getElementById('rom-nep').value;
-            const map = {
-                'ma': 'म', 'nepali': 'नेपाली', 'ho': 'हो',
-                'mero': 'मेरो', 'naam': 'नाम', 'namaste': 'नमस्ते'
-            };
-            let out = romNep;
-            for (let k in map) {
-                out = out.replace(new RegExp(k, 'gi'), map[k]);
-            }
-            document.getElementById('unicode-nep').value = out;
-        }
-
-        function translateText() {
-            const input = document.getElementById('nmt-input').value;
-            if (input.toLowerCase().includes('hello')) {
-                document.getElementById('nmt-output').value = "नमस्ते";
-            } else if (input.toLowerCase().includes('i am going home')) {
-                document.getElementById('nmt-output').value = "म घर जाँदैछु";
-            } else {
-                document.getElementById('nmt-output').value = "म घर जाँदैछु (Sample Output for neural translation)";
-            }
-        }
-
-        // Initialize Calendar
-        $("#nepali-date").nepaliDatePicker({
-            onChange: function() {
-                var bsDate = $("#nepali-date").val();
-                document.getElementById("english-date").value = "2026-05-01 (AD) for " + bsDate;
-            }
-        });
-
-        // Generate Calendar Grid
-        function generateCalendar(year, month) {
-            const container = document.getElementById("calendar");
-            container.innerHTML = "";
-            let date = new Date(year, month - 1, 1);
-            let table = "<table class='border-collapse border border-gray-700/60 text-center w-full'><tr>";
-
-            const days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-            days.forEach(d => table += "<th class='border border-gray-700/60 p-2 text-xs bg-blue-900/30 text-blue-400 font-semibold'>"+d+"</th>");
-            table += "</tr><tr>";
-
-            for (let i = 0; i < date.getDay(); i++) {
-                table += "<td class='border border-gray-700/60 p-2'></td>";
-            }
-
-            while (date.getMonth() === month - 1) {
-                let adDate = date.toISOString().split("T")[0];
-                let bsDate = BikramSambat.fromAD(adDate);
-
-                table += `<td class='border border-gray-700/60 p-2 text-[11px] leading-tight'>
-                            <span class='font-bold text-gray-300'>${date.getDate()}</span><br>
-                            <span class='text-orange-400 text-[10px]'>${bsDate.year}-${bsDate.month}-${bsDate.day}</span>
-                          </td>`;
-
-                if (date.getDay() === 6) table += "</tr><tr>";
-                date.setDate(date.getDate() + 1);
-            }
-            table += "</tr></table>";
-            container.innerHTML = table;
-        }
-        generateCalendar(2026, 5); // Initialization for May 2026
-    </script>
+<body>
+ 
+    <canvas id="particle-canvas"></canvas>
+ 
+    <div class="container">
+        <header>
+            <a href="javascript:location.reload()" class="logo">
+                <img src="WhatsApp Image 2026-03-28 at 08.46.55.jpeg" alt="Amit Joshi" class="logo-img">
+                Amit Joshi
+            </a>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#social">Social Profiles</a>
+                <a href="#initiative">Initiative</a>
+                <a href="#edu">Education</a>
+                <a href="#tools">Tools & Calendar</a>
+                <a href="#interests">Interests</a>
+                <a href="#contact">Contact Me</a>
+            </nav>
+            <div class="social-icons-header">
+                <a href="https://www.facebook.com/share/1JUJKNUqc9/" target="_blank"><i class="fa-brands fa-facebook" style="color: #1877f2;"></i></a>
+                <a href="https://www.instagram.com/_amitjoc?igsh=MXZyeTJzYWd4Ym9haA==" target="_blank"><i class="fa-brands fa-instagram" style="color: #E1306C;"></i></a>
+                <a href="https://www.tiktok.com/@amitjoc_?_r=1&_t=ZS-95zUvLeiMb7" target="_blank"><i class="fa-brands fa-tiktok" style="color: #000;"></i></a>
+                <a href="mailto:amitjosee28@gmail.com"><i class="fa-solid fa-envelope" style="color: #ea4335;"></i></a>
+                <a href="https://wa.me/9746241860" target="_blank"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i></a>
+                <img src="Flag_of_Nepal.gif" alt="Nepal Flag" class="nepali-flag">
+                <span class="date-time" id="datetime"></span>
+            </div>
+        </header>
+ 
+        <section id="home" class="page-section hero">
+            <div class="hero-text">
+                <div class="hero-avatar">
+                    <img src="WhatsApp Image 2026-03-28 at 08.46.55.jpeg" alt="Amit Joshi">
+                </div>
+                <h1>Hi, I'm <span class="cursive-name">Amit Joshi</span></h1>
+                <p>Building simple, powerful digital systems from Darchula, Nepal. I focus on practical web development, Git-based websites, and modern networking systems.</p>
+                <div class="hero-buttons">
+                    <a href="https://wa.me/9746241860" class="btn btn-primary" target="_blank">Connect with me on WhatsApp</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                </div>
+            </div>
+            <div class="hero-slides"></div>
+        </section>
+ 
+        <section id="social" class="page-section">
+            <h2 class="section-title">My Social Media Profiles</h2>
+            <div class="grid-cards">
+                <div class="card">
+                    <div class="card-title">Facebook</div>
+                    <div class="card-desc">Personal profile and updates from Amit Joshi. Get in touch with daily updates and real-life connections.</div>
+                    <a href="https://www.facebook.com/share/1JUJKNUqc9/" target="_blank" class="card-link">View Profile &rarr;</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">Instagram</div>
+                    <div class="card-desc">Follow my visual updates and personal life, daily stories, and photography.</div>
+                    <a href="https://www.instagram.com/_amitjoc?igsh=MXZyeTJzYWd4Ym9haA==" target="_blank" class="card-link">View Profile &rarr;</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">TikTok</div>
+                    <div class="card-desc">Short-form tech and hobby experiments. Videos exploring new projects, electronics, and digital life.</div>
+                    <a href="https://www.tiktok.com/@amitjoc_?_r=1&_t=ZS-95zUvLeiMb7" target="_blank" class="card-link">View Profile &rarr;</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">Email</div>
+                    <div class="card-desc">Direct line for business and correspondence. You can reach out directly for collaborations.</div>
+                    <a href="mailto:amitjosee28@gmail.com" class="card-link">Contact &rarr;</a>
+                </div>
+            </div>
+        </section>
+ 
+        <section id="initiative" class="page-section">
+            <h2 class="section-title">My Initiative</h2>
+            <div class="initiative-grid">
+                <div>
+                    <h3 style="color: #ffffff; margin-bottom: 0.8rem;">Voice of Students श्री महेन्द्र मावि</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+                        This initiative focuses on empowering the student community at Shree Mahendra Higher Secondary School. We facilitate communication, announcements, and peer support. We also provide useful online utilities and materials.
+                    </p>
+                    <a href="https://www.facebook.com/share/1QYNP2ZJPr/" target="_blank" class="btn btn-primary">Connect with VOS</a>
+                </div>
+                <div class="fb-embed-box">
+                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1QYNP2ZJPr%2F&tabs=timeline&width=500&height=380&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="100%" height="350" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"></iframe>
+                </div>
+            </div>
+        </section>
+ 
+        <section id="edu" class="page-section">
+            <h2 class="section-title">My Education</h2>
+            <div class="education-grid">
+                <div class="edu-card">
+                    <h3 style="color: var(--accent-color);">BUPS Darchula</h3>
+                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Early Secondary Education</p>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 1rem;">Studying subjects including fundamental mathematics, science, and English to build a strong base for my tech skills.</p>
+                </div>
+                <div class="edu-card">
+                    <h3 style="color: var(--accent-color);">MMSS Darchula</h3>
+                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Higher Secondary Education</p>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 1rem;">Focused on science and mathematics, developing the analytical problem-solving skills applied in web and hardware development.</p>
+                </div>
+                <div class="edu-card">
+                    <h3 style="color: var(--accent-color);">KBC</h3>
+                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Undergraduate Studies</p>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 1rem;">Pursuing a Bachelor's degree in technical and communication studies for better management and digital systems.</p>
+                </div>
+            </div>
+        </section>
+ 
+        <section id="tools" class="page-section">
+            <h2 class="section-title">Tools Session & Calendar</h2>
+            <div class="tools-grid">
+                <div class="tool-card" onclick="openToolModal('pdfConverter')">
+                    <h4>PDF Tools</h4>
+                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Convert or extract PDFs</p>
+                </div>
+                <div class="tool-card" onclick="openToolModal('qrGen')">
+                    <h4>QR Generator</h4>
+                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Build quick QR codes</p>
+                </div>
+                <div class="tool-card" onclick="openToolModal('imgCompressor')">
+                    <h4>Image Compressor</h4>
+                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Reduce image sizes</p>
+                </div>
+                <div class="tool-card" onclick="openToolModal('translator')">
+                    <h4>Translator / Convertors</h4>
+                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Translators & Preeti to Unicode</p>
+                </div>
+            </div>
+ 
+            <h3 style="color: #ffffff; margin: 2rem 0 1rem 0;">Regional Calendars</h3>
+            <div class="calendar-box">
+                <div>
+                    <h3 style="color: var(--accent-color); margin-bottom: 0.5rem;">Nepali Calendar</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;" id="np-date">Loading current calendar data...</p>
+                </div>
+                <div>
+                    <h3 style="color: var(--accent-purple); margin-bottom: 0.5rem;">Indian Calendar</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;" id="in-date">Loading local standard dates...</p>
+                </div>
+            </div>
+        </section>
+ 
+        <section id="interests" class="page-section">
+            <h2 class="section-title">Interests & Hobby</h2>
+            <div class="interest-grid">
+                <div class="interest-card">
+                    <i class="fa-solid fa-pen-nib"></i>
+                    <h3>Design/Editing</h3>
+                    <p>Creating beautiful banners, posters, photo layers, and captions with aesthetic precision.</p>
+                </div>
+                <div class="interest-card">
+                    <i class="fa-solid fa-users"></i>
+                    <h3>Community Work</h3>
+                    <p>Directing and operating student initiatives like the "Voice of Students" community.</p>
+                </div>
+                <div class="interest-card">
+                    <i class="fa-solid fa-microchip"></i>
+                    <h3>Tech Tinkering</h3>
+                    <p>Working on Arduino boards, retro clocks, set-top boxes, and network-related repairs.</p>
+                </div>
+                <div class="interest-card">
+                    <i class="fa-solid fa-pencil"></i>
+                    <h3>Content Writing</h3>
+                    <p>Writing notices, captions, articles, and notices for social pages.</p>
+                </div>
+            </div>
+        </section>
+ 
+        <section id="contact" class="page-section">
+            <h2 class="section-title">Contact Me</h2>
+            <form class="contact-form" action="https://formspree.io/f/xyzgqgwa" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required class="form-control">
+                <input type="email" name="email" placeholder="Your Email" required class="form-control">
+                <textarea name="message" rows="5" placeholder="Type message..." required class="form-control"></textarea>
+                <button type="submit" class="btn btn-primary" style="margin: 0 auto; width: auto;">Send Message</button>
+            </form>
+        </section>
+ 
+        <footer>
+            <div class="footer-links">
+                <a href="#social">Social Media Feed</a>
+                <a href="#">Download Documents</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms and Conditions</a>
+            </div>
+            <div>
+                &copy; 2026 Amit Joshi. Designed and built with a digital builder mindset.
+            </div>
+        </footer>
+    </div>
+ 
+    <div id="toolModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeToolModal()">&times;</span>
+            <div id="modal-body-content">
+                </div>
+        </div>
+    </div>
+ 
+    <script>
+        // Set date and time in AD & BS
+        function updateDateTime() {
+            const now = new Date();
+            
+            // Generate basic AD & BS Conversion logic for 2026
+            const npDate = new Date(now.getTime());
+            
+            document.getElementById('datetime').innerText = now.toLocaleString();
+            document.getElementById('np-date').innerText = `Current Date (BS): 2083 Jestha | Local Time Events Calendar Active`;
+            document.getElementById('in-date').innerText = `Current Date (AD): ${now.toDateString()} | Standard Holidays Active`;
+        }
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
+ 
+        // Modal Utilities
+        function openToolModal(type) {
+            const modal = document.getElementById('toolModal');
+            const content = document.getElementById('modal-body-content');
+            
+            if (type === 'pdfConverter') {
+                content.innerHTML = `
+                    <h3>PDF Tools Hub</h3>
+                    <p>Merge, compress, or convert documents below.</p>
+                    <input type="file" class="form-control" accept=".pdf" />
+                    <button class="btn btn-primary" style="margin-top: 1rem;">Extract/Convert PDF</button>
+                `;
+            } else if (type === 'qrGen') {
+                content.innerHTML = `
+                    <h3>QR Code Generator</h3>
+                    <p>Enter text or link to make a QR Code</p>
+                    <input type="text" class="form-control" placeholder="Enter Text or Link" />
+                    <button class="btn btn-primary" style="margin-top: 1rem;">Generate QR</button>
+                `;
+            } else if (type === 'imgCompressor') {
+                content.innerHTML = `
+                    <h3>Image Compressor</h3>
+                    <p>Upload a large image and compress</p>
+                    <input type="file" class="form-control" accept="image/*" />
+                    <button class="btn btn-primary" style="margin-top: 1rem;">Compress Image</button>
+                `;
+            } else if (type === 'translator') {
+                content.innerHTML = `
+                    <h3>Language Translator & Convertor</h3>
+                    <div class="translator-row">
+                        <div>
+                            <h4>Preeti to Unicode</h4>
+                            <textarea id="p-input" class="translate-area" placeholder="Enter Preeti text..."></textarea>
+                            <button class="btn btn-secondary" onclick="convertPreetiToUnicode()">Convert to Unicode</button>
+                        </div>
+                        <div>
+                            <h4>Unicode to Preeti</h4>
+                            <textarea id="u-input" class="translate-area" placeholder="Enter Unicode text..."></textarea>
+                            <button class="btn btn-secondary" onclick="convertUnicodeToPreeti()">Convert to Preeti</button>
+                        </div>
+                    </div>
+                    
+                    <h4 style="margin-top: 1.5rem;">English to Nepali Dictionary & Translation</h4>
+                    <div class="translator-row">
+                        <div>
+                            <textarea id="en-input" class="translate-area" placeholder="Write in English..."></textarea>
+                        </div>
+                        <div>
+                            <textarea id="np-output" class="translate-area" placeholder="Nepali Translation..." readonly></textarea>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="translateText()">Translate</button>
+                    <button class="icon-btn" onclick="startSpeechRecognition()"><i class="fa-solid fa-microphone"></i> Click to Speak</button>
+                `;
+            }
+            modal.style.display = 'block';
+        }
+ 
+        function closeToolModal() {
+            document.getElementById('toolModal').style.display = 'none';
+        }
+ 
+        window.onclick = function(event) {
+            const modal = document.getElementById('toolModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+ 
+        // Translation Functionality Mocking for UI
+        function translateText() {
+            const val = document.getElementById('en-input').value.toLowerCase();
+            const dict = {
+                "hello": "नमस्ते",
+                "good morning": "शुभ प्रभात",
+                "how are you?": "तपाईंलाई कस्तो छ?",
+                "thank you": "धन्यवाद",
+                "nepal": "नेपाल",
+                "darchula": "दार्चुला",
+                "my name": "मेरो नाम"
+            };
+            document.getElementById('np-output').value = dict[val] || "अनुवाद उपलब्ध छैन (Translation not available)";
+        }
+ 
+        function startSpeechRecognition() {
+            if ('webkitSpeechRecognition' in window) {
+                const recognition = new webkitSpeechRecognition();
+                recognition.lang = 'ne-NP';
+                recognition.onresult = function(event) {
+                    const text = event.results[0][0].transcript;
+                    document.getElementById('en-input').value = text;
+                };
+                recognition.start();
+            } else {
+                alert("Speech recognition not supported in this browser.");
+            }
+        }
+ 
+        function convertPreetiToUnicode() {
+            // Simplified mocking / sample conversion mechanism
+            let str = document.getElementById('p-input').value;
+            document.getElementById('u-input').value = str.split("").reverse().join(""); 
+        }
+ 
+        function convertUnicodeToPreeti() {
+            let str = document.getElementById('u-input').value;
+            document.getElementById('p-input').value = str.split("").reverse().join(""); 
+        }
+ 
+        // Particle Network Background
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+ 
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+ 
+        let particlesArray = [];
+        const numberOfParticles = 80;
+ 
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() * 0.8) - 0.4;
+                this.speedY = (Math.random() * 0.8) - 0.4;
+                this.color = (Math.random() > 0.5) ? 'rgba(0, 240, 255, 0.4)' : 'rgba(168, 85, 247, 0.3)';
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+ 
+                if (this.x < 0 || this.x > canvas.width) this.speedX = -this.speedX;
+                if (this.y < 0 || this.y > canvas.height) this.speedY = -this.speedY;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+ 
+        function init() {
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+ 
+        function connect() {
+            let opacityValue = 1;
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
+                        + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                    if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+                        opacityValue = 1 - (distance / 20000);
+                        ctx.strokeStyle = `rgba(0, 240, 255, ${opacityValue * 0.15})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+ 
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+            connect();
+            requestAnimationFrame(animate);
+        }
+ 
+        window.addEventListener('resize', function() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particlesArray = [];
+            init();
+        });
+ 
+        init();
+        animate();
+    </script>
 </body>
 </html>
