@@ -1,220 +1,181 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amit Joshi </title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="https://unpkg.com/nepali-datepicker-reactjs/dist/index.css"/>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://unpkg.com/nepali-date-picker/dist/nepaliDatePicker.min.js"></script>
-    <script src="https://unpkg.com/bikram-sambat-js"></script>
+    <title>Amit Joshi</title>
 
-    <style>
-        :root {
-            --bg-color: #050a1a;
-            --card-bg: rgba(255, 255, 255, 0.04);
-            --card-border: rgba(255, 255, 255, 0.1);
-            --text-primary: #f3f4f6;
-            --text-secondary: #9ca3af;
-            --accent-color: #00f0ff;
-            --accent-purple: #a855f7;
-            --accent-glow: rgba(0, 240, 255, 0.25);
-        }
+```
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+<style>
+    :root {
+        --bg-color: #050a1a;
+        --text-primary: #f3f4f6;
+        --text-secondary: #9ca3af;
+        --accent-color: #00f0ff;
+        --card-border: rgba(255,255,255,0.1);
+    }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-            position: relative;
-        }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        /* Particle Network Background */
-        #particle-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            pointer-events: none;
-        }
+    body {
+        font-family: 'Inter', sans-serif;
+        background: var(--bg-color);
+        color: var(--text-primary);
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
+    /* 🔥 FULL WIDTH HEADER FIX */
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
 
-        /* Header */
+        width: 100vw;
+        left: 50%;
+        transform: translateX(-50%);
+
+        height: 100px;
+        min-height: 100px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 0 2rem;
+
+        background: linear-gradient(
+            rgba(5,10,26,0.85),
+            rgba(5,10,26,0.85)
+        ),
+        url('https://images.unsplash.com/photo-1506744038136-46273834b3fb');
+
+        background-size: cover;
+        background-position: center;
+
+        border-bottom: 1px solid var(--card-border);
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+        font-size: 1.2rem;
+    }
+
+    .logo img {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        border: 2px solid var(--accent-color);
+    }
+
+    nav {
+        display: flex;
+        gap: 20px;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 0.9rem;
+        transition: 0.3s;
+    }
+
+    nav a:hover {
+        color: var(--accent-color);
+    }
+
+    .search-box {
+        position: relative;
+    }
+
+    .search-box input {
+        padding: 6px 10px 6px 28px;
+        background: rgba(0,0,0,0.5);
+        border: 1px solid var(--card-border);
+        border-radius: 6px;
+        color: white;
+        outline: none;
+    }
+
+    .search-box i {
+        position: absolute;
+        left: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-secondary);
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 2rem;
+    }
+
+    .section {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
         header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.6rem 1.5rem;
-            background: linear-gradient(rgba(5, 10, 26, 0.85), rgba(5, 10, 26, 0.85)), url('127540764_1543314336058956_8888779226493901871_n.jpg');
-            background-size: cover;
-            background-position: center;
-            border-bottom: 1px solid var(--card-border);
-            height: 100px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            width: 100%;
-            left: 0;
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .logo {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #ffffff;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-
-        .logo-img {
-            width: 44px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 1px solid var(--accent-color);
-        }
-
-        .logo-title {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.2;
-        }
-
-        .logo-title span:first-child {
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: #ffffff;
-        }
-
-        .logo-title span:last-child {
-            font-size: 0.75rem;
-            color: var(--accent-color);
-            text-decoration: underline;
-            cursor: pointer;
-        }
-
-        .social-icons-header {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        .social-icons-header a {
-            font-size: 1.35rem;
-            color: #fff;
-            text-decoration: none;
-            transition: transform 0.2s;
-        }
-
-        .social-icons-header a:hover {
-            transform: scale(1.15);
-        }
-
-   
-
-        .nepali-time {
-            font-size: 0.78rem;
-            color: var(--accent-color);
-            margin-left: 0.4rem;
-            animation: rgb-flash 3s infinite alternate;
-            font-weight: 600;
-        }
-
-        @keyframes rgb-flash {
-            0% { color: #00f0ff; text-shadow: 0 0 5px rgba(0,240,255,0.4); }
-            50% { color: #a855f7; text-shadow: 0 0 5px rgba(168,85,247,0.4); }
-            100% { color: #ea4335; text-shadow: 0 0 5px rgba(234,67,53,0.4); }
+            height: 80px;
+            padding: 0 1rem;
         }
 
         nav {
-            display: flex;
-            gap: 1.1rem;
-            align-items: center;
+            display: none;
         }
+    }
+</style>
+```
 
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.85rem;
-            transition: color 0.2s ease;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
-        }
+</head>
 
-        nav a:hover {
-            color: var(--accent-color);
-        }
+<body>
 
-        .search-container {
-            position: relative;
-            margin-left: 0.5rem;
-        }
+<!-- HEADER -->
 
-        .search-bar {
-            padding: 0.4rem 0.8rem 0.4rem 1.8rem;
-            border-radius: 6px;
-            border: 1px solid var(--card-border);
-            background: rgba(0,0,0,0.5);
-            color: #fff;
-            font-size: 0.8rem;
-            width: 150px;
-            outline: none;
-            transition: width 0.3s ease;
-        }
+<header>
+    <div class="logo">
+        <img src="https://via.placeholder.com/150" alt="logo">
+        Amit Joshi
+    </div>
 
-        .search-bar:focus {
-            width: 180px;
-            border-color: var(--accent-color);
-        }
+```
+<nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Projects</a>
+    <a href="#">Contact</a>
+</nav>
 
-        .search-container i {
-            position: absolute;
-            left: 8px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-        }
-  .nepali-flag {
-            width: 45px;
-            height: 30px;
-            margin-left: 0.4rem;
-       }
-      
-        /* Full Height Pages */
-        .page-section {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 4rem 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-        }
+<div class="search-box">
+    <i class="fas fa-search"></i>
+    <input type="text" placeholder="Search...">
+</div>
+```
+
+</header>
+
+<!-- CONTENT -->
+
+
 
         /* Home Page */
         .hero {
