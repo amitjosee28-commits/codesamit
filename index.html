@@ -229,6 +229,7 @@
         /* Home Page */
         .hero {
             display: flex;
+            flex-direction: row;
             justify-content: space-between;
             align-items: center;
             gap: 3rem;
@@ -236,6 +237,7 @@
         }
 
         .hero-text {
+            flex: 1;
             max-width: 550px;
             display: flex;
             flex-direction: column;
@@ -277,23 +279,17 @@
             align-items: center;
         }
 
+        /* FIXED: Hero image box — full cover, no inner elements */
         .hero-slides {
             width: 420px;
-            height: 400px;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            box-shadow: 0 0 30px rgba(168, 85, 247, 0.15);
+            height: 500px;
+            border: 2px solid var(--card-border);
+            border-radius: 16px;
+            flex-shrink: 0;
             background-image: url('WhatsApp Image 2026-05-01 at 12.12.19.jpeg');
             background-size: cover;
-            background-position: center;
-            gap: 1.5rem;
+            background-position: center top;
+            overflow: hidden;
         }
 
         .neon-glow {
@@ -765,7 +761,7 @@
             }
             .hero-slides {
                 width: 90%;
-                height: 280px;
+                height: 320px;
             }
             .grid-cards {
                 grid-template-columns: 1fr;
@@ -883,6 +879,7 @@
     </header>
 
     <div class="container">
+        <!-- HOME SECTION: LHS = intro text, RHS = full cover photo box -->
         <section id="home" class="page-section hero">
             <div class="hero-text">
                 <h1>Hi, I'm <span class="cursive-name">Amit Joshi</span></h1>
@@ -894,10 +891,8 @@
                 </div>
             </div>
             
-            <div class="hero-slides neon-glow">
-                <img src="WhatsApp Image 2026-03-28 at 08.46.55.jpeg" alt="Amit Joshi" style="width: 130px; height: 130px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-color); box-shadow: 0 0 20px var(--accent-glow);">
-                <span style="color: var(--text-primary); font-weight: 600; font-size: 1.1rem; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);">Amit Joshi</span>
-            </div>
+            <!-- RHS: Full cover image box — no inner elements, background-image fills entire box -->
+            <div class="hero-slides neon-glow"></div>
         </section>
 
         <section id="social" class="page-section">
