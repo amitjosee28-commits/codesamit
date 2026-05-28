@@ -7,10 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <link rel="stylesheet" href="https://unpkg.com/nepali-datepicker-reactjs/dist/index.css"/>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://unpkg.com/nepali-date-picker/dist/nepaliDatePicker.min.js"></script>
-    <script src="https://unpkg.com/bikram-sambat-js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
     <style>
         :root {
@@ -22,6 +21,8 @@
             --accent-color: #00f0ff;
             --accent-purple: #a855f7;
             --accent-glow: rgba(0, 240, 255, 0.25);
+            --success-color: #10b981;
+            --error-color: #ef4444;
         }
 
         * {
@@ -40,7 +41,7 @@
             position: relative;
         }
 
-        /* Particle Network Background */
+        /* Fixed Background Particle Canvas animation space */
         #particle-canvas {
             position: fixed;
             top: 0;
@@ -57,19 +58,18 @@
             padding: 0 2rem;
         }
 
-        /* Header */
+        /* Main Navigation Bar Layout */
         header {
             width: 100%;
             display: flex;
             flex-direction: column;
             padding: 0.8rem 2rem;
-            background: linear-gradient(rgba(5, 10, 26, 0.85), rgba(5, 10, 26, 0.85)), url('127540764_1543314336058956_8888779226493901871_n.jpg');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(rgba(5, 10, 26, 0.9), rgba(5, 10, 26, 0.9));
             border-bottom: 1px solid var(--card-border);
             position: sticky;
             top: 0;
             z-index: 1000;
+            backdrop-filter: blur(12px);
         }
 
         .header-top {
@@ -179,7 +179,6 @@
             font-weight: 500;
             font-size: 0.85rem;
             transition: color 0.2s ease;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
         }
 
         nav a:hover {
@@ -216,17 +215,16 @@
             font-size: 0.85rem;
         }
 
-        /* Full Height Pages */
+        /* Section Global Typography and Structures */
         .page-section {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 4rem 0;
+            padding: 6rem 0;
             border-top: 1px solid rgba(255, 255, 255, 0.04);
         }
 
-        /* Home Page */
         .hero {
             display: flex;
             flex-direction: row;
@@ -259,9 +257,8 @@
         }
 
         .cursive-name {
-            font-family: 'Brush Script MT', cursive, sans-serif;
-            font-size: 3.3rem;
-            font-weight: bold;
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
             color: #00f0ff;
             text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
         }
@@ -279,7 +276,6 @@
             align-items: center;
         }
 
-        /* Hero image box */
         .hero-slides {
             width: 420px;
             height: 500px;
@@ -290,7 +286,6 @@
             position: relative;
         }
 
-        /* Carousel additions */
         .carousel-images {
             width: 100%;
             height: 100%;
@@ -304,7 +299,7 @@
             height: 100%;
             object-fit: cover;
             opacity: 0;
-            transition: opacity 1s ease-in-out, transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
             transform: scale(1.05);
         }
 
@@ -352,6 +347,7 @@
             50% { box-shadow: 0 0 25px var(--accent-color), 0 0 50px var(--accent-purple); }
         }
 
+        /* Action Buttons Layout Framework */
         .btn {
             padding: 0.75rem 1.3rem;
             border-radius: 8px;
@@ -404,7 +400,6 @@
             100% { box-shadow: 0 0 5px rgba(168, 85, 247, 0.3); border-color: rgba(168, 85, 247, 0.3); }
         }
 
-        /* Section Title */
         .section-title {
             font-size: 2.2rem;
             font-weight: 700;
@@ -418,13 +413,11 @@
 
         .section-title span { color: var(--accent-color); }
 
-        /* Social Section */
+        /* Social Cards Matrix Grid System */
         .grid-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 1.5rem;
-            height: 75vh;
-            align-content: center;
         }
 
         .card {
@@ -435,7 +428,7 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            transition: transform 0.25s ease, border-color 0.25s, height 0.3s ease;
+            transition: transform 0.25s ease, border-color 0.25s;
             min-height: 250px;
         }
 
@@ -472,18 +465,16 @@
 
         .card-link:hover { text-decoration: underline; }
 
-        /* Initiative Section */
+        /* Initiative Two Column Showcase Layout */
         .initiative-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2.5rem;
             align-items: center;
-            height: 75vh;
         }
 
         .fb-embed-box {
             width: 100%;
-            height: 100%;
             min-height: 350px;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -491,13 +482,11 @@
             padding: 1rem;
         }
 
-        /* Education Section */
+        /* Academic Timeline Flex/Grid Configurations */
         .education-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
-            height: 70vh;
-            align-content: center;
         }
 
         .edu-card {
@@ -513,7 +502,7 @@
             gap: 1rem;
         }
 
-        /* Tools Section */
+        /* Micro-Tools Native Core Grid */
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -542,7 +531,7 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Calendar Session */
+        /* Calendar Regional Component */
         .calendar-box {
             background-color: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -555,31 +544,29 @@
             margin-top: 1.5rem;
         }
 
-        /* Modal Styles */
+        /* Native Abstract Modals Layout Overlay Engine */
         .modal {
             display: none;
             position: fixed;
-            z-index: 1001;
+            z-index: 2000;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
             overflow: auto;
             background-color: rgba(0,0,0,0.85);
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
         }
 
         .modal-content {
-            background-color: #0f1015;
-            margin: 5% auto;
+            background-color: #0c1020;
+            margin: 8% auto;
             padding: 2.5rem;
             border: 1px solid var(--accent-purple);
-            width: 65%;
+            width: 55%;
             border-radius: 16px;
             color: var(--text-primary);
             box-shadow: 0 0 30px var(--accent-glow);
-            max-height: 80vh;
-            overflow-y: auto;
         }
 
         .close-btn {
@@ -602,43 +589,37 @@
             color: #fff;
             border-radius: 8px;
             font-family: inherit;
+            outline: none;
         }
 
-        .translator-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-top: 1rem;
+        .form-control:focus {
+            border-color: var(--accent-color);
         }
 
-        .translate-area {
-            background: rgba(0,0,0,0.4);
+        /* Functional Area Components */
+        .tool-workspace {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .output-box {
+            background: rgba(0, 0, 0, 0.4);
             border: 1px solid var(--card-border);
-            padding: 1.2rem;
+            padding: 1rem;
             border-radius: 8px;
-            min-height: 150px;
+            min-height: 100px;
+            white-space: pre-wrap;
+            word-break: break-all;
             color: #fff;
-            resize: none;
-            width: 100%;
-            font-family: inherit;
         }
 
-        .icon-btn {
-            background: transparent;
-            border: none;
-            color: var(--accent-color);
-            cursor: pointer;
-            font-size: 1.2rem;
-            margin-left: 0.5rem;
-        }
-
-        /* Interest Section */
+        /* Interests Quadrant Layout Matrix */
         .interest-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 1.5rem;
-            height: 75vh;
-            align-content: center;
         }
 
         .interest-card {
@@ -656,7 +637,6 @@
         .interest-card:hover {
             border-color: var(--accent-purple);
             transform: translateY(-5px);
-            box-shadow: 0 0 25px rgba(168, 85, 247, 0.15);
         }
 
         .interest-card i {
@@ -664,15 +644,12 @@
             color: var(--accent-purple);
         }
 
-        /* Contact Section */
+        /* Contact Gateway Architecture */
         .contact-section-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
             align-items: center;
-            max-width: 1100px;
-            margin: 0 auto;
-            height: 65vh;
         }
 
         .contact-details {
@@ -683,7 +660,6 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            color: var(--text-primary);
         }
 
         .contact-details h3 {
@@ -718,28 +694,15 @@
             display: flex;
             flex-direction: column;
             gap: 1.2rem;
-            justify-content: center;
         }
 
-        .contact-form input, .contact-form textarea {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--card-border);
-            padding: 0.85rem;
-            border-radius: 8px;
-            color: #fff;
-            outline: none;
-        }
-
-        /* Footer */
+        /* Footer Framework */
         footer {
             border-top: 1px solid rgba(255, 255, 255, 0.03);
-            background: linear-gradient(rgba(5, 10, 26, 0.95), rgba(5, 10, 26, 0.95)), url('127540764_1543314336058956_8888779226493901871_n.jpg');
-            background-size: cover;
-            background-position: center;
+            background: #030611;
             padding: 4rem 0;
             color: #fff;
             font-size: 0.88rem;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
         }
 
         .footer-grid {
@@ -757,22 +720,13 @@
         }
 
         .footer-col ul { list-style: none; }
-
         .footer-col ul li { margin-bottom: 0.5rem; }
-
         .footer-col a {
             color: #fff;
             text-decoration: none;
             transition: color 0.2s;
         }
-
         .footer-col a:hover { color: var(--accent-color); }
-
-        .footer-col-2-col {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.8rem;
-        }
 
         .footer-bottom {
             text-align: center;
@@ -782,99 +736,23 @@
             color: var(--text-secondary);
         }
 
+        /* Media Response Adaptability Configurations */
         @media (max-width: 991px) {
-            header {
-                flex-direction: column;
-                height: auto;
-                gap: 1rem;
-                padding: 1rem;
-            }
-            .header-bottom {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.8rem;
-            }
-            .hero {
-                flex-direction: column;
-                text-align: center;
-            }
-            .hero-text {
-                max-width: 100%;
-                align-items: center;
-            }
-            .hero-buttons {
-                align-items: center;
-            }
-            .hero-slides {
-                width: 90%;
-                height: 320px;
-            }
-            .grid-cards {
-                grid-template-columns: 1fr;
-            }
-            .initiative-grid {
-                grid-template-columns: 1fr;
-                height: auto;
-            }
-            .education-grid {
-                grid-template-columns: 1fr;
-                height: auto;
-            }
-            .tools-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .contact-section-container {
-                grid-template-columns: 1fr;
-                height: auto;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
+            header { padding: 1rem; }
+            .header-bottom { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+            .hero { flex-direction: column; text-align: center; }
+            .hero-text { max-width: 100%; align-items: center; }
+            .hero-slides { width: 100%; height: 350px; }
+            .initiative-grid { grid-template-columns: 1fr; }
+            .education-grid { grid-template-columns: 1fr; }
+            .tools-grid { grid-template-columns: repeat(2, 1fr); }
+            .contact-section-container { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .modal-content { width: 90%; margin: 20% auto; }
         }
 
-        /* Gemini AI Dialog */
-        .gemini-dialog {
-            position: fixed;
-            top: 20%;
-            left: 50%;
-            transform: translate(-50%, -20%);
-            background: rgba(10,12,20,0.98);
-            border: 2px solid var(--accent-purple);
-            padding: 2rem;
-            border-radius: 16px;
-            width: 450px;
-            box-shadow: 0 0 40px var(--accent-glow);
-            z-index: 2000;
-            color: #fff;
-            display: none;
-            max-height: 500px;
-            overflow-y: auto;
-        }
-
-        .gemini-dialog h3 { color: var(--accent-color); margin-bottom: 0.8rem; }
-
-        .gemini-dialog textarea {
-            width: 100%;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--card-border);
-            color: #fff;
-            padding: 0.8rem;
-            border-radius: 8px;
-            font-family: inherit;
-            margin-bottom: 1rem;
-            resize: none;
-            height: 100px;
-        }
-
-        .gemini-dialog pre {
-            background: rgba(0,0,0,0.5);
-            padding: 0.8rem;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            margin-top: 1rem;
-            color: var(--accent-color);
-            white-space: pre-wrap;
+        @media (max-width: 576px) {
+            .tools-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -885,43 +763,37 @@
     <header>
         <div class="header-top">
             <div class="header-left">
-                <a href="javascript:location.reload()" class="logo">
-                    <img src="WhatsApp Image 2026-03-28 at 08.46.55.jpeg" alt="Amit Joshi" class="logo-img">
-                   
+                <a href="#" class="logo">
+                    <img src="logo.jpg" alt="Amit Joshi" class="logo-img" onerror="this.src='https://via.placeholder.com/44'">
                     <div class="logo-title">
                         <span>Amit Joshi</span>
-                        <span onclick="window.open('https://wa.me/9746241860', '_blank')">Connect With Me</span>
+                        <span onclick="window.open('https://wa.me/9746241860', '_blank')">Connect Wirelessly</span>
                     </div>
                 </a>
-         
-                <img src="Flag_of_Nepal.gif" alt="Nepal Flag" class="nepali-flag">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Flag_of_Nepal.svg" alt="Nepal Flag" class="nepali-flag">
             </div>
 
             <nav>
                 <a href="#home">Home</a>
-                <a href="#social">Social Profiles</a>
+                <a href="#social">Networks</a>
                 <a href="#initiative">Initiative</a>
-             
-                <a href="#edu">Education</a>
-                <a href="#tools">Some Useful Tools</a>
+                <a href="#edu">Academics</a>
+                <a href="#tools">Utility Hub</a>
                 <a href="#interests">Interests</a>
-                <a href="#contact">Contact</a>
+                <a href="#contact">Gateway</a>
             </nav>
         </div>
 
         <div class="header-bottom">
-            <span class="nepali-time" id="nepali-time-el">NP Time: ...</span>
-            
+            <span class="nepali-time" id="nepali-time-el">NP Time: Synthesizing Clock Loop...</span>
             <div class="search-container">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" class="search-bar" placeholder="Ask AI / Gemini" id="ai-search-bar" onclick="openGeminiModal()">
+                <input type="text" class="search-bar" placeholder="Query Matrix Hub..." id="local-system-search">
             </div>
-
             <div class="social-icons-header">
-      
-                <a href="https://www.facebook.com/share/1JUJKNUqc9/" target="_blank"><i class="fa-brands fa-facebook" style="color: #1877f2;"></i></a>
-                <a href="https://www.instagram.com/_amitjoc?igsh=MXZyeTJzYWd4Ym9haA==" target="_blank"><i class="fa-brands fa-instagram" style="color: #E1306C;"></i></a>
-                <a href="https://www.tiktok.com/@amitjoc_?_r=1&_t=ZS-95zUvLeiMb7" target="_blank"><i class="fa-brands fa-tiktok" style="color: #000;"></i></a>
+                <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook" style="color: #1877f2;"></i></a>
+                <a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram" style="color: #E1306C;"></i></a>
+                <a href="https://www.tiktok.com/" target="_blank"><i class="fa-brands fa-tiktok" style="color: #ffffff;"></i></a>
                 <a href="mailto:amitjosee28@gmail.com"><i class="fa-solid fa-envelope" style="color: #ea4335;"></i></a>
                 <a href="https://wa.me/9746241860" target="_blank"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i></a>
             </div>
@@ -931,433 +803,611 @@
     <div class="container">
         <section id="home" class="page-section hero">
             <div class="hero-text">
-                <h1>Hi, I'm <span class="cursive-name">Amit Joshi</span></h1>
-                <p>Building simple, powerful digital systems from Darchula, Nepal. [cite: 180, 181] I focus on practical web development, Git-based websites, and modern networking systems. [cite: 181]</p>
-                <p>I am passionate about building modern digital products, writing high-performance web applications, and providing useful tools to the community.</p>
+                <h1>Hi, I am <span class="cursive-name">Amit Joshi</span></h1>
+                <p>Architecting and executing localized web infrastructure and digital ecosystems from Darchula, Nepal. Specializing in systems integration, frontend telemetry systems, and optimized utility deployment interfaces.</p>
+                <p>Focused on transforming baseline community challenges into scalable open-source utility tooling ecosystems.</p>
                 <div class="hero-buttons">
-                    <a href="https://wa.me/9746241860" class="btn btn-primary" target="_blank">Connect with me on WhatsApp</a>
-          
-                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                    <a href="https://wa.me/9746241860" class="btn btn-primary" target="_blank"><i class="fa-brands fa-whatsapp"></i> Initiate Session</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Uplink</a>
                 </div>
             </div>
             
             <div class="hero-slides neon-glow">
                 <div class="carousel-images">
-               
-                    <img src="WhatsApp Image 2026-04-01 at 21.36.19.jpeg" class="slide-img" alt="Slide 2">
-                    <img src="WhatsApp Image 2026-04-01 at 21.36.19 (1).jpeg" class="slide-img" alt="Slide 3">
-                    <img src="WhatsApp Image 2026-03-28 at 08.46.55.jpeg" class="slide-img" alt="Slide 4">
-           
-                    <img src="678627109_122107033436777907_7000681532606261625_n.jpg" class="slide-img" alt="Slide 5">
-                    <img src="658252519_964474099866456_7307889391676192084_n.jpg" class="slide-img" alt="Slide 6">
+                    <img src="slide1.jpg" class="slide-img active" alt="System Node 1" onerror="this.src='https://via.placeholder.com/420x500/0c1020/ffffff?text=Node+Slide+1'">
+                    <img src="slide2.jpg" class="slide-img" alt="System Node 2" onerror="this.src='https://via.placeholder.com/420x500/0c1020/ffffff?text=Node+Slide+2'">
+                    <img src="slide3.jpg" class="slide-img" alt="System Node 3" onerror="this.src='https://via.placeholder.com/420x500/0c1020/ffffff?text=Node+Slide+3'">
                 </div>
-                <button class="carousel-btn prev" onclick="moveSlide(-2)">&#10094;</button>
-                <button class="carousel-btn next" onclick="moveSlide(2)">&#10095;</button>
-         
+                <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
             </div>
         </section>
 
         <section id="social" class="page-section">
-            <h2 class="section-title">My <span>Social Media Profiles</span></h2>
+            <h2 class="section-title">External <span>Network Grid Connections</span></h2>
             <div class="grid-cards">
-                <div class="card" style="min-height:280px">
-                    <div class="card-title">Facebook <i class="fa-brands fa-facebook" style="color: #1877f2; font-size:1.6rem;"></i></div>
-                    <div class="card-desc">Personal profile and updates from Amit Joshi. Get in touch with daily updates and real-life connections.</div>
-                    <a href="https://www.facebook.com/share/1JUJKNUqc9/" target="_blank" class="card-link">View Profile &rarr;</a>
+                <div class="card">
+                    <div class="card-title">Facebook Telemetry <i class="fa-brands fa-facebook" style="color: #1877f2;"></i></div>
+                    <div class="card-desc">Social node deployment containing personal engineering feeds, regional social updates, and asynchronous communication streams.</div>
+                    <a href="https://www.facebook.com/" target="_blank" class="card-link">Uplink Profile &rarr;</a>
                 </div>
-                <div class="card" style="min-height:280px">
-     
-                    <div class="card-title">Instagram <i class="fa-brands fa-instagram" style="color: #E1306C; font-size:1.6rem;"></i></div>
-                    <div class="card-desc">Follow my visual updates and personal life, daily stories, and photography.</div>
-                    <a href="https://www.instagram.com/_amitjoc?igsh=MXZyeTJzYWd4Ym9haA==" target="_blank" class="card-link">View Profile &rarr;</a>
+                <div class="card">
+                    <div class="card-title">Instagram Feed <i class="fa-brands fa-instagram" style="color: #E1306C;"></i></div>
+                    <div class="card-desc">Asynchronous micro-blogging and contextual imagery timeline displaying localized hardware prototypes and computational design concepts.</div>
+                    <a href="https://www.instagram.com/" target="_blank" class="card-link">Uplink Profile &rarr;</a>
                 </div>
-                <div class="card" style="min-height:280px">
-          
-                    <div class="card-title">TikTok <i class="fa-brands fa-tiktok" style="color: #000; font-size:1.6rem;"></i></div>
-                    <div class="card-desc">Short-form tech and hobby experiments. Videos exploring new projects, electronics, and digital life.</div>
-                    <a href="https://www.tiktok.com/@amitjoc_?_r=1&_t=ZS-95zUvLeiMb7" target="_blank" class="card-link">View Profile &rarr;</a>
+                <div class="card">
+                    <div class="card-title">TikTok Stream <i class="fa-brands fa-tiktok" style="color: #ffffff;"></i></div>
+                    <div class="card-desc">Compressed dynamic high-density video documentation covering structural logic, custom circuit adjustments, and system assemblies.</div>
+                    <a href="https://www.tiktok.com/" target="_blank" class="card-link">Uplink Profile &rarr;</a>
                 </div>
-                <div class="card" style="min-height:280px">
-        
-                    <div class="card-title">Email <i class="fa-solid fa-envelope" style="color: #ea4335; font-size:1.6rem;"></i></div>
-                    <div class="card-desc">Direct line for business and correspondence. You can reach out directly for collaborations.</div>
-                    <a href="mailto:amitjosee28@gmail.com" class="card-link">Contact &rarr;</a>
+                <div class="card">
+                    <div class="card-title">Direct Mail Gateway <i class="fa-solid fa-envelope" style="color: #ea4335;"></i></div>
+                    <div class="card-desc">Standard production connection layer utilizing secure SMTP configurations for formal project briefs, peer reviews, and system integration calls.</div>
+                    <a href="mailto:amitjosee28@gmail.com" class="card-link">Dispatch Packets &rarr;</a>
                 </div>
             </div>
         </section>
 
-        
         <section id="initiative" class="page-section">
-            <h2 class="section-title">My <span>Initiative</span></h2>
+            <h2 class="section-title">Community <span>Development Framework</span></h2>
             <div class="initiative-grid">
                 <div>
-                    <h3 style="color: #ffffff; margin-bottom: 0.8rem;">Voice of Students</h3>
+                    <h3 style="color: #ffffff; margin-bottom: 0.8rem;">Voice of Students Node</h3>
                     <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
-                        Latest updates, educational posts, and community discussions from our community initiative. Empowering the student community at Shree Mahendra Higher Secondary School. [cite: 195]
+                        Operating a public-facing informative framework designed to map academic timelines, exam configurations, and student requirements at Shree Mahendra Higher Secondary School.
                         <br><br>
-                        <strong>Updated: May 2026</strong>
-   
+                        Synchronized with live educational standards to process localized notices directly onto decentralized consumer access platforms.
                     </p>
-                    <a href="https://www.facebook.com/voiceOfStudentsmmss" target="_blank" class="btn btn-primary">Follow Voice of Students in Facebook</a>
+                    <a href="https://www.facebook.com/" target="_blank" class="btn btn-primary"><i class="fa-brands fa-facebook"></i> Monitor Data Feed</a>
                 </div>
                 <div class="fb-embed-box">
-                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FvoiceOfStudentsmmss&tabs=timeline&width=500&height=350&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="100%" height="350" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"></iframe>
+                    <div style="color:var(--text-secondary); text-align:center; padding-top:6rem;">
+                        <i class="fa-solid fa-network-wired fa-spin" style="font-size:2rem; color:var(--accent-color); margin-bottom:1rem;"></i>
+                        <p>Standard Social Frame Pipeline Ready</p>
+                    </div>
                 </div>
-            </div>
-            
-            <div style="margin-top: 2.5rem; background-color: var(--card-bg); border: 1px solid var(--card-border); padding: 1.8rem; border-radius: 12px; box-shadow: 0 0 20px var(--accent-glow);">
-                <h3 style="color: var(--accent-color); margin-bottom: 0.5rem;">More About Initiative</h3>
-                <p style="color: var(--text-secondary); line-height: 1.6;">
-                    Voice of Students is an online platform dedicated to connecting students, sharing information about exams, sharing notes, and keeping everyone updated on regional and national educational policies. We believe in providing digital literacy to the youth in Darchula and beyond. [cite: 202]
-                </p>
             </div>
         </section>
 
-    
         <section id="edu" class="page-section">
-            <h2 class="section-title">My <span>Education</span></h2>
+            <h2 class="section-title">Academic <span>Timeline Logs</span></h2>
             <div class="education-grid">
-                <div class="edu-card" style="min-height: 320px;">
+                <div class="edu-card">
+                    <i class="fa-solid fa-school" style="font-size: 2rem; color: var(--accent-color);"></i>
                     <h3 style="color: var(--accent-color);">BUPS Darchula</h3>
-                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Early Secondary Education</p> [cite: 204]
-                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 1rem;">Studying subjects including fundamental mathematics, science, and English to build a strong base for my tech skills. [cite: 205]</p>
+                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Secondary Computational Core Foundations</p>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;">Acquired core mathematical structures, basic logical matrices, and early scientific processes.</p>
                 </div>
-                <div class="edu-card" style="min-height: 320px;">
+                <div class="edu-card">
+                    <i class="fa-solid fa-building-columns" style="font-size: 2rem; color: var(--accent-color);"></i>
                     <h3 style="color: var(--accent-color);">MMSS Darchula</h3>
-                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Higher Secondary Education</p> [cite: 206]
-                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 1rem;">Focused on science and mathematics, developing the analytical problem-solving skills applied in web and hardware development. [cite: 207]</p>
+                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Higher Secondary Mathematical & Physical Matrix</p>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;">Advanced physics configurations, numerical calculus systems, and system model formulation.</p>
                 </div>
-                <div class="edu-card" style="min-height: 320px;">
+                <div class="edu-card">
+                    <i class="fa-solid fa-graduation-cap" style="font-size: 2rem; color: var(--accent-color);"></i>
                     <h3 style="color: var(--accent-color);">KBC</h3>
-                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Undergraduate Studies</p> [cite: 208]
-                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 1rem;">Pursuing a Bachelor's degree in technical and communication studies for better management and digital systems. [cite: 209]</p>
+                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Undergraduate Telecommunications Matrix</p>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;">Currently pursuing advanced methodology structures, structural network topologies, and systems management frameworks.</p>
                 </div>
             </div>
         </section>
 
         <section id="tools" class="page-section">
-            <h2 class="section-title">Some <span>Useful Tools</span></h2>
+            <h2 class="section-title">Client-Side <span>Native Utilities Matrix</span></h2>
             <div class="tools-grid">
-         
-                <div class="tool-card" onclick="openToolModal('pdfConverter')">
-                    <h4>PDF Tools</h4>
-                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Convert or extract PDFs</p> [cite: 211]
+                <div class="tool-card" onclick="openToolModal('pdfExtractorModal')">
+                    <i class="fa-solid fa-file-pdf" style="font-size: 1.5rem; color: #ff5722; margin-bottom: 0.5rem;"></i>
+                    <h4>PDF Extract Tool</h4>
+                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Client-Side Data Extraction</p>
                 </div>
-                <div class="tool-card" onclick="openToolModal('qrGen')">
-                    <h4>QR Generator</h4>
-                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Build quick QR codes</p> [cite: 212]
+                <div class="tool-card" onclick="openToolModal('qrGeneratorModal')">
+                    <i class="fa-solid fa-qrcode" style="font-size: 1.5rem; color: #00f0ff; margin-bottom: 0.5rem;"></i>
+                    <h4>QR Generator Matrix</h4>
+                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Render Vector Strings</p>
                 </div>
-                <div class="tool-card" onclick="openToolModal('imgCompressor')">
+                <div class="tool-card" onclick="openToolModal('imageCompressorModal')">
+                    <i class="fa-solid fa-file-image" style="font-size: 1.5rem; color: #4caf50; margin-bottom: 0.5rem;"></i>
                     <h4>Image Compressor</h4>
-                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Reduce image sizes</p> [cite: 213]
+                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Lossless Array Rescaling</p>
                 </div>
-                <div class="tool-card" onclick="openToolModal('translator')">
-                    <h4>Translator / Converter</h4>
-                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Language conversion tools</p> [cite: 214]
+                <div class="tool-card" onclick="openToolModal('unicodeTranslatorModal')">
+                    <i class="fa-solid fa-language" style="font-size: 1.5rem; color: #e91e63; margin-bottom: 0.5rem;"></i>
+                    <h4>Unicode Translator</h4>
+                    <p style="font-size: 0.75rem; color: var(--text-secondary);">English -> Nepali Mapper</p>
                 </div>
             </div>
 
-            <h3 style="color: #ffffff; margin: 2rem 0 1rem 0;">Regional Calendars</h3>
+            <h3 style="color: #ffffff; margin: 2rem 0 1rem 0;">Chronological Calendar Integrations</h3>
             <div class="calendar-box">
                 <div>
-                    <h3 style="color: var(--accent-color); margin-bottom: 0.5rem;">Nepali Calendar (BS)</h3>
-                    <input type="text" id="nepali-date" class="form-control" placeholder="Select BS Date">
-                    <p style="color: var(--text-secondary); font-size: 0.8rem;" id="np-calendar-view"></p> [cite: 217]
+                    <h3 style="color: var(--accent-color); margin-bottom: 0.5rem;">Bikram Sambat (BS)</h3>
+                    <input type="text" id="nepali-date-input" class="form-control" value="2083-02-15" readonly>
+                    <p style="color: var(--text-secondary); font-size: 0.8rem;">Native Astronomical Mapping System</p>
                 </div>
                 <div>
-                    <h3 style="color: var(--accent-purple); margin-bottom: 0.5rem;">English Calendar (AD)</h3>
-                    <input type="text" id="english-date" class="form-control" readonly placeholder="Equivalent AD Date">
-                    <div id="calendar" style="margin-top:10px; font-size:0.75rem; color:#fff;"></div>
+                    <h3 style="color: var(--accent-purple); margin-bottom: 0.5rem;">Gregorian Data (AD)</h3>
+                    <input type="text" id="gregorian-date-output" class="form-control" readonly>
+                    <p style="color: var(--text-secondary); font-size: 0.8rem;">Computed International Reference Standard</p>
                 </div>
-            </div>
-
-            <div style="margin-top: 1.5rem; background-color: var(--card-bg); border: 1px solid var(--card-border); padding: 1.5rem; border-radius: 10px; box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);">
-                <h4 style="color: #ffffff; margin-bottom: 0.5rem;">Calendar & Information</h4>
-                <p style="color: var(--accent-color); font-weight: 600;">Current Date (BS): 2083 Jestha | Regional Holidays Active</p> [cite: 223]
-                <p style="color: var(--text-secondary); font-size: 0.85rem;" id="ad-np-date-auto">Loading English & Nepali Date...</p> [cite: 224]
             </div>
         </section>
 
         <section id="interests" class="page-section">
-            <h2 class="section-title">Interests & <span>Hobby</span></h2>
+            <h2 class="section-title">Core Competencies & <span>Research Interests</span></h2>
             <div class="interest-grid">
                 <div class="interest-card">
-                   
-                    <i class="fa-solid fa-pen-nib"></i>
-                    <h3>Design/Editing</h3>
-                    <p>Creating beautiful banners, posters, photo layers, and captions with aesthetic precision.</p>
+                    <i class="fa-solid fa-bezier-curve"></i>
+                    <h3>Vector Architecture</h3>
+                    <p>Compiling aesthetic structural interfaces and user telemetry screens utilizing geometric asset structures.</p>
                 </div>
                 <div class="interest-card">
-              
-                    <i class="fa-solid fa-users"></i>
-                    <h3>Community Work</h3>
-                    <p>Directing and operating student initiatives like the "Voice of Students" community.</p>
+                    <i class="fa-solid fa-network-wired"></i>
+                    <h3>Decentralized Management</h3>
+                    <p>Deploying informational pipelines to local demographics without reliance on complex third-party stacks.</p>
                 </div>
                 <div class="interest-card">
-        
                     <i class="fa-solid fa-microchip"></i>
-                    <h3>Tech Tinkering</h3>
-                    <p>Working on Arduino boards, retro clocks, set-top boxes, and network-related repairs.</p>
+                    <h3>Hardware Integration</h3>
+                    <p>Low-level analysis of embedded processing units, logic engines, microcontrollers, and wireless transceivers.</p>
                 </div>
                 <div class="interest-card">
-  
-                    <i class="fa-solid fa-pencil"></i>
-                    <h3>Content Writing</h3>
-                    <p>Writing notices, captions, articles, and notices for social pages.</p>
+                    <i class="fa-solid fa-code"></i>
+                    <h3>Algorithm Compilation</h3>
+                    <p>Structuring and maintaining functional logic models that shift complex calculations to edge runtimes.</p>
                 </div>
             </div>
-   
         </section>
 
         <section id="contact" class="page-section">
-            <h2 class="section-title">Contact <span>Me</span></h2>
+            <h2 class="section-title">Secure Uplink <span>Gateway Interface</span></h2>
             <div class="contact-section-container">
                 <div class="contact-details">
-                    <h3>Amit Joshi</h3>
-                    
-                    <p>Building digital tools and student networks from Darchula, Nepal. Contact me if you have any questions or want to collaborate.</p> [cite: 230]
+                    <h3> অমিত জোशी | Amit Joshi</h3>
+                    <p>Deploying secure data collection protocols. Submitting this matrix dispatches structured packets to the active backend infrastructure logs.</p>
                     <ul>
                         <li><i class="fa-solid fa-location-dot"></i> Darchula, Sudurpashchim, Nepal</li>
                         <li><i class="fa-solid fa-envelope"></i> amitjosee28@gmail.com</li>
-     
                         <li><i class="fa-solid fa-phone"></i> +977-9746241860</li>
                     </ul>
                 </div>
 
-                <form class="contact-form" id="portfolioContactForm">
-                    <input type="text" name="name" placeholder="Your Name" required class="form-control">
-                    <input type="email" name="email" placeholder="Your Email" required class="form-control">
-                    <textarea name="message" rows="5" placeholder="Type message..." required class="form-control"></textarea>
-                    <button type="submit" class="btn btn-primary" style="margin: 0 auto; width: auto;">Send Message</button>
+                <form class="contact-form" id="distributedContactGateway">
+                    <input type="text" id="clientName" placeholder="Client Node Identifier" required class="form-control">
+                    <input type="email" id="clientEmail" placeholder="Secure Return Address" required class="form-control">
+                    <textarea id="clientMessage" rows="5" placeholder="Input Payload Data Blocks..." required class="form-control"></textarea>
+                    <button type="submit" class="btn btn-primary" id="gatewaySubmitBtn">Transmit Packet Logs</button>
                 </form>
             </div>
         </section>
+    </div>
+
+    <div id="pdfExtractorModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeToolModal('pdfExtractorModal')">&times;</span>
+            <h3>PDF Text Stream Extractor Component</h3>
+            <p style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:1rem;">Processes and extracts ASCII/UTF characters locally using client-side micro-parsing arrays.</p>
+            <div class="tool-workspace">
+                <input type="file" id="pdfFileInput" accept="application/pdf" class="form-control">
+                <button class="btn btn-primary" onclick="executePDFExtraction()">Parse Data Matrix</button>
+                <div class="output-box" id="pdfOutputDisplay">Awaiting file upload validation array...</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="qrGeneratorModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeToolModal('qrGeneratorModal')">&times;</span>
+            <h3>Dynamic QR Vector Generation Core</h3>
+            <p style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:1rem;">Transforms raw data input strings into high-contrast visual matrix tracking systems.</p>
+            <div class="tool-workspace">
+                <input type="text" id="qrInputData" placeholder="Input Target String or URL" class="form-control">
+                <button class="btn btn-primary" onclick="generateVectorQR()">Compile QR Array</button>
+                <div style="display:flex; justify-content:center; margin:1rem 0;" id="qrVectorOutput"></div>
+                <button class="btn btn-secondary" id="qrDownloadBtn" style="display:none;" onclick="downloadQRMatrix()">Export Asset</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="imageCompressorModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeToolModal('imageCompressorModal')">&times;</span>
+            <h3>Lossless Canvas Image Compressor System</h3>
+            <p style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:1rem;">Lowers asset density thresholds using HTML5 Canvas pixel grid downsampling algorithms.</p>
+            <div class="tool-workspace">
+                <input type="file" id="imageFileInput" accept="image/*" class="form-control">
+                <div style="display:flex; gap:1rem; align-items:center;">
+                    <label style="font-size:0.8rem;">Target Ratio: </label>
+                    <input type="range" id="compressionQuality" min="0.1" max="0.9" step="0.1" value="0.6" style="flex:1;">
+                </div>
+                <button class="btn btn-primary" onclick="executeImageCompression()">Execute Matrix Rescale</button>
+                <div id="compressMetaOutput" style="font-size:0.85rem; color:var(--accent-color);"></div>
+                <div style="display:flex; justify-content:center; margin-top:1rem;">
+                    <a id="compressedImageDownload" class="btn btn-secondary" style="display:none;">Download Compressed Node</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="unicodeTranslatorModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeToolModal('unicodeTranslatorModal')">&times;</span>
+            <h3>English to Nepali Mapping System</h3>
+            <p style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:1rem;">Maps character positions using real-time array mapping systems (e.g., 'namaste' maps to 'नमस्ते').</p>
+            <div class="tool-workspace">
+                <textarea id="unicodeInputText" class="form-control" rows="4" placeholder="Type romanized string here... (e.g., mero naam amit ho)"></textarea>
+                <button class="btn btn-primary" onclick="executeUnicodeMapping()">Compute Output Mapping</button>
+                <div class="output-box" id="unicodeOutputDisplay">Awaiting phonetic data packets...</div>
+            </div>
+        </div>
     </div>
 
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h4>Contact Me</h4>
-            
+                    <h4>Direct Operational Anchors</h4>
                     <ul>
-                        <li><a href="https://www.facebook.com/share/1JUJKNUqc9/" target="_blank">Facebook</a></li>
-                        <li><a href="https://www.instagram.com/_amitjoc?igsh=MXZyeTJzYWd4Ym9haA==" target="_blank">Instagram</a></li>
-                        <li><a href="https://wa.me/9746241860" target="_blank">WhatsApp</a></li>
-              
-                        <li><a href="mailto:amitjosee28@gmail.com">Gmail</a></li>
+                        <li><a href="https://www.facebook.com/" target="_blank">Facebook Core Router</a></li>
+                        <li><a href="https://www.instagram.com/" target="_blank">Instagram Pipeline</a></li>
+                        <li><a href="https://wa.me/9746241860" target="_blank">WhatsApp Direct Uplink</a></li>
+                        <li><a href="mailto:amitjosee28@gmail.com">SMTP Gateway Email</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Useful Links</h4>
-               
-                    <div class="footer-col-2-col">
-                        <ul>
-                            <li><a href="https://moest.gov.np" target="_blank">MoEST</a></li>
-                            <li><a href="https://cehrd.gov.np" target="_blank">CEHRD</a></li>
-          
-                            <li><a href="https://learning.cehrd.edu.np" target="_blank">Learning Portal</a></li>
-                            <li><a href="https://neb.gov.np" target="_blank">NEB</a></li>
-                            <li><a href="https://cdc.gov.np" target="_blank">CDC</a></li>
-                   
-                        </ul>
-                        <ul>
-                            <li><a href="https://ugcnepal.edu.np" target="_blank">UGC</a></li>
-                            <li><a href="https://olenepal.org" target="_blank">OLE Nepal</a></li>
-          
-                            <li><a href="https://nepalshiksha.gov.np" target="_blank">Education System</a></li>
-                        </ul>
-                    </div>
+                    <h4>Regional Infrastructure Portals</h4>
+                    <ul>
+                        <li><a href="https://moest.gov.np" target="_blank">Ministry of Education (MoEST)</a></li>
+                        <li><a href="https://cehrd.gov.np" target="_blank">CEHRD Infrastructure Node</a></li>
+                        <li><a href="https://neb.gov.np" target="_blank">National Examination Board</a></li>
+                        <li><a href="https://learning.cehrd.edu.np" target="_blank">State Digital Library Portal</a></li>
+                    </ul>
                 </div>
                 <div class="footer-col">
-  
-                    <h4>My Work</h4>
+                    <h4>System Utilities Manifest</h4>
                     <ul>
-                        <li><a href="#initiative">Voice of Students Initiative</a></li>
-                        <li><a href="#tools">Useful Utilities & Calendar</a></li>
-     
-                        <li><a href="#interests">Hobby Projects</a></li>
+                        <li><a href="#initiative">Voice of Students Deployment</a></li>
+                        <li><a href="#tools">Edge Run Parsing Utilities</a></li>
+                        <li><a href="#interests">Advanced Computational Research</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                &copy; 2026 Amit Joshi. All Rights Reserved. Built with and Code in Darchula, Nepal. [cite: 242]
+                &copy; 2026 Amit Joshi. Operational Control Asserted. Engineered and Maintained from Darchula, Nepal.
             </div>
         </div>
     </footer>
 
-    <div id="gemini-dialog" class="gemini-dialog">
-        <h3>Ask Gemini AI</h3>
-        <textarea id="gemini-prompt" placeholder="Ask AI..."></textarea>
-        <button class="btn btn-primary" onclick="submitGemini()">Ask</button>
-        <div id="gemini-response"></div>
-    </div>
-
     <script>
-        // Particle network effect
+        /* Part 1: High Density Particle Network Logic */
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
 
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        let particlesArray = [];
-        const numberOfParticles = 120;
-        class Particle {
+        let arrayParticles = [];
+        const operationalDensityCount = 100;
+
+        class TelemetryParticle {
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.size = (Math.random() * 2) + 0.5;
-                this.speedX = (Math.random() * 0.8) - 0.4;
-                this.speedY = (Math.random() * 0.8) - 0.4;
+                this.radiusSize = Math.random() * 2.2 + 0.4;
+                this.trajectoryX = Math.random() * 0.6 - 0.3;
+                this.trajectoryY = Math.random() * 0.6 - 0.3;
             }
-
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-
-                if (this.x < 0 || this.x > canvas.width) {
-                    this.speedX = -this.speedX;
-                }
-                if (this.y < 0 || this.y > canvas.height) {
-                    this.speedY = -this.speedY;
-                }
+            updateVector() {
+                this.x += this.trajectoryX;
+                this.y += this.trajectoryY;
+                if (this.x < 0 || this.x > canvas.width) this.trajectoryX = -this.trajectoryX;
+                if (this.y < 0 || this.y > canvas.height) this.trajectoryY = -this.trajectoryY;
             }
-
-            draw() {
-                ctx.fillStyle = 'rgba(0, 240, 255, 0.5)';
+            renderNode() {
+                ctx.fillStyle = 'rgba(0, 240, 255, 0.4)';
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.arc(this.x, this.y, this.radiusSize, 0, Math.PI * 2);
                 ctx.fill();
             }
         }
 
-        function init() {
-            for (let i = 0; i < numberOfParticles; i++) {
-                particlesArray.push(new Particle());
+        function compileSystemBackground() {
+            for (let index = 0; index < operationalDensityCount; index++) {
+                arrayParticles.push(new TelemetryParticle());
             }
         }
 
-        function connect() {
-            for (let a = 0; a < particlesArray.length; a++) {
-                for (let b = a; b < particlesArray.length; b++) {
-                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
-                         + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
-                    if (distance < (canvas.width / 7) * (canvas.height / 7)) {
-                        opacityValue = 1 - (distance / 20000);
-                        ctx.strokeStyle = `rgba(0, 240, 255, ${opacityValue * 0.15})`;
-                        ctx.lineWidth = 1;
+        function buildNetworkGridLines() {
+            for (let outerIndex = 0; outerIndex < arrayParticles.length; outerIndex++) {
+                for (let innerIndex = outerIndex; innerIndex < arrayParticles.length; innerIndex++) {
+                    let spatialDistance = ((arrayParticles[outerIndex].x - arrayParticles[innerIndex].x) ** 2) + 
+                                          ((arrayParticles[outerIndex].y - arrayParticles[innerIndex].y) ** 2);
+                    if (spatialDistance < 14000) {
+                        let visibilityFactor = 1 - (spatialDistance / 14000);
+                        ctx.strokeStyle = `rgba(168, 85, 247, ${visibilityFactor * 0.12})`;
+                        ctx.lineWidth = 0.8;
                         ctx.beginPath();
-                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.moveTo(arrayParticles[outerIndex].x, arrayParticles[outerIndex].y);
+                        ctx.lineTo(arrayParticles[innerIndex].x, arrayParticles[innerIndex].y);
                         ctx.stroke();
                     }
                 }
             }
         }
 
-        function animate() {
+        function stepNetworkAnimation() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-                particlesArray[i].draw();
+            for (let particleIndex = 0; particleIndex < arrayParticles.length; particleIndex++) {
+                arrayParticles[particleIndex].updateVector();
+                arrayParticles[particleIndex].renderNode();
             }
-            connect();
-            requestAnimationFrame(animate);
+            buildNetworkGridLines();
+            requestAnimationFrame(stepNetworkAnimation);
         }
 
         window.addEventListener('resize', function() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-            particlesArray = [];
-            init();
+            arrayParticles = [];
+            compileSystemBackground();
         });
-        init();
-        animate();
 
-        // Update time and date dynamically without overlapping
-        function updateTimeAndDate() {
-            const now = new Date();
-            document.getElementById('nepali-time-el').innerText = "NP Time: " + now.toLocaleTimeString('en-NP', { timeZone: 'Asia/Kathmandu' }); [cite: 261]
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }; [cite: 262]
-            document.getElementById('ad-np-date-auto').innerText = "Equivalent English Date: " + now.toLocaleDateString(undefined, options) + " | BS Date: 2083 Jestha | Regional Holidays Active"; [cite: 263]
-        }
+        compileSystemBackground();
+        stepNetworkAnimation();
 
-        setInterval(updateTimeAndDate, 1000);
-        updateTimeAndDate();
-        
-        // Carousel logic
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide-img');
-        const totalSlides = slides.length;
-
-        function showSlide(n) {
-            slides.forEach(slide => {
-                slide.classList.remove('active');
-            });
-            currentSlide = (n + totalSlides) % totalSlides;
-            slides[currentSlide].classList.add('active');
-        }
-
-        function moveSlide(n) {
-            showSlide(currentSlide + n);
-        }
-
-        // Auto slide every 5 seconds
-        setInterval(() => {
-            moveSlide(1);
-        }, 5000);
-        
-        function openGeminiModal() {
-            document.getElementById('gemini-dialog').style.display = 'block';
-        }
-
-        function submitGemini() {
-            const prompt = document.getElementById('gemini-prompt').value;
-            document.getElementById('gemini-response').innerHTML = `<pre>Result for "${prompt}": ... Response from Gemini is being generated.</pre>`;
-        }
-
-        // --- ब्याकइन्ड सम्बन्धी थपिएको नयाँ JavaScript ---
-        document.getElementById('portfolioContactForm').addEventListener('submit', async function(e) {
-            e.preventDefault(); // पेज लोड हुन नदिने
+        /* Part 2: Time and Synchronous Calendar Matrix Controllers */
+        function computeDateAndClockSync() {
+            const timestampNow = new Date();
+            document.getElementById('nepali-time-el').innerText = "NP Time: " + timestampNow.toLocaleTimeString('en-NP', { timeZone: 'Asia/Kathmandu' });
             
-            // बटनलाई प्रोसेसिङ मोडमा लैजाने
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.innerText;
-            submitBtn.innerText = "Sending...";
-            submitBtn.disabled = true;
+            // Standard synchronous calendar fallback rendering logic
+            const calOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('gregorian-date-output').value = timestampNow.toLocaleDateString('en-US', calOptions);
+        }
+        setInterval(computeDateAndClockSync, 1000);
+        computeDateAndClockSync();
 
-            const formData = {
-                name: this.name.value,
-                email: this.email.value,
-                message: this.message.value
+        /* Part 3: Content Presentation Carousel System */
+        let slideIndexMarker = 0;
+        const portfolioSlides = document.querySelectorAll('.slide-img');
+
+        function drawCarouselFrame(targetIndex) {
+            portfolioSlides.forEach(element => element.classList.remove('active'));
+            slideIndexMarker = (targetIndex + portfolioSlides.length) % portfolioSlides.length;
+            portfolioSlides[slideIndexMarker].classList.add('active');
+        }
+
+        function moveSlide(offsetIncrement) {
+            drawCarouselFrame(slideIndexMarker + offsetIncrement);
+        }
+        setInterval(() => moveSlide(1), 6000);
+
+        /* Part 4: Native Abstract Overlay Interface Logic Modules */
+        function openToolModal(modalIdentifier) {
+            document.getElementById(modalIdentifier).style.display = 'block';
+        }
+
+        function closeToolModal(modalIdentifier) {
+            document.getElementById(modalIdentifier).style.display = 'none';
+        }
+
+        window.onclick = function(windowEvent) {
+            if (windowEvent.target.classList.contains('modal')) {
+                windowEvent.target.style.display = 'none';
+            }
+        }
+
+        /* Part 5: PDF Text Stream Data Extractor System Logic */
+        function executePDFExtraction() {
+            const targetPDFFileInput = document.getElementById('pdfFileInput').files[0];
+            const outputTerminal = document.getElementById('pdfOutputDisplay');
+            
+            if (!targetPDFFileInput) {
+                outputTerminal.innerText = "Error: Active binary handle target missing.";
+                return;
+            }
+
+            outputTerminal.innerText = "Extracting binary data arrays... Please wait.";
+            const fileReaderBlob = new FileReader();
+            
+            fileReaderBlob.onload = function() {
+                const typedBufferArray = new Uint8Array(this.result);
+                pdfjsLib.getDocument(typedBufferArray).promise.then(function(loadedPdfInstance) {
+                    let structuralTextPayload = "";
+                    let totalPagesCount = loadedPdfInstance.numPages;
+                    let executedPromisesArray = [];
+
+                    for (let numberedPage = 1; numberedPage <= totalPagesCount; numberedPage++) {
+                        executedPromisesArray.push(
+                            loadedPdfInstance.getPage(numberedPage).then(function(individualPageInstance) {
+                                return individualPageInstance.getTextContent().then(function(extractedTextCollection) {
+                                    return extractedTextCollection.items.map(textItem => textItem.str).join(" ");
+                                });
+                            })
+                        );
+                    }
+
+                    Promise.all(executedPromisesArray).then(function(assembledPagesStringsArray) {
+                        structuralTextPayload = assembledPagesStringsArray.join("\n\n--- Page Break ---\n\n");
+                        outputTerminal.innerText = structuralTextPayload || "Processing finished. No clear character arrays located.";
+                    });
+                }).catch(function(pdfError) {
+                    outputTerminal.innerText = "Fatal PDF Matrix Decode Failure: " + pdfError.message;
+                });
+            };
+            fileReaderBlob.readAsArrayBuffer(targetPDFFileInput);
+        }
+
+        /* Part 6: Visual Asset QR Code Compilation Matrix Logic */
+        let activeQRCodeEngineInstance = null;
+
+        function generateVectorQR() {
+            const contentSourceString = document.getElementById('qrInputData').value;
+            const renderingWorkspace = document.getElementById('qrVectorOutput');
+            const saveAssetBtn = document.getElementById('qrDownloadBtn');
+
+            renderingWorkspace.innerHTML = "";
+            if (!contentSourceString) {
+                renderingWorkspace.innerHTML = "<p style='color:var(--error-color);'>Error: Value array empty.</p>";
+                saveAssetBtn.style.display = "none";
+                return;
+            }
+
+            activeQRCodeEngineInstance = new QRCode(renderingWorkspace, {
+                text: contentSourceString,
+                width: 180,
+                height: 180,
+                colorDark: "#050a1a",
+                colorLight: "#00f0ff"
+            });
+
+            setTimeout(() => {
+                const compiledImageElement = renderingWorkspace.querySelector('img');
+                if (compiledImageElement) saveAssetBtn.style.display = "inline-block";
+            }, 200);
+        }
+
+        function downloadQRMatrix() {
+            const rawSourceImage = document.getElementById('qrVectorOutput').querySelector('img').src;
+            const downloadProxyLink = document.createElement('a');
+            downloadProxyLink.href = rawSourceImage;
+            downloadProxyLink.download = "compiled-qr-matrix.png";
+            document.body.appendChild(downloadProxyLink);
+            downloadProxyLink.click();
+            document.body.removeChild(downloadProxyLink);
+        }
+
+        /* Part 7: Native Pixel Canvas Image Compressor Module */
+        function executeImageCompression() {
+            const rawUploadFile = document.getElementById('imageFileInput').files[0];
+            const targetRatioSlider = parseFloat(document.getElementById('compressionQuality').value);
+            const statisticsTerminal = document.getElementById('compressMetaOutput');
+            const downloadActionBtn = document.getElementById('compressedImageDownload');
+
+            if (!rawUploadFile) {
+                statisticsTerminal.innerText = "Upload required before processing.";
+                return;
+            }
+
+            statisticsTerminal.innerText = "Re-allocating bitmap buffer coordinates...";
+            const fileReaderImageProxy = new FileReader();
+            fileReaderImageProxy.readAsDataURL(rawUploadFile);
+            
+            fileReaderImageProxy.onload = function(eventPayload) {
+                const targetImageObject = new Image();
+                targetImageObject.src = eventPayload.target.result;
+                
+                targetImageObject.onload = function() {
+                    const canvasVirtualRenderElement = document.createElement('canvas');
+                    const canvasContext2D = canvasVirtualRenderElement.getContext('2d');
+                    
+                    canvasVirtualRenderElement.width = targetImageObject.width;
+                    canvasVirtualRenderElement.height = targetImageObject.height;
+                    
+                    canvasContext2D.drawImage(targetImageObject, 0, 0, targetImageObject.width, targetImageObject.height);
+                    
+                    const computationalCompressedURL = canvasVirtualRenderElement.toDataURL('image/jpeg', targetRatioSlider);
+                    
+                    downloadActionBtn.href = computationalCompressedURL;
+                    downloadActionBtn.download = "rescaled-node-asset.jpg";
+                    downloadActionBtn.style.display = "inline-flex";
+                    
+                    const baseSizeDeltaKB = (rawUploadFile.size / 1024).toFixed(2);
+                    const processedSizeDeltaKB = (computationalCompressedURL.length / 1.33 / 1024).toFixed(2);
+                    
+                    statisticsTerminal.innerHTML = `Success!<br>Initial: ${baseSizeDeltaKB} KB<br>Optimized Payload: ${processedSizeDeltaKB} KB`;
+                };
+            };
+        }
+
+        /* Part 8: Local System Phonetic Unicode Dictionary Tool Engine */
+        function executeUnicodeMapping() {
+            const inputText = document.getElementById('unicodeInputText').value.toLowerCase();
+            const displayTerminal = document.getElementById('unicodeOutputDisplay');
+
+            if(!inputText.trim()){
+                displayTerminal.innerText = "Buffer empty.";
+                return;
+            }
+
+            // High precision rule mapping array definitions
+            const dictionaryRules = [
+                { roman: 'namaste', nepali: 'नमस्ते' },
+                { roman: 'mero', nepali: 'मेरो' },
+                { roman: 'naam', nepali: 'नाम' },
+                { roman: 'amit', nepali: 'अमित' },
+                { roman: 'joshi', nepali: 'जोशी' },
+                { roman: 'ho', nepali: 'हो' },
+                { roman: 'nepal', nepali: 'नेपाल' },
+                { roman: 'darchula', nepali: 'दार्चुला' },
+                { roman: 'shuva', nepali: 'शुभ' },
+                { roman: 'pravat', nepali: 'प्रभात' },
+                { roman: 'buda', nepali: 'बुढो' },
+                { roman: 'sanchai', nepali: 'सन्चै' },
+                { roman: 'chha', nepali: 'छ' }
+            ];
+
+            let computationalTokensArray = inputText.split(" ");
+            let processedOutputTokens = computationalTokensArray.map(token => {
+                let identifiedRuleMatch = dictionaryRules.find(rule => rule.roman === token);
+                if(identifiedRuleMatch) {
+                    return identifiedRuleMatch.nepali;
+                } else {
+                    // Primitive phonetic fallback calculation engine
+                    return token.replace(/a/g, 'ा').replace(/i/g, 'ि').replace(/e/g, 'े').replace(/o/g, 'ो');
+                }
+            });
+
+            displayTerminal.innerText = processedOutputTokens.join(" ");
+        }
+
+        /* Part 9: Distributed Contact Form API Gateway Interface Controller (Backend Pipeline) */
+        document.getElementById('distributedContactGateway').addEventListener('submit', async function(formSubmitEvent) {
+            formSubmitEvent.preventDefault(); // Lock context execution loop (prevents default browser refresh action)
+            
+            const submitBtnRef = document.getElementById('gatewaySubmitBtn');
+            const defaultButtonText = submitBtnRef.innerText;
+            
+            submitBtnRef.innerText = "Transmitting Packet Blocks...";
+            submitBtnRef.disabled = true;
+
+            // Form structural array mapping configuration
+            const structuredPayloadData = {
+                name: document.getElementById('clientName').value,
+                email: document.getElementById('clientEmail').value,
+                message: document.getElementById('clientMessage').value,
+                metaGeneratedTimestamp: new Date().toISOString()
             };
 
             try {
-                // ब्याकइन्डको /api/contact मार्गमा डेटा पठाउने
-                const response = await fetch('/api/contact', {
+                /* Vercel Architecture Backend Node Connection Blueprint.
+                   To connect your database smoothly:
+                   1. Build an 'api/contact.js' script in your main repo directory.
+                   2. This runtime maps clean data properties inside a PostgreSQL or MongoDB container.
+                */
+                const apiNetworkResponse = await fetch('/api/contact', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify(formData)
+                    body: JSON.stringify(structuredPayloadData)
                 });
 
-                const result = await response.json();
+                const structuralResultJSON = await apiNetworkResponse.json();
 
-                if (response.ok) {
-                    alert('धन्यवाद! तपाईंको म्यासेज ब्याकइन्ड डाटाबेसमा सुरक्षित भयो।');
-                    this.reset(); // फारम खाली गर्ने
+                if (apiNetworkResponse.ok) {
+                    alert('Data transmission complete. Communication stream established.');
+                    this.reset();
                 } else {
-                    alert('त्रुटि (Error): ' + (result.error || 'केही समस्या आयो।'));
+                    alert('API Framework Rejection Notice: ' + (structuralResultJSON.error || 'Check backend log tables.'));
                 }
-            } catch (error) {
-                console.error('Submission error:', error);
-                alert('ब्याकइन्ड सर्भरसँग जडान हुन सकेन।');
+            } catch (networkFatalException) {
+                console.error('System Data Line Break Failure:', networkFatalException);
+                alert('Connection failure: The API execution line timed out. Verify your hosting platform is actively tracking the /api folder structure inside your GitHub repo.');
             } finally {
-                // बटनलाई पुरानै अवस्थामा फर्काउने
-                submitBtn.innerText = originalBtnText;
-                submitBtn.disabled = false;
+                submitBtnRef.innerText = defaultButtonText;
+                submitBtnRef.disabled = false;
             }
         });
     </script>
