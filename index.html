@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amit Joshi | Personal Dashboard & Portfolio</title>
+    <title>Amit Joshi </title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <link rel="stylesheet" href="https://unpkg.com/nepali-datepicker-reactjs/dist/index.css"/>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://unpkg.com/nepali-date-picker/dist/nepaliDatePicker.min.js"></script>
+    <script src="https://unpkg.com/bikram-sambat-js"></script>
 
     <style>
         :root {
@@ -21,8 +22,6 @@
             --accent-color: #00f0ff;
             --accent-purple: #a855f7;
             --accent-glow: rgba(0, 240, 255, 0.25);
-            --success-color: #10b981;
-            --error-color: #ef4444;
         }
 
         * {
@@ -41,7 +40,7 @@
             position: relative;
         }
 
-        /* Fixed Background Particle Canvas animation space */
+        /* Particle Network Background */
         #particle-canvas {
             position: fixed;
             top: 0;
@@ -58,18 +57,19 @@
             padding: 0 2rem;
         }
 
-        /* Main Navigation Bar Layout */
+        /* Header */
         header {
             width: 100%;
             display: flex;
             flex-direction: column;
             padding: 0.8rem 2rem;
-            background: linear-gradient(rgba(5, 10, 26, 0.9), rgba(5, 10, 26, 0.9));
+            background: linear-gradient(rgba(5, 10, 26, 0.85), rgba(5, 10, 26, 0.85)), url('127540764_1543314336058956_8888779226493901871_n.jpg');
+            background-size: cover;
+            background-position: center;
             border-bottom: 1px solid var(--card-border);
             position: sticky;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(12px);
         }
 
         .header-top {
@@ -179,6 +179,7 @@
             font-weight: 500;
             font-size: 0.85rem;
             transition: color 0.2s ease;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
         }
 
         nav a:hover {
@@ -215,16 +216,17 @@
             font-size: 0.85rem;
         }
 
-        /* Section Global Typography and Structures */
+        /* Full Height Pages */
         .page-section {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 6rem 0;
+            padding: 4rem 0;
             border-top: 1px solid rgba(255, 255, 255, 0.04);
         }
 
+        /* Home Page */
         .hero {
             display: flex;
             flex-direction: row;
@@ -257,8 +259,9 @@
         }
 
         .cursive-name {
-            font-family: 'Inter', sans-serif;
-            font-weight: 800;
+            font-family: 'Brush Script MT', cursive, sans-serif;
+            font-size: 3.3rem;
+            font-weight: bold;
             color: #00f0ff;
             text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
         }
@@ -276,6 +279,7 @@
             align-items: center;
         }
 
+        /* Hero image box */
         .hero-slides {
             width: 420px;
             height: 500px;
@@ -286,6 +290,7 @@
             position: relative;
         }
 
+        /* Carousel additions */
         .carousel-images {
             width: 100%;
             height: 100%;
@@ -299,7 +304,7 @@
             height: 100%;
             object-fit: cover;
             opacity: 0;
-            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+            transition: opacity 1s ease-in-out, transform 1s cubic-bezier(0.25, 1, 0.5, 1);
             transform: scale(1.05);
         }
 
@@ -343,11 +348,14 @@
         }
 
         @keyframes neon-flutter {
-            0%, 100% { box-shadow: 0 0 15px var(--accent-color), 0 0 30px var(--accent-purple); }
-            50% { box-shadow: 0 0 25px var(--accent-color), 0 0 50px var(--accent-purple); }
+            0%, 100% {
+                box-shadow: 0 0 15px var(--accent-color), 0 0 30px var(--accent-purple);
+            }
+            50% {
+                box-shadow: 0 0 25px var(--accent-color), 0 0 50px var(--accent-purple);
+            }
         }
 
-        /* Action Buttons Layout Framework */
         .btn {
             padding: 0.75rem 1.3rem;
             border-radius: 8px;
@@ -400,6 +408,7 @@
             100% { box-shadow: 0 0 5px rgba(168, 85, 247, 0.3); border-color: rgba(168, 85, 247, 0.3); }
         }
 
+        /* Section Title */
         .section-title {
             font-size: 2.2rem;
             font-weight: 700;
@@ -413,11 +422,13 @@
 
         .section-title span { color: var(--accent-color); }
 
-        /* Social Cards Matrix Grid System */
+        /* Social Section */
         .grid-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 1.5rem;
+            height: 75vh;
+            align-content: center;
         }
 
         .card {
@@ -428,7 +439,7 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            transition: transform 0.25s ease, border-color 0.25s;
+            transition: transform 0.25s ease, border-color 0.25s, height 0.3s ease;
             min-height: 250px;
         }
 
@@ -465,16 +476,18 @@
 
         .card-link:hover { text-decoration: underline; }
 
-        /* Initiative Two Column Showcase Layout */
+        /* Initiative Section */
         .initiative-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2.5rem;
             align-items: center;
+            height: 75vh;
         }
 
         .fb-embed-box {
             width: 100%;
+            height: 100%;
             min-height: 350px;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -482,11 +495,13 @@
             padding: 1rem;
         }
 
-        /* Academic Timeline Flex/Grid Configurations */
+        /* Education Section */
         .education-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
+            height: 70vh;
+            align-content: center;
         }
 
         .edu-card {
@@ -502,7 +517,7 @@
             gap: 1rem;
         }
 
-        /* Micro-Tools Native Core Grid */
+        /* Tools Section */
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -531,7 +546,7 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Calendar Regional Component */
+        /* Calendar Session */
         .calendar-box {
             background-color: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -544,29 +559,31 @@
             margin-top: 1.5rem;
         }
 
-        /* Native Abstract Modals Layout Overlay Engine */
+        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
-            z-index: 2000;
+            z-index: 1001;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
             overflow: auto;
             background-color: rgba(0,0,0,0.85);
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(5px);
         }
 
         .modal-content {
-            background-color: #0c1020;
-            margin: 8% auto;
+            background-color: #0f1015;
+            margin: 5% auto;
             padding: 2.5rem;
             border: 1px solid var(--accent-purple);
-            width: 55%;
+            width: 65%;
             border-radius: 16px;
             color: var(--text-primary);
             box-shadow: 0 0 30px var(--accent-glow);
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
         .close-btn {
@@ -589,37 +606,43 @@
             color: #fff;
             border-radius: 8px;
             font-family: inherit;
-            outline: none;
         }
 
-        .form-control:focus {
-            border-color: var(--accent-color);
+        .translator-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1rem;
         }
 
-        /* Functional Area Components */
-        .tool-workspace {
-            margin-top: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .output-box {
-            background: rgba(0, 0, 0, 0.4);
+        .translate-area {
+            background: rgba(0,0,0,0.4);
             border: 1px solid var(--card-border);
-            padding: 1rem;
+            padding: 1.2rem;
             border-radius: 8px;
-            min-height: 100px;
-            white-space: pre-wrap;
-            word-break: break-all;
+            min-height: 150px;
             color: #fff;
+            resize: none;
+            width: 100%;
+            font-family: inherit;
         }
 
-        /* Interests Quadrant Layout Matrix */
+        .icon-btn {
+            background: transparent;
+            border: none;
+            color: var(--accent-color);
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: 0.5rem;
+        }
+
+        /* Interest Section */
         .interest-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
+            height: 75vh;
+            align-content: center;
         }
 
         .interest-card {
@@ -637,6 +660,7 @@
         .interest-card:hover {
             border-color: var(--accent-purple);
             transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.15);
         }
 
         .interest-card i {
@@ -644,12 +668,15 @@
             color: var(--accent-purple);
         }
 
-        /* Contact Gateway Architecture */
+        /* Contact Section */
         .contact-section-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
             align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            height: 65vh;
         }
 
         .contact-details {
@@ -660,6 +687,7 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
+            color: var(--text-primary);
         }
 
         .contact-details h3 {
@@ -694,15 +722,28 @@
             display: flex;
             flex-direction: column;
             gap: 1.2rem;
+            justify-content: center;
         }
 
-        /* Footer Framework */
+        .contact-form input, .contact-form textarea {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--card-border);
+            padding: 0.85rem;
+            border-radius: 8px;
+            color: #fff;
+            outline: none;
+        }
+
+        /* Footer */
         footer {
             border-top: 1px solid rgba(255, 255, 255, 0.03);
-            background: #030611;
+            background: linear-gradient(rgba(5, 10, 26, 0.95), rgba(5, 10, 26, 0.95)), url('127540764_1543314336058956_8888779226493901871_n.jpg');
+            background-size: cover;
+            background-position: center;
             padding: 4rem 0;
             color: #fff;
             font-size: 0.88rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
         }
 
         .footer-grid {
@@ -720,13 +761,22 @@
         }
 
         .footer-col ul { list-style: none; }
+
         .footer-col ul li { margin-bottom: 0.5rem; }
+
         .footer-col a {
             color: #fff;
             text-decoration: none;
             transition: color 0.2s;
         }
+
         .footer-col a:hover { color: var(--accent-color); }
+
+        .footer-col-2-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+        }
 
         .footer-bottom {
             text-align: center;
@@ -736,23 +786,99 @@
             color: var(--text-secondary);
         }
 
-        /* Media Response Adaptability Configurations */
         @media (max-width: 991px) {
-            header { padding: 1rem; }
-            .header-bottom { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
-            .hero { flex-direction: column; text-align: center; }
-            .hero-text { max-width: 100%; align-items: center; }
-            .hero-slides { width: 100%; height: 350px; }
-            .initiative-grid { grid-template-columns: 1fr; }
-            .education-grid { grid-template-columns: 1fr; }
-            .tools-grid { grid-template-columns: repeat(2, 1fr); }
-            .contact-section-container { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-            .modal-content { width: 90%; margin: 20% auto; }
+            header {
+                flex-direction: column;
+                height: auto;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            .header-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-text {
+                max-width: 100%;
+                align-items: center;
+            }
+            .hero-buttons {
+                align-items: center;
+            }
+            .hero-slides {
+                width: 90%;
+                height: 320px;
+            }
+            .grid-cards {
+                grid-template-columns: 1fr;
+            }
+            .initiative-grid {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+            .education-grid {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+            .tools-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .contact-section-container {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
         }
 
-        @media (max-width: 576px) {
-            .tools-grid { grid-template-columns: 1fr; }
+        /* Gemini AI Dialog */
+        .gemini-dialog {
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -20%);
+            background: rgba(10,12,20,0.98);
+            border: 2px solid var(--accent-purple);
+            padding: 2rem;
+            border-radius: 16px;
+            width: 450px;
+            box-shadow: 0 0 40px var(--accent-glow);
+            z-index: 2000;
+            color: #fff;
+            display: none;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .gemini-dialog h3 { color: var(--accent-color); margin-bottom: 0.8rem; }
+
+        .gemini-dialog textarea {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--card-border);
+            color: #fff;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-family: inherit;
+            margin-bottom: 1rem;
+            resize: none;
+            height: 100px;
+        }
+
+        .gemini-dialog pre {
+            background: rgba(0,0,0,0.5);
+            padding: 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            color: var(--accent-color);
+            white-space: pre-wrap;
         }
     </style>
 </head>
@@ -763,37 +889,39 @@
     <header>
         <div class="header-top">
             <div class="header-left">
-                <a href="#" class="logo">
-                    <img src="logo.jpg" alt="Amit Joshi" class="logo-img" onerror="this.src='https://via.placeholder.com/44'">
+                <a href="javascript:location.reload()" class="logo">
+                    <img src="WhatsApp Image 2026-03-28 at 08.46.55.jpeg" alt="Amit Joshi" class="logo-img">
                     <div class="logo-title">
                         <span>Amit Joshi</span>
-                        <span onclick="window.open('https://wa.me/9746241860', '_blank')">Connect Wirelessly</span>
+                        <span onclick="window.open('https://wa.me/9746241860', '_blank')">Connect With Me</span>
                     </div>
                 </a>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Flag_of_Nepal.svg" alt="Nepal Flag" class="nepali-flag">
+                <img src="Flag_of_Nepal.gif" alt="Nepal Flag" class="nepali-flag">
             </div>
 
             <nav>
                 <a href="#home">Home</a>
-                <a href="#social">Networks</a>
+                <a href="#social">Social Profiles</a>
                 <a href="#initiative">Initiative</a>
-                <a href="#edu">Academics</a>
-                <a href="#tools">Utility Hub</a>
+                <a href="#edu">Education</a>
+                <a href="#tools">Some Useful Tools</a>
                 <a href="#interests">Interests</a>
-                <a href="#contact">Gateway</a>
+                <a href="#contact">Contact</a>
             </nav>
         </div>
 
         <div class="header-bottom">
-            <span class="nepali-time" id="nepali-time-el">NP Time: Synthesizing Clock Loop...</span>
+            <span class="nepali-time" id="nepali-time-el">NP Time: ...</span>
+            
             <div class="search-container">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" class="search-bar" placeholder="Query Matrix Hub..." id="local-system-search">
+                <input type="text" class="search-bar" placeholder="Ask AI / Gemini" id="ai-search-bar" onclick="openGeminiModal()">
             </div>
+
             <div class="social-icons-header">
-                <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook" style="color: #1877f2;"></i></a>
-                <a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram" style="color: #E1306C;"></i></a>
-                <a href="https://www.tiktok.com/" target="_blank"><i class="fa-brands fa-tiktok" style="color: #ffffff;"></i></a>
+                <a href="https://www.facebook.com/share/1JUJKNUqc9/" target="_blank"><i class="fa-brands fa-facebook" style="color: #1877f2;"></i></a>
+                <a href="https://www.instagram.com/_amitjoc?igsh=MXZyeTJzYWd4Ym9haA==" target="_blank"><i class="fa-brands fa-instagram" style="color: #E1306C;"></i></a>
+                <a href="https://www.tiktok.com/@amitjoc_?_r=1&_t=ZS-95zUvLeiMb7" target="_blank"><i class="fa-brands fa-tiktok" style="color: #000;"></i></a>
                 <a href="mailto:amitjosee28@gmail.com"><i class="fa-solid fa-envelope" style="color: #ea4335;"></i></a>
                 <a href="https://wa.me/9746241860" target="_blank"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i></a>
             </div>
@@ -803,169 +931,174 @@
     <div class="container">
         <section id="home" class="page-section hero">
             <div class="hero-text">
-                <h1>Hi, I am <span class="cursive-name">Amit Joshi</span></h1>
-                <p>Architecting and executing localized web infrastructure and digital ecosystems from Darchula, Nepal. Specializing in systems integration, frontend telemetry systems, and optimized utility deployment interfaces.</p>
-                <p>Focused on transforming baseline community challenges into scalable open-source utility tooling ecosystems.</p>
+                <h1> <span class="cursive-name"> Its me Amit Joshi</span></h1>
+                <p>I’m someone driven by curiosity and a constant urge to learn and improve. I enjoy exploring technology and creating things that are practical and useful in real life. I prefer keeping things simple, clear, and meaningful rather than overcomplicating them.</p>
+                <p>I’m always working on becoming better than I was yesterday, whether it’s through learning new skills or refining what I already know. I believe in growth, consistency, and using my abilities to build something that truly makes a difference.</p>
                 <div class="hero-buttons">
-                    <a href="https://wa.me/9746241860" class="btn btn-primary" target="_blank"><i class="fa-brands fa-whatsapp"></i> Initiate Session</a>
-                    <a href="#contact" class="btn btn-secondary">Contact Uplink</a>
+                    <a href="https://wa.me/9746241860" class="btn btn-primary" target="_blank">Connect with me on WhatsApp</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
                 </div>
             </div>
             
             <div class="hero-slides neon-glow">
                 <div class="carousel-images">
-                    <img src="slide1.jpg" class="slide-img active" alt="System Node 1" onerror="this.src='https://via.placeholder.com/420x500/0c1020/ffffff?text=Node+Slide+1'">
-                    <img src="slide2.jpg" class="slide-img" alt="System Node 2" onerror="this.src='https://via.placeholder.com/420x500/0c1020/ffffff?text=Node+Slide+2'">
-                    <img src="slide3.jpg" class="slide-img" alt="System Node 3" onerror="this.src='https://via.placeholder.com/420x500/0c1020/ffffff?text=Node+Slide+3'">
+                   
+                    <img src="WhatsApp Image 2026-04-01 at 21.36.19.jpeg" class="slide-img" alt="Slide 2">
+                    <img src="WhatsApp Image 2026-04-01 at 21.36.19 (1).jpeg" class="slide-img" alt="Slide 3">
+                    <img src="WhatsApp Image 2026-03-28 at 08.46.55.jpeg" class="slide-img" alt="Slide 4">
+                    <img src="678627109_122107033436777907_7000681532606261625_n.jpg" class="slide-img" alt="Slide 5">
+                    <img src="658252519_964474099866456_7307889391676192084_n.jpg" class="slide-img" alt="Slide 6">
                 </div>
-                <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
-                <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
+                <button class="carousel-btn prev" onclick="moveSlide(-2)">&#10094;</button>
+                <button class="carousel-btn next" onclick="moveSlide(2)">&#10095;</button>
             </div>
         </section>
 
         <section id="social" class="page-section">
-            <h2 class="section-title">External <span>Network Grid Connections</span></h2>
+            <h2 class="section-title">My <span>Social Media Profiles</span></h2>
             <div class="grid-cards">
-                <div class="card">
-                    <div class="card-title">Facebook Telemetry <i class="fa-brands fa-facebook" style="color: #1877f2;"></i></div>
-                    <div class="card-desc">Social node deployment containing personal engineering feeds, regional social updates, and asynchronous communication streams.</div>
-                    <a href="https://www.facebook.com/" target="_blank" class="card-link">Uplink Profile &rarr;</a>
+                <div class="card" style="min-height:280px">
+                    <div class="card-title">Facebook <i class="fa-brands fa-facebook" style="color: #1877f2; font-size:1.6rem;"></i></div>
+                    <div class="card-desc">Personal profile and updates from Amit Joshi. Get in touch with daily updates and real-life connections.</div>
+                    <a href="https://www.facebook.com/share/1JUJKNUqc9/" target="_blank" class="card-link">View Profile &rarr;</a>
                 </div>
-                <div class="card">
-                    <div class="card-title">Instagram Feed <i class="fa-brands fa-instagram" style="color: #E1306C;"></i></div>
-                    <div class="card-desc">Asynchronous micro-blogging and contextual imagery timeline displaying localized hardware prototypes and computational design concepts.</div>
-                    <a href="https://www.instagram.com/" target="_blank" class="card-link">Uplink Profile &rarr;</a>
+                <div class="card" style="min-height:280px">
+                    <div class="card-title">Instagram <i class="fa-brands fa-instagram" style="color: #E1306C; font-size:1.6rem;"></i></div>
+                    <div class="card-desc">Follow my visual updates and personal life, daily stories, and photography.</div>
+                    <a href="https://www.instagram.com/_amitjoc?igsh=MXZyeTJzYWd4Ym9haA==" target="_blank" class="card-link">View Profile &rarr;</a>
                 </div>
-                <div class="card">
-                    <div class="card-title">TikTok Stream <i class="fa-brands fa-tiktok" style="color: #ffffff;"></i></div>
-                    <div class="card-desc">Compressed dynamic high-density video documentation covering structural logic, custom circuit adjustments, and system assemblies.</div>
-                    <a href="https://www.tiktok.com/" target="_blank" class="card-link">Uplink Profile &rarr;</a>
+                <div class="card" style="min-height:280px">
+                    <div class="card-title">TikTok <i class="fa-brands fa-tiktok" style="color: #000; font-size:1.6rem;"></i></div>
+                    <div class="card-desc">Short-form tech and hobby experiments. Videos exploring new projects, electronics, and digital life.</div>
+                    <a href="https://www.tiktok.com/@amitjoc_?_r=1&_t=ZS-95zUvLeiMb7" target="_blank" class="card-link">View Profile &rarr;</a>
                 </div>
-                <div class="card">
-                    <div class="card-title">Direct Mail Gateway <i class="fa-solid fa-envelope" style="color: #ea4335;"></i></div>
-                    <div class="card-desc">Standard production connection layer utilizing secure SMTP configurations for formal project briefs, peer reviews, and system integration calls.</div>
-                    <a href="mailto:amitjosee28@gmail.com" class="card-link">Dispatch Packets &rarr;</a>
+                <div class="card" style="min-height:280px">
+                    <div class="card-title">Email <i class="fa-solid fa-envelope" style="color: #ea4335; font-size:1.6rem;"></i></div>
+                    <div class="card-desc">Direct line for business and correspondence. You can reach out directly for collaborations.</div>
+                    <a href="mailto:amitjosee28@gmail.com" class="card-link">Contact &rarr;</a>
                 </div>
             </div>
         </section>
 
         <section id="initiative" class="page-section">
-            <h2 class="section-title">Community <span>Development Framework</span></h2>
+            <h2 class="section-title">My <span>Initiative</span></h2>
             <div class="initiative-grid">
                 <div>
-                    <h3 style="color: #ffffff; margin-bottom: 0.8rem;">Voice of Students Node</h3>
+                    <h3 style="color: #ffffff; margin-bottom: 0.8rem;">Voice of Students</h3>
                     <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
-                        Operating a public-facing informative framework designed to map academic timelines, exam configurations, and student requirements at Shree Mahendra Higher Secondary School.
+                       **Voice of Students – महेन्द्र मा वि दार्चुला** is a student-led initiative dedicated to amplifying the voices, concerns, and ideas of learners at **Mahendra Namuna Secondary School**. It serves as a platform for promoting transparency, fairness, and accountability while sharing important updates, student perspectives, and school-related issues. Through this initiative, students are encouraged to speak up, stay informed, and actively contribute to building a better educational environment.
                         <br><br>
-                        Synchronized with live educational standards to process localized notices directly onto decentralized consumer access platforms.
+                        <strong>Updated: May 2026</strong>
                     </p>
-                    <a href="https://www.facebook.com/" target="_blank" class="btn btn-primary"><i class="fa-brands fa-facebook"></i> Monitor Data Feed</a>
+                    <a href="https://www.facebook.com/voiceOfStudentsmmss" target="_blank" class="btn btn-primary">Follow Voice of Students in Facebook</a>
                 </div>
                 <div class="fb-embed-box">
-                    <div style="color:var(--text-secondary); text-align:center; padding-top:6rem;">
-                        <i class="fa-solid fa-network-wired fa-spin" style="font-size:2rem; color:var(--accent-color); margin-bottom:1rem;"></i>
-                        <p>Standard Social Frame Pipeline Ready</p>
-                    </div>
+                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FvoiceOfStudentsmmss&tabs=timeline&width=500&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="100%" height="350" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"></iframe>
                 </div>
+            </div>
+            
+            <div style="margin-top: 2.5rem; background-color: var(--card-bg); border: 1px solid var(--card-border); padding: 1.8rem; border-radius: 12px; box-shadow: 0 0 20px var(--accent-glow);">
+                <h3 style="color: var(--accent-color); margin-bottom: 0.5rem;">More About Initiative</h3>
+                <p style="color: var(--text-secondary); line-height: 1.6;">
+                   Voice of Students – महेन्द्र मा वि दार्चुला is a dynamic, student-driven initiative based at **Mahendra Namuna Secondary School**, created to ensure that every student’s voice is heard, valued, and represented. It goes beyond a typical social media page by actively addressing real issues within the school—such as academic quality, management practices, student welfare, and transparency—while also celebrating achievements and positive developments.The platform serves as a bridge between students and school authorities, encouraging open dialogue, constructive criticism, and responsible awareness. It shares notices, opinion pieces, and reports in a clear and engaging way, helping students stay informed and involved. At its core, the initiative promotes leadership, accountability, and unity among students, aiming to create a more fair, supportive, and progressive educational environment.
             </div>
         </section>
 
         <section id="edu" class="page-section">
-            <h2 class="section-title">Academic <span>Timeline Logs</span></h2>
+            <h2 class="section-title">My <span>Education</span></h2>
             <div class="education-grid">
-                <div class="edu-card">
-                    <i class="fa-solid fa-school" style="font-size: 2rem; color: var(--accent-color);"></i>
-                    <h3 style="color: var(--accent-color);">BUPS Darchula</h3>
-                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Secondary Computational Core Foundations</p>
-                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;">Acquired core mathematical structures, basic logical matrices, and early scientific processes.</p>
+                <div class="edu-card" style="min-height: 320px;">
+                    <h3 style="color: var(--accent-color);">BVPS Darchula</h3>
+                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Early Secondary Education</p>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 1rem;">Studying subjects including fundamental mathematics, science, and English to build a strong base for my tech skills.</p>
                 </div>
-                <div class="edu-card">
-                    <i class="fa-solid fa-building-columns" style="font-size: 2rem; color: var(--accent-color);"></i>
-                    <h3 style="color: var(--accent-color);">MMSS Darchula</h3>
-                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Higher Secondary Mathematical & Physical Matrix</p>
-                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;">Advanced physics configurations, numerical calculus systems, and system model formulation.</p>
+                <div class="edu-card" style="min-height: 320px;">
+                    <h3 style="color: var(--accent-color);">MSS Darchula</h3>
+                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Higher Secondary Education</p>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 1rem;">Focused on science and mathematics, developing the analytical problem-solving skills applied in web and hardware development.</p>
                 </div>
-                <div class="edu-card">
-                    <i class="fa-solid fa-graduation-cap" style="font-size: 2rem; color: var(--accent-color);"></i>
-                    <h3 style="color: var(--accent-color);">KBC</h3>
-                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Undergraduate Telecommunications Matrix</p>
-                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;">Currently pursuing advanced methodology structures, structural network topologies, and systems management frameworks.</p>
+                <div class="edu-card" style="min-height: 320px;">
+                    <h3 style="color: var(--accent-color);">KC</h3>
+                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Class 11</p>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 1rem;">Class 11 For a Few Months but Lifetime memory</p>
                 </div>
             </div>
         </section>
 
         <section id="tools" class="page-section">
-            <h2 class="section-title">Client-Side <span>Native Utilities Matrix</span></h2>
+            <h2 class="section-title">Some <span>Useful Tools</span></h2>
             <div class="tools-grid">
-                <div class="tool-card" onclick="openToolModal('pdfExtractorModal')">
-                    <i class="fa-solid fa-file-pdf" style="font-size: 1.5rem; color: #ff5722; margin-bottom: 0.5rem;"></i>
-                    <h4>PDF Extract Tool</h4>
-                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Client-Side Data Extraction</p>
+                <div class="tool-card" onclick="openToolModal('pdfConverter')">
+                    <h4>PDF Tools</h4>
+                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Convert or extract PDFs</p>
                 </div>
-                <div class="tool-card" onclick="openToolModal('qrGeneratorModal')">
-                    <i class="fa-solid fa-qrcode" style="font-size: 1.5rem; color: #00f0ff; margin-bottom: 0.5rem;"></i>
-                    <h4>QR Generator Matrix</h4>
-                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Render Vector Strings</p>
+                <div class="tool-card" onclick="openToolModal('qrGen')">
+                    <h4>QR Generator</h4>
+                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Build quick QR codes</p>
                 </div>
-                <div class="tool-card" onclick="openToolModal('imageCompressorModal')">
-                    <i class="fa-solid fa-file-image" style="font-size: 1.5rem; color: #4caf50; margin-bottom: 0.5rem;"></i>
+                <div class="tool-card" onclick="openToolModal('imgCompressor')">
                     <h4>Image Compressor</h4>
-                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Lossless Array Rescaling</p>
+                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Reduce image sizes</p>
                 </div>
-                <div class="tool-card" onclick="openToolModal('unicodeTranslatorModal')">
-                    <i class="fa-solid fa-language" style="font-size: 1.5rem; color: #e91e63; margin-bottom: 0.5rem;"></i>
-                    <h4>Unicode Translator</h4>
-                    <p style="font-size: 0.75rem; color: var(--text-secondary);">English -> Nepali Mapper</p>
+                <div class="tool-card" onclick="openToolModal('translator')">
+                    <h4>Translator / Converter</h4>
+                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Language conversion tools</p>
                 </div>
             </div>
 
-            <h3 style="color: #ffffff; margin: 2rem 0 1rem 0;">Chronological Calendar Integrations</h3>
+            <h3 style="color: #ffffff; margin: 2rem 0 1rem 0;">Regional Calendars</h3>
             <div class="calendar-box">
                 <div>
-                    <h3 style="color: var(--accent-color); margin-bottom: 0.5rem;">Bikram Sambat (BS)</h3>
-                    <input type="text" id="nepali-date-input" class="form-control" value="2083-02-15" readonly>
-                    <p style="color: var(--text-secondary); font-size: 0.8rem;">Native Astronomical Mapping System</p>
+                    <h3 style="color: var(--accent-color); margin-bottom: 0.5rem;">Nepali Calendar (BS)</h3>
+                    <input type="text" id="nepali-date" class="form-control" placeholder="Select BS Date">
+                    <p style="color: var(--text-secondary); font-size: 0.8rem;" id="np-calendar-view"></p>
                 </div>
                 <div>
-                    <h3 style="color: var(--accent-purple); margin-bottom: 0.5rem;">Gregorian Data (AD)</h3>
-                    <input type="text" id="gregorian-date-output" class="form-control" readonly>
-                    <p style="color: var(--text-secondary); font-size: 0.8rem;">Computed International Reference Standard</p>
+                    <h3 style="color: var(--accent-purple); margin-bottom: 0.5rem;">English Calendar (AD)</h3>
+                    <input type="text" id="english-date" class="form-control" readonly placeholder="Equivalent AD Date">
+                    <div id="calendar" style="margin-top:10px; font-size:0.75rem; color:#fff;"></div>
                 </div>
+            </div>
+
+            <div style="margin-top: 1.5rem; background-color: var(--card-bg); border: 1px solid var(--card-border); padding: 1.5rem; border-radius: 10px; box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);">
+                <h4 style="color: #ffffff; margin-bottom: 0.5rem;">Calendar & Information</h4>
+                <p style="color: var(--accent-color); font-weight: 600;">Current Date (BS): 2083 Jestha | Regional Holidays Active</p>
+                <p style="color: var(--text-secondary); font-size: 0.85rem;" id="ad-np-date-auto">Loading English & Nepali Date...</p>
             </div>
         </section>
 
         <section id="interests" class="page-section">
-            <h2 class="section-title">Core Competencies & <span>Research Interests</span></h2>
+            <h2 class="section-title">Interests & <span>Hobby</span></h2>
             <div class="interest-grid">
                 <div class="interest-card">
-                    <i class="fa-solid fa-bezier-curve"></i>
-                    <h3>Vector Architecture</h3>
-                    <p>Compiling aesthetic structural interfaces and user telemetry screens utilizing geometric asset structures.</p>
+                    <i class="fa-solid fa-pen-nib"></i>
+                    <h3>Design/Editing</h3>
+                    <p>Creating beautiful banners, posters, photo layers, and captions with aesthetic precision.</p>
                 </div>
                 <div class="interest-card">
-                    <i class="fa-solid fa-network-wired"></i>
-                    <h3>Decentralized Management</h3>
-                    <p>Deploying informational pipelines to local demographics without reliance on complex third-party stacks.</p>
+                    <i class="fa-solid fa-users"></i>
+                    <h3>Community Work</h3>
+                    <p>Directing and operating student initiatives like the "Voice of Students" community.</p>
                 </div>
                 <div class="interest-card">
                     <i class="fa-solid fa-microchip"></i>
-                    <h3>Hardware Integration</h3>
-                    <p>Low-level analysis of embedded processing units, logic engines, microcontrollers, and wireless transceivers.</p>
+                    <h3>Tech Tinkering</h3>
+                    <p>Working on Arduino boards, retro clocks, set-top boxes, and network-related repairs.</p>
                 </div>
                 <div class="interest-card">
-                    <i class="fa-solid fa-code"></i>
-                    <h3>Algorithm Compilation</h3>
-                    <p>Structuring and maintaining functional logic models that shift complex calculations to edge runtimes.</p>
+                    <i class="fa-solid fa-pencil"></i>
+                    <h3>Content Writing</h3>
+                    <p>Writing notices, captions, articles, and notices for social pages.</p>
                 </div>
             </div>
         </section>
 
         <section id="contact" class="page-section">
-            <h2 class="section-title">Secure Uplink <span>Gateway Interface</span></h2>
+            <h2 class="section-title">Contact <span>Me</span></h2>
             <div class="contact-section-container">
                 <div class="contact-details">
-                    <h3> অমিত জোशी | Amit Joshi</h3>
-                    <p>Deploying secure data collection protocols. Submitting this matrix dispatches structured packets to the active backend infrastructure logs.</p>
+                    <h3>Amit Joshi</h3>
+                    <p>Building digital tools and student networks from Darchula, Nepal. Contact me if you have any questions or want to collaborate.</p>
                     <ul>
                         <li><i class="fa-solid fa-location-dot"></i> Darchula, Sudurpashchim, Nepal</li>
                         <li><i class="fa-solid fa-envelope"></i> amitjosee28@gmail.com</li>
@@ -973,443 +1106,192 @@
                     </ul>
                 </div>
 
-                <form class="contact-form" id="distributedContactGateway">
-                    <input type="text" id="clientName" placeholder="Client Node Identifier" required class="form-control">
-                    <input type="email" id="clientEmail" placeholder="Secure Return Address" required class="form-control">
-                    <textarea id="clientMessage" rows="5" placeholder="Input Payload Data Blocks..." required class="form-control"></textarea>
-                    <button type="submit" class="btn btn-primary" id="gatewaySubmitBtn">Transmit Packet Logs</button>
+                <form class="contact-form" action="https://formspree.io/f/xyzgqgwa" method="POST">
+                    <input type="text" name="name" placeholder="Your Name" required class="form-control">
+                    <input type="email" name="email" placeholder="Your Email" required class="form-control">
+                    <textarea name="message" rows="5" placeholder="Type message..." required class="form-control"></textarea>
+                    <button type="submit" class="btn btn-primary" style="margin: 0 auto; width: auto;">Send Message</button>
                 </form>
             </div>
         </section>
-    </div>
-
-    <div id="pdfExtractorModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeToolModal('pdfExtractorModal')">&times;</span>
-            <h3>PDF Text Stream Extractor Component</h3>
-            <p style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:1rem;">Processes and extracts ASCII/UTF characters locally using client-side micro-parsing arrays.</p>
-            <div class="tool-workspace">
-                <input type="file" id="pdfFileInput" accept="application/pdf" class="form-control">
-                <button class="btn btn-primary" onclick="executePDFExtraction()">Parse Data Matrix</button>
-                <div class="output-box" id="pdfOutputDisplay">Awaiting file upload validation array...</div>
-            </div>
-        </div>
-    </div>
-
-    <div id="qrGeneratorModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeToolModal('qrGeneratorModal')">&times;</span>
-            <h3>Dynamic QR Vector Generation Core</h3>
-            <p style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:1rem;">Transforms raw data input strings into high-contrast visual matrix tracking systems.</p>
-            <div class="tool-workspace">
-                <input type="text" id="qrInputData" placeholder="Input Target String or URL" class="form-control">
-                <button class="btn btn-primary" onclick="generateVectorQR()">Compile QR Array</button>
-                <div style="display:flex; justify-content:center; margin:1rem 0;" id="qrVectorOutput"></div>
-                <button class="btn btn-secondary" id="qrDownloadBtn" style="display:none;" onclick="downloadQRMatrix()">Export Asset</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="imageCompressorModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeToolModal('imageCompressorModal')">&times;</span>
-            <h3>Lossless Canvas Image Compressor System</h3>
-            <p style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:1rem;">Lowers asset density thresholds using HTML5 Canvas pixel grid downsampling algorithms.</p>
-            <div class="tool-workspace">
-                <input type="file" id="imageFileInput" accept="image/*" class="form-control">
-                <div style="display:flex; gap:1rem; align-items:center;">
-                    <label style="font-size:0.8rem;">Target Ratio: </label>
-                    <input type="range" id="compressionQuality" min="0.1" max="0.9" step="0.1" value="0.6" style="flex:1;">
-                </div>
-                <button class="btn btn-primary" onclick="executeImageCompression()">Execute Matrix Rescale</button>
-                <div id="compressMetaOutput" style="font-size:0.85rem; color:var(--accent-color);"></div>
-                <div style="display:flex; justify-content:center; margin-top:1rem;">
-                    <a id="compressedImageDownload" class="btn btn-secondary" style="display:none;">Download Compressed Node</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="unicodeTranslatorModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeToolModal('unicodeTranslatorModal')">&times;</span>
-            <h3>English to Nepali Mapping System</h3>
-            <p style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:1rem;">Maps character positions using real-time array mapping systems (e.g., 'namaste' maps to 'नमस्ते').</p>
-            <div class="tool-workspace">
-                <textarea id="unicodeInputText" class="form-control" rows="4" placeholder="Type romanized string here... (e.g., mero naam amit ho)"></textarea>
-                <button class="btn btn-primary" onclick="executeUnicodeMapping()">Compute Output Mapping</button>
-                <div class="output-box" id="unicodeOutputDisplay">Awaiting phonetic data packets...</div>
-            </div>
-        </div>
     </div>
 
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h4>Direct Operational Anchors</h4>
+                    <h4>Contact Me</h4>
                     <ul>
-                        <li><a href="https://www.facebook.com/" target="_blank">Facebook Core Router</a></li>
-                        <li><a href="https://www.instagram.com/" target="_blank">Instagram Pipeline</a></li>
-                        <li><a href="https://wa.me/9746241860" target="_blank">WhatsApp Direct Uplink</a></li>
-                        <li><a href="mailto:amitjosee28@gmail.com">SMTP Gateway Email</a></li>
+                        <li><a href="https://www.facebook.com/share/1JUJKNUqc9/" target="_blank">Facebook</a></li>
+                        <li><a href="https://www.instagram.com/_amitjoc?igsh=MXZyeTJzYWd4Ym9haA==" target="_blank">Instagram</a></li>
+                        <li><a href="https://wa.me/9746241860" target="_blank">WhatsApp</a></li>
+                        <li><a href="mailto:amitjosee28@gmail.com">Gmail</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Regional Infrastructure Portals</h4>
-                    <ul>
-                        <li><a href="https://moest.gov.np" target="_blank">Ministry of Education (MoEST)</a></li>
-                        <li><a href="https://cehrd.gov.np" target="_blank">CEHRD Infrastructure Node</a></li>
-                        <li><a href="https://neb.gov.np" target="_blank">National Examination Board</a></li>
-                        <li><a href="https://learning.cehrd.edu.np" target="_blank">State Digital Library Portal</a></li>
-                    </ul>
+                    <h4>Useful Links</h4>
+                    <div class="footer-col-2-col">
+                        <ul>
+                            <li><a href="https://moest.gov.np" target="_blank">MoEST</a></li>
+                            <li><a href="https://cehrd.gov.np" target="_blank">CEHRD</a></li>
+                            <li><a href="https://learning.cehrd.edu.np" target="_blank">Learning Portal</a></li>
+                            <li><a href="https://neb.gov.np" target="_blank">NEB</a></li>
+                            <li><a href="https://cdc.gov.np" target="_blank">CDC</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="https://ugcnepal.edu.np" target="_blank">UGC</a></li>
+                            <li><a href="https://olenepal.org" target="_blank">OLE Nepal</a></li>
+                            <li><a href="https://nepalshiksha.gov.np" target="_blank">Education System</a></li>
+                        </ul>
+                        <li><a href="https://mmss.edu.np" target="_blank">Mahendra School </a></li>
+                        <li><a href="https://https://darchula.fwu.edu.np/" target="_blank">DMC Darchula</a></li>
+                    </div>
                 </div>
                 <div class="footer-col">
-                    <h4>System Utilities Manifest</h4>
+                    <h4>My Work</h4>
                     <ul>
-                        <li><a href="#initiative">Voice of Students Deployment</a></li>
-                        <li><a href="#tools">Edge Run Parsing Utilities</a></li>
-                        <li><a href="#interests">Advanced Computational Research</a></li>
+                        <li><a href="#initiative">Voice of Students Initiative</a></li>
+                        <li><a href="#tools">Useful Utilities & Calendar</a></li>
+                        <li><a href="#interests">Hobby Projects</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                &copy; 2026 Amit Joshi. Operational Control Asserted. Engineered and Maintained from Darchula, Nepal.
+                &copy; 2026 Amit Joshi. All Rights Reserved. Wanna Design?? Contact Me..
             </div>
         </div>
     </footer>
 
+    <div id="gemini-dialog" class="gemini-dialog">
+        <h3>Ask Gemini AI</h3>
+        <textarea id="gemini-prompt" placeholder="Ask AI..."></textarea>
+        <button class="btn btn-primary" onclick="submitGemini()">Ask</button>
+        <div id="gemini-response"></div>
+    </div>
+
     <script>
-        /* Part 1: High Density Particle Network Logic */
+        // Particle network effect
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
 
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        let arrayParticles = [];
-        const operationalDensityCount = 100;
-
-        class TelemetryParticle {
+        let particlesArray = [];
+        const numberOfParticles = 120;
+        class Particle {
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.radiusSize = Math.random() * 2.2 + 0.4;
-                this.trajectoryX = Math.random() * 0.6 - 0.3;
-                this.trajectoryY = Math.random() * 0.6 - 0.3;
+                this.size = (Math.random() * 2) + 0.5;
+                this.speedX = (Math.random() * 0.8) - 0.4;
+                this.speedY = (Math.random() * 0.8) - 0.4;
             }
-            updateVector() {
-                this.x += this.trajectoryX;
-                this.y += this.trajectoryY;
-                if (this.x < 0 || this.x > canvas.width) this.trajectoryX = -this.trajectoryX;
-                if (this.y < 0 || this.y > canvas.height) this.trajectoryY = -this.trajectoryY;
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x < 0 || this.x > canvas.width) {
+                    this.speedX = -this.speedX;
+                }
+                if (this.y < 0 || this.y > canvas.height) {
+                    this.speedY = -this.speedY;
+                }
             }
-            renderNode() {
-                ctx.fillStyle = 'rgba(0, 240, 255, 0.4)';
+
+            draw() {
+                ctx.fillStyle = 'rgba(0, 240, 255, 0.5)';
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radiusSize, 0, Math.PI * 2);
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
             }
         }
 
-        function compileSystemBackground() {
-            for (let index = 0; index < operationalDensityCount; index++) {
-                arrayParticles.push(new TelemetryParticle());
+        function init() {
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
             }
         }
 
-        function buildNetworkGridLines() {
-            for (let outerIndex = 0; outerIndex < arrayParticles.length; outerIndex++) {
-                for (let innerIndex = outerIndex; innerIndex < arrayParticles.length; innerIndex++) {
-                    let spatialDistance = ((arrayParticles[outerIndex].x - arrayParticles[innerIndex].x) ** 2) + 
-                                          ((arrayParticles[outerIndex].y - arrayParticles[innerIndex].y) ** 2);
-                    if (spatialDistance < 14000) {
-                        let visibilityFactor = 1 - (spatialDistance / 14000);
-                        ctx.strokeStyle = `rgba(168, 85, 247, ${visibilityFactor * 0.12})`;
-                        ctx.lineWidth = 0.8;
+        function connect() {
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
+                        + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                    if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+                        opacityValue = 1 - (distance / 20000);
+                        ctx.strokeStyle = `rgba(0, 240, 255, ${opacityValue * 0.15})`;
+                        ctx.lineWidth = 1;
                         ctx.beginPath();
-                        ctx.moveTo(arrayParticles[outerIndex].x, arrayParticles[outerIndex].y);
-                        ctx.lineTo(arrayParticles[innerIndex].x, arrayParticles[innerIndex].y);
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
                         ctx.stroke();
                     }
                 }
             }
         }
 
-        function stepNetworkAnimation() {
+        function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let particleIndex = 0; particleIndex < arrayParticles.length; particleIndex++) {
-                arrayParticles[particleIndex].updateVector();
-                arrayParticles[particleIndex].renderNode();
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
             }
-            buildNetworkGridLines();
-            requestAnimationFrame(stepNetworkAnimation);
+            connect();
+            requestAnimationFrame(animate);
         }
 
         window.addEventListener('resize', function() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-            arrayParticles = [];
-            compileSystemBackground();
+            particlesArray = [];
+            init();
         });
+        init();
+        animate();
 
-        compileSystemBackground();
-        stepNetworkAnimation();
-
-        /* Part 2: Time and Synchronous Calendar Matrix Controllers */
-        function computeDateAndClockSync() {
-            const timestampNow = new Date();
-            document.getElementById('nepali-time-el').innerText = "NP Time: " + timestampNow.toLocaleTimeString('en-NP', { timeZone: 'Asia/Kathmandu' });
-            
-            // Standard synchronous calendar fallback rendering logic
-            const calOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('gregorian-date-output').value = timestampNow.toLocaleDateString('en-US', calOptions);
-        }
-        setInterval(computeDateAndClockSync, 1000);
-        computeDateAndClockSync();
-
-        /* Part 3: Content Presentation Carousel System */
-        let slideIndexMarker = 0;
-        const portfolioSlides = document.querySelectorAll('.slide-img');
-
-        function drawCarouselFrame(targetIndex) {
-            portfolioSlides.forEach(element => element.classList.remove('active'));
-            slideIndexMarker = (targetIndex + portfolioSlides.length) % portfolioSlides.length;
-            portfolioSlides[slideIndexMarker].classList.add('active');
+        // Update time and date dynamically without overlapping
+        function updateTimeAndDate() {
+            const now = new Date();
+            document.getElementById('nepali-time-el').innerText = "NP Time: " + now.toLocaleTimeString('en-NP', { timeZone: 'Asia/Kathmandu' });
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('ad-np-date-auto').innerText = "Equivalent English Date: " + now.toLocaleDateString(undefined, options) + " | BS Date: 2083 Jestha | Regional Holidays Active";
         }
 
-        function moveSlide(offsetIncrement) {
-            drawCarouselFrame(slideIndexMarker + offsetIncrement);
-        }
-        setInterval(() => moveSlide(1), 6000);
+        setInterval(updateTimeAndDate, 1000);
+        updateTimeAndDate();
 
-        /* Part 4: Native Abstract Overlay Interface Logic Modules */
-        function openToolModal(modalIdentifier) {
-            document.getElementById(modalIdentifier).style.display = 'block';
-        }
+        // Carousel logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide-img');
+        const totalSlides = slides.length;
 
-        function closeToolModal(modalIdentifier) {
-            document.getElementById(modalIdentifier).style.display = 'none';
-        }
-
-        window.onclick = function(windowEvent) {
-            if (windowEvent.target.classList.contains('modal')) {
-                windowEvent.target.style.display = 'none';
-            }
-        }
-
-        /* Part 5: PDF Text Stream Data Extractor System Logic */
-        function executePDFExtraction() {
-            const targetPDFFileInput = document.getElementById('pdfFileInput').files[0];
-            const outputTerminal = document.getElementById('pdfOutputDisplay');
-            
-            if (!targetPDFFileInput) {
-                outputTerminal.innerText = "Error: Active binary handle target missing.";
-                return;
-            }
-
-            outputTerminal.innerText = "Extracting binary data arrays... Please wait.";
-            const fileReaderBlob = new FileReader();
-            
-            fileReaderBlob.onload = function() {
-                const typedBufferArray = new Uint8Array(this.result);
-                pdfjsLib.getDocument(typedBufferArray).promise.then(function(loadedPdfInstance) {
-                    let structuralTextPayload = "";
-                    let totalPagesCount = loadedPdfInstance.numPages;
-                    let executedPromisesArray = [];
-
-                    for (let numberedPage = 1; numberedPage <= totalPagesCount; numberedPage++) {
-                        executedPromisesArray.push(
-                            loadedPdfInstance.getPage(numberedPage).then(function(individualPageInstance) {
-                                return individualPageInstance.getTextContent().then(function(extractedTextCollection) {
-                                    return extractedTextCollection.items.map(textItem => textItem.str).join(" ");
-                                });
-                            })
-                        );
-                    }
-
-                    Promise.all(executedPromisesArray).then(function(assembledPagesStringsArray) {
-                        structuralTextPayload = assembledPagesStringsArray.join("\n\n--- Page Break ---\n\n");
-                        outputTerminal.innerText = structuralTextPayload || "Processing finished. No clear character arrays located.";
-                    });
-                }).catch(function(pdfError) {
-                    outputTerminal.innerText = "Fatal PDF Matrix Decode Failure: " + pdfError.message;
-                });
-            };
-            fileReaderBlob.readAsArrayBuffer(targetPDFFileInput);
-        }
-
-        /* Part 6: Visual Asset QR Code Compilation Matrix Logic */
-        let activeQRCodeEngineInstance = null;
-
-        function generateVectorQR() {
-            const contentSourceString = document.getElementById('qrInputData').value;
-            const renderingWorkspace = document.getElementById('qrVectorOutput');
-            const saveAssetBtn = document.getElementById('qrDownloadBtn');
-
-            renderingWorkspace.innerHTML = "";
-            if (!contentSourceString) {
-                renderingWorkspace.innerHTML = "<p style='color:var(--error-color);'>Error: Value array empty.</p>";
-                saveAssetBtn.style.display = "none";
-                return;
-            }
-
-            activeQRCodeEngineInstance = new QRCode(renderingWorkspace, {
-                text: contentSourceString,
-                width: 180,
-                height: 180,
-                colorDark: "#050a1a",
-                colorLight: "#00f0ff"
+        function showSlide(n) {
+            slides.forEach(slide => {
+                slide.classList.remove('active');
             });
-
-            setTimeout(() => {
-                const compiledImageElement = renderingWorkspace.querySelector('img');
-                if (compiledImageElement) saveAssetBtn.style.display = "inline-block";
-            }, 200);
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
         }
 
-        function downloadQRMatrix() {
-            const rawSourceImage = document.getElementById('qrVectorOutput').querySelector('img').src;
-            const downloadProxyLink = document.createElement('a');
-            downloadProxyLink.href = rawSourceImage;
-            downloadProxyLink.download = "compiled-qr-matrix.png";
-            document.body.appendChild(downloadProxyLink);
-            downloadProxyLink.click();
-            document.body.removeChild(downloadProxyLink);
+        function moveSlide(n) {
+            showSlide(currentSlide + n);
         }
 
-        /* Part 7: Native Pixel Canvas Image Compressor Module */
-        function executeImageCompression() {
-            const rawUploadFile = document.getElementById('imageFileInput').files[0];
-            const targetRatioSlider = parseFloat(document.getElementById('compressionQuality').value);
-            const statisticsTerminal = document.getElementById('compressMetaOutput');
-            const downloadActionBtn = document.getElementById('compressedImageDownload');
+        // Auto slide every 5 seconds
+        setInterval(() => {
+            moveSlide(1);
+        }, 5000);
 
-            if (!rawUploadFile) {
-                statisticsTerminal.innerText = "Upload required before processing.";
-                return;
-            }
-
-            statisticsTerminal.innerText = "Re-allocating bitmap buffer coordinates...";
-            const fileReaderImageProxy = new FileReader();
-            fileReaderImageProxy.readAsDataURL(rawUploadFile);
-            
-            fileReaderImageProxy.onload = function(eventPayload) {
-                const targetImageObject = new Image();
-                targetImageObject.src = eventPayload.target.result;
-                
-                targetImageObject.onload = function() {
-                    const canvasVirtualRenderElement = document.createElement('canvas');
-                    const canvasContext2D = canvasVirtualRenderElement.getContext('2d');
-                    
-                    canvasVirtualRenderElement.width = targetImageObject.width;
-                    canvasVirtualRenderElement.height = targetImageObject.height;
-                    
-                    canvasContext2D.drawImage(targetImageObject, 0, 0, targetImageObject.width, targetImageObject.height);
-                    
-                    const computationalCompressedURL = canvasVirtualRenderElement.toDataURL('image/jpeg', targetRatioSlider);
-                    
-                    downloadActionBtn.href = computationalCompressedURL;
-                    downloadActionBtn.download = "rescaled-node-asset.jpg";
-                    downloadActionBtn.style.display = "inline-flex";
-                    
-                    const baseSizeDeltaKB = (rawUploadFile.size / 1024).toFixed(2);
-                    const processedSizeDeltaKB = (computationalCompressedURL.length / 1.33 / 1024).toFixed(2);
-                    
-                    statisticsTerminal.innerHTML = `Success!<br>Initial: ${baseSizeDeltaKB} KB<br>Optimized Payload: ${processedSizeDeltaKB} KB`;
-                };
-            };
+        function openGeminiModal() {
+            document.getElementById('gemini-dialog').style.display = 'block';
         }
 
-        /* Part 8: Local System Phonetic Unicode Dictionary Tool Engine */
-        function executeUnicodeMapping() {
-            const inputText = document.getElementById('unicodeInputText').value.toLowerCase();
-            const displayTerminal = document.getElementById('unicodeOutputDisplay');
-
-            if(!inputText.trim()){
-                displayTerminal.innerText = "Buffer empty.";
-                return;
-            }
-
-            // High precision rule mapping array definitions
-            const dictionaryRules = [
-                { roman: 'namaste', nepali: 'नमस्ते' },
-                { roman: 'mero', nepali: 'मेरो' },
-                { roman: 'naam', nepali: 'नाम' },
-                { roman: 'amit', nepali: 'अमित' },
-                { roman: 'joshi', nepali: 'जोशी' },
-                { roman: 'ho', nepali: 'हो' },
-                { roman: 'nepal', nepali: 'नेपाल' },
-                { roman: 'darchula', nepali: 'दार्चुला' },
-                { roman: 'shuva', nepali: 'शुभ' },
-                { roman: 'pravat', nepali: 'प्रभात' },
-                { roman: 'buda', nepali: 'बुढो' },
-                { roman: 'sanchai', nepali: 'सन्चै' },
-                { roman: 'chha', nepali: 'छ' }
-            ];
-
-            let computationalTokensArray = inputText.split(" ");
-            let processedOutputTokens = computationalTokensArray.map(token => {
-                let identifiedRuleMatch = dictionaryRules.find(rule => rule.roman === token);
-                if(identifiedRuleMatch) {
-                    return identifiedRuleMatch.nepali;
-                } else {
-                    // Primitive phonetic fallback calculation engine
-                    return token.replace(/a/g, 'ा').replace(/i/g, 'ि').replace(/e/g, 'े').replace(/o/g, 'ो');
-                }
-            });
-
-            displayTerminal.innerText = processedOutputTokens.join(" ");
+        function submitGemini() {
+            const prompt = document.getElementById('gemini-prompt').value;
+            document.getElementById('gemini-response').innerHTML = `<pre>Result for "${prompt}": ... Response from Gemini is being generated.</pre>`;
         }
-
-        /* Part 9: Distributed Contact Form API Gateway Interface Controller (Backend Pipeline) */
-        document.getElementById('distributedContactGateway').addEventListener('submit', async function(formSubmitEvent) {
-            formSubmitEvent.preventDefault(); // Lock context execution loop (prevents default browser refresh action)
-            
-            const submitBtnRef = document.getElementById('gatewaySubmitBtn');
-            const defaultButtonText = submitBtnRef.innerText;
-            
-            submitBtnRef.innerText = "Transmitting Packet Blocks...";
-            submitBtnRef.disabled = true;
-
-            // Form structural array mapping configuration
-            const structuredPayloadData = {
-                name: document.getElementById('clientName').value,
-                email: document.getElementById('clientEmail').value,
-                message: document.getElementById('clientMessage').value,
-                metaGeneratedTimestamp: new Date().toISOString()
-            };
-
-            try {
-                /* Vercel Architecture Backend Node Connection Blueprint.
-                   To connect your database smoothly:
-                   1. Build an 'api/contact.js' script in your main repo directory.
-                   2. This runtime maps clean data properties inside a PostgreSQL or MongoDB container.
-                */
-                const apiNetworkResponse = await fetch('/api/contact', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(structuredPayloadData)
-                });
-
-                const structuralResultJSON = await apiNetworkResponse.json();
-
-                if (apiNetworkResponse.ok) {
-                    alert('Data transmission complete. Communication stream established.');
-                    this.reset();
-                } else {
-                    alert('API Framework Rejection Notice: ' + (structuralResultJSON.error || 'Check backend log tables.'));
-                }
-            } catch (networkFatalException) {
-                console.error('System Data Line Break Failure:', networkFatalException);
-                alert('Connection failure: The API execution line timed out. Verify your hosting platform is actively tracking the /api folder structure inside your GitHub repo.');
-            } finally {
-                submitBtnRef.innerText = defaultButtonText;
-                submitBtnRef.disabled = false;
-            }
-        });
     </script>
 </body>
 </html>
