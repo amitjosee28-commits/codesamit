@@ -173,8 +173,8 @@
             left: 0;
             width: 100%;
             height: 56%;
-            background-color: #dc143c; /* Crimson */
-            border-left: 3.5px solid #003893; /* Blue border */
+            background-color: #dc143c; 
+            border-left: 3.5px solid #003893; 
             box-sizing: border-box;
         }
 
@@ -188,7 +188,6 @@
             clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
         }
 
-        /* Crescent Moon Shape */
         .moon-emblem {
             position: absolute;
             bottom: 3px;
@@ -200,7 +199,6 @@
             box-shadow: -2.5px 2.5px 0 0 #dc143c inset;
         }
 
-        /* Sun Shape with radiating spike pseudo-layers */
         .sun-emblem {
             position: absolute;
             top: 6px;
@@ -221,17 +219,10 @@
         .sun-emblem::before { transform: rotate(30deg); }
         .sun-emblem::after { transform: rotate(60deg); }
 
-        /* Multi-axis waving motion */
         @keyframes flagWave3D {
-            0% {
-                transform: rotateY(0deg) rotateZ(0deg) skewY(0deg) scaleX(1);
-            }
-            50% {
-                transform: rotateY(18deg) rotateZ(1.5deg) skewY(3deg) scaleX(0.96);
-            }
-            100% {
-                transform: rotateY(-12deg) rotateZ(-1.5deg) skewY(-2deg) scaleX(1.03);
-            }
+            0% { transform: rotateY(0deg) rotateZ(0deg) skewY(0deg) scaleX(1); }
+            50% { transform: rotateY(18deg) rotateZ(1.5deg) skewY(3deg) scaleX(0.96); }
+            100% { transform: rotateY(-12deg) rotateZ(-1.5deg) skewY(-2deg) scaleX(1.03); }
         }
         /* ------------------------------------- */
 
@@ -429,12 +420,8 @@
         }
 
         @keyframes neon-flutter {
-            0%, 100% {
-                box-shadow: 0 0 15px var(--accent-color), 0 0 30px var(--accent-purple);
-            }
-            50% {
-                box-shadow: 0 0 25px var(--accent-color), 0 0 50px var(--accent-purple);
-            }
+            0%, 100% { box-shadow: 0 0 15px var(--accent-color), 0 0 30px var(--accent-purple); }
+            50% { box-shadow: 0 0 25px var(--accent-color), 0 0 50px var(--accent-purple); }
         }
 
         .btn {
@@ -640,7 +627,7 @@
             margin-top: 1.5rem;
         }
 
-        /* Modal Styles */
+        /* Modals Baseline */
         .modal {
             display: none;
             position: fixed;
@@ -688,6 +675,106 @@
             border-radius: 8px;
             font-family: inherit;
         }
+
+        /* --- PERSISTENT USER SUGGESTION POPUP PANEL --- */
+        .suggestion-popup {
+            display: none; 
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 340px;
+            background: rgba(15, 16, 21, 0.98);
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.25);
+            border-radius: 14px;
+            padding: 1.5rem;
+            z-index: 9999;
+            backdrop-filter: blur(8px);
+            animation: slideUpIn 0.5s ease-out forwards;
+        }
+
+        @keyframes slideUpIn {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .suggestion-popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .suggestion-popup-header h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .suggestion-popup-header h3 i {
+            color: var(--accent-color);
+        }
+
+        .suggestion-popup p {
+            font-size: 0.84rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .suggestion-popup textarea {
+            width: 100%;
+            height: 85px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            color: #ffffff;
+            padding: 0.65rem;
+            font-size: 0.85rem;
+            font-family: inherit;
+            resize: none;
+            outline: none;
+            margin-bottom: 0.8rem;
+            transition: border-color 0.2s;
+        }
+
+        .suggestion-popup textarea:focus {
+            border-color: var(--accent-color);
+        }
+
+        .whatsapp-submit-btn {
+            width: 100%;
+            background-color: #25d366;
+            color: #ffffff;
+            border: none;
+            padding: 0.65rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .whatsapp-submit-btn:hover {
+            background-color: #20ba5a;
+            transform: translateY(-1px);
+        }
+
+        .suggestion-close-icon {
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+        .suggestion-close-icon:hover { color: #ea4335; }
+        /* ---------------------------------------------- */
 
         .translator-row {
             display: grid;
@@ -842,7 +929,6 @@
         }
 
         .footer-col ul { list-style: none; }
-
         .footer-col ul li { margin-bottom: 0.5rem; }
 
         .footer-col a {
@@ -894,28 +980,13 @@
                 width: 90%;
                 height: 320px;
             }
-            .grid-cards {
-                grid-template-columns: 1fr;
-            }
-            .initiative-grid {
-                grid-template-columns: 1fr;
-                height: auto;
-            }
-            .education-grid {
-                grid-template-columns: 1fr;
-                height: auto;
-            }
-            .tools-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .contact-section-container {
-                grid-template-columns: 1fr;
-                height: auto;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
+            .grid-cards { grid-template-columns: 1fr; }
+            .initiative-grid { grid-template-columns: 1fr; height: auto; }
+            .education-grid { grid-template-columns: 1fr; height: auto; }
+            .tools-grid { grid-template-columns: 1fr 1fr; }
+            .contact-section-container { grid-template-columns: 1fr; height: auto; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .suggestion-popup { right: 5%; left: 5%; width: 90%; bottom: 15px; }
         }
 
         /* Gemini AI Dialog */
@@ -938,7 +1009,6 @@
         }
 
         .gemini-dialog h3 { color: var(--accent-color); margin-bottom: 0.8rem; }
-
         .gemini-dialog textarea {
             width: 100%;
             background: rgba(255,255,255,0.05);
@@ -951,7 +1021,6 @@
             resize: none;
             height: 100px;
         }
-
         .gemini-dialog pre {
             background: rgba(0,0,0,0.5);
             padding: 0.8rem;
@@ -966,6 +1035,18 @@
 <body>
 
     <canvas id="particle-canvas"></canvas>
+
+    <div id="user-suggestion-box" class="suggestion-popup">
+        <div class="suggestion-popup-header">
+            <h3><i class="fa-solid fa-code-branch"></i> I'm Designing This Website!</h3>
+            <i class="fa-solid fa-xmark suggestion-close-icon" onclick="closeSuggestionPopup()"></i>
+        </div>
+        <p>Please give your valuable suggestions to me. What should I change, add, or fix next?</p>
+        <textarea id="visitor-suggestion-text" placeholder="Type your ideas or suggestions here..."></textarea>
+        <button class="whatsapp-submit-btn" onclick="sendSuggestionToWhatsApp()">
+            <i class="fa-brands fa-whatsapp"></i> Send via WhatsApp
+        </button>
+    </div>
 
     <header>
         <div class="header-top">
@@ -1033,7 +1114,6 @@
             
             <div class="hero-slides neon-glow">
                 <div class="carousel-images">
-                   
                     <img src="WhatsApp Image 2026-04-01 at 21.36.19.jpeg" class="slide-img" alt="Slide 2">
                     <img src="WhatsApp Image 2026-04-01 at 21.36.19 (1).jpeg" class="slide-img" alt="Slide 3">
                     <img src="WhatsApp Image 2026-03-28 at 08.46.55.jpeg" class="slide-img" alt="Slide 4">
@@ -1092,6 +1172,7 @@
                 <h3 style="color: var(--accent-color); margin-bottom: 0.5rem;">More About Initiative</h3>
                 <p style="color: var(--text-secondary); line-height: 1.6;">
                    Voice of Students – महेन्द्र मा वि दार्चुला is a dynamic, student-driven initiative based at **Mahendra Namuna Secondary School**, created to ensure that every student’s voice is heard, valued, and represented. It goes beyond a typical social media page by actively addressing real issues within the school—such as academic quality, management practices, student welfare, and transparency—while also celebrating achievements and positive developments.The platform serves as a bridge between students and school authorities, encouraging open dialogue, constructive criticism, and responsible awareness. It shares notices, opinion pieces, and reports in a clear and engaging way, helping students stay informed and involved. At its core, the initiative promotes leadership, accountability, and unity among students, aiming to create a more fair, supportive, and progressive educational environment.
+                </p>
             </div>
         </section>
 
@@ -1261,6 +1342,38 @@
     </div>
 
     <script>
+        // Automatic popup loader logic
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const popup = document.getElementById('user-suggestion-box');
+                if(popup) {
+                    popup.style.display = 'block';
+                }
+            }, 3000); // Pops up precisely 3 seconds after loading
+        });
+
+        function closeSuggestionPopup() {
+            document.getElementById('user-suggestion-box').style.display = 'none';
+        }
+
+        function sendSuggestionToWhatsApp() {
+            const suggestionText = document.getElementById('visitor-suggestion-text').value.trim();
+            const phoneNumber = "9746241860"; 
+            
+            if (suggestionText === "") {
+                alert("Please type a suggestion before sending!");
+                return;
+            }
+            
+            // Constructs and cleans up custom string sequences for WhatsApp URL processing
+            const customMessage = `Hello Amit, I am reviewing your website. Here is my suggestion:\n\n"${suggestionText}"`;
+            const encodedText = encodeURIComponent(customMessage);
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+            
+            // Redirect action
+            window.open(whatsappUrl, '_blank');
+        }
+
         // Particle network effect
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
