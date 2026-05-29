@@ -57,12 +57,12 @@
             padding: 0 2rem;
         }
 
-        /* Header */
+        /* Header - Compressed Height */
         header {
             width: 100%;
             display: flex;
             flex-direction: column;
-            padding: 1rem 2rem;
+            padding: 0.5rem 2rem; /* Reduced vertical padding */
             background: linear-gradient(rgba(5, 10, 26, 0.85), rgba(5, 10, 26, 0.85)), url('127540764_1543314336058956_8888779226493901871_n.jpg');
             background-size: cover;
             background-position: center;
@@ -79,12 +79,13 @@
             width: 100%;
         }
 
+        /* Pulled elements upwards */
         .header-bottom {
             display: flex;
             justify-content: flex-end;
             align-items: center;
             width: 100%;
-            margin-top: 0.75rem;
+            margin-top: 0.2rem; /* Reduced from 0.75rem to pull up elements */
             gap: 1.5rem;
         }
 
@@ -95,11 +96,10 @@
         }
 
         .logo {
-            font-decoration: none;
+            text-decoration: none;
             display: flex;
             align-items: center;
             gap: 1rem;
-            text-decoration: none;
         }
 
         .logo-img {
@@ -161,12 +161,13 @@
             transform: scale(1.15);
         }
 
+        /* Highly Visible Flag Fix */
         .nepali-flag {
-            width: 42px;
+            width: 32px;
             height: auto;
-            margin-left: 0.8rem;
-            mix-blend-mode: multiply;
-            filter: contrast(1.1) brightness(1.1);
+            margin-left: 0.2rem;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3)) brightness(1.2); /* Boosted visibility */
+            opacity: 1; /* Removed dark blending rules */
         }
 
         .nepali-time {
@@ -305,7 +306,6 @@
             position: relative;
         }
 
-        /* Carousel additions */
         .carousel-images {
             width: 100%;
             height: 100%;
@@ -363,12 +363,8 @@
         }
 
         @keyframes neon-flutter {
-            0%, 100% {
-                box-shadow: 0 0 15px var(--accent-color), 0 0 30px var(--accent-purple);
-            }
-            50% {
-                box-shadow: 0 0 25px var(--accent-color), 0 0 50px var(--accent-purple);
-            }
+            0%, 100% { box-shadow: 0 0 15px var(--accent-color), 0 0 30px var(--accent-purple); }
+            50% { box-shadow: 0 0 25px var(--accent-color), 0 0 50px var(--accent-purple); }
         }
 
         .btn {
@@ -423,7 +419,6 @@
             100% { box-shadow: 0 0 5px rgba(168, 85, 247, 0.3); border-color: rgba(168, 85, 247, 0.3); }
         }
 
-        /* Section Title */
         .section-title {
             font-size: 2.2rem;
             font-weight: 700;
@@ -437,13 +432,10 @@
 
         .section-title span { color: var(--accent-color); }
 
-        /* Social Section */
         .grid-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 1.5rem;
-            height: auto;
-            align-content: center;
         }
 
         .card {
@@ -454,7 +446,7 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            transition: transform 0.25s ease, border-color 0.25s, height 0.3s ease;
+            transition: transform 0.25s ease, border-color 0.25s;
             min-height: 250px;
         }
 
@@ -491,18 +483,15 @@
 
         .card-link:hover { text-decoration: underline; }
 
-        /* Initiative Section */
         .initiative-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2.5rem;
             align-items: center;
-            height: auto;
         }
 
         .fb-embed-box {
             width: 100%;
-            height: 100%;
             min-height: 350px;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -510,13 +499,10 @@
             padding: 1rem;
         }
 
-        /* Education Section */
         .education-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
-            height: auto;
-            align-content: center;
         }
 
         .edu-card {
@@ -532,7 +518,6 @@
             gap: 1rem;
         }
 
-        /* Blog Section */
         .blog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -602,7 +587,6 @@
             box-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
         }
 
-        /* Tools Section */
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -631,7 +615,6 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Calendar Session */
         .calendar-box {
             background-color: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -644,44 +627,6 @@
             margin-top: 1.5rem;
         }
 
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1001;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.85);
-            backdrop-filter: blur(5px);
-        }
-
-        .modal-content {
-            background-color: #0f1015;
-            margin: 5% auto;
-            padding: 2.5rem;
-            border: 1px solid var(--accent-purple);
-            width: 65%;
-            border-radius: 16px;
-            color: var(--text-primary);
-            box-shadow: 0 0 30px var(--accent-glow);
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-
-        .close-btn {
-            color: var(--text-secondary);
-            float: right;
-            font-size: 2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .close-btn:hover { color: var(--accent-color); }
-
         .form-control {
             width: 100%;
             padding: 0.8rem;
@@ -693,13 +638,10 @@
             font-family: inherit;
         }
 
-        /* Interest Section */
         .interest-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
-            height: auto;
-            align-content: center;
         }
 
         .interest-card {
@@ -725,7 +667,6 @@
             color: var(--accent-purple);
         }
 
-        /* Contact Section */
         .contact-section-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -733,7 +674,6 @@
             align-items: center;
             max-width: 1100px;
             margin: 0 auto;
-            height: auto;
         }
 
         .contact-details {
@@ -779,7 +719,6 @@
             display: flex;
             flex-direction: column;
             gap: 1.2rem;
-            justify-content: center;
         }
 
         .contact-form input, .contact-form textarea {
@@ -791,7 +730,6 @@
             outline: none;
         }
 
-        /* Dynamic Single-Page 404 Section styling */
         #error-404-section {
             display: none;
             text-align: center;
@@ -812,7 +750,6 @@
             line-height: 1;
         }
 
-        /* Footer */
         footer {
             border-top: 1px solid rgba(255, 255, 255, 0.03);
             background: linear-gradient(rgba(5, 10, 26, 0.95), rgba(5, 10, 26, 0.95)), url('127540764_1543314336058956_8888779226493901871_n.jpg');
@@ -865,9 +802,6 @@
 
         @media (max-width: 991px) {
             header {
-                flex-direction: column;
-                height: auto;
-                gap: 1rem;
                 padding: 1rem;
             }
             .header-bottom {
@@ -895,7 +829,7 @@
             .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
         }
 
-        /* Gemini AI Dialog Modern styling */
+        /* Gemini AI Dialog */
         .gemini-dialog {
             position: fixed;
             top: 50%;
@@ -1017,6 +951,7 @@
 
     <div class="container" id="main-content-container">
         
+        <!-- 404 Section Layer Inside Main Viewport -->
         <section id="error-404-section">
             <h1>404</h1>
             <h2 style="color: #ffffff;">Section Not Found</h2>
@@ -1028,8 +963,8 @@
             <section id="home" class="page-section hero">
                 <div class="hero-text">
                     <h1> <span class="cursive-name">Its me Amit Joshi</span></h1>
-                    <p>I’m someone driven by curiosity and a constant urge to learn and improve. I enjoy exploring technology and creating things that are practical and useful in real life. I prefer keeping things simple, clear, and meaningful rather than overcomplicating them.</p>
-                    <p>I’m always working on becoming better than I was yesterday, whether it’s through learning new skills or refining what I already know. I believe in growth, consistency, and using my abilities to build something that truly makes a difference.</p>
+                    <p>I’m someone driven by curiosity and a constant urge to learn and improve[cite: 1]. I enjoy exploring technology and creating things that are practical and useful in real life[cite: 1]. I prefer keeping things simple, clear, and meaningful rather than overcomplicating them[cite: 1].</p>
+                    <p>I’m always working on becoming better than I was yesterday, whether it’s through learning new skills or refining what I already know[cite: 1]. I believe in growth, consistency, and using my abilities to build something that truly makes a difference[cite: 1].</p>
                     <div class="hero-buttons">
                         <a href="https://wa.me/9746241860" class="btn btn-primary" target="_blank">Connect with me on WhatsApp</a>
                         <a href="#contact" class="btn btn-secondary">Contact Me</a>
@@ -1054,17 +989,17 @@
                 <div class="grid-cards">
                     <div class="card">
                         <div class="card-title">Facebook <i class="fa-brands fa-facebook" style="color: #1877f2; font-size:1.6rem;"></i></div>
-                        <div class="card-desc">Personal profile and updates from Amit Joshi. Get in touch with daily updates and real-life connections.</div>
+                        <div class="card-desc">Personal profile and updates from Amit Joshi[cite: 1]. Get in touch with daily updates and real-life connections.</div>
                         <a href="https://www.facebook.com/share/1JUJKNUqc9/" target="_blank" class="card-link">View Profile &rarr;</a>
                     </div>
                     <div class="card">
                         <div class="card-title">Instagram <i class="fa-brands fa-instagram" style="color: #E1306C; font-size:1.6rem;"></i></div>
-                        <div class="card-desc">Follow my visual updates and personal life, daily stories, and photography.</div>
+                        <div class="card-desc">Follow my visual updates and personal life, daily stories, and photography[cite: 1].</div>
                         <a href="https://www.instagram.com/_amitjoc?igsh=MXZyeTJzYWd4Ym9haA==" target="_blank" class="card-link">View Profile &rarr;</a>
                     </div>
                     <div class="card">
                         <div class="card-title">TikTok <i class="fa-brands fa-tiktok" style="color: #000; font-size:1.6rem;"></i></div>
-                        <div class="card-desc">Short-form tech and hobby experiments. Videos exploring new projects, electronics, and digital life.</div>
+                        <div class="card-desc">Short-form tech and hobby experiments[cite: 1]. Videos exploring new projects, electronics, and digital life[cite: 1].</div>
                         <a href="https://www.tiktok.com/@amitjoc_?_r=1&_t=ZS-95zUvLeiMb7" target="_blank" class="card-link">View Profile &rarr;</a>
                     </div>
                     <div class="card">
@@ -1081,7 +1016,7 @@
                     <div>
                         <h3 style="color: #ffffff; margin-bottom: 0.8rem;">Voice of Students</h3>
                         <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
-                           **Voice of Students – महेन्द्र मा वि दार्चुला** is a student-led initiative dedicated to amplifying the voices, concerns, and ideas of learners at **Mahendra Namuna Secondary School**. It serves as a platform for promoting transparency, fairness, and accountability while sharing important updates, student perspectives, and school-related issues.
+                           **Voice of Students – महेन्द्र मा वि दार्चुला** is a student-led initiative dedicated to amplifying the voices, concerns, and ideas of learners at **Mahendra Namuna Secondary School**[cite: 1]. It serves as a platform for promoting transparency, fairness, and accountability while sharing important updates, student perspectives, and school-related issues[cite: 1].
                             <br><br>
                             <strong>Updated: May 2026</strong>
                         </p>
@@ -1095,7 +1030,7 @@
                 <div style="margin-top: 2.5rem; background-color: var(--card-bg); border: 1px solid var(--card-border); padding: 1.8rem; border-radius: 12px; box-shadow: 0 0 20px var(--accent-glow);">
                     <h3 style="color: var(--accent-color); margin-bottom: 0.5rem;">More About Initiative</h3>
                     <p style="color: var(--text-secondary); line-height: 1.6;">
-                       Voice of Students – महेन्द्र मा वि दार्चुला is a dynamic, student-driven initiative based at **Mahendra Namuna Secondary School**, created to ensure that every student’s voice is heard, valued, and represented. It goes beyond a typical social media page by actively addressing real issues within the school—such as academic quality, management practices, student welfare, and transparency.
+                       Voice of Students – महेन्द्र मा वि दार्चुला is a dynamic, student-driven initiative based at **Mahendra Namuna Secondary School**, created to ensure that every student’s voice is heard, valued, and represented[cite: 1]. It goes beyond a typical social media page by actively addressing real issues within the school—such as academic quality, management practices, student welfare, and transparency[cite: 1].
                     </p>
                 </div>
             </section>
@@ -1110,17 +1045,18 @@
                     </div>
                     <div class="edu-card">
                         <h3 style="color: var(--accent-color);">MSS Darchula</h3>
-                        <p style="font-size: 0.88rem; color: var(--text-secondary);">Higher Secondary Education</p>
-                        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 1rem;">Focused on science and mathematics, developing the analytical problem-solving skills applied in web and hardware development.</p>
+                        <p style="font-size: 0.88rem; color: var(--text-secondary);">Higher Secondary Education[cite: 1]</p>
+                        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 1rem;">Focused on science and mathematics, developing the analytical problem-solving skills applied in web and hardware development[cite: 1].</p>
                     </div>
                     <div class="edu-card">
                         <h3 style="color: var(--accent-color);">KC</h3>
-                        <p style="font-size: 0.88rem; color: var(--text-secondary);">Class 11</p>
-                        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 1rem;">Class 11 For a Few Months but Lifetime memory</p>
+                        <p style="font-size: 0.88rem; color: var(--text-secondary);">Class 11[cite: 1]</p>
+                        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 1rem;">Class 11 For a Few Months but Lifetime memory[cite: 1]</p>
                     </div>
                 </div>
             </section>
 
+            <!-- Blog Section Layer -->
             <section id="blog" class="page-section">
                 <h2 class="section-title">My Personal <span>Blog Posts</span></h2>
                 <div class="blog-grid">
@@ -1128,7 +1064,7 @@
                         <div class="blog-content">
                             <span class="blog-meta">Tech Tinkering • May 2026</span>
                             <h3>Building with Microchips & Sensors</h3>
-                            <p class="blog-text">An overview exploring how small Arduino microcontrollers can translate physical environmental changes using basic ultrasonic hardware tools...</p>
+                            <p class="blog-text">An overview exploring how small Arduino microcontrollers can translate physical environmental changes using basic ultrasonic hardware tools[cite: 1]...</p>
                             <a href="https://amitjoc-blog-placeholder-1.blogspot.com" target="_blank" class="blog-btn">Read Full Article <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </div>
                     </div>
@@ -1136,7 +1072,7 @@
                         <div class="blog-content">
                             <span class="blog-meta">Community Work • April 2026</span>
                             <h3>Empowering Student Unions Natively</h3>
-                            <p class="blog-text">How structured media feeds and transparent reporting build mutual leadership loops inside digital school frameworks...</p>
+                            <p class="blog-text">How structured media feeds and transparent reporting build mutual leadership loops inside digital school frameworks[cite: 1]...</p>
                             <a href="https://amitjoc-blog-placeholder-2.blogspot.com" target="_blank" class="blog-btn">Read Full Article <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </div>
                     </div>
@@ -1144,7 +1080,7 @@
                         <div class="blog-content">
                             <span class="blog-meta">Design Logic • Feb 2026</span>
                             <h3>Aesthetic Rules of Graphic Creation</h3>
-                            <p class="blog-text">A dive into layers, balancing dynamic shadows, high-contrast configurations, and retro-vintage aesthetics effectively.</p>
+                            <p class="blog-text">A dive into layers, balancing dynamic shadows, high-contrast configurations, and retro-vintage aesthetics effectively[cite: 1].</p>
                             <a href="https://amitjoc-blog-placeholder-3.blogspot.com" target="_blank" class="blog-btn">Read Full Article <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                         </div>
                     </div>
@@ -1199,22 +1135,22 @@
                     <div class="interest-card">
                         <i class="fa-solid fa-pen-nib"></i>
                         <h3>Design/Editing</h3>
-                        <p>Creating beautiful banners, posters, photo layers, and captions with aesthetic precision.</p>
+                        <p>Creating beautiful banners, posters, photo layers, and captions with aesthetic precision[cite: 1].</p>
                     </div>
                     <div class="interest-card">
                         <i class="fa-solid fa-users"></i>
                         <h3>Community Work</h3>
-                        <p>Directing and operating student initiatives like the "Voice of Students" community.</p>
+                        <p>Directing and operating student initiatives like the "Voice of Students" community[cite: 1].</p>
                     </div>
                     <div class="interest-card">
                         <i class="fa-solid fa-microchip"></i>
                         <h3>Tech Tinkering</h3>
-                        <p>Working on Arduino boards, retro clocks, set-top boxes, and network-related repairs.</p>
+                        <p>Working on Arduino boards, retro clocks, set-top boxes, and network-related repairs[cite: 1].</p>
                     </div>
                     <div class="interest-card">
                         <i class="fa-solid fa-pencil"></i>
                         <h3>Content Writing</h3>
-                        <p>Writing notices, captions, articles, and notices for social pages.</p>
+                        <p>Writing notices, captions, articles, and notices for social pages[cite: 1].</p>
                     </div>
                 </div>
             </section>
@@ -1224,9 +1160,9 @@
                 <div class="contact-section-container">
                     <div class="contact-details">
                         <h3>Amit Joshi</h3>
-                        <p>Building digital tools and student networks from Darchula, Nepal. Contact me if you have any questions or want to collaborate.</p>
+                        <p>Building digital tools and student networks from Darchula, Nepal[cite: 1]. Contact me if you have any questions or want to collaborate.</p>
                         <ul>
-                            <li><i class="fa-solid fa-location-dot"></i> Darchula, Sudurpashchim, Nepal</li>
+                            <li><i class="fa-solid fa-location-dot"></i> Darchula, Sudurpashchim, Nepal[cite: 1]</li>
                             <li><i class="fa-solid fa-envelope"></i> amitjosee28@gmail.com</li>
                             <li><i class="fa-solid fa-phone"></i> +977-9746241860</li>
                         </ul>
@@ -1277,10 +1213,10 @@
                 <div class="footer-col">
                     <h4>My Work</h4>
                     <ul>
-                        <li><a href="#initiative">Voice of Students Initiative</a></li>
+                        <li><a href="#initiative">Voice of Students Initiative[cite: 1]</a></li>
                         <li><a href="#blog">Personal Blog</a></li>
                         <li><a href="#tools">Useful Utilities & Calendar</a></li>
-                        <li><a href="#interests">Hobby Projects</a></li>
+                        <li><a href="#interests">Hobby Projects[cite: 1]</a></li>
                     </ul>
                 </div>
             </div>
@@ -1290,12 +1226,13 @@
         </div>
     </footer>
 
+    <!-- Gemini Modal Box -->
     <div id="gemini-dialog" class="gemini-dialog">
         <h3>
             <img src="WhatsApp Image 2026-03-28 at 08.46.55.jpeg" alt="Amit Logo">
             <span>Ask Gemini AI Assistant</span>
         </h3>
-        <p style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:0.6rem;">Ask anything regarding Amit's skills, schooling, or initiatives.</p>
+        <p style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:0.6rem;">Ask anything regarding Amit's skills, schooling, or initiatives[cite: 1].</p>
         <textarea id="gemini-prompt" placeholder="Ex: What is Amit's student initiative? or Tell me about his hobbies..."></textarea>
         <div class="gemini-actions">
             <button class="btn btn-secondary" style="padding:0.5rem 1rem;" onclick="closeGeminiModal()">Close</button>
@@ -1322,15 +1259,12 @@
                 this.speedX = (Math.random() * 0.8) - 0.4;
                 this.speedY = (Math.random() * 0.8) - 0.4;
             }
-
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
-
                 if (this.x < 0 || this.x > canvas.width) this.speedX = -this.speedX;
                 if (this.y < 0 || this.y > canvas.height) this.speedY = -this.speedY;
             }
-
             draw() {
                 ctx.fillStyle = 'rgba(0, 240, 255, 0.5)';
                 ctx.beginPath();
@@ -1408,7 +1342,7 @@
         }
         setInterval(() => { moveSlide(1); }, 5000);
 
-        // Gemini Dialog Natively Working Logic
+        // Gemini Dialog Logic
         function openGeminiModal() {
             document.getElementById('gemini-dialog').style.display = 'block';
             document.getElementById('gemini-prompt').focus();
@@ -1431,18 +1365,18 @@
                 }
                 
                 if (promptInput.includes('initiative') || promptInput.includes('voice of students') || promptInput.includes('school')) {
-                    responseBox.innerHTML = "<strong>Gemini AI response:</strong> Amit Joshi is the lead operations coordinator behind the <b>'Voice of Students – महेन्द्र मा वि दार्चुला'</b> initiative. It serves as a transparent student dialogue loop bridge, discussing school notices, academic quality metrics, and student support needs at Mahendra Namuna Secondary School.";
+                    responseBox.innerHTML = "<strong>Gemini AI response:</strong> Amit Joshi is the lead operations coordinator behind the <b>'Voice of Students – महेन्द्र मा वि दार्चुला'</b> initiative[cite: 1]. It serves as a transparent student dialogue loop bridge, discussing school notices, academic quality metrics, and student support needs at Mahendra Namuna Secondary School[cite: 1].";
                 } else if (promptInput.includes('hobby') || promptInput.includes('interest') || promptInput.includes('skills')) {
-                    responseBox.innerHTML = "<strong>Gemini AI response:</strong> Amit's core architectural engineering interests involve graphic composition layers (poster design, typography, warm lighting layers), editing, technical tinkering with hardware chips (such as Arduino configuration components), and local system notice creation.";
+                    responseBox.innerHTML = "<strong>Gemini AI response:</strong> Amit's core architectural engineering interests involve graphic composition layers (poster design, typography, warm lighting layers), editing, technical tinkering with hardware chips (such as Arduino configuration components), and local system notice creation[cite: 1].";
                 } else if (promptInput.includes('education') || promptInput.includes('study')) {
-                    responseBox.innerHTML = "<strong>Gemini AI response:</strong> Amit's fundamental academic roadmap spans preliminary work at BVPS Darchula, followed by higher mathematical and core analytical science curriculum engineering updates inside Mahendra Secondary School (MSS) Darchula.";
+                    responseBox.innerHTML = "<strong>Gemini AI response:</strong> Amit's fundamental academic roadmap spans preliminary work at BVPS Darchula, followed by higher mathematical and core analytical science curriculum engineering updates inside Mahendra Secondary School (MSS) Darchula[cite: 1].";
                 } else {
-                    responseBox.innerHTML = "<strong>Gemini AI response:</strong> Thank you for your inquiry regarding Amit's network profile portfolio. He is a technical creator specializing in design adjustments, community coordination networks, and custom embedded automation devices in Darchula, Nepal.";
+                    responseBox.innerHTML = "<strong>Gemini AI response:</strong> Thank you for your inquiry regarding Amit's network profile portfolio. He is a technical creator specializing in design adjustments, community coordination networks, and custom embedded automation devices in Darchula, Nepal[cite: 1].";
                 }
             }, 750);
         }
 
-        // Single-Page Custom Route Router & 404 Interceptor Control
+        // Single-Page Routing Rules
         const legalRoutes = ['#home', '#social', '#initiative', '#edu', '#blog', '#tools', '#interests', '#contact', ''];
         
         function handleRouting() {
@@ -1451,16 +1385,13 @@
             const sectionsWrapper = document.getElementById('content-sections-wrapper');
             
             if (legalRoutes.includes(currentRoute)) {
-                // Route is valid - hide 404 window layer and reveal layout sections
                 errorSection.style.display = 'none';
                 sectionsWrapper.style.display = 'block';
-                
                 if(currentRoute) {
                     const TargetEl = document.querySelector(currentRoute);
                     if(TargetEl) TargetEl.scrollIntoView({ behavior: 'smooth' });
                 }
             } else {
-                // Route does not exist on our map menu - clear viewport and display customized 404 view
                 sectionsWrapper.style.display = 'none';
                 errorSection.style.display = 'flex';
                 window.scrollTo({ top: 0, behavior: 'smooth' });
