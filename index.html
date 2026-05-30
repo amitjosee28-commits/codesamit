@@ -74,7 +74,6 @@
 
         .header-top {
             display: flex;
-            justify-open: space-between;
             justify-content: space-between;
             align-items: center;
             width: 100%;
@@ -586,6 +585,135 @@
             gap: 1rem;
         }
 
+        /* NEW CUSTOM DYNAMIC BLOG INFRASTRUCTURE CSS */
+        .blog-feed-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 60vh;
+            width: 100%;
+        }
+
+        .blog-box-wrapper {
+            background: rgba(10, 15, 35, 0.7);
+            border: 2px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 680px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-box-wrapper:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 25px var(--accent-glow);
+        }
+
+        .blog-header-layout {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-profile-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2.5px solid var(--accent-purple);
+            flex-shrink: 0;
+        }
+
+        .blog-meta-title-block h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.01em;
+        }
+
+        .blog-date-lbl {
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            font-weight: 500;
+            margin-top: 0.2rem;
+            display: block;
+        }
+
+        .blog-body-text {
+            font-size: 1.02rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            transition: all 0.3s ease;
+        }
+
+        /* Enforces precise single line behavior during grid preview */
+        .blog-body-text.truncated-view {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: pointer;
+        }
+
+        .blog-action-footer-panel {
+            margin-top: 2rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid var(--card-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .expand-toggle-indicator {
+            font-size: 0.88rem;
+            color: var(--accent-purple);
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .expand-toggle-indicator:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        .blog-social-share-cluster {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .share-bubble-btn {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .share-bubble-btn:hover {
+            transform: translateY(-2px);
+            color: #ffffff;
+        }
+
+        .share-bubble-btn.link-copy-style:hover { background: #555; border-color: #aaa; }
+        .share-bubble-btn.fb-style:hover { background: #1877f2; border-color: #1877f2; }
+        .share-bubble-btn.wa-style:hover { background: #25d366; border-color: #25d366; }
+        .share-bubble-btn.insta-style:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); border-color: transparent; }
+
         /* Tools Section */
         .tools-grid {
             display: grid;
@@ -626,78 +754,6 @@
             gap: 2rem;
             text-align: center;
             margin-top: 1.5rem;
-        }
-
-        /* Blog Styling */
-        .blog-box {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: transform 0.3s ease, border-color 0.3s, box-shadow 0.3s;
-            max-width: 850px;
-            margin: 0 auto;
-        }
-
-        .blog-box:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-color);
-            box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
-        }
-
-        .blog-img-wrapper {
-            width: 100%;
-            height: 400px;
-            overflow: hidden;
-        }
-
-        .blog-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .blog-box:hover .blog-img-wrapper img {
-            transform: scale(1.03);
-        }
-
-        .blog-content {
-            padding: 2.5rem;
-        }
-
-        .blog-content h3 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 1.2rem;
-            line-height: 1.3;
-        }
-
-        .blog-body-text {
-            color: var(--text-secondary);
-            font-size: 1.02rem;
-            line-height: 1.8;
-            text-align: justify;
-        }
-
-        .blog-body-text p {
-            margin-bottom: 1.5rem;
-        }
-
-        .blog-body-text ul {
-            margin-left: 1.5rem;
-            margin-bottom: 1.5rem;
-            list-style-type: square;
-        }
-
-        .blog-body-text li {
-            margin-bottom: 0.6rem;
-        }
-
-        .blog-highlight {
-            color: var(--accent-color);
-            font-weight: 600;
         }
 
         /* Modals Baseline */
@@ -1148,9 +1204,9 @@
                 <a href="#home">Home</a>
                 <a href="#social">Social Profiles</a>
                 <a href="#initiative">Initiative</a>
+                <a href="#blog-section">Blog Feed</a>
                 <a href="#edu">Education</a>
                 <a href="#tools">Some Useful Tools</a>
-                <a href="#blog" target="_blank" onclick="window.open('https://amitjoshi.info.np/#blog', '_blank'); return false;">Blog</a>
                 <a href="#interests">Interests</a>
                 <a href="#contact">Contact</a>
             </nav>
@@ -1250,6 +1306,40 @@
             </div>
         </section>
 
+        <section id="blog-section" class="page-section">
+            <h2 class="section-title">Latest <span>Blog Post</span></h2>
+            <div class="blog-feed-container">
+                <div class="blog-box-wrapper" id="target-blog-wrapper">
+                    
+                    <div class="blog-header-layout" onclick="toggleBlogContent()">
+                        <img src="WhatsApp Image 2026-03-28 at 08.46.55.jpeg" alt="Amit Joshi" class="blog-profile-img">
+                        <div class="blog-meta-title-block">
+                            <h3 id="blog-title-display">Building Next-Gen UI Portfolios and Automation Pipelines</h3>
+                            <span class="blog-date-lbl"><i class="fa-regular fa-calendar-days"></i> Posted: May 2026</span>
+                        </div>
+                    </div>
+
+                    <div id="blog-body-container" class="blog-body-text truncated-view" onclick="toggleBlogContent()">
+                        Exploring new creative technical developments in real-time UI synchronization, embedding pure regional modules such as Nepali BS calendars, managing system microchips, building interactive student spaces like the Voice of Students network platform, and exploring advanced styling models to keep modern interfaces elegant, accessible, clean, and highly practical.
+                    </div>
+
+                    <div class="blog-action-footer-panel">
+                        <div class="expand-toggle-indicator" id="toggle-indicator-action" onclick="toggleBlogContent()">
+                            <span>Read Full Post</span> <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        
+                        <div class="blog-social-share-cluster">
+                            <button class="share-bubble-btn link-copy-style" title="Copy Link" onclick="executeLinkCopy(this)"><i class="fa-solid fa-link"></i></button>
+                            <a id="fb-share-anchor" href="#" target="_blank" class="share-bubble-btn fb-style" title="Share on Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a id="wa-share-anchor" href="#" target="_blank" class="share-bubble-btn wa-style" title="Share on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a id="insta-share-anchor" href="#" target="_blank" class="share-bubble-btn insta-style" title="Share on Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
         <section id="edu" class="page-section">
             <h2 class="section-title">My <span>Education</span></h2>
             <div class="education-grid">
@@ -1310,84 +1400,6 @@
                 <h4 style="color: #ffffff; margin-bottom: 0.5rem;">Calendar & Information</h4>
                 <p style="color: var(--accent-color); font-weight: 600;">Current Date (BS): 2083 Jestha | Regional Holidays Active</p>
                 <p style="color: var(--text-secondary); font-size: 0.85rem;" id="ad-np-date-auto">Loading English & Nepali Date...</p>
-            </div>
-        </section>
-
-        <section id="blog" class="page-section">
-            <h2 class="section-title">My Personal <span>Blog Posts</span></h2>
-            <div class="blog-box">
-                <div class="blog-img-wrapper">
-                    <img src="WhatsApp Image 2026-04-01 at 21.36.19.jpeg" alt="Elections Thought Piece Layer">
-                </div>
-                <div class="blog-content">
-                    <h3><strong>यसपटक हामी स्वतन्त्र सोचौँ</strong></h3>
-                    <div class="blog-body-text">
-                        <p><span class="blog-highlight">१४ फाल्गुन २०८२, बिहीबार १७:२५</span> चुनाव समनिकट छ। हरेक पटकझैँ यसपटक पनि देश दुई धारमा तानिएको देखिन्छ— नयाँ चाहिनेहरू एकातिर, पुरानै ठीक भन्नेहरू अर्कोतिर। मञ्चहरूमा आवाज चर्किँदै छन्, सामाजिक सञ्जालमा आरोप–प्रत्यारोप बढ्दै छन्। तर यी सबै हल्लाभित्र एउटा मौन वर्ग छ— आम नागरिक, जसले विगत पनि भोगेको छ र भविष्य पनि बोकेको छ।</p>
-                        <p>यो लेख कुनै दलको बचाउका लागि होइन, कुनै अनुहारको प्रचारका लागि पनि होइन। यो केवल एउटा आग्रह हो— आफ्नो विवेक स्वतन्त्र राखौँ।</p>
-                        
-                        <p><strong>पुरानाको अनुभव : आवश्यक छ, तर पर्याप्त छैन</strong><br>
-                        पुराना नेतृत्वसँग अनुभव छ। यो नकार्न सकिँदैन। राज्य कसरी चल्छ, कानुनको सीमा कहाँ छ, प्रशासनिक प्रक्रिया कति जटिल हुन्छ— यी सबै कुरा उनीहरूले सिकेका होइनन्, भोगेका छन्। संकटको बेला हतार नगरी प्रणालीभित्रै समाधान खोज्ने क्षमता पनि प्रायः पुरानैसँग देखिन्छ।</p>
-                        
-                        <p>तर यही अनुभव कतिपय अवस्थामा आरामको कुर्सी बनेको अनुभूति नागरिकले गरेका छन्। धेरै वर्ष सत्ता वरिपरि घुम्दा आत्मसमीक्षा कम भयो। गल्ती स्वीकार गर्ने संस्कार कमजोर देखियो। जनताको प्रश्नलाई समयमै सुन्ने र उत्तर दिने अभ्यास घट्दै गयो। अनुभव त रह्यो, तर त्यससँगै दूरी पनि बढ्यो।</p>
-                        
-                        <p>नयाँहरूसँग ऊर्जा छ, तर त्यो प्रेरणादायी मात्र होइन, अपरिपक्व पनि हुन सक्छ । नयाँ अनुहार राजनीतिमा आउँदा स्वाभाविक रूपमा उत्साह बढ्छ। पुराना झगडाबाट टाढा देखिने, सरल भाषा बोल्ने, आफूलाई नागरिकको प्रतिनिधि भन्ने शैलीले मानिसको मन छोन्छ। धेरै युवालाई लाग्छ— अब राजनीति हाम्रो पनि हो।</p>
-                        
-                        <p>तर ऊर्जा मात्र पर्याप्त हुँदैन् । अनुभवको कमीले कहिलेकाहीँ समन्वयको अभाव र निर्णयमा हतार जन्माउँछ। नेतृत्व स्पष्ट नहुँदा आन्दोलन दिशाहीन बन्न सक्छ। राम्रो उद्देश्य बोकेको प्रयास पनि व्यवस्थापन कमजोर हुँदा गलत दिशामा जान सक्छ।<br>
-                        यसले नयाँको नियत माथि होइन, तयारी माथि प्रश्न उठाउँछ।</p>
-                        
-                        <p><strong>हामीले देखेका छौँ— ‘नयाँ’ भनिएकाहरूले गरेका आन्दोलन</strong><br>
-                        आवाज उठ्यो, आशा पलायो।<br>
-                        तर आन्दोलन सुरु हुँदा आयोजक स्पष्ट नहुनु, स्वयंसेवकको जिम्मेवारी नतोकिनु, अनुमति लिएको क्षेत्रभन्दा बाहिर भीड सर्नु— यी सबै कुराले एउटा साझा प्रश्न उठाउँछन्— जिम्मेवारी कसको?</p>
-                        
-                        <p>जब अवस्था नियन्त्रणबाहिर जान थाल्छ, तब नेतृत्वको आवश्यकता सबैभन्दा बढी हुन्छ। त्यो बेला मौन रहनु पनि एउटा निर्णय हो— र त्यसको असर निर्दोष नागरिकले भोग्छन्।</p>
-                        
-                        <p><strong>राज्यको भूमिका : शक्ति मात्र होइन, संवेदनशीलता पनि</strong><br>
-                        राज्यसँग शक्ति छ— सुरक्षा, प्रशासन र साधन। तर शक्तिसँगै संवेदनशीलता पनि हुनुपर्छ। संकटमा समन्वय ढिलो हुँदा क्षति बढ्छ। प्राथमिकता उल्टिँदा जनताको विश्वास कमजोर हुन्छ।<br>
-                        राज्य पनि आत्मसमीक्षाबाट मुक्त हुन सक्दैन।</p>
-                        
-                        <p><strong>सत्तामा पुगेपछि बदलिनुपर्ने अपेक्षा</strong><br>
-                        हामीले धेरै पटक देखेका छौँ— आन्दोलनमा अग्रपङ्क्तिमा देखिएका पात्रहरू सत्तामा पुगेपछि कम बोल्न थाल्छन्। यो केवल नयाँको समस्या होइन, पुरानाको पनि साझा कमजोरी हो। सत्ता परिवर्तन मात्र होइन; व्यवहार परिवर्तन अपेक्षित हुन्छ।</p>
-                        
-                        <p><strong>उम्मेदवारले के भने?</strong></p>
-                        <ul>
-                            <li>तपाईंले हाम्रो जिल्लामा कुन–कुन विकासको वाचा गर्नुभयो?</li>
-                            <li>ती वाचाहरू कागजमै सीमित थिए कि कार्ययोजना सहित थिए?</li>
-                            <li>रोजगारी, शिक्षा, स्वास्थ्य र खानेपानीबारे तपाईंले के भन्नुभएको थियो?</li>
-                            <li>पारदर्शिता र जवाफदेहिताबारे तपाईंको अडान के थियो?</li>
-                        </ul>
-                        
-                        <p><strong>उम्मेदवारले के गरे?</strong></p>
-                        <ul>
-                            <li>अघिल्लो कार्यकालमा ती वाचामध्ये कति पूरा भए?</li>
-                            <li>बजेट कहाँ–कहाँ खर्च भयो र त्यसको परिणाम के देखियो ?</li>
-                            <li>सडक, खानेपानी, विद्यालय र स्वास्थ्यचौकीमा के सुधार भयो ?</li>
-                            <li>योजनामा जनताको सहभागिता कत्तिको सुनिश्चित भयो?</li>
-                            <li>योजना असफल हुँदा तपाईंले जिम्मेवारी लिनुभयो कि बहाना बनाउनुभयो ?</li>
-                        </ul>
-                        
-                        <p><strong>उम्मेदवारले के गर्नुपर्थ्यो ?</strong></p>
-                        <ul>
-                            <li>अधुरा योजना किन पूरा भएनन्, अब कसरी पूरा गर्ने?</li>
-                            <li>विकासलाई नातावाद र पहुँचको आधारमा होइन, आवश्यकताको आधारमा कसरी गर्ने ?</li>
-                            <li>युवाको रोजगारी र सीप विकासका लागि ठोस योजना के छ ?</li>
-                            <li>शिक्षा र स्वास्थ्यलाई प्राथमिकतामा राख्न अब के फरक गर्ने ?</li>
-                            <li>पाँच वर्षपछि नागरिकले “विकास भयो” भनेर महसुस गर्ने आधार के हुनेछ ?</li>
-                        </ul>
-                        
-                        <p><strong>अन्त्यमा</strong><br>
-                        चुनाव कुनै उत्सव मात्र होइन; यो स्मृति र भविष्यको संगम हो। हामीले भोगेका पीडालाई बिर्सेर केवल नयाँ नारामा बग्नु पनि हतार हो। पुरानो अनुभवलाई आँखा चिम्लेर अस्वीकार गर्नु पनि अन्याय हो।</p>
-                        
-                        <p>यसपटक स्वतन्त्र सोचौँ।<br>
-                        कसैको पक्षमा होइन, सत्यको पक्षमा।<br>
-                        कसैको विरोधमा होइन, जवाफदेहिताको पक्षमा।</p>
-                        
-                        <p>किनकि लोकतन्त्रको सबैभन्दा ठूलो शक्ति<br>
-                        <span class="blog-highlight">स्वतन्त्र नागरिकको विवेक हो।</span></p>
-                        
-                        <p>सम्पूर्ण उम्मेदवारज्यूहरूलाई हार्दिक शुभकामना।<br>
-                        जनताले गरेको आशा र तपाईंहरूले दिएका आश्वासनहरू जितपछि व्यवहारमा पनि पूरा होऊन्।</p>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -1502,6 +1514,9 @@
                     popup.style.display = 'block';
                 }
             }, 3000); // Pops up precisely 3 seconds after loading
+            
+            // Populate modern secure parameters for external network cross-shares
+            initBlogShareLinks();
         });
 
         function closeSuggestionPopup() {
@@ -1517,12 +1532,10 @@
                 return;
             }
             
-            // Constructs and cleans up custom string sequences for WhatsApp URL processing
             const customMessage = `Hello Amit, I am reviewing your website. Here is my suggestion:\n\n"${suggestionText}"`;
             const encodedText = encodeURIComponent(customMessage);
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedText}`;
             
-            // Redirect action
             window.open(whatsappUrl, '_blank');
         }
 
@@ -1647,6 +1660,49 @@
         function submitGemini() {
             const prompt = document.getElementById('gemini-prompt').value;
             document.getElementById('gemini-response').innerHTML = `<pre>Result for "${prompt}": ... Response from Gemini is being generated.</pre>`;
+        }
+
+        /* DIGITAL BLOG SYSTEM DRIVER SCRIPT */
+        function toggleBlogContent() {
+            const bodyTextEl = document.getElementById('blog-body-container');
+            const indicatorEl = document.getElementById('toggle-indicator-action');
+            
+            if (bodyTextEl.classList.contains('truncated-view')) {
+                // Expand view
+                bodyTextEl.classList.remove('truncated-view');
+                indicatorEl.innerHTML = '<span>Show Less</span> <i class="fa-solid fa-chevron-up"></i>';
+            } else {
+                // Collapse view back to precise single-line preview mode
+                bodyTextEl.classList.add('truncated-view');
+                indicatorEl.innerHTML = '<span>Read Full Post</span> <i class="fa-solid fa-chevron-down"></i>';
+            }
+        }
+
+        function initBlogShareLinks() {
+            const currentUrl = encodeURIComponent(window.location.href);
+            const rawPostText = document.getElementById('blog-title-display').innerText;
+            const shareText = encodeURIComponent("Check out Amit Joshi's blog: " + rawPostText);
+            
+            // Build absolute deployment URL links for third party hooks
+            document.getElementById('fb-share-anchor').href = `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`;
+            document.getElementById('wa-share-anchor').href = `https://api.whatsapp.com/send?text=${shareText}%20${currentUrl}`;
+            
+            // Note: Instagram doesn't support structured link ingestion parameters via web endpoints. 
+            // This button redirects directly to user profiles for quick pasting or messaging.
+            document.getElementById('insta-share-anchor').href = "https://www.instagram.com/";
+        }
+
+        function executeLinkCopy(buttonEl) {
+            const activePageLink = window.location.href;
+            navigator.clipboard.writeText(activePageLink).then(() => {
+                const legacyIcon = buttonEl.innerHTML;
+                buttonEl.innerHTML = '<i class="fa-solid fa-check" style="color:#25d366;"></i>';
+                setTimeout(() => {
+                    buttonEl.innerHTML = legacyIcon;
+                }, 2000);
+            }).catch(err => {
+                alert("Failed to copy link automatically. Please copy manually: " + activePageLink);
+            });
         }
     </script>
 </body>
