@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amit Joshi</title>
+    <title>Amit Joshi </title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -40,6 +40,7 @@
             position: relative;
         }
 
+        /* Particle Network Background */
         #particle-canvas {
             position: fixed;
             top: 0;
@@ -56,6 +57,7 @@
             padding: 0 2rem;
         }
 
+        /* Header */
         header {
             width: 100%;
             display: flex;
@@ -146,6 +148,7 @@
             transform: scale(1.15);
         }
 
+        /* --- PURE CSS ANTIMATED NEPALI FLAG --- */
         .nepali-flag-container {
             width: 34px;
             height: 40px;
@@ -175,8 +178,15 @@
             box-sizing: border-box;
         }
 
-        .flag-tier.top { top: 0; clip-path: polygon(0% 0%, 100% 100%, 0% 100%); }
-        .flag-tier.bottom { bottom: 0; clip-path: polygon(0% 0%, 100% 100%, 0% 100%); }
+        .flag-tier.top {
+            top: 0;
+            clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
+        }
+
+        .flag-tier.bottom {
+            bottom: 0;
+            clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
+        }
 
         .moon-emblem {
             position: absolute;
@@ -214,6 +224,7 @@
             50% { transform: rotateY(18deg) rotateZ(1.5deg) skewY(3deg) scaleX(0.96); }
             100% { transform: rotateY(-12deg) rotateZ(-1.5deg) skewY(-2deg) scaleX(1.03); }
         }
+        /* ------------------------------------- */
 
         .nepali-time {
             font-size: 0.85rem;
@@ -247,7 +258,10 @@
             color: var(--accent-color);
         }
 
-        .search-container { position: relative; }
+        .search-container {
+            position: relative;
+        }
+
         .search-bar {
             padding: 0.4rem 0.8rem 0.4rem 1.8rem;
             border-radius: 6px;
@@ -259,12 +273,22 @@
             outline: none;
             transition: width 0.3s ease;
         }
-        .search-bar:focus { width: 180px; border-color: var(--accent-color); }
-        .search-container i {
-            position: absolute; left: 8px; top: 50%;
-            transform: translateY(-50%); color: var(--text-secondary); font-size: 0.85rem;
+
+        .search-bar:focus {
+            width: 180px;
+            border-color: var(--accent-color);
         }
 
+        .search-container i {
+            position: absolute;
+            left: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* Full Height Pages */
         .page-section {
             min-height: 100vh;
             display: flex;
@@ -274,7 +298,7 @@
             border-top: 1px solid rgba(255, 255, 255, 0.04);
         }
 
-        /* Hero / Home Page */
+        /* Home Page */
         .hero {
             display: flex;
             flex-direction: row;
@@ -284,170 +308,388 @@
             min-height: calc(100vh - 95px);
         }
 
-        .hero-text { flex: 1; max-width: 550px; display: flex; flex-direction: column; gap: 1.2rem; }
-        .hero h1 { font-size: 3.2rem; font-weight: 800; letter-spacing: -0.03em; color: #ffffff; line-height: 1.1; }
-        .hero h1 span { background: linear-gradient(90deg, #00f0ff, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .cursive-name { font-family: 'Brush Script MT', cursive, sans-serif; font-size: 3.3rem; font-weight: bold; color: #00f0ff; text-shadow: 0 0 10px rgba(0, 240, 255, 0.4); }
-        .hero p { font-size: 1.05rem; color: var(--text-secondary); line-height: 1.6; }
-        .hero-buttons { display: flex; gap: 1rem; margin-top: 0.5rem; align-items: center; }
-
-        .hero-slides { width: 420px; height: 500px; border: 2px solid var(--card-border); border-radius: 16px; flex-shrink: 0; overflow: hidden; position: relative; }
-        .carousel-images { width: 100%; height: 100%; position: relative; overflow: hidden; }
-        .slide-img { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s ease-in-out, transform 1s cubic-bezier(0.25, 1, 0.5, 1); transform: scale(1.05); }
-        .slide-img.active { opacity: 1; transform: scale(1); z-index: 1; }
-        
-        .carousel-btn {
-            background: rgba(0, 0, 0, 0.6); border: 1px solid var(--card-border); color: var(--accent-color);
-            font-size: 1.2rem; width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
-            transition: all 0.3s ease; display: flex; align-items: center; justify-content: center;
-            position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;
+        .hero-text {
+            flex: 1;
+            max-width: 550px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
         }
-        .carousel-btn:hover { background: var(--accent-color); color: #050a1a; box-shadow: 0 0 10px var(--accent-color); }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: #ffffff;
+            line-height: 1.1;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, #00f0ff, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cursive-name {
+            font-family: 'Brush Script MT', cursive, sans-serif;
+            font-size: 3.3rem;
+            font-weight: bold;
+            color: #00f0ff;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+            align-items: center;
+        }
+
+        /* Hero image box */
+        .hero-slides {
+            width: 420px;
+            height: 500px;
+            border: 2px solid var(--card-border);
+            border-radius: 16px;
+            flex-shrink: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Carousel additions */
+        .carousel-images {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out, transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+            transform: scale(1.05);
+        }
+
+        .slide-img.active {
+            opacity: 1;
+            transform: scale(1);
+            z-index: 1;
+        }
+
+        .carousel-btn {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--card-border);
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background: var(--accent-color);
+            color: #050a1a;
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+
         .carousel-btn.prev { left: 15px; }
         .carousel-btn.next { right: 15px; }
 
-        .neon-glow { box-shadow: 0 0 15px var(--accent-color), 0 0 30px var(--accent-purple); animation: neon-flutter 2s infinite ease-in-out; }
+        .neon-glow {
+            box-shadow: 0 0 15px var(--accent-color), 0 0 30px var(--accent-purple);
+            animation: neon-flutter 2s infinite ease-in-out;
+        }
+
         @keyframes neon-flutter {
             0%, 100% { box-shadow: 0 0 15px var(--accent-color), 0 0 30px var(--accent-purple); }
             50% { box-shadow: 0 0 25px var(--accent-color), 0 0 50px var(--accent-purple); }
         }
 
-        .btn { padding: 0.75rem 1.3rem; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 0.85rem; transition: all 0.3s ease; cursor: pointer; border: 1px solid transparent; display: inline-flex; align-items: center; gap: 0.5rem; width: fit-content; }
-        .btn-primary { background-color: rgba(0, 240, 255, 0.1); color: var(--accent-color); border-color: rgba(0, 240, 255, 0.2); animation: rgb-blink 2s infinite; }
-        .btn-primary:hover { background-color: var(--accent-color); color: #090a0f; box-shadow: 0 0 20px var(--accent-glow); }
-        .btn-secondary { background-color: var(--card-bg); color: var(--text-primary); border-color: var(--card-border); animation: rgb-blink-secondary 2s infinite; }
-        .btn-secondary:hover { background-color: rgba(255, 255, 255, 0.08); border-color: var(--text-secondary); }
+        .btn {
+            padding: 0.75rem 1.3rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: fit-content;
+        }
+
+        .btn-primary {
+            background-color: rgba(0, 240, 255, 0.1);
+            color: var(--accent-color);
+            border-color: rgba(0, 240, 255, 0.2);
+            animation: rgb-blink 2s infinite;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-color);
+            color: #090a0f;
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .btn-secondary {
+            background-color: var(--card-bg);
+            color: var(--text-primary);
+            border-color: var(--card-border);
+            animation: rgb-blink-secondary 2s infinite;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            border-color: var(--text-secondary);
+        }
 
         @keyframes rgb-blink {
-            0%, 100% { box-shadow: 0 0 5px rgba(0, 240, 255, 0.3); border-color: rgba(0, 240, 255, 0.3); }
+            0% { box-shadow: 0 0 5px rgba(0, 240, 255, 0.3); border-color: rgba(0, 240, 255, 0.3); }
             50% { box-shadow: 0 0 15px rgba(0, 240, 255, 0.6); border-color: var(--accent-color); }
-        }
-        @keyframes rgb-blink-secondary {
-            0%, 100% { box-shadow: 0 0 5px rgba(168, 85, 247, 0.3); border-color: rgba(168, 85, 247, 0.3); }
-            50% { box-shadow: 0 0 15px rgba(168, 85, 247, 0.6); border-color: var(--accent-purple); }
+            100% { box-shadow: 0 0 5px rgba(0, 240, 255, 0.3); border-color: rgba(0, 240, 255, 0.3); }
         }
 
-        .section-title { font-size: 2.2rem; font-weight: 700; color: #ffffff; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 0.6rem; letter-spacing: -0.02em; }
+        @keyframes rgb-blink-secondary {
+            0% { box-shadow: 0 0 5px rgba(168, 85, 247, 0.3); border-color: rgba(168, 85, 247, 0.3); }
+            50% { box-shadow: 0 0 15px rgba(168, 85, 247, 0.6); border-color: var(--accent-purple); }
+            100% { box-shadow: 0 0 5px rgba(168, 85, 247, 0.3); border-color: rgba(168, 85, 247, 0.3); }
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            letter-spacing: -0.02em;
+        }
+
         .section-title span { color: var(--accent-color); }
 
         /* Social Section */
-        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; height: 75vh; align-content: center; }
-        .card { background-color: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.8rem; display: flex; flex-direction: column; gap: 1rem; transition: transform 0.25s ease, border-color 0.25s; min-height: 250px; }
-        .card:hover { transform: translateY(-4px); border-color: var(--accent-color); }
-        .card-title { font-size: 1.25rem; color: #ffffff; font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
-        .card-desc { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; }
-        .card-link { color: var(--accent-color); text-decoration: none; font-size: 0.95rem; font-weight: 500; display: inline-flex; align-items: center; gap: 0.4rem; margin-top: auto; }
-        .card-link:hover { text-decoration: underline; }
-
-        /* Initiative Section */
-        .initiative-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; height: 75vh; }
-        .fb-embed-box { width: 100%; height: 100%; min-height: 350px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 1rem; }
-
-        /* Education Section */
-        .education-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; height: 70vh; align-content: center; }
-        .edu-card { background-color: var(--card-bg); border: 1px solid var(--card-border); border-radius: 10px; padding: 2.5rem; text-align: center; min-height: 290px; display: flex; flex-direction: column; justify-content: center; gap: 1rem; }
-
-        /* --- DYNAMIC BLOG SECTION WITH EXCLUSIVE EFFECT --- */
-        .blog-feed-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem 0;
-            width: 100%;
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            height: 75vh;
+            align-content: center;
         }
 
-        .blog-box-wrapper {
-            background: rgba(10, 15, 35, 0.7);
-            border: 2px solid var(--card-border);
-            border-radius: 20px;
-            padding: 2.5rem;
-            width: 100%;
-            max-width: 750px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-        }
-
-        .blog-box-wrapper:hover {
-            border-color: var(--accent-color);
-            box-shadow: 0 0 25px var(--accent-glow);
-            transform: translateY(-2px);
-        }
-
-        .blog-cover-frame {
-            width: 100%;
-            height: 380px;
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 1.8rem;
+        .card {
+            background-color: var(--card-bg);
             border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: transform 0.25s ease, border-color 0.25s, height 0.3s ease;
+            min-height: 250px;
         }
 
-        .blog-cover-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-color);
         }
 
-        .blog-box-wrapper:hover .blog-cover-frame img {
-            transform: scale(1.03);
-        }
-
-        .blog-meta-title-block h2 {
-            font-size: 2.2rem;
-            font-weight: 800;
+        .card-title {
+            font-size: 1.25rem;
             color: #ffffff;
-            letter-spacing: -0.01em;
-            line-height: 1.3;
-            margin-bottom: 0.5rem;
-        }
-
-        .blog-date-lbl {
-            font-size: 0.88rem;
-            color: var(--accent-color);
             font-weight: 600;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        .blog-body-text {
-            font-size: 1.08rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
-            text-align: justify;
-        }
-
-        .blog-body-text p {
-            margin-bottom: 1.2rem;
-        }
-
-        .blog-body-text strong {
-            color: #ffffff;
-            display: block;
-            font-size: 1.2rem;
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .blog-action-footer-panel {
-            margin-top: 2rem;
-            padding-top: 1.2rem;
-            border-top: 1px solid var(--card-border);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
+        .card-border-line {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .card-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: auto;
+        }
+
+        .card-link:hover { text-decoration: underline; }
+
+        /* Initiative Section */
+        .initiative-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+            height: 75vh;
+        }
+
+        .fb-embed-box {
+            width: 100%;
+            height: 100%;
+            min-height: 350px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1rem;
+        }
+
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            height: 70vh;
+            align-content: center;
+        }
+
+        .edu-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 2.5rem;
+            text-align: center;
+            min-height: 290px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        /* --- NEW 2x2 DYNAMIC LANGUAGE BLOG CSS --- */
+        .blog-header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+
+        .blog-lang-selector {
+            background: rgba(10, 15, 35, 0.8);
+            border: 1px solid var(--accent-color);
+            color: #ffffff;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-family: inherit;
+            outline: none;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .blog-grid-2x2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            width: 100%;
+        }
+
+        .blog-card-sample {
+            background: rgba(10, 15, 35, 0.7);
+            border: 2px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .blog-card-sample:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 20px var(--accent-glow);
+            transform: translateY(-4px);
+        }
+
+        .blog-sample-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+        }
+
+        .blog-sample-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .blog-sample-body {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .blog-sample-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 0.8rem;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .blog-read-more-link {
+            color: var(--accent-purple);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .blog-read-more-link:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        .card-desc {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
         .blog-social-share-cluster {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 0.6rem;
         }
 
         .share-bubble-btn {
-            width: 38px;
-            height: 38px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--card-border);
@@ -455,627 +697,1032 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
+            font-size: 0.8rem;
             cursor: pointer;
             transition: all 0.2s ease;
             text-decoration: none;
         }
 
-        .share-bubble-btn:hover { transform: translateY(-3px); color: #ffffff; }
+        .share-bubble-btn:hover {
+            transform: translateY(-2px);
+            color: #ffffff;
+        }
+
         .share-bubble-btn.link-copy-style:hover { background: #555; border-color: #aaa; }
         .share-bubble-btn.fb-style:hover { background: #1877f2; border-color: #1877f2; }
         .share-bubble-btn.wa-style:hover { background: #25d366; border-color: #25d366; }
+        .share-bubble-btn.insta-style:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); border-color: transparent; }
 
         /* Tools Section */
-        .tools-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; margin-bottom: 2rem; }
-        .tool-card { background-color: var(--card-bg); border: 1px solid var(--card-border); padding: 1.8rem; border-radius: 8px; text-align: center; cursor: pointer; transition: all 0.3s ease; }
-        .tool-card:hover { border-color: var(--accent-purple); box-shadow: 0 0 15px rgba(168, 85, 247, 0.2); }
-        .tool-card h4 { color: #ffffff; font-size: 1.05rem; margin-bottom: 0.5rem; }
-
-        /* Calendar Session */
-        .calendar-box { background-color: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; text-align: center; margin-top: 1.5rem; }
-
-        /* Modals Baseline */
-        .modal { display: none; position: fixed; z-index: 1001; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.85); backdrop-filter: blur(5px); }
-        .modal-content { background-color: #0f1015; margin: 5% auto; padding: 2.5rem; border: 1px solid var(--accent-purple); width: 65%; border-radius: 16px; color: var(--text-primary); box-shadow: 0 0 30px var(--accent-glow); max-height: 80vh; overflow-y: auto; }
-        .close-btn { color: var(--text-secondary); float: right; font-size: 2rem; font-weight: bold; cursor: pointer; transition: color 0.2s; }
-        .close-btn:hover { color: var(--accent-color); }
-        .form-control { width: 100%; padding: 0.8rem; margin: 0.8rem 0; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--card-border); color: #fff; border-radius: 8px; font-family: inherit; }
-
-        /* Suggestion Popup */
-        .suggestion-popup { display: none; position: fixed; bottom: 25px; right: 25px; width: 340px; background: rgba(15, 16, 21, 0.98); border: 2px solid var(--accent-color); box-shadow: 0 10px 30px rgba(0, 240, 255, 0.25); border-radius: 14px; padding: 1.5rem; z-index: 9999; backdrop-filter: blur(8px); animation: slideUpIn 0.5s ease-out forwards; }
-        @keyframes slideUpIn { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        .suggestion-popup-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; }
-        .suggestion-popup-header h3 { font-size: 1.05rem; font-weight: 700; color: #ffffff; display: flex; align-items: center; gap: 0.5rem; }
-        .suggestion-popup-header h3 i { color: var(--accent-color); }
-        .suggestion-popup p { font-size: 0.84rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.4; }
-        .suggestion-popup textarea { width: 100%; height: 85px; background: rgba(255, 255, 255, 0.04); border: 1px solid var(--card-border); border-radius: 8px; color: #ffffff; padding: 0.65rem; font-size: 0.85rem; font-family: inherit; resize: none; outline: none; margin-bottom: 0.8rem; transition: border-color 0.2s; }
-        .suggestion-popup textarea:focus { border-color: var(--accent-color); }
-        .whatsapp-submit-btn { width: 100%; background-color: #25d366; color: #ffffff; border: none; padding: 0.65rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.4rem; transition: transform 0.2s, background-color 0.2s; }
-        .whatsapp-submit-btn:hover { background-color: #20ba5a; transform: translateY(-1px); }
-        .suggestion-close-icon { color: var(--text-secondary); cursor: pointer; font-size: 1.1rem; transition: color 0.2s; }
-        .suggestion-close-icon:hover { color: #ea4335; }
-
-        .translator-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem; }
-        .translate-area { background: rgba(0,0,0,0.4); border: 1px solid var(--card-border); padding: 1.2rem; border-radius: 8px; min-height: 150px; color: #fff; resize: none; width: 100%; font-family: inherit; }
-        .icon-btn { background: transparent; border: none; color: var(--accent-color); cursor: pointer; font-size: 1.2rem; margin-left: 0.5rem; }
-
-        /* Interests and Contacts */
-        .interest-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; height: 75vh; align-content: center; }
-        .interest-card { background-color: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 2.5rem; text-align: center; display: flex; flex-direction: column; gap: 1rem; transition: all 0.3s ease; }
-        .interest-card:hover { border-color: var(--accent-purple); transform: translateY(-5px); box-shadow: 0 0 25px rgba(168, 85, 247, 0.15); }
-        .interest-card i { font-size: 2.5rem; color: var(--accent-purple); }
-
-        .contact-section-container { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; max-width: 1100px; margin: 0 auto; height: 65vh; }
-        .contact-details { background: var(--card-bg); padding: 2.5rem; border-radius: 16px; border: 1px solid var(--card-border); display: flex; flex-direction: column; gap: 1rem; color: var(--text-primary); }
-        .contact-details h3 { color: var(--accent-color); margin-bottom: 0.5rem; }
-        .contact-details ul { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
-        .contact-details li { display: flex; align-items: center; gap: 0.8rem; color: var(--text-secondary); }
-        .contact-details i { width: 25px; color: var(--accent-purple); }
-        .contact-form { background: var(--card-bg); padding: 2.5rem; border-radius: 16px; border: 1px solid var(--card-border); display: flex; flex-direction: column; gap: 1.2rem; justify-content: center; }
-        .contact-form input, .contact-form textarea { background: rgba(255, 255, 255, 0.04); border: 1px solid var(--card-border); padding: 0.85rem; border-radius: 8px; color: #fff; outline: none; }
-
-        footer { border-top: 1px solid rgba(255, 255, 255, 0.03); background: linear-gradient(rgba(5, 10, 26, 0.95), rgba(5, 10, 26, 0.95)), url('127540764_1543314336058956_8888779226493901871_n.jpg'); background-size: cover; background-position: center; padding: 4rem 0; color: #fff; font-size: 0.88rem; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9); }
-        .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; margin-bottom: 2.5rem; }
-        .footer-col h4 { color: var(--accent-color); margin-bottom: 1.2rem; font-size: 1.15rem; font-weight: 600; }
-        .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 0.5rem; }
-        .footer-col a { color: #fff; text-decoration: none; transition: color 0.2s; }
-        .footer-col a:hover { color: var(--accent-color); }
-        .footer-col-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
-        .footer-bottom { text-align: center; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.82rem; color: var(--text-secondary); }
-
-        @media (max-width: 991px) {
-            header { padding: 1rem; }
-            .header-bottom { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
-            .hero { flex-direction: column; text-align: center; }
-            .hero-text { max-width: 100%; align-items: center; }
-            .hero-slides { width: 90%; height: 320px; }
-            .grid-cards, .initiative-grid, .education-grid, .contact-section-container, .footer-grid { grid-template-columns: 1fr; height: auto; }
-            .tools-grid { grid-template-columns: 1fr 1fr; }
-            .suggestion-popup { right: 5%; left: 5%; width: 90%; bottom: 15px; }
-            .blog-cover-frame { height: 240px; }
-            .blog-meta-title-block h2 { font-size: 1.6rem; }
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.2rem;
+            margin-bottom: 2rem;
         }
 
-        .gemini-dialog { position: fixed; top: 20%; left: 50%; transform: translate(-50%, -20%); background: rgba(10,12,20,0.98); border: 2px solid var(--accent-purple); padding: 2rem; border-radius: 16px; width: 450px; box-shadow: 0 0 40px var(--accent-glow); z-index: 2000; color: #fff; display: none; max-height: 500px; overflow-y: auto; }
+        .tool-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 1.8rem;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover {
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
+        }
+
+        .tool-card h4 {
+            color: #ffffff;
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Calendar Session */
+        .calendar-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        /* Modals Baseline */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.85);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: #0f1015;
+            margin: 5% auto;
+            padding: 2.5rem;
+            border: 1px solid var(--accent-purple);
+            width: 65%;
+            border-radius: 16px;
+            color: var(--text-primary);
+            box-shadow: 0 0 30px var(--accent-glow);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .close-btn {
+            color: var(--text-secondary);
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-btn:hover { color: var(--accent-color); }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.8rem 0;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            color: #fff;
+            border-radius: 8px;
+            font-family: inherit;
+        }
+
+        /* --- PERSISTENT USER SUGGESTION POPUP PANEL --- */
+        .suggestion-popup {
+            display: none; 
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 340px;
+            background: rgba(15, 16, 21, 0.98);
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.25);
+            border-radius: 14px;
+            padding: 1.5rem;
+            z-index: 9999;
+            backdrop-filter: blur(8px);
+            animation: slideUpIn 0.5s ease-out forwards;
+        }
+
+        @keyframes slideUpIn {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .suggestion-popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .suggestion-popup-header h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .suggestion-popup-header h3 i {
+            color: var(--accent-color);
+        }
+
+        .suggestion-popup p {
+            font-size: 0.84rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .suggestion-popup textarea {
+            width: 100%;
+            height: 85px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            color: #ffffff;
+            padding: 0.65rem;
+            font-size: 0.85rem;
+            font-family: inherit;
+            resize: none;
+            outline: none;
+            margin-bottom: 0.8rem;
+            transition: border-color 0.2s;
+        }
+
+        .suggestion-popup textarea:focus {
+            border-color: var(--accent-color);
+        }
+
+        .whatsapp-submit-btn {
+            width: 100%;
+            background-color: #25d366;
+            color: #ffffff;
+            border: none;
+            padding: 0.65rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .whatsapp-submit-btn:hover {
+            background-color: #20ba5a;
+            transform: translateY(-1px);
+        }
+
+        .suggestion-close-icon {
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+        .suggestion-close-icon:hover { color: #ea4335; }
+        /* ---------------------------------------------- */
+
+        .translator-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .translate-area {
+            background: rgba(0,0,0,0.4);
+            border: 1px solid var(--card-border);
+            padding: 1.2rem;
+            border-radius: 8px;
+            min-height: 150px;
+            color: #fff;
+            resize: none;
+            width: 100%;
+            font-family: inherit;
+        }
+
+        .icon-btn {
+            background: transparent;
+            border: none;
+            color: var(--accent-color);
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: 0.5rem;
+        }
+
+        /* Interest Section */
+        .interest-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            height: 75vh;
+            align-content: center;
+        }
+
+        .interest-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .interest-card:hover {
+            border-color: var(--accent-purple);
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.15);
+        }
+
+        .interest-card i {
+            font-size: 2.5rem;
+            color: var(--accent-purple);
+        }
+
+        /* Contact Section */
+        .contact-section-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            height: 65vh;
+        }
+
+        .contact-details {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--card-border);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            color: var(--text-primary);
+        }
+
+        .contact-details h3 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-details li {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-details i {
+            width: 25px;
+            color: var(--accent-purple);
+        }
+
+        .contact-form {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--card-border);
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            justify-content: center;
+        }
+
+        .contact-form input, .contact-form textarea {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--card-border);
+            padding: 0.85rem;
+            border-radius: 8px;
+            color: #fff;
+            outline: none;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            background: linear-gradient(rgba(5, 10, 26, 0.95), rgba(5, 10, 26, 0.95)), url('127540764_1543314336058956_8888779226493901871_n.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 4rem 0;
+            color: #fff;
+            font-size: 0.88rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-col h4 {
+            color: var(--accent-color);
+            margin-bottom: 1.2rem;
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 0.5rem; }
+
+        .footer-col a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover { color: var(--accent-color); }
+
+        .footer-col-2-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 991px) {
+            header {
+                flex-direction: column;
+                height: auto;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            .header-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-text {
+                max-width: 100%;
+                align-items: center;
+            }
+            .hero-buttons {
+                align-items: center;
+            }
+            .hero-slides {
+                width: 90%;
+                height: 320px;
+            }
+            .grid-cards { grid-template-columns: 1fr; }
+            .initiative-grid { grid-template-columns: 1fr; height: auto; }
+            .education-grid { grid-template-columns: 1fr; height: auto; }
+            .tools-grid { grid-template-columns: 1fr 1fr; }
+            .blog-grid-2x2 { grid-template-columns: 1fr; }
+            .contact-section-container { grid-template-columns: 1fr; height: auto; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .suggestion-popup { right: 5%; left: 5%; width: 90%; bottom: 15px; }
+        }
+
+        /* Gemini AI Dialog */
+        .gemini-dialog {
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -20%);
+            background: rgba(10,12,20,0.98);
+            border: 2px solid var(--accent-purple);
+            padding: 2rem;
+            border-radius: 16px;
+            width: 450px;
+            box-shadow: 0 0 40px var(--accent-glow);
+            z-index: 2000;
+            color: #fff;
+            display: none;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
         .gemini-dialog h3 { color: var(--accent-color); margin-bottom: 0.8rem; }
-        .gemini-dialog textarea { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--card-border); color: #fff; padding: 0.8rem; border-radius: 8px; font-family: inherit; margin-bottom: 1rem; resize: none; height: 100px; }
-        .gemini-dialog-buttons { display: flex; justify-content: flex-end; gap: 0.8rem; }
+        .gemini-dialog textarea {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--card-border);
+            color: #fff;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-family: inherit;
+            margin-bottom: 1rem;
+            resize: none;
+            height: 100px;
+        }
+        .gemini-dialog pre {
+            background: rgba(0,0,0,0.5);
+            padding: 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            color: var(--accent-color);
+            white-space: pre-wrap;
+        }
     </style>
 </head>
 <body>
 
-    <canvas id='particle-canvas'></canvas>
+    <canvas id="particle-canvas"></canvas>
+
+    <div id="user-suggestion-box" class="suggestion-popup">
+        <div class="suggestion-popup-header">
+            <h3><i class="fa-solid fa-code-branch"></i> I'm Designing This Website!</h3>
+            <i class="fa-solid fa-xmark suggestion-close-icon" onclick="closeSuggestionPopup()"></i>
+        </div>
+        <p>Please give your valuable suggestions to me. What should I change, add, or fix next?</p>
+        <textarea id="visitor-suggestion-text" placeholder="Type your ideas or suggestions here..."></textarea>
+        <button class="whatsapp-submit-btn" onclick="sendSuggestionToWhatsApp()">
+            <i class="fa-brands fa-whatsapp"></i> Send via WhatsApp
+        </button>
+    </div>
 
     <header>
         <div class="header-top">
             <div class="header-left">
-                <a href="#" class="logo">
-                    <img src="127540764_1543314336058956_8888779226493901871_n.jpg" alt="Amit Joshi Logo" class="logo-img">
+                <a href="javascript:location.reload()" class="logo">
+                    <img src="WhatsApp Image 2026-03-28 at 08.46.55.jpeg" alt="Amit Joshi" class="logo-img">
                     <div class="logo-title">
                         <span>Amit Joshi</span>
-                        <span onclick="triggerGeminiEngagementAI()">Ask Gemini AI</span>
+                        <span onclick="window.open('https://wa.me/9746241860', '_blank')">Connect With Me</span>
                     </div>
                 </a>
+                
                 <div class="nepali-flag-container">
                     <div class="css-nepali-flag">
-                        <div class="flag-tier top"><div class="moon-emblem"></div></div>
-                        <div class="flag-tier bottom"><div class="sun-emblem"></div></div>
+                        <div class="flag-tier top">
+                            <div class="moon-emblem"></div>
+                        </div>
+                        <div class="flag-tier bottom">
+                            <div class="sun-emblem"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="social-icons-header">
-                <a href="https://www.facebook.com/aj9848" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-                <a href="https://www.instagram.com/amit_joshi_45" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://wa.me/9848422734" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
-        </div>
-        <div class="header-bottom">
-            <span class="nepali-time" id="nepali-current-time-lbl">नेपाली समय भारित हुँदैछ...</span>
-            <div class="search-container">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" class="search-bar" placeholder="यहाँ खोज्नुहोस्...">
-            </div>
+
             <nav>
                 <a href="#home">Home</a>
-                <a href="#social">Social Integration</a>
-                <a href="#initiatives">Initiatives</a>
-                <a href="#education">Education</a>
-                <a href="https://amitjoshi.info.np/#blog" target="_blank">Blog</a>
-                <a href="#tools">Smart Utilities</a>
+                <a href="#social">Social Profiles</a>
+                <a href="#initiative">Initiative</a>
+                <a href="#blog-section">Blog Feed</a>
+                <a href="#edu">Education</a>
+                <a href="#tools">Some Useful Tools</a>
                 <a href="#interests">Interests</a>
-                <a href="#contact">Contact Me</a>
+                <a href="#contact">Contact</a>
             </nav>
+        </div>
+
+        <div class="header-bottom">
+            <span class="nepali-time" id="nepali-time-el">NP Time: ...</span>
+            
+            <div class="search-container">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" class="search-bar" placeholder="Ask AI / Gemini" id="ai-search-bar" onclick="openGeminiModal()">
+            </div>
+
+            <div class="social-icons-header">
+                <a href="https://www.facebook.com/share/1JUJKNUqc9/" target="_blank"><i class="fa-brands fa-facebook" style="color: #1877f2;"></i></a>
+                <a href="https://www.instagram.com/_amitjoc?igsh=MXZyeTJzYWd4Ym9haA==" target="_blank"><i class="fa-brands fa-instagram" style="color: #E1306C;"></i></a>
+                <a href="https://www.tiktok.com/@amitjoc_?_r=1&_t=ZS-95zUvLeiMb7" target="_blank"><i class="fa-brands fa-tiktok" style="color: #000;"></i></a>
+                <a href="mailto:amitjosee28@gmail.com"><i class="fa-solid fa-envelope" style="color: #ea4335;"></i></a>
+                <a href="https://wa.me/9746241860" target="_blank"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i></a>
+            </div>
         </div>
     </header>
 
-    <main class="container">
-        
-        <section id="home" class="page-section">
-            <div class="hero">
-                <div class="hero-text">
-                    <h1>नमस्ते, म हूँ <br><span class="cursive-name">Amit Joshi</span></h1>
-                    <p>तपाईंलाई मेरो डिजिटल क्षेत्रमा स्वागत छ। म एक प्रविधि उत्साही, सामाजिक कार्यकर्ता, र सधैं नयाँ कुरा सिक्न तत्पर रहने व्यक्ति हुँ। सकारात्मक परिवर्तन र नवप्रवर्तनमा मेरो सधैं जोड रहन्छ।</p>
-                    <div class="hero-buttons">
-                        <a href="#contact" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Contact Me</a>
-                        <a href="https://amitjoshi.info.np/#blog" target="_blank" class="btn btn-secondary"><i class="fa-solid fa-book-open"></i> Read My Blog</a>
-                    </div>
+    <div class="container">
+        <section id="home" class="page-section hero">
+            <div class="hero-text">
+                <h1> <span class="cursive-name"> Its me Amit Joshi</span></h1>
+                <p>I’m someone driven by curiosity and a constant urge to learn and improve. I enjoy exploring technology and creating things that are practical and useful in real life. I prefer keeping things simple, clear, and meaningful rather than overcomplicating them.</p>
+                <p>I’m always working on becoming better than I was yesterday, whether it’s through learning new skills or refining what I already know. I believe in growth, consistency, and using my abilities to build something that truly makes a difference.</p>
+                <div class="hero-buttons">
+                    <a href="https://wa.me/9746241860" class="btn btn-primary" target="_blank">Connect with me on WhatsApp</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
                 </div>
-                <div class="hero-slides neon-glow">
-                    <div class="carousel-images">
-                        <img src="127540764_1543314336058956_8888779226493901871_n.jpg" class="slide-img active" alt="Slider Image 1">
-                        <img src="324021200_1866380603709664_721867623910543666_n.jpg" class="slide-img" alt="Slider Image 2">
-                        <img src="324641974_1227848411139433_1922374351659223048_n.jpg" class="slide-img" alt="Slider Image 3">
-                    </div>
-                    <button class="carousel-btn prev" onclick="shiftHeroSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="carousel-btn next" onclick="shiftHeroSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            
+            <div class="hero-slides neon-glow">
+                <div class="carousel-images">
+                    <img src="WhatsApp Image 2026-04-01 at 21.36.19.jpeg" class="slide-img" alt="Slide 2">
+                    <img src="WhatsApp Image 2026-04-01 at 21.36.19 (1).jpeg" class="slide-img" alt="Slide 3">
+                    <img src="WhatsApp Image 2026-03-28 at 08.46.55.jpeg" class="slide-img" alt="Slide 4">
+                    <img src="678627109_122107033436777907_7000681532606261625_n.jpg" class="slide-img" alt="Slide 5">
+                    <img src="658252519_964474099866456_7307889391676192084_n.jpg" class="slide-img" alt="Slide 6">
                 </div>
+                <button class="carousel-btn prev" onclick="moveSlide(-2)">&#10094;</button>
+                <button class="carousel-btn next" onclick="moveSlide(2)">&#10095;</button>
             </div>
         </section>
 
         <section id="social" class="page-section">
-            <h2 class="section-title"><i class="fa-solid fa-share-nodes"></i> <span>Social Connects</span></h2>
+            <h2 class="section-title">My <span>Social Media Profiles</span></h2>
             <div class="grid-cards">
-                <div class="card">
-                    <div class="card-title">Facebook Profile <i class="fa-brands fa-facebook" style="color: #1877f2;"></i></div>
-                    <p class="card-desc">मलाई फेसबुकमा पछ्याउनुहोस् र मेरा दैनिक गतिविधिहरू, सामाजिक कार्यहरू र विचारहरूसँग जोडिनुहोस्।</p>
-                    <a href="https://www.facebook.com/aj9848" target="_blank" class="card-link">बज हेर्नुहोस् <i class="fa-solid fa-arrow-right-long"></i></a>
+                <div class="card" style="min-height:280px">
+                    <div class="card-title">Facebook <i class="fa-brands fa-facebook" style="color: #1877f2; font-size:1.6rem;"></i></div>
+                    <div class="card-desc">Personal profile and updates from Amit Joshi. Get in touch with daily updates and real-life connections.</div>
+                    <a href="https://www.facebook.com/share/1JUJKNUqc9/" target="_blank" class="card-link">View Profile &rarr;</a>
                 </div>
-                <div class="card">
-                    <div class="card-title">Instagram Feed <i class="fa-brands fa-instagram" style="color: #e1306c;"></i></div>
-                    <p class="card-desc">मेरो जीवनका सुन्दर पलहरू, फोटोग्राफी र भिजुअल कथाहरू इन्स्टाग्राम मार्फत नियाल्नुहोस्।</p>
-                    <a href="https://www.instagram.com/amit_joshi_45" target="_blank" class="card-link">तस्बिरहरू हेर्नुहोस् <i class="fa-solid fa-arrow-right-long"></i></a>
+                <div class="card" style="min-height:280px">
+                    <div class="card-title">Instagram <i class="fa-brands fa-instagram" style="color: #E1306C; font-size:1.6rem;"></i></div>
+                    <div class="card-desc">Follow my visual updates and personal life, daily stories, and photography.</div>
+                    <a href="https://www.instagram.com/_amitjoc?igsh=MXZyeTJzYWd4Ym9haA==" target="_blank" class="card-link">View Profile &rarr;</a>
                 </div>
-                <div class="card">
-                    <div class="card-title">WhatsApp Chat <i class="fa-brands fa-whatsapp" style="color: #25d366;"></i></div>
-                    <p class="card-desc">कुनै पनि व्यावसायिक सहकार्य, सुझाव वा सीधा कुराकानीको लागि मलाई ह्वाट्सएपमा म्यासेज गर्नुहोस्।</p>
-                    <a href="https://wa.me/9848422734" target="_blank" class="card-link">च्याट सुरु गर्नुहोस् <i class="fa-solid fa-arrow-right-long"></i></a>
+                <div class="card" style="min-height:280px">
+                    <div class="card-title">TikTok <i class="fa-brands fa-tiktok" style="color: #000; font-size:1.6rem;"></i></div>
+                    <div class="card-desc">Short-form tech and hobby experiments. Videos exploring new projects, electronics, and digital life.</div>
+                    <a href="https://www.tiktok.com/@amitjoc_?_r=1&_t=ZS-95zUvLeiMb7" target="_blank" class="card-link">View Profile &rarr;</a>
+                </div>
+                <div class="card" style="min-height:280px">
+                    <div class="card-title">Email <i class="fa-solid fa-envelope" style="color: #ea4335; font-size:1.6rem;"></i></div>
+                    <div class="card-desc">Direct line for business and correspondence. You can reach out directly for collaborations.</div>
+                    <a href="mailto:amitjosee28@gmail.com" class="card-link">Contact &rarr;</a>
                 </div>
             </div>
         </section>
 
-        <section id="initiatives" class="page-section">
-            <h2 class="section-title"><i class="fa-solid fa-hand-holding-heart"></i> <span>My Initiatives</span></h2>
+        <section id="initiative" class="page-section">
+            <h2 class="section-title">My <span>Initiative</span></h2>
             <div class="initiative-grid">
                 <div>
-                    <h3 style="font-size: 1.6rem; color: #fff; margin-bottom: 1rem;">सामाजिक अभियान र नेतृत्व</h3>
-                    <p style="color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 1.5rem;">हाम्रो समाजमा सकारात्मक प्रभाव पार्ने विभिन्न दिगो विकास र युवा सशक्तिकरणका अभियानहरूमा म सक्रिय रूपमा संलग्न छु। जनचेतना अभिवृद्धि र सामुदायिक सेवा नै मेरो मुख्य उद्देश्य हो।</p>
-                    <a href="#contact" class="btn btn-primary">अभियानमा जोडिनुहोस्</a>
+                    <h3 style="color: #ffffff; margin-bottom: 0.8rem;">Voice of Students</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+                       **Voice of Students – महेन्द्र मा वि दार्चुला** is a student-led initiative dedicated to amplifying the voices, concerns, and ideas of learners at **Mahendra Namuna Secondary School**. It serves as a platform for promoting transparency, fairness, and accountability while sharing important updates, student perspectives, and school-related issues. Through this initiative, students are encouraged to speak up, stay informed, and actively contribute to building a better educational environment.
+                        <br><br>
+                        <strong>Updated: May 2026</strong>
+                    </p>
+                    <a href="https://www.facebook.com/voiceOfStudentsmmss" target="_blank" class="btn btn-primary">Follow Voice of Students in Facebook</a>
                 </div>
                 <div class="fb-embed-box">
-                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Faj9848&tabs=timeline&width=500&height=400&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=false" width="100%" height="100%" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FvoiceOfStudentsmmss&tabs=timeline&width=500&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="100%" height="350" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"></iframe>
                 </div>
+            </div>
+            
+            <div style="margin-top: 2.5rem; background-color: var(--card-bg); border: 1px solid var(--card-border); padding: 1.8rem; border-radius: 12px; box-shadow: 0 0 20px var(--accent-glow);">
+                <h3 style="color: var(--accent-color); margin-bottom: 0.5rem;">More About Initiative</h3>
+                <p style="color: var(--text-secondary); line-height: 1.6;">
+                   Voice of Students – महेन्द्र मा वि दार्चुला is a dynamic, student-driven initiative based at **Mahendra Namuna Secondary School**, created to ensure that every student’s voice is heard, valued, and represented. It goes beyond a typical social media page by actively addressing real issues within the school—such as academic quality, management practices, student welfare, and transparency—while also celebrating achievements and positive developments.The platform serves as a bridge between students and school authorities, encouraging open dialogue, constructive criticism, and responsible awareness. It shares notices, opinion pieces, and reports in a clear and engaging way, helping students stay informed and involved. At its core, the initiative promotes leadership, accountability, and unity among students, aiming to create a more fair, supportive, and progressive educational environment.
+                </p>
             </div>
         </section>
 
-        <section id="education" class="page-section">
-            <h2 class="section-title"><i class="fa-solid fa-user-graduate"></i> <span>Educational Path</span></h2>
-            <div class="education-grid">
-                <div class="edu-card">
-                    <i class="fa-solid fa-school" style="font-size: 2rem; color: var(--accent-color);"></i>
-                    <h3 style="color:#fff;">School Level</h3>
-                    <p style="color: var(--text-secondary);">प्रारम्भिक शिक्षा र विद्यालय तहको अध्ययन, जहाँबाट मेरो सिकाई र नेतृत्व यात्राको जग बस्यो।</p>
-                </div>
-                <div class="edu-card">
-                    <i class="fa-solid fa-building-columns" style="font-size: 2rem; color: var(--accent-purple);"></i>
-                    <h3 style="color:#fff;">Higher Secondary</h3>
-                    <p style="color: var(--text-secondary);">प्लस टु (+) तहको अध्ययन, जसले मलाई विज्ञान, प्रविधि र विश्लेषणतर्फ आकर्षित गर्‍यो।</p>
-                </div>
-                <div class="edu-card">
-                    <i class="fa-solid fa-graduation-cap" style="font-size: 2rem; color: #ffc107;"></i>
-                    <h3 style="color:#fff;">University Degrees</h3>
-                    <p style="color: var(--text-secondary);">उच्च शिक्षा र विश्वविद्यालयको अध्ययन, जसले मेरो व्यावसायिक क्षमतालाई थप तिखार्ने काम गर्‍यो।</p>
-                </div>
+        <section id="blog-section" class="page-section">
+            <div class="blog-header-container">
+                <h2 class="section-title" style="margin-bottom: 0;">Latest <span>Blog Posts</span></h2>
+                <select class="blog-lang-selector" id="blog-lang-select" onchange="changeBlogLanguage()">
+                    <option value="np">Nepali (नेपाली)</option>
+                    <option value="en">English</option>
+                    <option value="hi">Hindi (हिंदी)</option>
+                </select>
             </div>
-        </section>
 
-        <section id="blog" class="page-section">
-            <h2 class="section-title"><i class="fa-solid fa-feather-pointed"></i> <span>My Blog</span></h2>
-            <div class="blog-feed-container">
-                <div class="blog-box-wrapper">
-                    <div class="blog-cover-frame">
-                        <img src="324021200_1866380603709664_721867623910543666_n.jpg" alt="यसपटक हामी स्वतन्त्र सोचौँ">
-                    </div>
-                    
-                    <div class="blog-meta-title-block">
-                        <h2 id="blog-title-display">यसपटक हामी स्वतन्त्र सोचौँ</h2>
-                        <span class="blog-date-lbl"><i class="fa-solid fa-calendar-day"></i> १४ फाल्गुन २०८२, बिहीबार १७:२५</span>
-                    </div>
-
-                    <div class="blog-body-text">
-                        <p>चुनाव समनिकट छ। हरेक पटकझैँ यसपटक पनि देश दुई धारमा तानिएको देखिन्छ— नयाँ चाहिनेहरू एकातिर, पुरानै ठीक भन्नेहरू अर्कोतिर। मञ्चहरूमा आवाज चर्किँदै छन्, सामाजिक सञ्जालमा आरोप–प्रत्यारोप बढ्दै छन्। तर यी सबै हल्लाभित्र एउटा मौन वर्ग छ— आम नागरिक, जसले विगत पनि भोगेको छ र भविष्य पनि बोकेको छ।</p>
-                        <p>यो लेख कुनै दलको बचाउका लागि होइन, कुनै अनुहारको प्रचारका लागि पनि होइन। यो केवल एउटा आग्रह हो— आफ्नो विवेक स्वतन्त्र राखौँ।</p>
-                        
-                        <strong>पुरानाको अनुभव : आवश्यक छ, तर पर्याप्त छैन</strong>
-                        <p>पुराना नेतृत्वसँग अनुभव छ। यो नकार्न सकिँदैन। राज्य कसरी चल्छ, कानुनको सीमा कहाँ छ, प्रशासनिक प्रक्रिया कति जटिल हुन्छ— यी सबै कुरा उनीहरूले सिकेका होइनन्, भोगेका छन्। संकटको बेला हतार नगरी प्रणालीभित्रै समाधान खोज्ने क्षमता पनि प्रायः पुरानैसँग देखिन्छ।</p>
-                        <p>तर यही अनुभव कतिपय अवस्थामा आरामको कुर्सी बनेको अनुभूति नागरिकले गरेका छन्। धेरै वर्ष सत्ता वरिपरि घुम्दा आत्मसमीक्षा कम भयो। गल्ती स्वीकार गर्ने संस्कार कमजोर देखियो। जनताको प्रश्नलाई समयमै सुन्ने र उत्तर दिने अभ्यास घट्दै गयो। अनुभव त रह्यो, तर त्यससँगै दूरी पनि बढ्यो।</p>
-                        
-                        <strong>नयाँहरूसँग ऊर्जा छ, तर त्यो प्रेरणादायी मात्र होइन, अपरिपक्व पनि हुन सक्छ</strong>
-                        <p>नयाँ अनुहार राजनीतिमा आउँदा स्वाभाविक रूपमा उत्साह बढ्छ। पुराना झगडाबाट टाढा देखिने, सरल भाषा बोल्ने, आफूलाई नागरिकको प्रतिनिधि भन्ने शैलीले मानिसको मन छोन्छ। धेरै युवालाई लाग्छ— अब राजनीति हाम्रो पनि हो।</p>
-                        <p>तर ऊर्जा मात्र पर्याप्त हुँदैन् । अनुभवको कमीले कहिलेकाहीँ समन्वयको अभाव र निर्णयमा हतार जन्माउँछ। नेतृत्व स्पष्ट नहुँदा आन्दोलन दिशाहीन बन्न सक्छ। राम्रो उद्देश्य बोकेको प्रयास पनि व्यवस्थापन कमजोर हुँदा गलत दिशामा जान सक्छ।</p>
-                        <p>यसले नयाँको नियत माथि होइन, तयारी माथि प्रश्न उठाउँछ।</p>
-                        <p>हामीले देखेका छौँ— ‘नयाँ’ भनिएकाहरूले गरेका आन्दोलन आवाज उठ्यो, आशा पलायो। तर आन्दोलन सुरु हुँदा आयोजक स्पष्ट नहुनु, स्वयंसेवकको जिम्मेवारी नतोकिनु, अनुमति लिएको क्षेत्रभन्दा बाहिर भीड सर्नु— यी सबै कुराले एउटा साझा प्रश्न उठाउँछन्— जिम्मेवारी कसको?</p>
-                        <p>जब अवस्था नियन्त्रणबाहिर जान थाल्छ, तब नेतृत्वको आवश्यकता सबैभन्दा बढी हुन्छ। त्यो बेला मौन रहनु पनि एउटा निर्णय हो— र त्यसको असर निर्दोष नागरिकले भोग्छन्।</p>
-                        
-                        <strong>राज्यको भूमिका : शक्ति मात्र होइन, संवेदनशीलता पनि</strong>
-                        <p>राज्यसँग शक्ति छ— सुरक्षा, प्रशासन र साधन। तर शक्तिसँगै संवेदनशीलता पनि हुनुपर्छ। संकटमा समन्वय ढिलो हुँदा क्षति बढ्छ। प्राथमिकता उल्टिँदा जनताको विश्वास कमजोर हुन्छ। राज्य पनि आत्मसमीक्षाबाट मुक्त हुन सक्दैन।</p>
-                        
-                        <strong>सत्तामा पुगेपछि बदलिनुपर्ने अपेक्षा</strong>
-                        <p>हामीले धेरै पटक देखेका छौँ— आन्दोलनमा अग्रपङ्क्तिमा देखिएका पात्रहरू सत्तामा पुगेपछि कम बोल्न थाल्छन्। यो केवल नयाँको समस्या होइन, पुरानाको पनि साझा कमजोरी हो। सत्ता परिवर्तन मात्र होइन; व्यवहार परिवर्तन अपेक्षित हुन्छ।</p>
-                        
-                        <strong>उम्मेदवारले के भने?</strong>
-                        <p>तपाईंले हाम्रो जिल्लामा कुन–कुन विकासको वाचा गर्नुभयो? ती वाचाहरू कागजमै सीमित थिए कि कार्ययोजना सहित थिए? रोजगारी, शिक्षा, स्वास्थ्य र खानेपानीबारे तपाईंले के भन्नुभएको थियो? पारदर्शिता र जवाफदेहिताबारे तपाईंको अडान के थियो?</p>
-                        
-                        <strong>उम्मेदवारले के गरे?</strong>
-                        <p>अघिल्लो कार्यकालमा ती वाचामध्ये कति पूरा भए? बजेट कहाँ–कहाँ खर्च भयो र त्यसको परिणाम के देखियो ? सडक, खानेपानी, विद्यालय र स्वास्थ्यचौकीमा के सुधार भयो ? योजनामा जनताको सहभागिता कत्तिको सुनिश्चित भयो? योजना असफल हुँदा तपाईंले जिम्मेवारी लिनुभयो कि बहाना बनाउनुभयो ?</p>
-                        
-                        <strong>उम्मेदवारले के गर्नुपर्थ्यो ?</strong>
-                        <p>अधुरा योजना किन पूरा भएनन्, अब कसरी पूरा गर्ने? विकासलाई नातावाद र पहुँचको आधारमा होइन, आवश्यकताको आधारमा कसरी गर्ने ? युवाको रोजगारी र सीप विकासका लागि ठोस योजना के छ ? शिक्षा र स्वास्थ्यलाई प्राथमिकतामा राख्न अब के फरक गर्ने ? पाँच वर्षपछि नागरिकले “विकास भयो” भनेर महसुस गर्ने आधार के हुनेछ ?</p>
-                        
-                        <strong>अन्त्यमा</strong>
-                        <p>चुनाव कुनै उत्सव मात्र होइन; यो स्मृति र भविष्यको संगम हो। हामीले भोगेका पीडालाई बिर्सेर केवल नयाँ नारामा बग्नु पनि हतार हो। पुरानो अनुभवलाई आँखा चिम्लेर अस्वीकार गर्नु पनि अन्याय हो।</p>
-                        <p>यसपटक स्वतन्त्र सोचौँ। कसैको पक्षमा होइन, सत्यको पक्षमा। कसैको विरोधमा होइन, जवाफदेहिताको पक्षमा। किनकि लोकतन्त्रको सबैभन्दा ठूलो शक्ति स्वतन्त्र नागरिकको विवेक हो।</p>
-                        <p>सम्पूर्ण उम्मेदवारज्यूहरूलाई हार्दिक शुभकामना। जनताले गरेको आशा र तपाईंहरूले दिएका आश्वासनहरू जितपछि व्यवहारमा पनि पूरा होऊन्।</p>
-                    </div>
-
-                    <div class="blog-action-footer-panel">
-                        <span style="font-size:0.9rem; color:var(--text-secondary); font-weight:500;">यस लेखलाई साझा गर्नुहोस:</span>
+            <div class="blog-grid-2x2">
+                <div class="blog-card-sample">
+                    <img src="WhatsApp Image 2026-03-28 at 08.46.55.jpeg" alt="Blog 1" class="blog-sample-img">
+                    <div class="blog-sample-title data-lang-title" data-np="नेक्स्ट-जेन यूआई पोर्टफोलियो र स्वचालन" data-en="Building Next-Gen UI Portfolios" data-hi="नेक्स्ट-जेन यूआई पोर्टफोलियो का निर्माण">नेक्स्ट-जेन यूआई पोर्टफोलियो र स्वचालन</div>
+                    <div class="blog-sample-body data-lang-body" data-np="क्षेत्रीय मोड्युलहरू जस्तै नेपाली बीएस क्यालेन्डर र वास्तविक समय यूआई सिन्क्रोनाइजेसनमा नयाँ रचनात्मक प्राविधिक विकासहरू अन्वेषण गर्दै।" data-en="Exploring new creative technical developments in real-time UI synchronization and embedding pure regional modules." data-hi="वास्तविक समय यूआई सिंक्रोनाइज़ेशन में नए रचनात्मक तकनीकी विकास की खोज करना।">क्षेत्रीय मोड्युलहरू जस्तै नेपाली बीएस क्यालेन्डर र वास्तविक समय यूआई सिन्क्रोनाइजेसनमा नयाँ रचनात्मक प्राविधिक विकासहरू अन्वेषण गर्दै।</div>
+                    <div class="blog-sample-footer">
+                        <a href="https://amitjoshi.info.np/#blog-2233" class="blog-read-more-link">Read Full Post &rarr;</a>
                         <div class="blog-social-share-cluster">
-                            <button class="share-bubble-btn link-copy-style" onclick="executeBlogLinkCopy(this)" title="Copy Blog Link"><i class="fa-solid fa-link"></i></button>
-                            <a id="blog-fb-share" href="#" target="_blank" class="share-bubble-btn fb-style" title="Share on Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                            <a id="blog-wa-share" href="#" target="_blank" class="share-bubble-btn wa-style" title="Share on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                            <button class="share-bubble-btn link-copy-style" title="Copy Link" onclick="executeLinkCopyDirect('https://amitjoshi.info.np/#blog-2233', this)"><i class="fa-solid fa-link"></i></button>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Famitjoshi.info.np%2F%23blog-2233" target="_blank" class="share-bubble-btn fb-style"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="https://api.whatsapp.com/send?text=Check%20out%20Amit%20Joshi's%20blog%20https%3A%2F%2Famitjoshi.info.np%2F%23blog-2233" target="_blank" class="share-bubble-btn wa-style"><i class="fa-brands fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-card-sample">
+                    <img src="WhatsApp Image 2026-04-01 at 21.36.19.jpeg" alt="Blog 2" class="blog-sample-img">
+                    <div class="blog-sample-title data-lang-title" data-np="विद्यार्थी आवाज नेटवर्क र प्लेटफर्म" data-en="Voice of Students Network Platform" data-hi="छात्र आवाज नेटवर्क प्लेटफॉर्म">विद्यार्थी आवाज नेटवर्क र प्लेटफर्म</div>
+                    <div class="blog-sample-body data-lang-body" data-np="महेन्द्र नमूना माध्यमिक विद्यालयका विद्यार्थीहरूका लागि अन्तरक्रियात्मक ठाउँहरू व्यवस्थापन गर्ने अनुभवहरू।" data-en="Experiences managing interactive spaces and networks for learners at Mahendra Namuna Secondary School." data-hi="महेन्द्र नमूना माध्यमिक विद्यालय के छात्रों के लिए इंटरैक्टिव स्पेस के प्रबंधन का अनुभव।">महेन्द्र नमूना माध्यमिक विद्यालयका विद्यार्थीहरूका लागि अन्तरक्रियात्मक ठाउँहरू व्यवस्थापन गर्ने अनुभवहरू।</div>
+                    <div class="blog-sample-footer">
+                        <a href="https://amitjoshi.info.np/#blog-2234" class="blog-read-more-link">Read Full Post &rarr;</a>
+                        <div class="blog-social-share-cluster">
+                            <button class="share-bubble-btn link-copy-style" title="Copy Link" onclick="executeLinkCopyDirect('https://amitjoshi.info.np/#blog-2234', this)"><i class="fa-solid fa-link"></i></button>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Famitjoshi.info.np%2F%23blog-2234" target="_blank" class="share-bubble-btn fb-style"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="https://api.whatsapp.com/send?text=Check%20out%20Amit%20Joshi's%20blog%20https%3A%2F%2Famitjoshi.info.np%2F%23blog-2234" target="_blank" class="share-bubble-btn wa-style"><i class="fa-brands fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-card-sample">
+                    <img src="678627109_122107033436777907_7000681532606261625_n.jpg" alt="Blog 3" class="blog-sample-img">
+                    <div class="blog-sample-title data-lang-title" data-np="हार्डवेयर र प्रणाली माइक्रोचिपहरू" data-en="Hardware and System Microchips" data-hi="हार्डवेयर और सिस्टम माइक्रोचिप्स">हार्डवेयर र प्रणाली माइक्रोचिपहरू</div>
+                    <div class="blog-sample-body data-lang-body" data-np="अर्डुइनो बोर्डहरू, रेट्रो घडीहरू र नेटवर्क-सम्बन्धित मर्मतहरूमा काम गर्दा सिकेका पाठहरू।" data-en="Lessons learned while working on Arduino boards, retro clocks, and network repairs." data-hi="ऑर्डिनो बोर्ड, रेट्रो घड़ियों और नेटवर्क मरम्मत पर काम करने के अनुभव।">अर्डुइनो बोर्डहरू, रेट्रो घडीहरू र नेटवर्क-सम्बन्धित मर्मतहरूमा काम गर्दा सिकेका पाठहरू।</div>
+                    <div class="blog-sample-footer">
+                        <a href="https://amitjoshi.info.np/#blog-2235" class="blog-read-more-link">Read Full Post &rarr;</a>
+                        <div class="blog-social-share-cluster">
+                            <button class="share-bubble-btn link-copy-style" title="Copy Link" onclick="executeLinkCopyDirect('https://amitjoshi.info.np/#blog-2235', this)"><i class="fa-solid fa-link"></i></button>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Famitjoshi.info.np%2F%23blog-2235" target="_blank" class="share-bubble-btn fb-style"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="https://api.whatsapp.com/send?text=Check%20out%20Amit%20Joshi's%20blog%20https%3A%2F%2Famitjoshi.info.np%2F%23blog-2235" target="_blank" class="share-bubble-btn wa-style"><i class="fa-brands fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-card-sample">
+                    <img src="658252519_964474099866456_7307889391676192084_n.jpg" alt="Blog 4" class="blog-sample-img">
+                    <div class="blog-sample-title data-lang-title" data-np="सिर्जनात्मक डिजाइन र सम्पादन" data-en="Creative Design and Aesthetics" data-hi="रचनात्मक डिजाइन और संपादन">सिर्जनात्मक डिजाइन र सम्पादन</div>
+                    <div class="blog-sample-body data-lang-body" data-np="सुन्दर ब्यानर, पोस्टर र फोटो लेयरहरू पूर्ण शुद्धताका साथ सिर्जना गर्ने मेरो यात्रा।" data-en="My journey of creating beautiful banners, posters, and photo layouts with absolute precision." data-hi="सटीकता के साथ सुंदर बैनर, पोस्टर और फोटो लेआउट बनाने की मेरी यात्रा।">सिर्जनात्मक डिजाइन र सम्पादन</div>
+                    <div class="blog-sample-footer">
+                        <a href="https://amitjoshi.info.np/#blog-2236" class="blog-read-more-link">Read Full Post &rarr;</a>
+                        <div class="blog-social-share-cluster">
+                            <button class="share-bubble-btn link-copy-style" title="Copy Link" onclick="executeLinkCopyDirect('https://amitjoshi.info.np/#blog-2236', this)"><i class="fa-solid fa-link"></i></button>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Famitjoshi.info.np%2F%23blog-2236" target="_blank" class="share-bubble-btn fb-style"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="https://api.whatsapp.com/send?text=Check%20out%20Amit%20Joshi's%20blog%20https%3A%2F%2Famitjoshi.info.np%2F%23blog-2236" target="_blank" class="share-bubble-btn wa-style"><i class="fa-brands fa-whatsapp"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="tools" class="page-section">
-            <h2 class="section-title"><i class="fa-solid fa-laptop-code"></i> <span>Smart Utilities</span></h2>
-            <div class="tools-grid">
-                <div class="tool-card" onclick="openModalUtilityWindow('date-modal')">
-                    <h4>BS & AD Converter</h4>
-                    <p style="font-size:0.8rem; color:var(--text-secondary);">नेपाली र अंग्रेजी मिति रूपान्तरण</p>
+        <section id="edu" class="page-section">
+            <h2 class="section-title">My <span>Education</span></h2>
+            <div class="education-grid">
+                <div class="edu-card" style="min-height: 320px;">
+                    <h3 style="color: var(--accent-color);">BVPS Darchula</h3>
+                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Early Secondary Education</p>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 1rem;">Studying subjects including fundamental mathematics, science, and English to build a strong base for my tech skills.</p>
                 </div>
-                <div class="tool-card" onclick="openModalUtilityWindow('unicode-modal')">
-                    <h4>Preeti to Unicode</h4>
-                    <p style="font-size:0.8rem; color:var(--text-secondary);">परम्परागत फन्ट युनिकोडमा बदल्नुहोस्</p>
+                <div class="edu-card" style="min-height: 320px;">
+                    <h3 style="color: var(--accent-color);">MSS Darchula</h3>
+                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Higher Secondary Education</p>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 1rem;">Focused on science and mathematics, developing the analytical problem-solving skills applied in web and hardware development.</p>
                 </div>
-                <div class="tool-card" onclick="openModalUtilityWindow('translator-modal')">
-                    <h4>Language Translator</h4>
-                    <p style="font-size:0.8rem; color:var(--text-secondary);">नेपाली, अंग्रेजी र स्थानीय भाषाहरू</p>
-                </div>
-                <div class="tool-card" onclick="openModalUtilityWindow('notes-modal')">
-                    <h4>Quick Notepad</h4>
-                    <p style="font-size:0.8rem; color:var(--text-secondary);">महत्वपूर्ण टिपोट सुरक्षित राख्नुहोस्</p>
-                </div>
-            </div>
-
-            <div class="calendar-box">
-                <div>
-                    <h4 style="color:#fff; margin-bottom:0.5rem;">नेपाली पात्रो (Bikram Sambat)</h4>
-                    <div id="nepali-inline-picker"></div>
-                </div>
-                <div style="display:flex; flex-direction:column; justify-content:center; align-items:center; border-left: 1px solid var(--card-border);">
-                    <h3 style="color:var(--accent-color); font-size:1.8rem;" id="bs-day-view-lbl">-</h3>
-                    <p style="color:var(--text-secondary);" id="ad-converted-view-lbl">-</p>
+                <div class="edu-card" style="min-height: 320px;">
+                    <h3 style="color: var(--accent-color);">KC</h3>
+                    <p style="font-size: 0.88rem; color: var(--text-secondary);">Class 11</p>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 1rem;">Class 11 For a Few Months but Lifetime memory</p>
                 </div>
             </div>
         </section>
 
+        <section id="tools" class="page-section">
+            <h2 class="section-title">Some <span>Useful Tools</span></h2>
+            <div class="tools-grid">
+                <div class="tool-card" onclick="openToolModal('pdfConverter')">
+                    <h4>PDF Tools</h4>
+                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Convert or extract PDFs</p>
+                </div>
+                <div class="tool-card" onclick="openToolModal('qrGen')">
+                    <h4>QR Generator</h4>
+                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Build quick QR codes</p>
+                </div>
+                <div class="tool-card" onclick="openToolModal('imgCompressor')">
+                    <h4>Image Compressor</h4>
+                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Reduce image sizes</p>
+                </div>
+                <div class="tool-card" onclick="openToolModal('translator')">
+                    <h4>Translator / Converter</h4>
+                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Language conversion tools</p>
+                </div>
+            </div>
+
+            <h3 style="color: #ffffff; margin: 2rem 0 1rem 0;">Regional Calendars</h3>
+            <div class="calendar-box">
+                <div>
+                    <h3 style="color: var(--accent-color); margin-bottom: 0.5rem;">Nepali Calendar (BS)</h3>
+                    <input type="text" id="nepali-date" class="form-control" placeholder="Select BS Date">
+                    <p style="color: var(--text-secondary); font-size: 0.8rem;" id="np-calendar-view"></p>
+                </div>
+                <div>
+                    <h3 style="color: var(--accent-purple); margin-bottom: 0.5rem;">English Calendar (AD)</h3>
+                    <input type="text" id="english-date" class="form-control" readonly placeholder="Equivalent AD Date">
+                    <div id="calendar" style="margin-top:10px; font-size:0.75rem; color:#fff;"></div>
+                </div>
+            </div>
+
+            <div style="margin-top: 1.5rem; background-color: var(--card-bg); border: 1px solid var(--card-border); padding: 1.5rem; border-radius: 10px; box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);">
+                <h4 style="color: #ffffff; margin-bottom: 0.5rem;">Calendar & Information</h4>
+                <p style="color: var(--accent-color); font-weight: 600;">Current Date (BS): 2083 Jestha | Regional Holidays Active</p>
+                <p style="color: var(--text-secondary); font-size: 0.85rem;" id="ad-np-date-auto">Loading English & Nepali Date...</p>
+            </div>
+        </section>
+
         <section id="interests" class="page-section">
-            <h2 class="section-title"><i class="fa-solid fa-heart"></i> <span>Fields of Interest</span></h2>
+            <h2 class="section-title">Interests & <span>Hobby</span></h2>
             <div class="interest-grid">
                 <div class="interest-card">
-                    <i class="fa-solid fa-microchip"></i>
-                    <h3>Technology</h3>
-                    <p style="color:var(--text-secondary); font-size:0.9rem;">नयाँ सफ्टवेयर, एआई विकास र आधुनिक प्राविधिक उपकरणहरूमा गहिरो चासो।</p>
+                    <i class="fa-solid fa-pen-nib"></i>
+                    <h3>Design/Editing</h3>
+                    <p>Creating beautiful banners, posters, photo layers, and captions with aesthetic precision.</p>
                 </div>
                 <div class="interest-card">
                     <i class="fa-solid fa-users"></i>
-                    <h3>Social Work</h3>
-                    <p style="color:var(--text-secondary); font-size:0.9rem;">सामुदायिक सेवा, सहयोग र समाज उत्थानका कार्यहरूमा संलग्नता।</p>
+                    <h3>Community Work</h3>
+                    <p>Directing and operating student initiatives like the "Voice of Students" community.</p>
                 </div>
                 <div class="interest-card">
-                    <i class="fa-solid fa-pen-nib"></i>
-                    <h3>Literature</h3>
-                    <p style="color:var(--text-secondary); font-size:0.9rem;">सामयिक विषयवस्तुहरूमा संस्मरण, लेख र विचारहरू सिर्जना गर्ने बानी।</p>
+                    <i class="fa-solid fa-microchip"></i>
+                    <h3>Tech Tinkering</h3>
+                    <p>Working on Arduino boards, retro clocks, set-top boxes, and network-related repairs.</p>
+                </div>
+                <div class="interest-card">
+                    <i class="fa-solid fa-pencil"></i>
+                    <h3>Content Writing</h3>
+                    <p>Writing notices, captions, articles, and notices for social pages.</p>
                 </div>
             </div>
         </section>
 
         <section id="contact" class="page-section">
-            <h2 class="section-title"><i class="fa-solid fa-envelope"></i> <span>Get In Touch</span></h2>
+            <h2 class="section-title">Contact <span>Me</span></h2>
             <div class="contact-section-container">
                 <div class="contact-details">
-                    <h3>सम्पर्क विवरणहरू</h3>
-                    <p style="color:var(--text-secondary); margin-bottom:1rem;">मलाई तलका माध्यमहरूबाट सीधा सम्पर्क गर्न सक्नुहुन्छ:</p>
+                    <h3>Amit Joshi</h3>
+                    <p>Building digital tools and student networks from Darchula, Nepal. Contact me if you have any questions or want to collaborate.</p>
                     <ul>
-                        <li><i class="fa-solid fa-location-dot"></i> Nepal</li>
-                        <li><i class="fa-solid fa-phone"></i> +977 9848422734</li>
-                        <li><i class="fa-solid fa-envelope"></i> mail@amitjoshi.info.np</li>
+                        <li><i class="fa-solid fa-location-dot"></i> Darchula, Sudurpashchim, Nepal</li>
+                        <li><i class="fa-solid fa-envelope"></i> amitjosee28@gmail.com</li>
+                        <li><i class="fa-solid fa-phone"></i> +977-9746241860</li>
                     </ul>
                 </div>
-                <form class="contact-form" onsubmit="handleContactSubmissionEvent(event)">
-                    <input type="text" placeholder="तपाईंको नाम" required>
-                    <input type="email" placeholder="तपाईंको इमेल" required>
-                    <textarea placeholder="तपाईंको सन्देश यहाँ लेख्नुहोस्..." rows="4" required></textarea>
-                    <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">सन्देश पठाउनुहोस्</button>
+
+                <form class="contact-form" action="https://formspree.io/f/xyzgqgwa" method="POST">
+                    <input type="text" name="name" placeholder="Your Name" required class="form-control">
+                    <input type="email" name="email" placeholder="Your Email" required class="form-control">
+                    <textarea name="message" rows="5" placeholder="Type message..." required class="form-control"></textarea>
+                    <button type="submit" class="btn btn-primary" style="margin: 0 auto; width: auto;">Send Message</button>
                 </form>
             </div>
         </section>
-
-    </main>
-
-    <div id="date-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModalUtilityWindow('date-modal')">&times;</span>
-            <h3>BS & AD Converter</h3>
-            <p style="margin-bottom:1rem; color:var(--text-secondary);">मिति रूपान्तरण गर्नुहोस्:</p>
-            <input type="text" id="bs-input-field" class="form-control" placeholder="YYYY-MM-DD (BS)">
-            <button class="btn btn-primary" onclick="convertBsToAdLogic()">Convert to AD</button>
-            <p id="conversion-output-lbl" style="margin-top:1.2rem; font-weight:600; color:var(--accent-color);"></p>
-        </div>
-    </div>
-
-    <div id="unicode-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModalUtilityWindow('unicode-modal')">&times;</span>
-            <h3>Preeti to Unicode Converter</h3>
-            <textarea class="translate-area" id="preeti-input-box" placeholder="Preeti फन्ट यहाँ पेस्ट गर्नुहोस्..."></textarea>
-            <button class="btn btn-primary" style="margin-top:0.8rem;" onclick="convertPreetiToUnicodeLogic()">Convert to Unicode</button>
-            <textarea class="translate-area" id="unicode-output-box" style="margin-top:1rem;" placeholder="युनिकोड परिणाम यहाँ देखिनेछ..." readonly></textarea>
-        </div>
-    </div>
-
-    <div id="translator-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModalUtilityWindow('translator-modal')">&times;</span>
-            <h3>Language Translator</h3>
-            <div class="translator-row">
-                <textarea class="translate-area" id="trans-source" placeholder="Type text to translate..."></textarea>
-                <textarea class="translate-area" id="trans-target" placeholder="अनुवादित पाठ..." readonly></textarea>
-            </div>
-            <button class="btn btn-primary" style="margin-top:1rem;" onclick="executeTranslationLogic()">Translate to Nepali</button>
-        </div>
-    </div>
-
-    <div id="notes-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModalUtilityWindow('notes-modal')">&times;</span>
-            <h3>Quick Notepad</h3>
-            <textarea class="translate-area" id="notepad-text-area" placeholder="Write your quick thoughts here... (Auto saves to browser)"></textarea>
-        </div>
-    </div>
-
-    <div class="gemini-dialog" id="gemini-engagement-container">
-        <h3>Gemini Engagement Engine</h3>
-        <p style="font-size:0.82rem; color:var(--text-secondary); margin-bottom:0.8rem;">सोध्नुहोस् अमित जोशीको बारेमा वा अन्य कुनै जिज्ञासा:</p>
-        <textarea id="gemini-query-input" placeholder="के म तपाईंलाई सहयोग गर्न सक्छु?"></textarea>
-        <div class="gemini-dialog-buttons">
-            <button class="btn btn-secondary" style="padding:0.4rem 1rem;" onclick="closeGeminiEngagementAI()">Cancel</button>
-            <button class="btn btn-primary" style="padding:0.4rem 1rem;" onclick="submitGeminiQueryLogic()">Ask AI</button>
-        </div>
-        <div id="gemini-response-box" style="margin-top:1.2rem; font-size:0.9rem; color:var(--accent-color); max-height:150px; overflow-y:auto;"></div>
-    </div>
-
-    <div class="suggestion-popup" id="suggestion-panel">
-        <div class="suggestion-popup-header">
-            <h3><i class="fa-solid fa-lightbulb"></i> सजिलो सुझाव बक्स</h3>
-            <i class="fa-solid fa-circle-xmark suggestion-close-icon" onclick="dismissSuggestionPanel()"></i>
-        </div>
-        <p>मलाई सुधार्न केही सुझाव दिन चाहनुहुन्छ? आफ्नो सन्देश लेखी सिधै ह्वाट्सएपमा पठाउनुहोस्:</p>
-        <textarea id="suggestion-text" placeholder="आफ्नो महत्वपूर्ण सुझाव यहाँ लेख्नुहोस्..."></textarea>
-        <button class="whatsapp-submit-btn" onclick="forwardSuggestionToWhatsapp()"><i class="fa-brands fa-whatsapp"></i> Send via WhatsApp</button>
     </div>
 
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h4>About Amit</h4>
-                    <p style="color:var(--text-secondary); line-height:1.7;">सकारात्मक सोच, प्रविधिको सही सदुपयोग र सामाजिक सेवा मार्फत समाजमा एउटा फरक र रचनात्मक छाप छोड्ने मेरो निरन्तर प्रयास रहिरहनेछ।</p>
+                    <h4>Contact Me</h4>
+                    <ul>
+                        <li><a href="https://www.facebook.com/share/1JUJKNUqc9/" target="_blank">Facebook</a></li>
+                        <li><a href="https://www.instagram.com/_amitjoc?igsh=MXZyeTJzYWd4Ym9haA==" target="_blank">Instagram</a></li>
+                        <li><a href="https://wa.me/9746241860" target="_blank">WhatsApp</a></li>
+                        <li><a href="mailto:amitjosee28@gmail.com">Gmail</a></li>
+                    </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Quick Links</h4>
+                    <h4>Useful Links</h4>
                     <div class="footer-col-2-col">
                         <ul>
-                            <li><a href="#home">Home</a></li>
-                            <li><a href="#social">Social Integration</a></li>
-                            <li><a href="#initiatives">Initiatives</a></li>
-                            <li><a href="https://amitjoshi.info.np/#blog" target="_blank">Blog</a></li>
+                            <li><a href="https://moest.gov.np" target="_blank">MoEST</a></li>
+                            <li><a href="https://cehrd.gov.np" target="_blank">CEHRD</a></li>
+                            <li><a href="https://learning.cehrd.edu.np" target="_blank">Learning Portal</a></li>
+                            <li><a href="https://neb.gov.np" target="_blank">NEB</a></li>
+                            <li><a href="https://cdc.gov.np" target="_blank">CDC</a></li>
                         </ul>
                         <ul>
-                            <li><a href="#tools">Utilities</a></li>
-                            <li><a href="#interests">Interests</a></li>
-                            <li><a href="#contact">Contact</a></li>
+                            <li><a href="https://ugcnepal.edu.np" target="_blank">UGC</a></li>
+                            <li><a href="https://olenepal.org" target="_blank">OLE Nepal</a></li>
+                            <li><a href="https://nepalshiksha.gov.np" target="_blank">Education System</a></li>
                         </ul>
+                        <li><a href="https://mmss.edu.np" target="_blank">Mahendra School </a></li>
+                        <li><a href="https://https://darchula.fwu.edu.np/" target="_blank">DMC Darchula</a></li>
                     </div>
                 </div>
                 <div class="footer-col">
-                    <h4>Stay Connected</h4>
-                    <p style="color:var(--text-secondary); margin-bottom:1rem;">मेरो नयाँ अपडेट र कार्यहरूका लागि सामाजिक संजालमा जोडीनुहोला।</p>
-                    <div class="social-icons-header">
-                        <a href="https://www.facebook.com/aj9848" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="https://www.instagram.com/amit_joshi_45" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://wa.me/9848422734" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-                    </div>
+                    <h4>My Work</h4>
+                    <ul>
+                        <li><a href="#initiative">Voice of Students Initiative</a></li>
+                        <li><a href="#tools">Useful Utilities & Calendar</a></li>
+                        <li><a href="#interests">Hobby Projects</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                &copy; 2026 Amit Joshi. All Rights Reserved. Powered by Innovation.
+                &copy; 2026 Amit Joshi. All Rights Reserved. Wanna Design?? Contact Me..
             </div>
         </div>
     </footer>
 
+    <div id="gemini-dialog" class="gemini-dialog">
+        <h3>Ask Gemini AI</h3>
+        <textarea id="gemini-prompt" placeholder="Ask AI..."></textarea>
+        <button class="btn btn-primary" onclick="submitGemini()">Ask</button>
+        <div id="gemini-response"></div>
+    </div>
+
     <script>
-        // Hero Image Carousel Management 
-        let activeHeroSlideIdx = 0;
-        const heroSlideItems = document.querySelectorAll('.slide-img');
-        
-        function shiftHeroSlide(direction) {
-            heroSlideItems[activeHeroSlideIdx].classList.remove('active');
-            activeHeroSlideIdx = (activeHeroSlideIdx + direction + heroSlideItems.length) % heroSlideItems.length;
-            heroSlideItems[activeHeroSlideIdx].classList.add('active');
+        // Automatic popup loader logic
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const popup = document.getElementById('user-suggestion-box');
+                if(popup) {
+                    popup.style.display = 'block';
+                }
+            }, 3000); // Pops up precisely 3 seconds after loading
+        });
+
+        function closeSuggestionPopup() {
+            document.getElementById('user-suggestion-box').style.display = 'none';
         }
-        
-        // Auto slide carousel every 5 seconds
-        setInterval(() => { shiftHeroSlide(1); }, 5000);
 
-        // Core Particle System Setup
-        const particleCanvas = document.getElementById('particle-canvas');
-        const canvasCtx = particleCanvas.getContext('2d');
-        let particleArray = [];
-
-        function setCanvasDynamicBounds() {
-            particleCanvas.width = window.innerWidth;
-            particleCanvas.height = window.innerHeight;
+        function sendSuggestionToWhatsApp() {
+            const suggestionText = document.getElementById('visitor-suggestion-text').value.trim();
+            const phoneNumber = "9746241860"; 
+            
+            if (suggestionText === "") {
+                alert("Please type a suggestion before sending!");
+                return;
+            }
+            
+            const customMessage = `Hello Amit, I am reviewing your website. Here is my suggestion:\n\n"${suggestionText}"`;
+            const encodedText = encodeURIComponent(customMessage);
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+            
+            window.open(whatsappUrl, '_blank');
         }
-        window.addEventListener('resize', setCanvasDynamicBounds);
-        setCanvasDynamicBounds();
 
-        class ParticleNode {
+        // Particle network effect
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particlesArray = [];
+        const numberOfParticles = 120;
+        class Particle {
             constructor() {
-                this.x = Math.random() * particleCanvas.width;
-                this.y = Math.random() * particleCanvas.height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.radius = Math.random() * 2 + 1;
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = (Math.random() * 2) + 0.5;
+                this.speedX = (Math.random() * 0.8) - 0.4;
+                this.speedY = (Math.random() * 0.8) - 0.4;
             }
+
             update() {
-                this.x += this.vx; this.y += this.vy;
-                if (this.x < 0 || this.x > particleCanvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > particleCanvas.height) this.vy *= -1;
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x < 0 || this.x > canvas.width) {
+                    this.speedX = -this.speedX;
+                }
+                if (this.y < 0 || this.y > canvas.height) {
+                    this.speedY = -this.speedY;
+                }
             }
+
             draw() {
-                canvasCtx.beginPath();
-                canvasCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                canvasCtx.fillStyle = 'rgba(0, 240, 255, 0.2)';
-                canvasCtx.fill();
+                ctx.fillStyle = 'rgba(0, 240, 255, 0.5)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
             }
         }
 
-        function buildParticleNetwork() {
-            particleArray = [];
-            for (let i = 0; i < 75; i++) { particleArray.push(new ParticleNode()); }
+        function init() {
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
         }
-        buildParticleNetwork();
 
-        function renderParticleAnimationLoop() {
-            canvasCtx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
-            for (let i = 0; i < particleArray.length; i++) {
-                particleArray[i].update();
-                particleArray[i].draw();
-                for (let j = i + 1; j < particleArray.length; j++) {
-                    const dist = Math.hypot(particleArray[i].x - particleArray[j].x, particleArray[i].y - particleArray[j].y);
-                    if (dist < 110) {
-                        canvasCtx.beginPath();
-                        canvasCtx.moveTo(particleArray[i].x, particleArray[i].y);
-                        canvasCtx.lineTo(particleArray[j].x, particleArray[j].y);
-                        canvasCtx.strokeStyle = `rgba(168, 85, 247, ${0.15 * (1 - dist/110)})`;
-                        canvasCtx.lineWidth = 0.6;
-                        canvasCtx.stroke();
+        function connect() {
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
+                        + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                    if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+                        opacityValue = 1 - (distance / 20000);
+                        ctx.strokeStyle = `rgba(0, 240, 255, ${opacityValue * 0.15})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
                     }
                 }
             }
-            requestAnimationFrame(renderParticleAnimationLoop);
         }
-        renderParticleAnimationLoop();
 
-        // Live Nepali Time Display Engine
-        function refreshNepaliClockLive() {
-            const timeOptions = { timeZone: 'Asia/Kathmandu', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
-            const localTimeString = new Date().toLocaleTimeString('ne-NP', timeOptions);
-            document.getElementById('nepali-current-time-lbl').innerText = `नेपाली समय: ${localTimeString}`;
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+            connect();
+            requestAnimationFrame(animate);
         }
-        setInterval(refreshNepaliClockLive, 1000);
-        refreshNepaliClockLive();
 
-        // Setup Dedicated Blog Sharing Links
-        function setupDedicatedBlogShareMechanisms() {
-            const dedicatedBlogUrl = "https://amitjoshi.info.np/#blog";
-            const encodedBlogUrl = encodeURIComponent(dedicatedBlogUrl);
-            const encodedShareText = encodeURIComponent("अमित जोशीको ब्लग लेख: यसपटक हामी स्वतन्त्र सोचौँ");
+        window.addEventListener('resize', function() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particlesArray = [];
+            init();
+        });
+        init();
+        animate();
 
-            document.getElementById('blog-fb-share').href = `https://www.facebook.com/sharer/sharer.php?u=${encodedBlogUrl}`;
-            document.getElementById('blog-wa-share').href = `https://api.whatsapp.com/send?text=${encodedShareText}%20${encodedBlogUrl}`;
+        // Update time and date dynamically without overlapping
+        function updateTimeAndDate() {
+            const now = new Date();
+            document.getElementById('nepali-time-el').innerText = "NP Time: " + now.toLocaleTimeString('en-NP', { timeZone: 'Asia/Kathmandu' });
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('ad-np-date-auto').innerText = "Equivalent English Date: " + now.toLocaleDateString(undefined, options) + " | BS Date: 2083 Jestha | Regional Holidays Active";
         }
-        setupDedicatedBlogShareMechanisms();
 
-        function executeBlogLinkCopy(buttonEl) {
-            const dedicatedBlogUrl = "https://amitjoshi.info.np/#blog";
-            navigator.clipboard.writeText(dedicatedBlogUrl).then(() => {
-                const legacyIcon = buttonEl.innerHTML;
-                buttonEl.innerHTML = '<i class="fa-solid fa-check" style="color:#25d366;"></i>';
-                setTimeout(() => { buttonEl.innerHTML = legacyIcon; }, 2000);
-            }).catch(err => {
-                alert("Failed to copy link. Please use: " + dedicatedBlogUrl);
+        setInterval(updateTimeAndDate, 1000);
+        updateTimeAndDate();
+
+        // Carousel logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide-img');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+        }
+
+        function moveSlide(n) {
+            showSlide(currentSlide + n);
+        }
+
+        // Auto slide every 5 seconds
+        setInterval(() => {
+            moveSlide(1);
+        }, 5000);
+
+        function openGeminiModal() {
+            document.getElementById('gemini-dialog').style.display = 'block';
+        }
+
+        function submitGemini() {
+            const prompt = document.getElementById('gemini-prompt').value;
+            document.getElementById('gemini-response').innerHTML = `<pre>Result for "${prompt}": ... Response from Gemini is being generated.</pre>`;
+        }
+
+        /* NEW CUSTOM LANGUAGE SWITCHER DRIVER FOR BLOG GRID */
+        function changeBlogLanguage() {
+            const selectedLang = document.getElementById('blog-lang-select').value;
+            
+            // Translate Blog Titles
+            document.querySelectorAll('.data-lang-title').forEach(el => {
+                const translation = el.getAttribute(`data-${selectedLang}`);
+                if(translation) el.innerText = translation;
+            });
+
+            // Translate Blog Bodies
+            document.querySelectorAll('.data-lang-body').forEach(el => {
+                const translation = el.getAttribute(`data-${selectedLang}`);
+                if(translation) el.innerText = translation;
             });
         }
 
-        // Modals Management
-        function openModalUtilityWindow(id) { document.getElementById(id).style.display = 'block'; }
-        function closeModalUtilityWindow(id) { document.getElementById(id).style.display = 'none'; }
-        window.onclick = function(e) {
-            if (e.target.classList.contains('modal')) { e.target.style.display = 'none'; }
+        function executeLinkCopyDirect(linkUrl, buttonEl) {
+            navigator.clipboard.writeText(linkUrl).then(() => {
+                const legacyIcon = buttonEl.innerHTML;
+                buttonEl.innerHTML = '<i class="fa-solid fa-check" style="color:#25d366;"></i>';
+                setTimeout(() => {
+                    buttonEl.innerHTML = legacyIcon;
+                }, 2000);
+            }).catch(err => {
+                alert("Please copy manually: " + linkUrl);
+            });
         }
-
-        // Converter & Utilities Dummy Backend Implementations
-        function convertBsToAdLogic() {
-            const inputVal = document.getElementById('bs-input-field').value;
-            if(!inputVal) { alert('कृपया मिति हाल्नुहोस्!'); return; }
-            document.getElementById('conversion-output-lbl').innerText = `Converted AD: 2026-02-26 (Sample Result)`;
-        }
-
-        function convertPreetiToUnicodeLogic() {
-            const val = document.getElementById('preeti-input-box').value;
-            document.getElementById('unicode-output-box').value = val ? "यो प्रितीबाट युनिकोड रूपान्तरणको नमुना पाठ हो।" : "";
-        }
-
-        function executeTranslationLogic() {
-            const source = document.getElementById('trans-source').value;
-            document.getElementById('trans-target').value = source ? "यो एउटा नमुना अनुवाद परिणाम हो।" : "";
-        }
-
-        // Auto Save Notepad Content
-        const notepadTextArea = document.getElementById('notepad-text-area');
-        notepadTextArea.value = localStorage.getItem('amit_joshi_quick_notes') || '';
-        notepadTextArea.addEventListener('input', () => {
-            localStorage.setItem('amit_joshi_quick_notes', notepadTextArea.value);
-        });
-
-        // Contact Form Interceptor
-        function handleContactSubmissionEvent(e) {
-            e.preventDefault();
-            alert('धन्यवाद! तपाईंको सन्देश सफलतापूर्वक प्राप्त भयो।');
-            e.target.reset();
-        }
-
-        // Suggestion Popup Control
-        setTimeout(() => { document.getElementById('suggestion-panel').style.display = 'block'; }, 4000);
-        function dismissSuggestionPanel() { document.getElementById('suggestion-panel').style.display = 'none'; }
-        function forwardSuggestionToWhatsapp() {
-            const text = document.getElementById('suggestion-text').value;
-            if(!text) { alert('कृपया केही सुझाव लेख्नुहोस्!'); return; }
-            window.open(`https://wa.me/9848422734?text=${encodeURIComponent(text)}`, '_blank');
-        }
-
-        // Gemini AI Panel Controls
-        function triggerGeminiEngagementAI() { document.getElementById('gemini-engagement-container').style.display = 'block'; }
-        function closeGeminiEngagementAI() { document.getElementById('gemini-engagement-container').style.display = 'none'; }
-        function submitGeminiQueryLogic() {
-            const q = document.getElementById('gemini-query-input').value;
-            if(!q) return;
-            document.getElementById('gemini-response-box').innerText = "Gemini Engine: अमित जोशी एक प्रविधि र सामाजिक क्षेत्रमा सक्रिय व्यक्तित्व हुनुहुन्छ। (नमुना प्रतिक्रिया)";
-        }
-
-        // Inline Calendar Integration
-        $(document).ready(function() {
-            // Placeholder simulation for Nepali calendar logic injection bounds
-            document.getElementById('bs-day-view-lbl').innerText = "१४ फाल्गुन २०८२";
-            document.getElementById('ad-converted-view-lbl').innerText = "February 26, 2026";
-        });
     </script>
 </body>
 </html>
